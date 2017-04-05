@@ -1,0 +1,38 @@
+.panel-heading:hover{
+  cursor:pointer;
+}
+
+.panel-heading{
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+.side-tab:hover{
+  cursor:pointer;
+}
+
+.panel.panel-default{
+  border:none;
+  box-shadow:none !important;
+  border-bottom-right-radius:0px;
+  border-bottom-left-radius:0px;
+}
+
+.panel-heading{
+  border:none;
+  background-color:#eee;
+}
+
+.panel-body{
+  background-color:#f5f5f5;
+}
+
+.panel-title{
+  font-weight:400;
+  color:white;
+}
+

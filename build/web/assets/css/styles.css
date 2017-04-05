@@ -1,0 +1,209 @@
+.tourboard{
+  width:100%;
+  height:223px;
+  background-color:#414141;
+  border-radius:5px;
+}
+
+#footerplayer{
+  margin-top:300px;
+}
+
+.destour{
+  width:300px;
+  height:54px;
+  margin:30px auto 8px auto;
+  display:block;
+  background-color:#322f2f;
+  text-align:center;
+  vertical-align:middle;
+  border-radius:10px;
+}
+
+.des{
+  line-height:2.3;
+}
+
+.allbtn{
+  width:240px;
+  height:200px;
+  margin:10px 0 0 15px;
+  display:block;
+  float:left;
+}
+
+#board{
+  width:100%;
+  height:auto;
+  background:rgba(0,0,0,.85);
+  margin-top:-1px;
+  display:table;
+  padding:10px;
+  margin-bottom:20px;
+  position:relative;
+  border:1px solid #666;
+  color:#fefdfd;
+  border-radius:0 0 5px 5px;
+}
+
+.pictour{
+  width:350px;
+  height:200px;
+  margin:10px 0 0 35px;
+  display:block;
+  float:left;
+  overflow:hidden;
+}
+
+#logotour{
+  width:350px;
+  height:200px;
+}
+
+#profileeiei:link, #profileeiei:visited{
+  color:black;
+}
+
+#profileeiei.hover{
+  color:black;
+}
+
+#profileeiei{
+  color:white;
+}
+
+a:link, a:visited{
+  color:white;
+}
+
+a:hover{
+  color:white;
+}
+
+a{
+  color:white;
+}
+
+#logo{
+  max-height:55px;
+  margin-top:-3px;
+  display:inline-block;
+  float:left;
+}
+
+#sign{
+  background-color:#f50;
+  margin-top:15px;
+  margin-right:30px;
+}
+
+#signtext{
+  color:#FFF;
+  font-weight:bold;
+}
+
+ul.nav.nav-pills{
+  background-color:#515050;
+  margin-bottom:0;
+  padding-left:0;
+  list-style:none;
+}
+
+#menu{
+  display:block;
+  position:relative;
+  text-align:center;
+  padding:10px 15px;
+}
+
+#fontmenu{
+  color:#FFF;
+  font-weight:bold;
+}
+
+.categories{
+  text-align:center !important;
+}
+
+.caregories li{
+  float:none;
+}
+
+#live{
+  text-align:center;
+  background-color:#787474;
+  border-radius:15px;
+}
+
+#news{
+  text-align:center;
+  background-color:#787474;
+  border-radius:15px;
+}
+
+img#footlogo{
+  max-height:42px;
+  margin-top:-18px;
+}
+
+#imglink{
+  background:url(../../assets/img/test.jpg);
+  height:80px;
+  width:95%;
+  border-radius:6px;
+  background-position:center;
+}
+
+h1{
+  text-align:center;
+}
+
+.headtour{
+  border-bottom:1px solid;
+  margin-top:50px;
+  margin-bottom:20px;
+}
+
+.csgo{
+  width:50%;
+  height:300px;
+}
+
+p{
+}
+
+header{
+  height:450px;
+  background:url(../../assets/img/head.png);
+  background-size:cover;
+}
+
+.calendar{
+  width:320px;
+  height:160px;
+  margin:32px 10px 0 60px;
+  display:block;
+  float:left;
+  background-color:#322f2f;
+  border-radius:5px;
+  padding:23px;
+}
+
+#footer001{
+  margin-top:550px;
+  float:left;
+}
+
+.nav > li > a:focus, .nav > li > a:hover{
+  text-decoration:none;
+  background-color:#2c2727;
+}
+
+.container{
+  padding-right:15px;
+  padding-left:15px;
+  margin-right:auto;
+  margin-left:auto;
+  background:#ffffff;
+}
+
