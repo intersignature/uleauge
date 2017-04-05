@@ -40,6 +40,7 @@ public class SigninServlet extends HttpServlet {
      */
     private Connection connection;
 
+    @Override
     public void init() {
         try {
             connection = dbesport.getConnection();
@@ -56,20 +57,16 @@ public class SigninServlet extends HttpServlet {
             String password = request.getParameter("Password");
             out.println(username);
             out.println(password);
+            
             int suc = 0;
             try {
+                
                 Statement stmt = connection.createStatement();
-                String sql1 = "SELECT P_Username, P_Password FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
-                ResultSet rs = stmt.executeQuery(sql1);
-                while (rs.next()) {
-                    if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(password)) {
-                        suc = 1;
-                    } else if (rs.getString("P_Username").equals(username) && !rs.getString("P_Password").equals(password)) {
-                        suc = 2;
-                    }
-                }
+                String sql = "SELECT P_Username, P_Password FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
+                ResultSet rs = stmt.executeQuery(sql);
+                 response.sendRedirect("tournament.html");
             } catch (Exception e) {
-            
+                out.println(e);
             }
             if (suc == 1) {
                 HttpSession session = request.getSession();
