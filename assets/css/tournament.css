@@ -1,0 +1,106 @@
+#container{
+  width:800px;
+  height:600px;
+  float:left;
+}
+
+section{
+  width:99px;
+  height:520px;
+  float:left;
+  line-height:2px;
+}
+
+section > div{
+  width:100px;
+  height:20px;
+  border:1px solid #000;
+  margin:22px 0;
+  background:#73789F;
+  color:white;
+  padding:10px 10px 10px 20px;
+}
+
+section > div:nth-child(2n){
+  margin-bottom:40px;
+}
+
+.connecter{
+  width:90px;
+  height:20px;
+  float:left;
+}
+
+.line{
+  width:32px;
+  height:498px;
+  float:left;
+}
+
+.connecter div{
+  border:1px solid #000;
+  border-left:none;
+  height:44px;
+  width:100%;
+  margin:63px 0 0 2px;
+}
+
+.connecter div:first-child{
+  margin:32px 0 0 1px;
+}
+
+.line div{
+  border-top:1px solid #000;
+  margin:105px 0 0 1px;
+}
+
+.line div:first-child{
+  margin-top:55px;
+}
+
+#quarterFinals > div{
+  margin-top:84px;
+}
+
+#quarterFinals > div:first-child{
+  margin-top:44px;
+}
+
+#conn2 div{
+  margin-top:106px;
+  height:105px;
+}
+
+#conn2 div:first-child{
+  margin-top:57px;
+}
+
+#line2 div{
+  margin-top:219px;
+}
+
+#line2 div:first-child{
+  margin-top:105px;
+}
+
+#semiFinals > div{
+  margin-top:198px;
+}
+
+#semiFinals > div:first-child{
+  margin-top:94px;
+}
+
+#conn3 div{
+  margin-top:106px;
+  height:220px;
+}
+
+#line3 div{
+  margin-top:218px;
+}
+
+#final > div{
+  margin-top:208px;
+}
+
