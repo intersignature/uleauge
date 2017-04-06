@@ -37,6 +37,7 @@ public class SignoutServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("username", null);
                 session.setAttribute("suc", suc);
+                session.invalidate();
                 response.sendRedirect("index.html");
         }
     }
