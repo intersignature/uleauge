@@ -56,7 +56,7 @@
             </li>
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
              <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="index.html" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign Out</a>
+              <a type="submit" class="btn btn-default btn-outline btn-circle collapsed btn-success"  data-toggle="collapse" href="index.html" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign Out</a>
 
             </li>
             <form>
