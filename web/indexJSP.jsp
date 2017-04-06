@@ -1,3 +1,12 @@
+<%-- 
+    Document   : indexJSP
+    Created on : Apr 6, 2017, 7:48:49 PM
+    Author     : CPCust
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
 
@@ -40,31 +49,10 @@
             <img src="assets/img/logo.png"  id = "logo">
           <a class="navbar-brand" href="index.html">U-LEAGUE</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.html">Sign up</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
-            </li>
-          </ul>
-          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-              <div class="form-group">
-                <label class="sr-only" for="username">Username</label>
-                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
-              </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-          </div>
-        </div><!-- /.navbar-collapse -->
+        <div id="namepro"><h4>hello world</h4></div>
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
+    </form>
     </header>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
@@ -74,15 +62,40 @@
         <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faq.html" id="fontmenu">FAQ </a></li>
     </ul>
-    <div class="news-body">
-        <ul class="list-group">
-            <li class="list-group-item news"><img src="assets/img/overwatch-logo.jpg" width="100" height="100" class="img1">
-                <h1>Ok.Paidai ตบ Na'vi ยับ </h1>
-                <p class="para"> เมื่อวันที่31กุมภาพันธ์ ทีมยักษ์ใหญ่Na&amp;#39;vi โดนOk.Paidai ตบยับ 16-0 &lt;br&gt; เป็นเรื่องน่าเสียดายที่ Na'vi อดได้แชมป์&lt;br&gt;&nbsp;</p>
-            </li>
-        </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="divnew">
+                    <div class="row" id="row">
+                        <div class="col-md-12" id="news">
+                            <h1>NEWS</h1></div>
+                        <div class="col-md-12">
+                            <h1>Ok.Paidai ตบ Na'vi ยับ</h1>
+                            <div><img src="assets/img/ss.jpg">
+                                <div>
+                                    <h4>เมื่อวันที่31กุมภาพันธ์ ทีมยักษ์ใหญ่Na'vi โดนOk.Paidai ตบยับ 16-0 เป็นเรื่องน่าเสียดายที่ Na'vi อดได้แชมป์&nbsp; </h4></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="divlive">
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-0" id="live">
+                            <h1>LIVE! </h1></div>
+                        <div class="col-md-12 col-md-offset-0">
+                            <h1>Na'Vi VS HR</h1>
+                            <a href="https://www.youtube.com/watch?v=wZyPCsfZeh0" target="_blank">
+<div id="imglink"></div>
+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <footer>
+    <footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
                 <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>

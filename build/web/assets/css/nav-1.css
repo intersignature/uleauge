@@ -59,9 +59,8 @@
 }
 
 .navbar-nav.navbar-right .btn:not(.collapsed){
-  background-color:rgb(255,255,255);
-  border-color:rgb(10,10,10);
-  color:rgb(10,25,166);
+  background:white;
+  color:#2467A6;
   font-weight:bold;
 }
 
