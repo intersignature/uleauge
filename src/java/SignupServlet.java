@@ -69,13 +69,17 @@ public class SignupServlet extends HttpServlet {
             stmt.setString(2, password);
             stmt.setString(3, fname);
             stmt.setString(4, lname);
-            stmt.setString(5, email);
-            stmt.setString(6, fb);
-            stmt.setString(7, university);
-            stmt.setString(8, faculty);
-            stmt.setString(9, phone);
-            stmt.setString(10, ign);
+            stmt.setString(6, email);
+            stmt.setString(7, fb);
+            stmt.setString(8, university);
+            stmt.setString(9, faculty);
+            stmt.setString(10, phone);
+            stmt.setString(5, ign);
             stmt.execute();
+            /*response.sendRedirect("/index.html");*/
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('User or password incorrect');");
+            out.println("</script>");
         } catch (SQLException ex) {
             Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
