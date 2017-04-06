@@ -56,15 +56,14 @@
             </li>
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
              <li>
-              <button type="submit" class="btn btn-default btn-outline btn-circle collapsed "  data-toggle="collapse" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign Out</button>
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="index.html" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign Out</button>
 
             </li>
-            <form>
+            </form>
           </ul>
        
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    </form>
     </header>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
