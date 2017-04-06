@@ -206,4 +206,23 @@ header{
   margin-left:auto;
   background:#ffffff;
 }
+#headnav{
+    background: White;
+}
 
+#nav-collapse2{
+    background: White;
+}
+#signinbtn{
+    background: white;
+}
+
+#signinbtn:hover{
+   background: #2467A6;
+   color: white;
+   font-weight: bold;
+}
+#namepro{
+    float: right;
+    
+}
