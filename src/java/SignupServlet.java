@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,20 +63,30 @@ public class SignupServlet extends HttpServlet {
             String faculty = request.getParameter("faculty");
             String phone = request.getParameter("phone");
             String ign = request.getParameter("ign");
+            /*PreparedStatement check_username = connection.prepareStatement("SELECT * FROM db_accessadmin.Player");
+            ResultSet all_data = check_username.executeQuery();
+            while (all_data.next()) {
+            if(all_data.getString("username").equals(username)){
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Username is already exist');");
+                out.println("</script>");
+            }
+            }*/
+            
             String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone)"+ 
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = connection.prepareStatement(sql);   
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            stmt.setString(3, fname);
-            stmt.setString(4, lname);
-            stmt.setString(6, email);
-            stmt.setString(7, fb);
-            stmt.setString(8, university);
-            stmt.setString(9, faculty);
-            stmt.setString(10, phone);
-            stmt.setString(5, ign);
-            stmt.execute();
+            PreparedStatement insert = connection.prepareStatement(sql);   
+            insert.setString(1, username);
+            insert.setString(2, password);
+            insert.setString(3, fname);
+            insert.setString(4, lname);
+            insert.setString(6, email);
+            insert.setString(7, fb);
+            insert.setString(8, university);
+            insert.setString(9, faculty);
+            insert.setString(10, phone);
+            insert.setString(5, ign);
+            insert.execute();
             /*response.sendRedirect("/index.html");*/
             out.println("<script type=\"text/javascript\">");
             out.println("alert('User or password incorrect');");
