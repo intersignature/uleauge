@@ -49,7 +49,19 @@
             <img src="assets/img/logo.png"  id = "logo">
           <a class="navbar-brand" href="index.html">U-LEAGUE</a>
         </div>
-        <div id="namepro"><h4>hello world</h4></div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+               <div id="namepro"><h4>hello world</h4></div>
+               
+            </li>
+            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+             <li>
+              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="index.html" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign Out</a>
+
+            </li>
+            <form>
+          </ul>
+       
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
     </form>
