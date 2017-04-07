@@ -51,7 +51,10 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li>
-               <div id="namepro"><h4>hello world</h4></div>
+                <% session = request.getSession();
+                    String username = (String) session.getAttribute("username"); 
+                %>
+                <div id="namepro"><h4><% out.println(username); %></h4></div>
                
             </li>
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
