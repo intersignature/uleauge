@@ -223,7 +223,18 @@ header{
    font-weight: bold;
 }
 #namepro{
-    float: right;
-    margin-right: 50px;
+  margin-right: 5px;
+ line-height: 1px;
+ position: relative;
+     height: 50px;
+     padding: 15px 15px;
+}
+#userbar{
+    height: 52px;
+     margin-top:-7px;
+}
+li#namepro{
+    margin-right: -10px;
+   
 }
 

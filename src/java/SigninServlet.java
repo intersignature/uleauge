@@ -58,6 +58,8 @@ public class SigninServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
+            out.println(username);
+            out.println(password);
             int suc = 0;
             try {
                 
@@ -70,7 +72,9 @@ public class SigninServlet extends HttpServlet {
                     } else if (rs.getString("P_Username").equals(username) && !rs.getString("P_Password").equals(password)) {
                         suc = 2;
                     }
+                   
                 }
+                
             } catch (Exception e) {
                 out.println(e);
             }
@@ -79,8 +83,8 @@ public class SigninServlet extends HttpServlet {
                 session.setAttribute("username", username);
                 session.setAttribute("suc", suc);
                 response.sendRedirect("indexJSP.jsp");
-            } else if (suc == 2) {
-                response.sendRedirect("player.html");
+            } else if (suc == 2 || suc == 0) {
+                response.sendRedirect("loginIncorrect.html");
             }
 
         }

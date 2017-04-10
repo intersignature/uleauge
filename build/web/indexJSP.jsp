@@ -49,17 +49,19 @@
             <img src="assets/img/logo.png"  id = "logo">
           <a class="navbar-brand" href="index.html">U-LEAGUE</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
+        <ul class="nav navbar-nav navbar-right" id="userbar">
+            <li id="namepro">
                 <% session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
                 %>
-                <div id="namepro"><h4><% out.println(username); %></h4></div>
+                <div>
+                    <h4><% out.println(username); %></h4>
+                </div>
                
             </li>
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-             <li>
-             <button type="submit" class="btn btn-success" id="signinbtn">Sign Out</button>
+             <li >
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
             </li>
             </form>
