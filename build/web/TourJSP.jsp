@@ -1,3 +1,11 @@
+<%-- 
+    Document   : TourJSP
+    Created on : 10 เม.ย. 2560, 22:25:24
+    Author     : Barjord
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +32,7 @@
 </head>
 
 <body>
-    <header>
+<header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
       <div class="container">
@@ -40,31 +48,31 @@
             <img src="assets/img/logo.png"  id = "logo">
           <a class="navbar-brand" href="index.html">U-LEAGUE</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.html">Sign up</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
+        <ul class="nav navbar-nav navbar-right" id="userbar">
+            <a href="player_001.html">
+            <li id="namepro">
+                <% session = request.getSession();
+                    String username = (String) session.getAttribute("username"); 
+                    String imgdir = "assets/img/"+username+".jpg";
+                %>
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <div id = "namepro2">
+                    <h4><b><% out.println(username); %></b></h4>
+                </div>
+               
             </li>
-          </ul>
-          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-              <div class="form-group">
-                <label class="sr-only" for="username">Username</label>
-                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
-              </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
+            </a>
+     
+            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+             <li >
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+
+            </li>
             </form>
-          </div>
-        </div><!-- /.navbar-collapse -->
+          </ul>
+       
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
     </header>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
@@ -193,14 +201,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">ล็อคอิน</h4>
+        <h4 class="modal-title">การยืนยัน</h4>
       </div>
       <div class="modal-body">
-        <p>กรุณาล็อคอินก่อนการสมัคร</p>
+        <p>คุณยืนยันที่จะสมัครหรือไม่?</p>
         <div class="row">
             <div class="col-12-xs text-center">
                 <button class="btn btn-success btn-md"  data-dismiss="modal" data-toggle="modal" href="#shortModal-1" >ยืนยัน</button>
-
+                <button type="button" data-dismiss="modal" aria-hidden="true" class=" btn btn-danger btn-md">ไม่</button>
             </div>
         </div>
       </div>
@@ -208,7 +216,18 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
+<div id="shortModal-1" class="modal modal-wide fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>ยืนยันการสมัครเรียบร้อย...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
             </div>
         </div>
     </div>

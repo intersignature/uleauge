@@ -72,16 +72,17 @@
   color:white;
 }
 
-a:link, a:visited{
+.destour:link,.destour:visited{
   color:white;
 }
 
-a:hover{
+.destour:hover{
   color:white;
 }
 
-a{
+.destour{
   color:white;
+
 }
 
 #logo{
@@ -224,10 +225,10 @@ header{
 }
 #namepro{
   margin-right: 5px;
- line-height: 1px;
+ line-height: 10px;
  position: relative;
-     height: 50px;
-     padding: 15px 15px;
+     padding: 3px 10px 15px 5px;
+
 }
 #userbar{
     height: 52px;
@@ -235,6 +236,32 @@ header{
 }
 li#namepro{
     margin-right: -10px;
-   
+   float:left;
+   margin-top: 11px;
+   height: 45px;
+}
+#namepro2{
+    float: right;
+    margin-left: 6px;
+    margin-top: 0px;
 }
 
+#imgpro{
+    height:40px ;
+    width:40px;
+    border-radius: 5px;
+}
+li#namepro:link, li#namepro:visited{
+  background-color:#2467A6;;
+  color: white;
+  border-radius: 5px;
+}
+
+li#namepro:hover{
+  background-color:#2467A6;;
+  color: white;
+   border-radius: 5px;
+}
+li#namepro{
+    color:black;
+}

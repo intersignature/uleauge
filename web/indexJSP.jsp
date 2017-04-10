@@ -50,15 +50,20 @@
           <a class="navbar-brand" href="index.html">U-LEAGUE</a>
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
+            <a href="player_001.html">
             <li id="namepro">
                 <% session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
+                    String imgdir = "assets/img/"+username+".jpg";
                 %>
-                <div>
-                    <h4><% out.println(username); %></h4>
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <div id = "namepro2">
+                    <h4><b><% out.println(username); %></b></h4>
                 </div>
                
             </li>
+            </a>
+     
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
              <li >
              <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
