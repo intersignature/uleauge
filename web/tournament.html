@@ -50,6 +50,7 @@
           </ul>
           <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
             <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="TourJSP.jsp" />
               <div class="form-group">
                 <label class="sr-only" for="username">Username</label>
                 <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
@@ -68,7 +69,7 @@
     </header>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="tournament.html" id="fontmenu">TOURNAMENT </a></li>
+        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
         <li id="menu"><a href="replay.html" id="fontmenu">REPLAY </a></li>
         <li id="menu"><a href="player.html" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>

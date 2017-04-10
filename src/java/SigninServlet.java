@@ -58,6 +58,8 @@ public class SigninServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
+            String from = request.getParameter("from");
+            out.println(from);
             out.println(username);
             out.println(password);
             int suc = 0;
@@ -82,7 +84,7 @@ public class SigninServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
                 session.setAttribute("suc", suc);
-                response.sendRedirect("indexJSP.jsp");
+                response.sendRedirect(from);
             } else if (suc == 2 || suc == 0) {
                 response.sendRedirect("loginIncorrect.html");
             }
