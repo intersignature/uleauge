@@ -1,6 +1,12 @@
+<%-- 
+    Document   : signupJSP
+    Created on : Apr 10, 2017, 8:27:49 PM
+    Author     : intersignature
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,120 +84,7 @@
         <div class="col-md-8 col-md-offset-2">
             <form class="form-horizontal custom-form" action="SignupServlet" id="signup" name="signup" method="POST">
                 <h1>U-LEAUGE Registration</h1>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Username </label> 
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="username"> <p>*Require</p>
-                    </div>
-                    </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="pawssword-input-field">Password </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="password"><p>*Require<br>
-                        *Your password must have at least one upper case, one lower case, one numeric</p>
-                    </div>
-                    <p id="cau_password" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="rep_password">
-                        <p>*Require<br>*Must same above password</p>  
-                    </div>
-                    <p id="cau_rep_password" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Name </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="fname">
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_name" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Lastname </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="lname">
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_lname" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="email-input-field">Email </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="email">
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_email" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Facebook Link</label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" inputmode="url" name="fb">
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_fb" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">University </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="university">
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_university" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Faculty </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="faculty">
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_faculty" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Phone </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="phone">
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_phone" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">In game name</label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="ign">
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_ign" style="color:blue;"></p>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="condition" value="con">I've read and accept the terms and conditions</label>
-                </div>
-                <button class="btn btn-default submit-button" id="buttonn" type="submit">Submit</button>
-                <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
+                <p> Your registration is successfully.</p>
             </form>
         </div>  
     </div>

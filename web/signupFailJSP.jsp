@@ -1,6 +1,12 @@
+<%-- 
+    Document   : signupJSP
+    Created on : Apr 10, 2017, 8:27:49 PM
+    Author     : intersignature
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,6 +80,31 @@
         <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faq.html" id="fontmenu">FAQ </a></li>
     </ul>
+    <% session = request.getSession();
+       char is_user = (char) session.getAttribute("is_user");
+       char is_password = (char) session.getAttribute("is_password");
+       char is_rep_password = (char) session.getAttribute("is_rep-password");
+       char is_fname = (char) session.getAttribute("is_fname");
+       char is_lname = (char) session.getAttribute("is_lname");
+       char is_email = (char) session.getAttribute("is_email");
+       char is_fb = (char) session.getAttribute("is_fb");
+       char is_university = (char) session.getAttribute("is_university");
+       char is_faculty = (char) session.getAttribute("is_faculty");
+       char is_phone = (char) session.getAttribute("is_phone");
+       char is_ign = (char) session.getAttribute("is_ign");
+       String username = (String) session.getAttribute("username");
+       String password = (String) session.getAttribute("password");
+       String rep_password = (String) session.getAttribute("rep_password");
+       String fname = (String) session.getAttribute("fname");
+       String lname = (String) session.getAttribute("lname");
+       String email = (String) session.getAttribute("email");
+       String fb = (String) session.getAttribute("fb");
+       String university = (String) session.getAttribute("university");
+       String faculty = (String) session.getAttribute("faculty");
+       String phone = (String) session.getAttribute("phone");
+       String ign = (String) session.getAttribute("ign");
+       char con = (char) session.getAttribute("condition");
+                %>
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">
             <form class="form-horizontal custom-form" action="SignupServlet" id="signup" name="signup" method="POST">
@@ -83,9 +114,10 @@
                         <label class="control-label" for="name-input-field">Username </label> 
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="username"> <p>*Require</p>
+                        <input class="form-control" type="text" name="username" value=<%= username%>> <p>*Require</p>
                     </div>
-                    </div>
+                    <p id="cau_password" style="color:blue;"><%if (is_user=='1'){out.println("Incorrect username or username have already exist");}%></p>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="pawssword-input-field">Password </label>
@@ -94,7 +126,7 @@
                         <input class="form-control" type="password" name="password"><p>*Require<br>
                         *Your password must have at least one upper case, one lower case, one numeric</p>
                     </div>
-                    <p id="cau_password" style="color:blue;"></p>
+                    <p id="cau_password" style="color:blue;"><%if (is_password=='1'){out.println("Incorrect Password");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
@@ -104,91 +136,92 @@
                         <input class="form-control" type="password" name="rep_password">
                         <p>*Require<br>*Must same above password</p>  
                     </div>
-                    <p id="cau_rep_password" style="color:blue;"></p>
+                    <p id="cau_rep_password" style="color:blue;"><%if (is_rep_password=='1'){out.println("Incorrect Repeat Password");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Name </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="fname">
+                        <input class="form-control" type="text" name="fname" value=<%= fname%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_name" style="color:blue;"></p>
+                    <p id="cau_name" style="color:blue;"><%if (is_fname=='1'){out.println("Incorrect Name");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Lastname </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="lname">
+                        <input class="form-control" type="text" name="lname" value=<%= lname%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_lname" style="color:blue;"></p>
+                    <p id="cau_lname" style="color:blue;"><%if (is_lname=='1'){out.println("Incorrect Lastname");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="email-input-field">Email </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="email">
+                        <input class="form-control" type="text" name="email" value=<%= email%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_email" style="color:blue;"></p>
+                    <p id="cau_email" style="color:blue;"><%if (is_email=='1'){out.println("Incorrect Email");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Facebook Link</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" inputmode="url" name="fb">
+                        <input class="form-control" type="text" inputmode="url" name="fb" value=<%= fb%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_fb" style="color:blue;"></p>
+                    <p id="cau_fb" style="color:blue;"><%if (is_fb=='1'){out.println("Must have Facebook Link");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">University </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="university">
+                        <input class="form-control" type="text" name="university" value=<%= university%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_university" style="color:blue;"></p>
+                    <p id="cau_university" style="color:blue;"><%if (is_university=='1'){out.println("Must have university");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Faculty </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="faculty">
+                        <input class="form-control" type="text" name="faculty" value=<%= faculty%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_faculty" style="color:blue;"></p>
+                    <p id="cau_faculty" style="color:blue;"><%if (is_faculty=='1'){out.println("Must have faculty");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Phone </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="phone">
+                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="phone" value=<%= phone%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_phone" style="color:blue;"></p>
+                    <p id="cau_phone" style="color:blue;"><%if (is_phone=='1'){out.println("Incorrect Phone Number");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">In game name</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="ign">
+                        <input class="form-control" type="text" name="ign" value=<%= ign%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_ign" style="color:blue;"></p>
+                    <p id="cau_ign" style="color:blue;"><%if (is_ign=='1'){out.println("Must have In-game name");}%></p>
                 </div>
                 <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="condition" value="con">I've read and accept the terms and conditions</label>
+                    
+                        <%if (con=='1'){out.println("<label><input type=\"checkbox\" name=\"condition\" value=\"con\">I\'ve read and accept the terms and conditions</label> <p id=\"cau_ign\" style=\"color:blue;\">Must accept the terms and conditions</p>");}
+                else {out.println("<label><input type=\"checkbox\" name=\"condition\" value=\"con\" checked>I\'ve read and accept the terms and conditions</label>");}%>
                 </div>
                 <button class="btn btn-default submit-button" id="buttonn" type="submit">Submit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->

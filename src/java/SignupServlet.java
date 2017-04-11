@@ -10,14 +10,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
@@ -55,6 +59,7 @@ public class SignupServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            String rep_password = request.getParameter("rep_password");
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
             String email = request.getParameter("email");
@@ -63,16 +68,177 @@ public class SignupServlet extends HttpServlet {
             String faculty = request.getParameter("faculty");
             String phone = request.getParameter("phone");
             String ign = request.getParameter("ign");
-            /*PreparedStatement check_username = connection.prepareStatement("SELECT * FROM db_accessadmin.Player");
-            ResultSet all_data = check_username.executeQuery();
-            while (all_data.next()) {
-            if(all_data.getString("username").equals(username)){
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Username is already exist');");
-                out.println("</script>");
+            //String[] condition = request.getParameterValues("condition");
+            int ans_user = 0;
+            int password_isnum = 0;
+            int password_isUpper = 0;
+            int password_isLower = 0;
+            int ans_overall = 0;
+            //เช็คusername
+            try {
+                Statement user = connection.createStatement();
+                String sql = "SELECT P_Username FROM db_accessadmin.Player";
+                ResultSet rs = user.executeQuery(sql);
+                while (rs.next()) {
+                    if (rs.getString("P_Username").equals(username)) { //ถ้าซ้ำ
+                        ans_user = 1;
+                    } 
+                }
+            } catch (Exception e) {
+                out.println(e);
             }
-            }*/
+            if(ans_user == 1 || "".equals(username)){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_user", '1');
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_user", '0');
+                ans_overall += 1;
+            }
             
+            //เช็คpassword
+            for (int i=0, len=password.length(); i<len; i++){
+                    char password_char = password.charAt(i);
+                    if (password_char >= '0' && password_char <= '9'){
+                            password_isnum = 1;
+                    }
+                    if (Character.isUpperCase(password_char)){
+                            password_isUpper = 1;
+                    }
+                    if (Character.isLowerCase(password_char)){
+                            password_isLower = 1;
+                    }
+            }
+            if (password_isnum != 1 || password_isUpper != 1 || password_isLower != 1){
+                    HttpSession session = request.getSession();
+                    session.setAttribute("is_password", '1');
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_password", '0');
+                ans_overall += 1;
+            }
+            
+            //เช็ค rep-password
+            if(rep_password.equals(password) && !"".equals(rep_password) && password_isnum == 1 && password_isUpper == 1 && password_isLower == 1){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_rep-password", '0');
+                ans_overall += 1;
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_rep-password", '1');
+            }
+            
+            //เช็ค fname
+            Pattern pf = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+            Matcher mf = pf.matcher(fname);
+            boolean bf = mf.find();
+            if (bf || "".equals(fname)){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_fname", '1');
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_fname", '0');
+                ans_overall += 1;
+            }
+            
+            //เช็ค lname
+            Pattern pl = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+            Matcher ml = pl.matcher(lname);
+            boolean bl = ml.find();
+            if (bl || "".equals(lname)){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_lname", '1');
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_lname", '0');
+                ans_overall += 1;
+            }
+            
+            //เช็คEmail
+            if(email.contains("@")){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_email", '0');
+                ans_overall += 1;
+            } else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_email", '1');
+            }
+            
+            //เช็คfblink
+            if("".equals(fb)){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_fb", '1');
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_fb", '0');
+                ans_overall += 1;
+            }
+            
+            //เช็คuniversity
+            if("".equals(university)){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_university", '1');
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_university", '0');
+                ans_overall += 1;
+            }
+            
+            //เช็คfaculty
+            if("".equals(faculty)){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_faculty", '1');
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_faculty", '0');
+                ans_overall += 1;
+            }
+            
+            //เช็คphone
+            if(phone.contains("[a-zA-Z]+") == false && phone.length() == 10){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_phone", '0');
+                ans_overall += 1;
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_phone", '1');
+            }
+            
+            //เช็คign
+            if("".equals(ign)){
+                HttpSession session = request.getSession();
+                session.setAttribute("is_ign", '1');
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("is_ign", '0');
+                ans_overall += 1;
+            }
+            
+            //เช็คcondition
+            if(request.getParameter("condition") == null){
+            //checkbox not checked
+            HttpSession session = request.getSession();
+            session.setAttribute("condition", '1');
+            }else{
+            //checkbox checked
+            HttpSession session = request.getSession();
+            session.setAttribute("condition", '0');
+            }
+            HttpSession session = request.getSession();
+            //out.print((char) session.getAttribute("condition"));
+            
+            if(ans_overall == 11 && (char)session.getAttribute("condition")=='0'){
+            //แอดข้อมูล
             String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone)"+ 
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement insert = connection.prepareStatement(sql);   
@@ -87,10 +253,27 @@ public class SignupServlet extends HttpServlet {
             insert.setString(10, phone);
             insert.setString(5, ign);
             insert.execute();
-            /*response.sendRedirect("/index.html");*/
+            response.sendRedirect("/Project/signupSuccess.jsp");
+            }
+            else{
+                //response.sendRedirect("/Project/signup.html");
+                //HttpSession session = request.getSession();
+                session.setAttribute("username", username);
+                session.setAttribute("fname", fname);
+                session.setAttribute("lname", lname);
+                session.setAttribute("email", email);
+                session.setAttribute("fb", fb);
+                session.setAttribute("university", university);
+                session.setAttribute("faculty", faculty);
+                session.setAttribute("phone", phone);
+                session.setAttribute("ign", ign);
+                response.sendRedirect("/Project/signupFailJSP.jsp");
+                
+            }
+            /*response.sendRedirect("/index.html");
             out.println("<script type=\"text/javascript\">");
             out.println("alert('User or password incorrect');");
-            out.println("</script>");
+            out.println("</script>");*/
         } catch (SQLException ex) {
             Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
