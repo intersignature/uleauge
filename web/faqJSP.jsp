@@ -1,3 +1,10 @@
+<%-- 
+    Document   : faqJSP
+    Created on : 11 เม.ย. 2560, 18:07:07
+    Author     : Barjord
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +31,7 @@
 </head>
 
 <body>
-    <header>
+   <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
       <div class="container">
@@ -36,44 +43,44 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <a href="index.html">
+            <a href="indexJSP.jsp">
             <img src="assets/img/logo.png"  id = "logo">
-          <a class="navbar-brand" href="index.html">U-LEAGUE</a>
+          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.html">Sign up</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
+        <ul class="nav navbar-nav navbar-right" id="userbar">
+            <a href="player_001.html">
+            <li id="namepro">
+                <% session = request.getSession();
+                    String username = (String) session.getAttribute("username"); 
+                    String imgdir = "assets/img/"+username+".jpg";
+                %>
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <div id = "namepro2">
+                    <h4><b><% out.println(username); %></b></h4>
+                </div>
+               
             </li>
-          </ul>
-          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="faqJSP.jsp" />
-              <div class="form-group">
-                <label class="sr-only" for="username">Username</label>
-                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
-              </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
+            </a>
+     
+            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="faq.html" />
+             <li >
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+
+            </li>
             </form>
-          </div>
-        </div><!-- /.navbar-collapse -->
+          </ul>
+       
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
     </header>
     <ul class="nav nav-pills categories">
-        <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="tournament.html" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replay.html" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="player.html" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faq.html" id="fontmenu">FAQ </a></li>
+      <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
+        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
+        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+        <li id="menu"><a href="playerJSP.jsp" id="fontmenu">PLAYERS </a></li>
+        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
+        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
     <div class="container">
     <div class="faq">
@@ -98,7 +105,7 @@
             ปรับ Round Loss ตามความเหมาะสม7. หากมีการ Disconnect เกิดขึ้น เราจะไม่ทำการ pause เกมใดๆ ทั้งสิ้น จะปล่อยให้เกมดำเนินต่อไป จนกว่าคนที่หลุดจะเข้ามาใหม่ได้ แต่เงินของคนที่เข้ามาจะมีให้ตามความเหมาะสม เพราะฉะนั้นหากหลุดแล้วสมาชิกทีมของท่านต้องรับผิดชอบตัวเอง<strong>หมายเหตุ</strong>-
             การตัดสินของทีมงานถือเป็นที่สิ้นสุด- การแข่งขันทุกเกมจะอยู่ภายใต้การดูแลของ admin- ทีมงานขอสงวนสิทธิ์ในการเปลี่ยนแปลงเงื่อนไข และกฎต่าง ๆ โดยไม่จำเป็นต้องแจ้งให้ทราบล่วงหน้าjkojkljkl </p>
     </div>
-        </div>
+    </div>
     <footer>
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">

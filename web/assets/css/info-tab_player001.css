@@ -24,11 +24,12 @@
 
 .panel-heading{
   border:none;
-  background-color:#eee;
+  background-color:#2467A6;
 }
 
 .panel-body{
   background-color:#f5f5f5;
+  color: #2467A6;
 }
 
 .panel-title{

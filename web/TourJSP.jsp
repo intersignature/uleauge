@@ -64,6 +64,7 @@
             </a>
      
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="tournament.html" />
              <li >
              <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -75,12 +76,12 @@
     </nav><!-- /.navbar -->
     </header>
     <ul class="nav nav-pills categories">
-        <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="tournament.html" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replay.html" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="player.html" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faq.html" id="fontmenu">FAQ </a></li>
+        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
+        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
+        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+        <li id="menu"><a href="playerJSP.jsp" id="fontmenu">PLAYERS </a></li>
+        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
+        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
     <div class="container">
         <div class="row">
@@ -119,7 +120,7 @@
             </div>
         </div>
         <div class="allbtn">
-             <a  style="display:block" href="iemdes.html">
+             <a  style="display:block" href="iemdesJSP.jsp">
             <div class="destour">
                 <h3 class="des">รายละเอียดเพิ่มเติม </h3></div>
                 </a>
@@ -151,11 +152,11 @@
             </div>
         </div>
         <div class="allbtn">
-             <a  style="display:block" href="rules.html">
+             <a  style="display:block" href="rulesJSP.jsp">
             <div class="destour">
                 <h3 class="des">กฏกติกา</h3></div>
             </a>
-            <a  style="display:block" href="tourway.html">
+            <a  style="display:block" href="tourwayJSP.jsp">
             <div class="destour">
                 <h3 class="des">ดูสายการแข่งขัน</h3></div>
                 </a>
@@ -185,7 +186,7 @@
         <div class="allbtn">
             <div class="destour">
                 <h3 class="des">ดูผลการแข่งขัน</h3></div>
-            <a style="display:block" href="replay.html">
+            <a style="display:block" href="replayJSP.jsp">
             <div class="destour">
                 <h3 class="des">ดูการแข่งขันย้อนหลัง</h3></div>
                             </a>
