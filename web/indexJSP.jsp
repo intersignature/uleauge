@@ -65,6 +65,7 @@
             </a>
      
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="index.html" />
              <li >
              <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -76,12 +77,12 @@
     </nav><!-- /.navbar -->
     </header>
     <ul class="nav nav-pills categories">
-        <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
+        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
         <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replay.html" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="player.html" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faq.html" id="fontmenu">FAQ </a></li>
+        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+        <li id="menu"><a href="playerJSP.jsp" id="fontmenu">PLAYERS </a></li>
+        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
+        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
     <div class="container">
         <div class="row">

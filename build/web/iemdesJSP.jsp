@@ -1,3 +1,11 @@
+<%-- 
+    Document   : iemdesJSP
+    Created on : 11 เม.ย. 2560, 21:59:44
+    Author     : Barjord
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +32,7 @@
 </head>
 
 <body>
-    <header>
+       <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
       <div class="container">
@@ -36,52 +44,60 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <a href="index.html">
+            <a href="indexJSP.jsp">
             <img src="assets/img/logo.png"  id = "logo">
-          <a class="navbar-brand" href="index.html">U-LEAGUE</a>
+          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.html">Sign up</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
+        <ul class="nav navbar-nav navbar-right" id="userbar">
+            <a href="player_001.html">
+            <li id="namepro">
+                <% session = request.getSession();
+                    String username = (String) session.getAttribute("username"); 
+                    String imgdir = "assets/img/"+username+".jpg";
+                %>
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <div id = "namepro2">
+                    <h4><b><% out.println(username); %></b></h4>
+                </div>
+               
             </li>
-          </ul>
-          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="newsJSP.jsp" />
-              <div class="form-group">
-                <label class="sr-only" for="username">Username</label>
-                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
-              </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
+            </a>
+     
+            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="iemdes.html" />
+             <li >
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+
+            </li>
             </form>
-          </div>
-        </div><!-- /.navbar-collapse -->
+          </ul>
+       
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
     </header>
     <ul class="nav nav-pills categories">
-        <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="tournament.html" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replay.html" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="player.html" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faq.html" id="fontmenu">FAQ </a></li>
+         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
+        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
+        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+        <li id="menu"><a href="playerJSP.jsp" id="fontmenu">PLAYERS </a></li>
+        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
+        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
-    <div class="news-body">
-        <ul class="list-group">
-            <li class="list-group-item news"><img src="assets/img/overwatch-logo.jpg" width="100" height="100" class="img1">
-                <h1>Ok.Paidai ตบ Na'vi ยับ </h1>
-                <p class="para"> เมื่อวันที่31กุมภาพันธ์ ทีมยักษ์ใหญ่Na&amp;#39;vi โดนOk.Paidai ตบยับ 16-0 &lt;br&gt; เป็นเรื่องน่าเสียดายที่ Na'vi อดได้แชมป์&lt;br&gt;&nbsp;</p>
-            </li>
-        </ul>
+    <div class="container">
+        <h1>IEM KATOWICE 2017</h1>
+        <div><img src="assets/img/IEMINFO.jpg"></div>
+        <b><p style="margin-top: 40px;">Intel® Extreme Masters will visit Katowice for the fifth year in a row. In March 2017, IEM will bring the best gaming action to the Spodek Arena with Counter-Strike: Global Offensive, StarCraft II and League of Legends. The tournaments that take the stage
+    in Katowice feature the world’s most talented progamers. Come March, these gamers will fight for the World Championship title and everlasting glory.  </p></b>
+        <h3 class="text-left headtour">GAME </h3>
+        <p><strong>CS:GO </strong></p>
+        <h3 class="headtour">DATES </h3>
+        <p><strong>เปิดรับสมัคร : 31/03/2017 - 17/03/2017</strong></p>
+        <p><strong>จับสายการแข่งขัน : 20/03/2017</strong></p>
+        <p><strong>ทำการแข่งขัน : 23/03/2017</strong></p>
+        <h3 class="headtour">PRIZE POOL </h3>
+        <p><strong>Total: $650,000 USD </strong></p>
+        <h3 class="headtour">LOCATION </h3>
+        <p><strong>POLAND </strong></p>
     </div>
     <footer>
         <div class="row">

@@ -33,12 +33,14 @@ public class SignoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String from = request.getParameter("from");
            int suc = 0;
             HttpSession session = request.getSession();
             session.setAttribute("username", null);
                 session.setAttribute("suc", suc);
                 session.invalidate();
-                response.sendRedirect("index.html");
+                response.sendRedirect(from);
+                
         }
     }
 
