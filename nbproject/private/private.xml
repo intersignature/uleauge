@@ -4,7 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/uleauge/src/java/SignupServlet.java</file>
-            <file>file:/D:/uleauge/web/signup.html</file>
+            <file>file:/D:/uleauge/web/signupFailJSP.jsp</file>
+            <file>file:/D:/uleauge/web/playerJSP.jsp</file>
+            <file>file:/D:/uleauge/src/java/PlayerServlet.java</file>
+            <file>file:/D:/uleauge/web/tournament.html</file>
+            <file>file:/D:/uleauge/web/assets/css/player_001.css</file>
         </group>
     </open-files>
 </project-private>

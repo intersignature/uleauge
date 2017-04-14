@@ -265,3 +265,11 @@ li#namepro:hover{
 li#namepro{
     color:black;
 }
+
+
+
+p.run_page{
+  text-align:center;
+  font-size:130%;
+}
+

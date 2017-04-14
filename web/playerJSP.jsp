@@ -4,6 +4,7 @@
     Author     : Barjord
 --%>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -82,320 +83,105 @@
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
-    <div class="container">
-        <div class="divplayer">
-            <div class="player1">
-                <div class="container contain">
-	<div class="row contain">
-		<div class="col-sm-4 col-md-4 user-details">
-            <div class="user-image">
-                <img src="assets/img/player1.jpg" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img_size">
-            </div>
-            <div class="user-info-block">
-                <div class="user-heading">
-                    <a  id="profileeiei" href="player_001.html"><h3>Player1</h3></a>
-                    <span class="help-block">Surasee Eiei</span>
-                </div>
-                <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="#information">
-                            <span class="glyphicon glyphicon-user"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#edu">
-                            <span class="glyphicon glyphicon-education"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#link">
-                            <span class="glyphicon glyphicon-link"></span>
-                        </a>
-                    </li>
+    <% session = request.getSession();
+    List<String> fname_list = (List) session.getAttribute("fname_list");
+    List<String> lname_list = (List) session.getAttribute("lname_list");
+    List<String> ign_list = (List) session.getAttribute("ign_list");
+    List<String> email_list = (List) session.getAttribute("email_list");
+    List<String> fb_list = (List) session.getAttribute("fb_list");
+    List<String> faculty_list = (List) session.getAttribute("faculty_list");
+    List<String> university_list = (List) session.getAttribute("university_list");
+    int page_count = (int) session.getAttribute("page_count");
+    
+    for(int j=1; j<=page_count; j++){
+        out.print("<div id=\"tab"+j+"\""+ " class=\"container list_player\">");
+        int temp = (6*(j-1)) + (fname_list.size()-(6*(j-1)));
+        int temp2 = 6*j;
+        //min((6*j), (6*(j-1)) + (43-(6*(j-1))))
+        for(int i=(6*(j-1))+1; i<=Math.min(temp, temp2); i++){
+            if(j==1){
+                out.println("<div class=\"divplayer filter "+j+"\">");
+            }
+            else{
+                out.println("<div class=\"divplayer filter "+j+"\" style=\"display: none;\">");
+            }
+            
+            out.println("<div class=\"player" + i +"\">");
+            out.println("<div class=\"container contain\">");
+            out.println("<div class=\"row contain\">");
+            out.println("<div class=\"col-sm-4 col-md-4 user-details\">");
+            out.println("<div class=\"user-image\">");
+            out.println("<img src=\"assets/img/player1.jpg\" alt=\"\" title=\"\" class=\"img_size\">");
+            out.println("</div>");
+            out.println("<div class=\"user-info-block\">");
+            out.println("<div class=\"user-heading\">");
+            //out.println("<a href=Player_001Servlet>"+ign_list.get(i-1)+request.getParameter("hi")+"</a>"+"<input type=\"hidden\" value=\""+ign_list.get(i-1)+"\""+" name=\"hi\">");
+            out.println("<a id=\"profileeiei\" href=Player_001Servlet?player="+i+"><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(i-1) + "</h3></a>");
+            //out.println("<a name=\""+i+"\" "+"id=\"profileeiei\" href=Player_001Servlet><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(i-1) + "</h3></a>");
+            //href=\"player_00"+i+".html\"
+            out.println("<span class=\"help-block\">" + fname_list.get(i-1) +" "+ lname_list.get(i-1) + "</span>");
+            out.println("</div>");
+            out.println("<ul class=\"navigation\">");
+            out.println("<li class=\"active\">");
+            out.println("<a data-toggle=\"tab\" href=\"#information_"+i+"\">");
+            out.println("<span class=\"glyphicon glyphicon-user\"></span>");
+            out.println("</a>");
+            out.println("</li>");
+            out.println("<li>");
+            out.println("<a data-toggle=\"tab\" href=\"#edu_"+i+"\">");
+            out.println("<span class=\"glyphicon glyphicon-education\"></span>");
+            out.println("</a>");
+            out.println("</li>");
+            out.println("<li>");
+            out.println("<a data-toggle=\"tab\" href=\"#link_"+i+"\">");
+            out.println("<span class=\"glyphicon glyphicon-link\"></span>");
+            out.println("</a>");
+            out.println("</li>");
+            out.println("</ul>");
+            out.println("<div class=\"user-body\">");
+            out.println("<div class=\"tab-content\">");
+            out.println("<div id=\"link_"+i+"\" class=\"tab-pane\">");
+            String fb_link_1 = "https://www.facebook.com/" +  fb_list.get(i-1);
+            out.println("<a href=" + fb_link_1 + ">");
+            out.println("<img src=\"assets/img/fb-logo.png\" alt=\"Go to W3Schools!\" width=\"40\" height=\"30\" border=\"0\"></a>");
+            out.println("</div>");
+            out.println("<div id=\"edu_"+i+"\" class=\"tab-pane\">");
+            out.println("<h4>" + faculty_list.get(i-1) +", "+ university_list.get(i-1) + "</h4>");
+            out.println("</div>");
+            out.println("<div id=\"information_"+i+"\" class=\"tab-pane active\">");
+            out.println("<h4>Currently Team : Ok.Paidai</h4>");
+            out.println("</div></div></div></div></div></div></div></div></div>");
+        }
 
-                </ul>
-                <div class="user-body">
-                    <div class="tab-content">
-                        <div id="link" class="tab-pane">
-                            <a href="https://www.w3schools.com">
-                            <img src="assets/img/fb-logo.png" alt="Go to W3Schools!" width="40" height="30" border="0"></a>
-                           
-                        </div>
-                        <div id="edu" class="tab-pane">
-                            <h4>IT, KMITL</h4>
-                        </div>
-                        <div id="information" class="tab-pane active">
-                            <h4>Currently Team : Ok.Paidai</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
-</div>
-            </div>
-        </div>
-        <div class="divplayer">
-            <div class="player2">
-                <div class="container contain">
-	<div class="row contain">
-		<div class="col-sm-4 col-md-4 user-details">
-            <div class="user-image">
-                <img src="assets/img/player1.jpg" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img_size">
-            </div>
-            <div class="user-info-block">
-                <div class="user-heading">
-                    <h3>Player1</h3>
-                    <span class="help-block">Surasee Eiei</span>
-                </div>
-                <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="#information_2">
-                            <span class="glyphicon glyphicon-user"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#edu_2">
-                            <span class="glyphicon glyphicon-education"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#link_2">
-                            <span class="glyphicon glyphicon-link"></span>
-                        </a>
-                    </li>
+        out.println("</div>");
+    }
+    
+    
+    %>
 
-                </ul>
-                <div class="user-body">
-                    <div class="tab-content">
-                        <div id="link_2" class="tab-pane">
-                            <a href="https://www.w3schools.com">
-                            <img src="assets/img/fb-logo.png" alt="Go to W3Schools!" width="40" height="30" border="0"></a>
-                           
-                        </div>
-                        <div id="edu_2" class="tab-pane">
-                            <h4>IT, KMITL</h4>
-                        </div>
-                        <div id="information_2" class="tab-pane active">
-                            <h4>Currently Team : Ok.Paidai</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
-</div>
-            </div>
-        </div>
-        <div class="divplayer">
-            <div class="player3">
-                <div class="container contain">
-	<div class="row contain">
-		<div class="col-sm-4 col-md-4 user-details">
-            <div class="user-image">
-                <img src="assets/img/player1.jpg" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img_size">
-            </div>
-            <div class="user-info-block">
-                <div class="user-heading">
-                    <h3>Player1</h3>
-                    <span class="help-block">Surasee Eiei</span>
-                </div>
-                <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="#information_3">
-                            <span class="glyphicon glyphicon-user"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#edu_3">
-                            <span class="glyphicon glyphicon-education"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#link_3">
-                            <span class="glyphicon glyphicon-link"></span>
-                        </a>
-                    </li>
+    <%
+        /*out.print("<p style=\"text-align:center; font-size:130%;\">");
+        for (int i=1; i <= page_count; i++){
+            out.print("|" + i);
+        }
+        out.println("|" + "</p>");*/
+        out.println("<script src=\"assets/js/player.js\"></script>");
+        
+        out.println("<div align=\"center\">");
+        
+        for (int i=1; i <= page_count; i++){
+            if (i==1){
+                out.println("<a id=\""+i+"\""+ " data-filter=\""+ i + "\""+ " class=\"filter-button active\" onclick=\"aaa()\">"+i+"</a>");
+            }
+            else{
+                out.println("<a id=\""+i+"\""+ " data-filter=\""+ i + "\""+ " class=\"filter-button\"  onclick=\"aaa()\">"+i+"</a>");
+            }
+            out.println("|");
+        }
 
-                </ul>
-                <div class="user-body">
-                    <div class="tab-content">
-                        <div id="link_3" class="tab-pane">
-                            <a href="https://www.w3schools.com">
-                            <img src="assets/img/fb-logo.png" alt="Go to W3Schools!" width="40" height="30" border="0"></a>
-                           
-                        </div>
-                        <div id="edu_3" class="tab-pane">
-                            <h4>IT, KMITL</h4>
-                        </div>
-                        <div id="information_3" class="tab-pane active">
-                            <h4>Currently Team : Ok.Paidai</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
-</div>
-            </div>
-        </div>
-        <div class="divplayer">
-            <div class="player1 player4">
-                <div class="container contain">
-	<div class="row contain">
-		<div class="col-sm-4 col-md-4 user-details">
-            <div class="user-image">
-                <img src="assets/img/player1.jpg" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img_size">
-            </div>
-            <div class="user-info-block">
-                <div class="user-heading">
-                    <h3>Player1</h3>
-                    <span class="help-block">Surasee Eiei</span>
-                </div>
-                <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="#information_4">
-                            <span class="glyphicon glyphicon-user"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#edu_4">
-                            <span class="glyphicon glyphicon-education"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#link_4">
-                            <span class="glyphicon glyphicon-link"></span>
-                        </a>
-                    </li>
-
-                </ul>
-                <div class="user-body">
-                    <div class="tab-content">
-                        <div id="link_4" class="tab-pane">
-                            <a href="https://www.w3schools.com">
-                            <img src="assets/img/fb-logo.png" alt="Go to W3Schools!" width="40" height="30" border="0"></a>
-                           
-                        </div>
-                        <div id="edu_4" class="tab-pane">
-                            <h4>IT, KMITL</h4>
-                        </div>
-                        <div id="information_4" class="tab-pane active">
-                            <h4>Currently Team : Ok.Paidai</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
-</div>
-            </div>
-        </div>
-        <div class="divplayer">
-            <div class="player2 player5">
-                <div class="container contain">
-	<div class="row contain">
-		<div class="col-sm-4 col-md-4 user-details">
-            <div class="user-image">
-                <img src="assets/img/player1.jpg" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img_size">
-            </div>
-            <div class="user-info-block">
-                <div class="user-heading">
-                    <h3>Player1</h3>
-                    <span class="help-block">Surasee Eiei</span>
-                </div>
-                <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="#information_5">
-                            <span class="glyphicon glyphicon-user"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#edu_5">
-                            <span class="glyphicon glyphicon-education"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#link_5">
-                            <span class="glyphicon glyphicon-link"></span>
-                        </a>
-                    </li>
-
-                </ul>
-                <div class="user-body">
-                    <div class="tab-content">
-                        <div id="link_5" class="tab-pane">
-                            <a href="https://www.w3schools.com">
-                            <img src="assets/img/fb-logo.png" alt="Go to W3Schools!" width="40" height="30" border="0"></a>
-                           
-                        </div>
-                        <div id="edu_5" class="tab-pane">
-                            <h4>IT, KMITL</h4>
-                        </div>
-                        <div id="information_5" class="tab-pane active">
-                            <h4>Currently Team : Ok.Paidai</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
-</div>
-            </div>
-        </div>
-        <div class="divplayer">
-            <div class="player3">
-                <div class="container contain">
-	<div class="row contain">
-		<div class="col-sm-4 col-md-4 user-details">
-            <div class="user-image">
-                <img src="assets/img/player1.jpg" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img_size">
-            </div>
-            <div class="user-info-block">
-                <div class="user-heading">
-                    <h3>Player1</h3>
-                    <span class="help-block">Surasee Eiei</span>
-                </div>
-                <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="#information_6">
-                            <span class="glyphicon glyphicon-user"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#edu_6">
-                            <span class="glyphicon glyphicon-education"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#link_6">
-                            <span class="glyphicon glyphicon-link"></span>
-                        </a>
-                    </li>
-
-                </ul>
-                <div class="user-body">
-                    <div class="tab-content">
-                        <div id="link_6" class="tab-pane">
-                            <a href="https://www.w3schools.com">
-                            <img src="assets/img/fb-logo.png" alt="Go to W3Schools!" width="40" height="30" border="0"></a>
-                           
-                        </div>
-                        <div id="edu_6" class="tab-pane">
-                            <h4>IT, KMITL</h4>
-                        </div>
-                        <div id="information_6" class="tab-pane active">
-                            <h4>Currently Team : Ok.Paidai</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
-</div>
-            </div>
-        </div>
-    </div>
+        out.println("</div>");
+    %> <!-- use list -->
+    <!--<p style="text-align:center; font-size:130%;">Paragraph</p> -->
     <footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">

@@ -68,6 +68,7 @@ public class SignupServlet extends HttpServlet {
             String faculty = request.getParameter("faculty");
             String phone = request.getParameter("phone");
             String ign = request.getParameter("ign");
+            int index = 0;
             //String[] condition = request.getParameterValues("condition");
             int ans_user = 0;
             int password_isnum = 0;
@@ -83,8 +84,9 @@ public class SignupServlet extends HttpServlet {
                     if (rs.getString("P_Username").equals(username)) { //ถ้าซ้ำ
                         ans_user = 1;
                     } 
+                    index += 1;
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 out.println(e);
             }
             if(ans_user == 1 || "".equals(username)){
@@ -239,8 +241,8 @@ public class SignupServlet extends HttpServlet {
             
             if(ans_overall == 11 && (char)session.getAttribute("condition")=='0'){
             //แอดข้อมูล
-            String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone)"+ 
-                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone, P_ID)"+ 
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement insert = connection.prepareStatement(sql);   
             insert.setString(1, username);
             insert.setString(2, password);
@@ -252,6 +254,7 @@ public class SignupServlet extends HttpServlet {
             insert.setString(9, faculty);
             insert.setString(10, phone);
             insert.setString(5, ign);
+            insert.setInt(11, index);
             insert.execute();
             response.sendRedirect("/Project/signupSuccess.jsp");
             }
@@ -267,6 +270,7 @@ public class SignupServlet extends HttpServlet {
                 session.setAttribute("faculty", faculty);
                 session.setAttribute("phone", phone);
                 session.setAttribute("ign", ign);
+                session.setAttribute("index", index);
                 response.sendRedirect("/Project/signupFailJSP.jsp");
                 
             }
