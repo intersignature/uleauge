@@ -78,7 +78,7 @@
       <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
         <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
         <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="playerJSP.jsp" id="fontmenu">PLAYERS </a></li>
+        <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>

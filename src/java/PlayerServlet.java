@@ -64,6 +64,7 @@ public class PlayerServlet extends HttpServlet {
             List<String> fb = new ArrayList<String>();
             List<String> faculty = new ArrayList<String>();
             List<String> university = new ArrayList<String>();
+            List<String> id = new ArrayList<String>();
             try {
                 Statement user = connection.createStatement();
                 //String sql = "SELECT * FROM db_accessadmin.Player where P_ID >= "+ (1+6*page_run) + "and P_ID <= " + (6*(page_run+1)) ;
@@ -94,6 +95,7 @@ public class PlayerServlet extends HttpServlet {
                     fb.add(rs.getString("P_Facebook"));
                     faculty.add(rs.getString("P_Faculty"));
                     university.add(rs.getString("P_University"));
+                    id.add(rs.getString("P_ID"));
                 }
             } catch(SQLException e){out.println(e);}
             //out.print(index +""+ page_run+""+ page_count);
@@ -117,6 +119,7 @@ public class PlayerServlet extends HttpServlet {
             session.setAttribute("faculty_list", faculty);
             session.setAttribute("university_list", university);
             session.setAttribute("page_count", page_count);
+            session.setAttribute("id_list", id);
             response.sendRedirect("playerJSP.jsp");
         }
     }

@@ -79,7 +79,7 @@
     <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
         <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
         <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="playerJSP.jsp" id="fontmenu">PLAYERS </a></li>
+        <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
@@ -91,6 +91,7 @@
     List<String> fb_list = (List) session.getAttribute("fb_list");
     List<String> faculty_list = (List) session.getAttribute("faculty_list");
     List<String> university_list = (List) session.getAttribute("university_list");
+    List<String> id_list = (List) session.getAttribute("id_list");
     int page_count = (int) session.getAttribute("page_count");
     
     for(int j=1; j<=page_count; j++){
@@ -99,6 +100,7 @@
         int temp2 = 6*j;
         //min((6*j), (6*(j-1)) + (43-(6*(j-1))))
         for(int i=(6*(j-1))+1; i<=Math.min(temp, temp2); i++){
+            int index = id_list.indexOf(Integer.toString(i));
             if(j==1){
                 out.println("<div class=\"divplayer filter "+j+"\">");
             }
@@ -106,7 +108,7 @@
                 out.println("<div class=\"divplayer filter "+j+"\" style=\"display: none;\">");
             }
             
-            out.println("<div class=\"player" + i +"\">");
+            out.println("<div class=\"player" + index+1 +"\">");
             out.println("<div class=\"container contain\">");
             out.println("<div class=\"row contain\">");
             out.println("<div class=\"col-sm-4 col-md-4 user-details\">");
@@ -116,39 +118,39 @@
             out.println("<div class=\"user-info-block\">");
             out.println("<div class=\"user-heading\">");
             //out.println("<a href=Player_001Servlet>"+ign_list.get(i-1)+request.getParameter("hi")+"</a>"+"<input type=\"hidden\" value=\""+ign_list.get(i-1)+"\""+" name=\"hi\">");
-            out.println("<a id=\"profileeiei\" href=Player_001Servlet?player="+i+"><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(i-1) + "</h3></a>");
+            out.println("<a id=\"profileeiei\" href=Player_001Servlet?player="+(index)+"><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(index) + "</h3></a>");
             //out.println("<a name=\""+i+"\" "+"id=\"profileeiei\" href=Player_001Servlet><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(i-1) + "</h3></a>");
             //href=\"player_00"+i+".html\"
-            out.println("<span class=\"help-block\">" + fname_list.get(i-1) +" "+ lname_list.get(i-1) + "</span>");
+            out.println("<span class=\"help-block\">" + fname_list.get(index) +" "+ lname_list.get(index) + "</span>");
             out.println("</div>");
             out.println("<ul class=\"navigation\">");
             out.println("<li class=\"active\">");
-            out.println("<a data-toggle=\"tab\" href=\"#information_"+i+"\">");
+            out.println("<a data-toggle=\"tab\" href=\"#information_"+(index)+"\">");
             out.println("<span class=\"glyphicon glyphicon-user\"></span>");
             out.println("</a>");
             out.println("</li>");
             out.println("<li>");
-            out.println("<a data-toggle=\"tab\" href=\"#edu_"+i+"\">");
+            out.println("<a data-toggle=\"tab\" href=\"#edu_"+(index)+"\">");
             out.println("<span class=\"glyphicon glyphicon-education\"></span>");
             out.println("</a>");
             out.println("</li>");
             out.println("<li>");
-            out.println("<a data-toggle=\"tab\" href=\"#link_"+i+"\">");
+            out.println("<a data-toggle=\"tab\" href=\"#link_"+(index)+"\">");
             out.println("<span class=\"glyphicon glyphicon-link\"></span>");
             out.println("</a>");
             out.println("</li>");
             out.println("</ul>");
             out.println("<div class=\"user-body\">");
             out.println("<div class=\"tab-content\">");
-            out.println("<div id=\"link_"+i+"\" class=\"tab-pane\">");
-            String fb_link_1 = "https://www.facebook.com/" +  fb_list.get(i-1);
+            out.println("<div id=\"link_"+(index)+"\" class=\"tab-pane\">");
+            String fb_link_1 = "https://www.facebook.com/" +  fb_list.get(index);
             out.println("<a href=" + fb_link_1 + ">");
             out.println("<img src=\"assets/img/fb-logo.png\" alt=\"Go to W3Schools!\" width=\"40\" height=\"30\" border=\"0\"></a>");
             out.println("</div>");
-            out.println("<div id=\"edu_"+i+"\" class=\"tab-pane\">");
-            out.println("<h4>" + faculty_list.get(i-1) +", "+ university_list.get(i-1) + "</h4>");
+            out.println("<div id=\"edu_"+(index)+"\" class=\"tab-pane\">");
+            out.println("<h4>" + faculty_list.get(index) +", "+ university_list.get(index) + "</h4>");
             out.println("</div>");
-            out.println("<div id=\"information_"+i+"\" class=\"tab-pane active\">");
+            out.println("<div id=\"information_"+index+"\" class=\"tab-pane active\">");
             out.println("<h4>Currently Team : Ok.Paidai</h4>");
             out.println("</div></div></div></div></div></div></div></div></div>");
         }
