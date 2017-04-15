@@ -50,12 +50,14 @@
           <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
-            <a href="player_001.html">
-            <li id="namepro">
-                <% session = request.getSession();
+             <% session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
                     String imgdir = "assets/img/"+username+".jpg";
+                    int id = (int) session.getAttribute("P_ID");
                 %>
+                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
+            <li id="namepro">
+               
                 <img src= "<% out.println(imgdir); %>" id="imgpro">
                 <div id = "namepro2">
                     <h4><b><% out.println(username); %></b></h4>

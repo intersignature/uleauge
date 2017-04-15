@@ -59,6 +59,8 @@ public class SigninServlet extends HttpServlet {
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
             String from = request.getParameter("from");
+            int P_ID = -1;
+           
             out.println(from);
             out.println(username);
             out.println(password);
@@ -66,7 +68,7 @@ public class SigninServlet extends HttpServlet {
             try {
                 
                 Statement stmt = connection.createStatement();
-                String sql = "SELECT P_Username, P_Password FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
+                String sql = "SELECT P_Username, P_Password,P_ID FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
                     if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(password)) {
@@ -74,16 +76,22 @@ public class SigninServlet extends HttpServlet {
                     } else if (rs.getString("P_Username").equals(username) && !rs.getString("P_Password").equals(password)) {
                         suc = 2;
                     }
+                    P_ID = rs.getInt("P_ID");
                    
                 }
                 
             } catch (Exception e) {
                 out.println(e);
             }
+
+            
+            
             if (suc == 1) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
                 session.setAttribute("suc", suc);
+                session.setAttribute("P_ID", P_ID);
+           
                 response.sendRedirect(from);
             } else if (suc == 2 || suc == 0) {
                 response.sendRedirect("loginIncorrect.html");
