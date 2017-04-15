@@ -89,21 +89,12 @@
             %>
     </header>
     <ul class="nav nav-pills categories">
-<<<<<<< HEAD
         <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
         <li id="menu"><a href="tournament.html" id="fontmenu">TOURNAMENT </a></li>
         <li id="menu"><a href="replay.html" id="fontmenu">REPLAY </a></li>
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faq.html" id="fontmenu">FAQ </a></li>
-=======
-        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="playerJSP.jsp" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
->>>>>>> 39d5d5aa1b7e2349e2ca0cc8331cf2a07a1eb37e
     </ul>
     <div class="logo_profile"><img src="assets/img/player1.jpg" />
         <h1><%= ign%></h1></div>
