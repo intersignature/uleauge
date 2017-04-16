@@ -120,7 +120,20 @@ public class PlayerServlet extends HttpServlet {
             session.setAttribute("university_list", university);
             session.setAttribute("page_count", page_count);
             session.setAttribute("id_list", id);
-            response.sendRedirect("playerJSP.jsp");
+            if(request.getParameter("suc") != null){
+            int suc = Integer.parseInt(request.getParameter("suc"));
+            session.setAttribute("suc", suc);
+            }
+             //int suc = (int) session.getAttribute("suc");
+             //out.println(suc);
+             //if(suc == 1){
+              //   out.println(suc);
+              response.sendRedirect("playerJSP.jsp");
+            // }
+            // else{
+             //   out.println(suc); 
+              //response.sendRedirect("playerJSP-unlogin.jsp");   
+            // }
         }
     }
 

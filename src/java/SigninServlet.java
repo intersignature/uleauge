@@ -85,15 +85,16 @@ public class SigninServlet extends HttpServlet {
             }
 
             
-            
+            HttpSession session = request.getSession();
             if (suc == 1) {
-                HttpSession session = request.getSession();
+                
                 session.setAttribute("username", username);
                 session.setAttribute("suc", suc);
                 session.setAttribute("P_ID", P_ID);
            
                 response.sendRedirect(from);
             } else if (suc == 2 || suc == 0) {
+                session.setAttribute("suc", suc=0);
                 response.sendRedirect("loginIncorrect.html");
             }
 
