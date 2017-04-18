@@ -64,7 +64,9 @@ public class SigninServlet extends HttpServlet {
             out.println(from);
             out.println(username);
             out.println(password);
+            HttpSession session = request.getSession();
             int suc = 0;
+            session.setAttribute("suc", suc);
             try {
                 
                 Statement stmt = connection.createStatement();
@@ -73,8 +75,8 @@ public class SigninServlet extends HttpServlet {
                 while (rs.next()) {
                     if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(password)) {
                         suc = 1;
-                    } else if (rs.getString("P_Username").equals(username) && !rs.getString("P_Password").equals(password)) {
-                        suc = 2;
+                    } else {
+                        suc = 0;
                     }
                     P_ID = rs.getInt("P_ID");
                    
@@ -85,16 +87,15 @@ public class SigninServlet extends HttpServlet {
             }
 
             
-            HttpSession session = request.getSession();
+           
             if (suc == 1) {
                 
                 session.setAttribute("username", username);
                 session.setAttribute("suc", suc);
                 session.setAttribute("P_ID", P_ID);
-           
                 response.sendRedirect(from);
-            } else if (suc == 2 || suc == 0) {
-                session.setAttribute("suc", suc=0);
+            } else if (suc == 0) {
+                session.setAttribute("suc", suc);
                 response.sendRedirect("loginIncorrect.html");
             }
 

@@ -3,9 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import java.util.List;
 
-public final class playerJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class indexJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -45,7 +44,8 @@ public final class playerJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<!DOCTYPE html>\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("\r\n");
@@ -72,7 +72,65 @@ public final class playerJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</head>\r\n");
       out.write("\r\n");
       out.write("<body>\r\n");
-      out.write("        <header>\r\n");
+      out.write("    ");
+ if (session.getAttribute("suc") == null) { 
+      out.write("\r\n");
+      out.write("    ");
+ int suc = 0;
+        session.setAttribute("suc", suc);
+        response.sendRedirect("indexJSP.jsp");
+    
+      out.write('\r');
+      out.write('\n');
+ } else if ((int)session.getAttribute("suc") == 0) {
+      out.write("\r\n");
+      out.write("    <header>\r\n");
+      out.write("         <!-- Second navbar for sign in -->\r\n");
+      out.write("    <nav class=\"navbar navbar-default\" id=\"headnav\">\r\n");
+      out.write("      <div class=\"container\">\r\n");
+      out.write("        <!-- Brand and toggle get grouped for better mobile display -->\r\n");
+      out.write("        <div class=\"navbar-header\" >\r\n");
+      out.write("          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar-collapse-2\">\r\n");
+      out.write("            <span class=\"sr-only\">Toggle navigation</span>\r\n");
+      out.write("            <span class=\"icon-bar\"></span>\r\n");
+      out.write("            <span class=\"icon-bar\"></span>\r\n");
+      out.write("            <span class=\"icon-bar\"></span>\r\n");
+      out.write("          </button>\r\n");
+      out.write("             <a href=\"indexJSP.jsp\">\r\n");
+      out.write("            <img src=\"assets/img/logo.png\"  id = \"logo\">\r\n");
+      out.write("          <a class=\"navbar-brand\" href=\"indexJSP.JSP\">U-LEAGUE</a>\r\n");
+      out.write("        </div>\r\n");
+      out.write("        <!-- Collect the nav links, forms, and other content for toggling -->\r\n");
+      out.write("        <div class=\"collapse navbar-collapse\" id=\"navbar-collapse-2\">\r\n");
+      out.write("          <ul class=\"nav navbar-nav navbar-right\">\r\n");
+      out.write("            <li><a href=\"signup.html\">Sign up</a></li>\r\n");
+      out.write("            <li>\r\n");
+      out.write("              <a class=\"btn btn-default btn-outline btn-circle collapsed\"  data-toggle=\"collapse\" href=\"#nav-collapse2\" aria-expanded=\"false\" aria-controls=\"nav-collapse2\" id=\"signinbtn\">Sign in</a>\r\n");
+      out.write("            </li>\r\n");
+      out.write("          </ul>\r\n");
+      out.write("          <div class=\"collapse nav navbar-nav nav-collapse slide-down\" id=\"nav-collapse2\">\r\n");
+      out.write("            <form action=\"SigninServlet\" method=\"POST\" class=\"navbar-form navbar-right form-inline\" role=\"form\">\r\n");
+      out.write("                 <input type=\"hidden\" name=\"from\" value=\"indexJSP.jsp\" />\r\n");
+      out.write("              <div class=\"form-group\">\r\n");
+      out.write("                 \r\n");
+      out.write("                <label class=\"sr-only\" for=\"username\">Username</label>\r\n");
+      out.write("                <input name=\"Username\" type=\"Username\" class=\"form-control\" id=\"Username\" placeholder=\"Username\" autofocus required />\r\n");
+      out.write("              </div>\r\n");
+      out.write("              <div class=\"form-group\">\r\n");
+      out.write("                <label class=\"sr-only\" for=\"password\">Password</label>\r\n");
+      out.write("                <input name=\"Password\" type=\"Password\" class=\"form-control\" id=\"Password\" placeholder=\"Password\" required />\r\n");
+      out.write("              </div>\r\n");
+      out.write("              <button type=\"submit\" class=\"btn btn-success\" >Sign in</button>\r\n");
+      out.write("            </form>\r\n");
+      out.write("          </div>\r\n");
+      out.write("        </div><!-- /.navbar-collapse -->\r\n");
+      out.write("      </div><!-- /.container -->\r\n");
+      out.write("    </nav><!-- /.navbar -->\r\n");
+      out.write("\r\n");
+      out.write("    </header>\r\n");
+ }  else if ((int)session.getAttribute("suc") == 1){
+      out.write("\r\n");
+      out.write("    <header>\r\n");
       out.write("         <!-- Second navbar for sign in -->\r\n");
       out.write("    <nav class=\"navbar navbar-default\" id=\"headnav\">\r\n");
       out.write("      <div class=\"container\">\r\n");
@@ -89,14 +147,18 @@ public final class playerJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("          <a class=\"navbar-brand\" href=\"indexJSP.jsp\">U-LEAGUE</a>\r\n");
       out.write("        </div>\r\n");
       out.write("        <ul class=\"nav navbar-nav navbar-right\" id=\"userbar\">\r\n");
-      out.write("            <a href=\"player_001.html\">\r\n");
-      out.write("            <li id=\"namepro\">\r\n");
-      out.write("                ");
+      out.write("             ");
  session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
                     String imgdir = "assets/img/"+username+".jpg";
+                    int id = (int) session.getAttribute("P_ID");
                 
       out.write("\r\n");
+      out.write("                <a href=\"Player_001Servlet?player=");
+out.println(id);
+      out.write("\"> \r\n");
+      out.write("            <li id=\"namepro\">\r\n");
+      out.write("               \r\n");
       out.write("                <img src= \"");
  out.println(imgdir); 
       out.write("\" id=\"imgpro\">\r\n");
@@ -110,7 +172,7 @@ public final class playerJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </a>\r\n");
       out.write("     \r\n");
       out.write("            <form action=\"SignoutServlet\" method=\"POST\" class=\"navbar-form navbar-right form-inline\" role=\"form\">\r\n");
-      out.write("                <input type=\"hidden\" name=\"from\" value=\"player.html\" />\r\n");
+      out.write("                <input type=\"hidden\" name=\"from\" value=\"indexJSP.jsp\" />\r\n");
       out.write("             <li >\r\n");
       out.write("             <button type=\"submit\" class=\"btn btn-default btn-outline btn-circle collapsed\"  id=\"signinbtn\" >Sign Out</button>\r\n");
       out.write("\r\n");
@@ -121,104 +183,50 @@ public final class playerJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      </div><!-- /.container -->\r\n");
       out.write("    </nav><!-- /.navbar -->\r\n");
       out.write("    </header>\r\n");
+ }
+      out.write("\r\n");
+      out.write("    \r\n");
       out.write("    <ul class=\"nav nav-pills categories\">\r\n");
-      out.write("    <li id=\"menu\"><a href=\"newsJSP.jsp\" id=\"fontmenu\">NEWS </a></li>\r\n");
+      out.write("        <li id=\"menu\"><a href=\"newsJSP.jsp\" id=\"fontmenu\">NEWS </a></li>\r\n");
       out.write("        <li id=\"menu\"><a href=\"TourJSP.jsp\" id=\"fontmenu\">TOURNAMENT </a></li>\r\n");
       out.write("        <li id=\"menu\"><a href=\"replayJSP.jsp\" id=\"fontmenu\">REPLAY </a></li>\r\n");
-      out.write("        <li id=\"menu\"><a href=\"playerJSP.jsp\" id=\"fontmenu\">PLAYERS </a></li>\r\n");
+      out.write("        <li id=\"menu\"><a href=\"PlayerServlet\" id=\"fontmenu\">PLAYERS </a></li>\r\n");
       out.write("        <li id=\"menu\"><a href=\"rulesJSP.jsp\" id=\"fontmenu\">RULES </a></li>\r\n");
       out.write("        <li id=\"menu\"><a href=\"faqJSP.jsp\" id=\"fontmenu\">FAQ </a></li>\r\n");
       out.write("    </ul>\r\n");
-      out.write("    ");
- session = request.getSession();
-    List<String> fname_list = (List) session.getAttribute("fname_list");
-    List<String> lname_list = (List) session.getAttribute("lname_list");
-    List<String> ign_list = (List) session.getAttribute("ign_list");
-    List<String> email_list = (List) session.getAttribute("email_list");
-    List<String> fb_list = (List) session.getAttribute("fb_list");
-    List<String> faculty_list = (List) session.getAttribute("faculty_list");
-    List<String> university_list = (List) session.getAttribute("university_list");
-    int page_count = (int) session.getAttribute("page_count");
-    
-    for(int j=1; j<=page_count; j++){
-        out.print("<div id=\"tab"+j+"\""+ " class=\"container list_player\">");
-        int temp = (6*(j-1)) + (fname_list.size()-(6*(j-1)));
-        int temp2 = 6*j;
-        //min((6*j), (6*(j-1)) + (43-(6*(j-1))))
-        for(int i=(6*(j-1))+1; i<=Math.min(temp, temp2); i++){
-            out.println("<div class=\"divplayer filter "+j+"\">");
-            out.println("<div class=\"player" + i +"\">");
-            out.println("<div class=\"container contain\">");
-            out.println("<div class=\"row contain\">");
-            out.println("<div class=\"col-sm-4 col-md-4 user-details\">");
-            out.println("<div class=\"user-image\">");
-            out.println("<img src=\"assets/img/player1.jpg\" alt=\"\" title=\"\" class=\"img_size\">");
-            out.println("</div>");
-            out.println("<div class=\"user-info-block\">");
-            out.println("<div class=\"user-heading\">");
-            out.println("<a  id=\"profileeiei\" href=\"player_001.html\"><h3>" + ign_list.get(i-1) + "</h3></a>");
-            out.println("<span class=\"help-block\">" + fname_list.get(i-1) +" "+ lname_list.get(i-1) + "</span>");
-            out.println("</div>");
-            out.println("<ul class=\"navigation\">");
-            out.println("<li class=\"active\">");
-            out.println("<a data-toggle=\"tab\" href=\"#information_"+i+"\">");
-            out.println("<span class=\"glyphicon glyphicon-user\"></span>");
-            out.println("</a>");
-            out.println("</li>");
-            out.println("<li>");
-            out.println("<a data-toggle=\"tab\" href=\"#edu_"+i+"\">");
-            out.println("<span class=\"glyphicon glyphicon-education\"></span>");
-            out.println("</a>");
-            out.println("</li>");
-            out.println("<li>");
-            out.println("<a data-toggle=\"tab\" href=\"#link_"+i+"\">");
-            out.println("<span class=\"glyphicon glyphicon-link\"></span>");
-            out.println("</a>");
-            out.println("</li>");
-            out.println("</ul>");
-            out.println("<div class=\"user-body\">");
-            out.println("<div class=\"tab-content\">");
-            out.println("<div id=\"link_"+i+"\" class=\"tab-pane\">");
-            String fb_link_1 = "https://www.facebook.com/" +  fb_list.get(i-1);
-            out.println("<a href=" + fb_link_1 + ">");
-            out.println("<img src=\"assets/img/fb-logo.png\" alt=\"Go to W3Schools!\" width=\"40\" height=\"30\" border=\"0\"></a>");
-            out.println("</div>");
-            out.println("<div id=\"edu_"+i+"\" class=\"tab-pane\">");
-            out.println("<h4>" + faculty_list.get(i-1) +", "+ university_list.get(i-1) + "</h4>");
-            out.println("</div>");
-            out.println("<div id=\"information_"+i+"\" class=\"tab-pane active\">");
-            out.println("<h4>Currently Team : Ok.Paidai</h4>");
-            out.println("</div></div></div></div></div></div></div></div></div>");
-        }
-
-        out.println("</div>");
-    }
-    
-    
-    
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("    ");
-
-        /*out.print("<p style=\"text-align:center; font-size:130%;\">");
-        for (int i=1; i <= page_count; i++){
-            out.print("|" + i);
-        }
-        out.println("|" + "</p>");*/
-        out.println("<div align=\"center\">");
-        for (int i=1; i <= page_count; i++){
-            if (i==1){
-                out.println("<button data-filter=\""+ i + "\""+ " class=\"btn btn-default filter-button active\" onclick=\"aaa()\">"+i+"</button>");
-            }
-            else{
-                out.println("<button data-filter=\""+ i + "\""+ " class=\"btn btn-default filter-button\" onclick=\"aaa()\">"+i+"</button>");
-            }
-        }
-        out.println("<script src=\"assets/js/player.js\"></script>");
-        out.println("</div>");
-    
-      out.write(" <!-- use list -->\r\n");
-      out.write("    <!--<p style=\"text-align:center; font-size:130%;\">Paragraph</p> -->\r\n");
+      out.write("    <div class=\"container\">\r\n");
+      out.write("        <div class=\"row\">\r\n");
+      out.write("            <div class=\"col-md-6\">\r\n");
+      out.write("                <div id=\"divnew\">\r\n");
+      out.write("                    <div class=\"row\" id=\"row\">\r\n");
+      out.write("                        <div class=\"col-md-12\" id=\"news\">\r\n");
+      out.write("                            <h1>NEWS</h1></div>\r\n");
+      out.write("                        <div class=\"col-md-12\">\r\n");
+      out.write("                            <h1>Ok.Paidai ตบ Na'vi ยับ</h1>\r\n");
+      out.write("                            <div><img src=\"assets/img/ss.jpg\">\r\n");
+      out.write("                                <div>\r\n");
+      out.write("                                    <h4>เมื่อวันที่31กุมภาพันธ์ ทีมยักษ์ใหญ่Na'vi โดนOk.Paidai ตบยับ 16-0 เป็นเรื่องน่าเสียดายที่ Na'vi อดได้แชมป์&nbsp; </h4></div>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("            <div class=\"col-md-6\">\r\n");
+      out.write("                <div id=\"divlive\">\r\n");
+      out.write("                    <div class=\"row\">\r\n");
+      out.write("                        <div class=\"col-md-12 col-md-offset-0\" id=\"live\">\r\n");
+      out.write("                            <h1>LIVE! </h1></div>\r\n");
+      out.write("                        <div class=\"col-md-12 col-md-offset-0\">\r\n");
+      out.write("                            <h1>Na'Vi VS HR</h1>\r\n");
+      out.write("                            <a href=\"https://www.youtube.com/watch?v=wZyPCsfZeh0\" target=\"_blank\">\r\n");
+      out.write("<div id=\"imglink\"></div>\r\n");
+      out.write("</a>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("    </div>\r\n");
       out.write("    <footer id=\"footer001\">\r\n");
       out.write("        <div class=\"row\">\r\n");
       out.write("            <div class=\"col-md-4 col-sm-6 footer-navigation\">\r\n");

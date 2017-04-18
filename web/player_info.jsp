@@ -31,7 +31,57 @@
 </head>
 
 <body>
-    
+     <% if (session.getAttribute("suc") == null) { %>
+    <% int suc = 0;
+        session.setAttribute("suc", suc);
+        response.sendRedirect("player_info.jsp");
+    %>
+<% } else if ((int)session.getAttribute("suc") == 0) {%>
+    <header>
+         <!-- Second navbar for sign in -->
+    <nav class="navbar navbar-default" id="headnav">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" >
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a href="indexJSP.jsp">
+            <img src="assets/img/logo.png"  id = "logo">
+          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signup.html">Sign up</a></li>
+            <li>
+              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
+            </li>
+          </ul>
+          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                 <input type="hidden" name="from" value="player_info.jsp" />
+              <div class="form-group">
+                 
+                <label class="sr-only" for="username">Username</label>
+                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="password">Password</label>
+                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
+              </div>
+              <button type="submit" class="btn btn-success" >Sign in</button>
+            </form>
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+
+    </header>
+<% }  else if ((int)session.getAttribute("suc") == 1){%>
     <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
@@ -66,7 +116,7 @@
             </a>
      
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="index.html" />
+                <input type="hidden" name="from" value="indexJSP.jsp" />
              <li >
              <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -76,7 +126,8 @@
        
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-   
+    </header>
+<% }%>
             <% session = request.getSession();
             String fname = (String) session.getAttribute("fname");
             String lname = (String) session.getAttribute("lname");
@@ -87,14 +138,14 @@
             String university = (String) session.getAttribute("university");
             String phone = (String) session.getAttribute("phone");            
             %>
-    </header>
+    
     <ul class="nav nav-pills categories">
-        <li id="menu"><a href="news.html" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="tournament.html" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replay.html" id="fontmenu">REPLAY </a></li>
+        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
+        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
+        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rules.html" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faq.html" id="fontmenu">FAQ </a></li>
+        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
+        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
     <div class="logo_profile"><img src="assets/img/player1.jpg" />
         <h1><%= ign%></h1></div>
