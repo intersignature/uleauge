@@ -1,0 +1,65 @@
+$(document).ready(function(e) {
+    $('.header_menuhover a.btn_login').hover(function() {
+        $('.header_menu a.btn_login').css('background-position', '0 -45px');
+    }, function() {
+        $('.header_menu a.btn_login').css('background-position', '0 0');
+    });
+    $('.header_menuhover a.btn_register').hover(function() {
+        $('.header_menu a.btn_register').css('background-position', '0 -45px');
+    }, function() {
+        $('.header_menu a.btn_register').css('background-position', '0 0');
+    });
+
+    $(".top_menu_r a,.top_menu_l a").click(function() {
+        $('.active').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $('.btn_login').magnificPopup({
+        type: 'inline',
+        midClick: true, // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+        callbacks: {
+            close: function() {
+                $("#username, #password").val("");
+            }
+        }
+    });
+
+    if (location.pathname.indexOf("news") >= 0) {
+        $(".menu_2").addClass("active");
+    } else if (location.pathname.indexOf("tour") >= 0) {
+        $(".menu_3").addClass("active");
+    } else if (location.pathname.indexOf("hall_of_fame") >= 0) {
+        $(".menu_6").addClass("active");
+    } else {
+        $(".menu_1").addClass("active");
+    }
+
+    $('.logout-btn').click(function() {
+        $.post("/account/logout", function() {
+            alert("คุณได้ทำการ Logout แล้ว ขอบคุณค่ะ");
+            location.reload();
+        });
+    });
+});
+
+function login() {
+    $.post("/account/login", {
+        "username": $("#username").val(),
+        "password": RSA($("#password").val()),
+        "passwordInput": $('#password').val().replace(/./g, '*'),
+        "recaptcha_challenge_field": "none",
+        "recaptcha_response_field": "none"
+    }, function(d) {
+        if (d.status == "1") {
+            alert("Welcome, " + d.message.username);
+            location.reload();
+        } else {
+            alert(d.message);
+        }
+    }, "json");
+}
+
+function cancel() {
+    $('.btn_login').magnificPopup("close");
+}

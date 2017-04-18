@@ -1,7 +1,7 @@
 <%-- 
-    Document   : newsJSP
-    Created on : 11 เม.ย. 2560, 17:30:27
-    Author     : Barjord
+    Document   : news1
+    Created on : 18 เม.ย. 2560, 20:30:27
+    Author     : Mild
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,7 +32,6 @@
     </head>
 
     <body>
-
         <% if (session.getAttribute("suc") == null) { %>
         <% int suc = 0;
             session.setAttribute("suc", suc);
@@ -139,96 +138,54 @@
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
         </ul>
-
-
-
-
-        <div class="content_me">
-            <h1>ข่าวสารวงการเกม</h1>
-            <div class="news">
-                <div class="tab-content">
-                    <div class="tab active">
-                        <div class="board">
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news1.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news1.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news1.jsp"><h4>BaBaRouz คว้าแชมป์ Gview FIFA Cup 2017 #2</h4></a>
-                                <p>แสดงความยินดีกับผู้เล่นBaBaRouz</p>
-                                <h5>2017-04-03</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news2.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news2.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news2.jsp"><h4>Garena Premier League Spring Season 2017</h4></a>
-                                <p>ร่วมเชียร์ตัวแทนประเทศไทย </p>
-                                <h5>2017-04-10</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news3.1.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news3.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news3.jsp"><h4>บทสัมภาษณ์ ทีม Strike eSport</h4></a>
-                                <p>ทีมชนะเลิศการแข่งขัน OVERWATCH KMITL SUMMER TOURNAMENT</p>
-                                <h5>2017-04-14</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news4.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news4.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news4.jsp"><h4>ประกาศข่าวงานแข่งขัน!! Dota2 thailand</h4></a>
-                                <p>เป็นทัวร์นาเมนต์แรกของปีนี้ กับทาง My Arena!! "DOTA2 The Open Tournament Season 1"</p>
-                                <h5>2017-04-06</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news5.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news5.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news5.jsp"><h4>ผู้เล่นคู่แรกที่เข้าร่วมในการแข่งขัน HTC 2v2 CS:GO Invitational</h4></a>
-                                <p>shox (แชมป์เก่า) และ kennyS คู่หูดูโอ้จากทีม G2 Esports เป็นผู้เล่นคู่แรกที่เข้าร่วมในการแข่งขัน HTC 2v2 CS:GO Invitational</p>
-                                <h5>2017-03-17</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news6.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news6.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news6.jsp"><h4> โฉมหน้าผู้ชนะ Lady Tournament จาก League of Champions 2017</h4></a>
-                                <p>เห็นพวกเธอ น่ารัก สวยๆ กันแบบนี้ฝีมือไม่ธรรมดานะจ๊ะ</p>
-                                <h5>2017-02-21</h5>
-                            </div>
-                            <div class="linetext"></div>
-
-                        </div>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="news-body">
+                <ul class="list-group">
+                    <h1>บทสัมภาษณ์ ทีม Strike eSport</h1>
+                    <h2>ทีมชนะเลิศการแข่งขัน OVERWATCH KMITL SUMMER TOURNAMENT</h2>
+                    <p style="text-align: center">
+                        <img src="assets/img/news3.1.jpg" width="1120" height="700" >
+                    </p>
+                    <br>
+                    <br>
+                    <p style="text-align: center">
+                        <img src="assets/img/news3.2.jpg">
+                    </p>
+                    <p><strong>สมาชิกทีม</strong><br></p>
+                    <p>
+                        นางสาวปีย์วรา พิทักษ์ธานิน คณะศิลปศาสตร์ สาขาภาษาอังกฤษ ปี 2 ชื่อในเกมคือ shivs ค่ะ ในเกมเล่นตำแหน่งซัพพอตรอง และเป็น shot caller ให้ทีมด้วยค่ะ <br><br>
+                        นาย รัตชาพงษ์ ประจำวงษ์ ชื่อเล่น เซม ชื่อในเกม Sana คณะวิศวกรรมสารสนเทศ ปี 3 ตำแหน่ง Off tank <br><br>
+                        นาย สิรภพ ตรัยชิรอาภรณ์ ชื่อเล่น ไอซ์ ชื่อในเกม Icarest คณะวิศวกรรมพลังงานไฟฟ้า ปี 3 ตำแหน่ง Main Support <br><br>
+                        นาย ภูดิศ ประเสริฐ ชื่อเล่น เซฟ ชื่อในเกม Safefyz คณะวิศวกรรมสารสนเทศ ศิษย์เก่า รหัส 51 ตำแหน่ง DPS <br><br>
+                        นาย ชวิศ ธุระมะฉายา ชื่อเล่น ไอซ์ ชื่อในเกม llamaa คณะ วิศวกรรมเคมี ปี3 ตำแหน่ง Flex<br><br>
+                        นาย กันตินันท์ สังขจันทร์ ชื่อเล่น ปั้น ชื่อในเกม LastLight คณะ วิศวกรรมคอมพิวเตอร์ ปี 4 ตำแหน่ง Main tank<br></p>
+                    <p style="text-align: center">
+                        <img src="assets/img/news3.3.jpg">
+                    </p>
+                    <p><strong>ที่มาของชื่อทีมและการรวมตัว</strong><br></p>
+                    <p>
+                        ชื่อทีม Strike eSport ที่มาของชื่อทีมคือ ชอบเล่นแบบดุดัน แบบ Stirke เข้าไปเลย เนื่องจากตัวเองเป็น shot caller เวลาเราเห็นโอกาสบุก เราก็มักจะสั่งให้ทีมบวกเลย ทุกคนต้องพร้อมเสมอ  <br><br>
+                        ตอนแรกมีเพื่อนที่เล่นด้วยกันอยู่แล้ว 2 คน รวมเป็น 3 อีก 3 คนที่เหลือก็ประกาศรับสมัครเอาค่ะ เน้น role ที่ตัวเองถนัดหรือเล่นมาก่อนแล้ว ใครผ่านการเทสก็ได้เข้าร่วมทีม <br><br>
+                    </p>
+                    <p style="text-align: center">
+                        <img src="assets/img/news3.4.jpg">
+                    </p>
+                    <p><strong>ชอบอะไรในเกมOverwatchและมีการวางแผนในเกมอย่างไร</strong><br></p>
+                    <p>
+                        ชอบความเป็นทีมเวิร์คค่ะ และชอบตัวอันนามากค่ะ แต่ไม่ได้เล่น (ฮา) <br><br>
+                        การวางแผนการแข่ง เราตั้งเป้าไว้ก่อนว่าทุกคนในทีมไม่ถนัดด่านรูปแบบไหน จากนั้นก็คิดถึงฮีโร่พิคของฝั่งตรงข้าม แต่ส่วนใหญ่จะใช้คอมพ์ 3 แท็งมากกว่า เพราะครอบคลุมที่สุด ระหว่างเล่นถ้าตัวไหนของฝั่งตรงข้ามทำให้เราเล่นยาก ก็อาจจะต้องปรับแผนและฮีโร่นิดหน่อยค่ะ ต้องคิดถึงเรื่องการแก้เกมตลอดเวลา เช่นถ้าเซ็นยัตต้าดิสคอร์ดใส่แท็งเราแล้วเขาเล่นยาก เขาก็จะบอกว่ามีปัญหากับเซ็นยัตต้า ก็จะเปลี่ยนเทรเซอร์มาไล่ค่ะ<br><br>
+                    </p>
+                    <p style="text-align: center">
+                        <img src="assets/img/news3.5.jpg">
+                    </p>
+                    <p><strong>แบ่งเวลาอย่างไรและได้อะไรจากการแข่งขัน</strong><br></p>
+                    <p>
+                        ซ้อมวันละ 1 ชั่วโมงค่ะ นัดสคริมกับทีมอื่นๆ เวลาซ้อมจะเป็นเวลาที่ทุกคนว่างหลังจากเลิกเรียนหรือทำงานแล้วค่ะ  <br><br>
+                        ได้รับมิตรภาพกับเพื่อนร่วมทีมค่ะ ส่วนตัวเป็นคนที่ไม่ค่อยมีเพื่อนต่างคณะสักเท่าไร การได้มาแข่งขันในทัวร์นี้ทำให้รู้จักคนมากขึ้นค่ะ <br><br>
+                    </p>
+                </ul>
             </div>
         </div>
-
-
         <footer>
             <div class="row">
                 <div class="col-md-4 col-sm-6 footer-navigation">
@@ -256,16 +213,3 @@
                 </div>
             </div>
         </footer>
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-        <script src="assets/js/treejs.js"></script>
-        <script src="assets/js/popupjs.js"></script>
-        <script src="assets/js/bootstrap.js.download"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/css/bootstrap.css"></script>
-        <link rel="stylesheet" href="assets/css/main.css">
-
-    </body>
-
-</html>

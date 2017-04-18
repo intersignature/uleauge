@@ -1,7 +1,7 @@
 <%-- 
-    Document   : newsJSP
-    Created on : 11 เม.ย. 2560, 17:30:27
-    Author     : Barjord
+    Document   : news1
+    Created on : 18 เม.ย. 2560, 20:30:27
+    Author     : Mild
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,7 +32,6 @@
     </head>
 
     <body>
-
         <% if (session.getAttribute("suc") == null) { %>
         <% int suc = 0;
             session.setAttribute("suc", suc);
@@ -139,96 +138,32 @@
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
         </ul>
+        <div class="container">
+        <div class="news-body">
+            <ul class="list-group">
+                <h1>BaBaRouz คว้าแชมป์ Gview FIFA Cup 2017 #2</h1>
+                <img src="assets/img/news1.jpg" width="1120" height="700" >
+                <br>
+                <br>
 
-
-
-
-        <div class="content_me">
-            <h1>ข่าวสารวงการเกม</h1>
-            <div class="news">
-                <div class="tab-content">
-                    <div class="tab active">
-                        <div class="board">
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news1.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news1.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news1.jsp"><h4>BaBaRouz คว้าแชมป์ Gview FIFA Cup 2017 #2</h4></a>
-                                <p>แสดงความยินดีกับผู้เล่นBaBaRouz</p>
-                                <h5>2017-04-03</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news2.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news2.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news2.jsp"><h4>Garena Premier League Spring Season 2017</h4></a>
-                                <p>ร่วมเชียร์ตัวแทนประเทศไทย </p>
-                                <h5>2017-04-10</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news3.1.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news3.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news3.jsp"><h4>บทสัมภาษณ์ ทีม Strike eSport</h4></a>
-                                <p>ทีมชนะเลิศการแข่งขัน OVERWATCH KMITL SUMMER TOURNAMENT</p>
-                                <h5>2017-04-14</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news4.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news4.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news4.jsp"><h4>ประกาศข่าวงานแข่งขัน!! Dota2 thailand</h4></a>
-                                <p>เป็นทัวร์นาเมนต์แรกของปีนี้ กับทาง My Arena!! "DOTA2 The Open Tournament Season 1"</p>
-                                <h5>2017-04-06</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news5.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news5.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news5.jsp"><h4>ผู้เล่นคู่แรกที่เข้าร่วมในการแข่งขัน HTC 2v2 CS:GO Invitational</h4></a>
-                                <p>shox (แชมป์เก่า) และ kennyS คู่หูดูโอ้จากทีม G2 Esports เป็นผู้เล่นคู่แรกที่เข้าร่วมในการแข่งขัน HTC 2v2 CS:GO Invitational</p>
-                                <h5>2017-03-17</h5>
-                            </div>
-                            <div class="linetext"></div>
-                            <div class="box">
-                                <div class="pola_black">
-                                    <img src="assets/img/news6.jpg" width="300" height="120" class="img1">
-                                    <div class="shadow"><a href="news6.jsp"></a></div> 
-                                </div>
-                            </div>
-                            <div class="textbox">
-                                <a href="news6.jsp"><h4> โฉมหน้าผู้ชนะ Lady Tournament จาก League of Champions 2017</h4></a>
-                                <p>เห็นพวกเธอ น่ารัก สวยๆ กันแบบนี้ฝีมือไม่ธรรมดานะจ๊ะ</p>
-                                <h5>2017-02-21</h5>
-                            </div>
-                            <div class="linetext"></div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <p>
+                        &nbsp;&nbsp;&nbsp;เรียกว่าเป็นรายการสามัญประจำเว็บไซต์ของเราเลยก็ว่าได้ครับ กับการแข่งขัน FIFA ONLINE 3 ที่เข้มข้นทุกเดือน ได้รับการสนับสนุนจาก 
+                        Gview ที่เข้ามาเปิดโอกาสให้กับพี่น้องที่ชื่นชอบการแข่งขัน โดยรายการ Gview FIFA Cup 2017 นี้จะใช้กฏการแข่งขันด้วยนักเตะระดับ +1
+                        ในปีที่กำหนดไว้ (เหมือน TNP) และในเดือนแรกนั้นได้จบลงแล้วครับ เป็นการดวลกันในรอบชิงชนะเลิศระหว่าง MiTHNOngBoN เจอกับ BarBaRouz 
+                        ที่เป็น PLMesNutZlatan แอบแฝงชื่อมาเล่นในการแข่งขันครั้งนี้ครับ โดยผลออกมาเป็นทาง BarBaRouz ที่คว้าแชมป์ไปครอง ด้วยการเอาชนะ MiTHNOngBoN 
+                        ไปด้วยสกอร์ 2-1 เกม
+                    <p><strong>สรุปผลการแข่งขัน Gview FIFA Cup 2017 #2</strong><br></p>
+                    <p>
+                        อันดับ 1 : BarBaRouz เงินรางวัล 5,000 บาท<br>
+                        อันดับ 2 : MiTHNOngBoN เงินรางวัล 3,000 บาท<br>
+                       อันดับ 3-4 ร่วม : mithvuzelapyd และ Liverpoo1KaK<br>
+                        </p> 
+                        <h4>ลิ้งค์การแข่งขันย้อนหลัง</h4><a href="https://www.twitch.tv/videos/132435870">คลิ้กที่นี่</a><br>
+                        <h4>ลิ้งค์สายการแข่งขัน</h4><a href="http://challonge.com/GviewFIFA2017March">คลิ้กที่นี่</a>
+                        
+            </ul>
         </div>
-
-
+            </div>
         <footer>
             <div class="row">
                 <div class="col-md-4 col-sm-6 footer-navigation">
@@ -256,16 +191,3 @@
                 </div>
             </div>
         </footer>
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-        <script src="assets/js/treejs.js"></script>
-        <script src="assets/js/popupjs.js"></script>
-        <script src="assets/js/bootstrap.js.download"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/css/bootstrap.css"></script>
-        <link rel="stylesheet" href="assets/css/main.css">
-
-    </body>
-
-</html>
