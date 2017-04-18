@@ -46,32 +46,34 @@
             <img src="assets/img/logo.png"  id = "logo">
           <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.html">Sign up</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
+        <ul class="nav navbar-nav navbar-right" id="userbar">
+             <% session = request.getSession();
+                    String username = (String) session.getAttribute("username"); 
+                    String imgdir = "assets/img/"+username+".jpg";
+                    int id = (int) session.getAttribute("P_ID");
+                %>
+                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
+            <li id="namepro">
+               
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <div id = "namepro2">
+                    <h4><b><% out.println(username); %></b></h4>
+                </div>
+               
             </li>
-          </ul>
-          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="indexJSP.jsp" />
-              <div class="form-group">
-                <label class="sr-only" for="username">Username</label>
-                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
-              </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
+            </a>
+     
+            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="TourJSP.jsp" />
+             <li >
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+
+            </li>
             </form>
-          </div>
-        </div><!-- /.navbar-collapse -->
+          </ul>
+       
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
     </header>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>

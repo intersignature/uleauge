@@ -78,9 +78,10 @@
     </ul>
     <div class="login-card"><img class="img-responsive profile-img-card" src="assets/img/logo.png">
         <p class="text-danger profile-name-card">Username or Password incorrect</p>
-        <form class="form-signin"><span class="reauth-email"> </span>
-            <input class="form-control" type="Username" required="" placeholder="Username" id="inputEmail">
-            <input class="form-control" type="Password" required="" placeholder="Password" id="inputPassword">
+        <form class="form-signin" action="SigninServlet"><span class="reauth-email"> </span>
+            <input  type="hidden" name="from" value="indexJSP.jsp" />
+            <input class="form-control" name="Username" type="Username" required="" placeholder="Username" id="inputEmail">
+            <input class="form-control" name="Password" type="Password" required="" placeholder="Password" id="inputPassword">
             <div class="checkbox">
                 <div class="checkbox">
                     <label>
@@ -88,7 +89,10 @@
                 </div>
             </div>
             <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
-        </form><a href="#" class="forgot-password">Forgot your password?</a></div>
+            
+        </form>
+        
+        <a href="#" class="forgot-password">Forgot your password?</a></div>
     <footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
