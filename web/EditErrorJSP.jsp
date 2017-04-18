@@ -124,7 +124,7 @@
                         <label class="control-label" for="pawssword-input-field">Password </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="password"><p>*Require<br>
+                        <input class="form-control" type="password" name="new_password"><p>*Require<br>
                         *Your password must have at least one upper case, one lower case, one numeric</p>
                     </div>
                     <p id="cau_password" style="color:blue;"><%if (is_password=='1'){out.println("Incorrect Password");}%></p>
@@ -134,7 +134,7 @@
                         <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="rep_password">
+                        <input class="form-control" type="password" name="new_rep_password">
                         <p>*Require<br>*Must same above password</p>  
                     </div>
                     <p id="cau_rep_password" style="color:blue;"><%if (is_rep_password=='1'){out.println("Incorrect Repeat Password");}%></p>
@@ -144,7 +144,7 @@
                         <label class="control-label" for="name-input-field">Name </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="fname" value=<%= new_fname%>>
+                        <input class="form-control" type="text" name="new_fname" value=<%= new_fname%>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_name" style="color:blue;"><%if (is_fname=='1'){out.println("Incorrect Name");}%></p>
@@ -154,7 +154,7 @@
                         <label class="control-label" for="name-input-field">Lastname </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="lname" value=<%= new_lname%>>
+                        <input class="form-control" type="text" name="new_lname" value=<%= new_lname%>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_lname" style="color:blue;"><%if (is_lname=='1'){out.println("Incorrect Lastname");}%></p>
@@ -164,7 +164,7 @@
                         <label class="control-label" for="email-input-field">Email </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="email" value=<%= new_email%>>
+                        <input class="form-control" type="text" name="new_email" value=<%= new_email%>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_email" style="color:blue;"><%if (is_email=='1'){out.println("Incorrect Email");}%></p>
@@ -174,7 +174,7 @@
                         <label class="control-label" for="name-input-field">Facebook Link</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" inputmode="url" name="fb" value=<%= new_fb%>>
+                        <input class="form-control" type="text" inputmode="url" name="new_fb" value=<%= new_fb%>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_fb" style="color:blue;"><%if (is_fb=='1'){out.println("Must have Facebook Link");}%></p>
@@ -184,7 +184,7 @@
                         <label class="control-label" for="name-input-field">University </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="university" value=<%= new_university%>>
+                        <input class="form-control" type="text" name="new_university" value=<%= new_university%>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_university" style="color:blue;"><%if (is_university=='1'){out.println("Must have university");}%></p>
@@ -194,7 +194,7 @@
                         <label class="control-label" for="name-input-field">Faculty </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="faculty" value=<%= new_faculty%>>
+                        <input class="form-control" type="text" name="new_faculty" value=<%= new_faculty%>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_faculty" style="color:blue;"><%if (is_faculty=='1'){out.println("Must have faculty");}%></p>
@@ -204,7 +204,7 @@
                         <label class="control-label" for="name-input-field">Phone </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="phone" value=<%= new_phone%>>
+                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="new_phone" value=<%= new_phone%>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_phone" style="color:blue;"><%if (is_phone=='1'){out.println("Incorrect Phone Number");}%></p>
@@ -214,12 +214,12 @@
                         <label class="control-label" for="name-input-field">In game name</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="ign" value=<%= new_ign%>>
+                        <input class="form-control" type="text" name="new_ign" value=<%= new_ign%>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_ign" style="color:blue;"><%if (is_ign=='1'){out.println("Must have In-game name");}%></p>
                 </div>
-                <button class="btn btn-default submit-button" id="buttonn" type="submit">Submit</button>
+                <button class="btn btn-default submit-button" id="buttonn" type="submit">Edit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>
         </div>  
