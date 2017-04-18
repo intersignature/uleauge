@@ -1,11 +1,16 @@
+<%-- 
+    Document   : EditSuccess
+    Created on : Apr 18, 2017, 9:23:09 PM
+    Author     : intersignature
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lastest</title>
+    <title>esport</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
@@ -76,20 +81,15 @@
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
-    <div class="login-card"><img class="img-responsive profile-img-card" src="assets/img/logo.png">
-        <p class="text-danger profile-name-card">Username or Password incorrect</p>
-        <form class="form-signin"><span class="reauth-email"> </span>
-            <input class="form-control" type="Username" required="" placeholder="Username" id="inputEmail">
-            <input class="form-control" type="Password" required="" placeholder="Password" id="inputPassword">
-            <div class="checkbox">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">Remember me</label>
-                </div>
-            </div>
-            <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
-        </form><a href="#" class="forgot-password">Forgot your password?</a></div>
-    <footer id="footer001">
+    <div class="row register-form">
+        <div class="col-md-8 col-md-offset-2">
+            <form class="form-horizontal custom-form" action="SignupServlet" id="signup" name="signup" method="POST">
+                <h1>U-LEAUGE Edit Profile</h1>
+                <p> Your profile was updated successfully.</p>
+            </form>
+        </div>  
+    </div>
+    <footer>
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
                 <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
