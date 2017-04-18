@@ -43,7 +43,7 @@
         String faculty = (String) session.getAttribute("faculty"); 
         String phone = (String) session.getAttribute("phone"); 
         String ign = (String) session.getAttribute("ign"); 
-        String id = (String) session.getAttribute("P_ID"); 
+        int id = (int) session.getAttribute("P_ID"); 
     %>
     <header>
          <!-- Second navbar for sign in -->
@@ -100,7 +100,7 @@
     </ul>
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">
-            <form class="form-horizontal custom-form" action="EditProfileServlet" id="signup" name="signup" method="POST">
+            <form class="form-horizontal custom-form" action="CheckEditProfileServlet" id="signup" name="signup" method="POST">
                 <h1>U-LEAUGE Edit Profile</h1>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
@@ -115,7 +115,7 @@
                         <label class="control-label" for="pawssword-input-field">Password </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="password" ><p>*Require<br>
+                        <input class="form-control" type="password" name="new_password" ><p>*Require<br>
                         *Your password must have at least one upper case, one lower case, one numeric</p>
                     </div>
                     <p id="cau_password" style="color:blue;"></p>
@@ -125,7 +125,7 @@
                         <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="rep_password">
+                        <input class="form-control" type="password" name="new_rep_password">
                         <p>*Require<br>*Must same above password</p>  
                     </div>
                     <p id="cau_rep_password" style="color:blue;"></p>
@@ -135,7 +135,7 @@
                         <label class="control-label" for="name-input-field" >Name </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="fname" value=<%= fname %>>
+                        <input class="form-control" type="text" name="new_fname" value=<%= fname %>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_name" style="color:blue;"></p>
@@ -145,7 +145,7 @@
                         <label class="control-label" for="name-input-field">Lastname </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="lname" value=<%= lname %>>
+                        <input class="form-control" type="text" name="new_lname" value=<%= lname %>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_lname" style="color:blue;"></p>
@@ -155,7 +155,7 @@
                         <label class="control-label" for="email-input-field">Email </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="email" value=<%= email %>>
+                        <input class="form-control" type="text" name="new_email" value=<%= email %>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_email" style="color:blue;"></p>
@@ -165,7 +165,7 @@
                         <label class="control-label" for="name-input-field">Facebook Link</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="fb" value=<%= fb %>>
+                        <input class="form-control" type="text" name="new_fb" value=<%= fb %>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_fb" style="color:blue;"></p>
@@ -175,7 +175,7 @@
                         <label class="control-label" for="name-input-field">University </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="university" value=<%= university %>>
+                        <input class="form-control" type="text" name="new_university" value=<%= university %>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_university" style="color:blue;"></p>
@@ -185,7 +185,7 @@
                         <label class="control-label" for="name-input-field">Faculty </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="faculty" value=<%= faculty %>>
+                        <input class="form-control" type="text" name="new_faculty" value=<%= faculty %>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_faculty" style="color:blue;"></p>
@@ -195,7 +195,7 @@
                         <label class="control-label" for="name-input-field">Phone </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="phone" value=<%= phone %>>
+                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="new_phone" value=<%= phone %>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_phone" style="color:blue;"></p>
@@ -205,7 +205,7 @@
                         <label class="control-label" for="name-input-field">In game name</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="ign" value=<%= ign %>>
+                        <input class="form-control" type="text" name="new_ign" value=<%= ign %>>
                         <p>*Require</p>
                     </div>
                     <p id="cau_ign" style="color:blue;"></p>

@@ -51,9 +51,10 @@ public class EditProfileServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession();
-            int p_id = (int) session.getAttribute("P_ID");
+            
             try {
+                HttpSession session = request.getSession();
+                int p_id = (int) session.getAttribute("P_ID");
                 Statement conn = connection.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Player where P_ID = " + p_id;
                 ResultSet rs = conn.executeQuery(sql);

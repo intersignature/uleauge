@@ -1,13 +1,12 @@
 <%-- 
-    Document   : EditProfileJSP
-    Created on : Apr 18, 2017, 9:43:35 AM
-    Author     : LAB203_42
+    Document   : EditErrorJSP
+    Created on : Apr 18, 2017, 7:58:20 PM
+    Author     : intersignature
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,20 +30,6 @@
 </head>
 
 <body>
-    <%
-        session = request.getSession();
-        String username = (String) session.getAttribute("username");
-        String password = (String) session.getAttribute("password"); 
-        String fname = (String) session.getAttribute("fname"); 
-        String lname = (String) session.getAttribute("lname"); 
-        String email = (String) session.getAttribute("email"); 
-        String fb = (String) session.getAttribute("fb"); 
-        String university = (String) session.getAttribute("university"); 
-        String faculty = (String) session.getAttribute("faculty"); 
-        String phone = (String) session.getAttribute("phone"); 
-        String ign = (String) session.getAttribute("ign"); 
-        int id = (int) session.getAttribute("P_ID"); 
-    %>
     <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
@@ -61,34 +46,32 @@
             <img src="assets/img/logo.png"  id = "logo">
           <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
-        <ul class="nav navbar-nav navbar-right" id="userbar">
-             <% session = request.getSession();
-   
-                    String imgdir = "assets/img/"+username+".jpg";
- 
-                %>
-                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
-            <li id="namepro">
-               
-                <img src= "<% out.println(imgdir); %>" id="imgpro">
-                <div id = "namepro2">
-                    <h4><b><% out.println(username); %></b></h4>
-                </div>
-               
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signup.html">Sign up</a></li>
+            <li>
+              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
             </li>
-            </a>
-     
-            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="indexJSP.jsp" />
-             <li >
-             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
-
-            </li>
-            </form>
           </ul>
-       
+          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="indexJSP.jsp" />
+              <div class="form-group">
+                <label class="sr-only" for="username">Username</label>
+                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="password">Password</label>
+                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
+              </div>
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+          </div>
+        </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
+
     </header>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
@@ -98,6 +81,29 @@
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
     </ul>
+    <% session = request.getSession();
+       char is_password = (char) session.getAttribute("is_password");
+       char is_rep_password = (char) session.getAttribute("is_rep-password");
+       char is_fname = (char) session.getAttribute("is_fname");
+       char is_lname = (char) session.getAttribute("is_lname");
+       char is_email = (char) session.getAttribute("is_email");
+       char is_fb = (char) session.getAttribute("is_fb");
+       char is_university = (char) session.getAttribute("is_university");
+       char is_faculty = (char) session.getAttribute("is_faculty");
+       char is_phone = (char) session.getAttribute("is_phone");
+       char is_ign = (char) session.getAttribute("is_ign");
+       String username = (String) session.getAttribute("username");
+       String new_password = (String) session.getAttribute("new_password");
+       String new_fname = (String) session.getAttribute("new_fname");
+       String new_lname = (String) session.getAttribute("new_lname");
+       String new_email = (String) session.getAttribute("new_email");
+       String new_fb = (String) session.getAttribute("new_fb");
+       String new_university = (String) session.getAttribute("new_university");
+       String new_faculty = (String) session.getAttribute("new_faculty");
+       String new_phone = (String) session.getAttribute("new_phone");
+       String new_ign = (String) session.getAttribute("new_ign");
+       int id = (int) session.getAttribute("id");
+                %>
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">
             <form class="form-horizontal custom-form" action="CheckEditProfileServlet" id="signup" name="signup" method="POST">
@@ -107,110 +113,110 @@
                         <label class="control-label" for="name-input-field">Username </label> 
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="username" value=<%= username %> disabled> <p>*Require</p>
+                        <input class="form-control" type="text" name="username" value=<%= username%> disabled> <p>*Require</p>
                     </div>
-                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="pawssword-input-field">Password </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="new_password" ><p>*Require<br>
+                        <input class="form-control" type="password" name="password"><p>*Require<br>
                         *Your password must have at least one upper case, one lower case, one numeric</p>
                     </div>
-                    <p id="cau_password" style="color:blue;"></p>
+                    <p id="cau_password" style="color:blue;"><%if (is_password=='1'){out.println("Incorrect Password");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="new_rep_password">
+                        <input class="form-control" type="password" name="rep_password">
                         <p>*Require<br>*Must same above password</p>  
                     </div>
-                    <p id="cau_rep_password" style="color:blue;"></p>
+                    <p id="cau_rep_password" style="color:blue;"><%if (is_rep_password=='1'){out.println("Incorrect Repeat Password");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field" >Name </label>
+                        <label class="control-label" for="name-input-field">Name </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_fname" value=<%= fname %>>
+                        <input class="form-control" type="text" name="fname" value=<%= new_fname%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_name" style="color:blue;"></p>
+                    <p id="cau_name" style="color:blue;"><%if (is_fname=='1'){out.println("Incorrect Name");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Lastname </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_lname" value=<%= lname %>>
+                        <input class="form-control" type="text" name="lname" value=<%= new_lname%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_lname" style="color:blue;"></p>
+                    <p id="cau_lname" style="color:blue;"><%if (is_lname=='1'){out.println("Incorrect Lastname");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="email-input-field">Email </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_email" value=<%= email %>>
+                        <input class="form-control" type="text" name="email" value=<%= new_email%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_email" style="color:blue;"></p>
+                    <p id="cau_email" style="color:blue;"><%if (is_email=='1'){out.println("Incorrect Email");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Facebook Link</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_fb" value=<%= fb %>>
+                        <input class="form-control" type="text" inputmode="url" name="fb" value=<%= new_fb%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_fb" style="color:blue;"></p>
+                    <p id="cau_fb" style="color:blue;"><%if (is_fb=='1'){out.println("Must have Facebook Link");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">University </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_university" value=<%= university %>>
+                        <input class="form-control" type="text" name="university" value=<%= new_university%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_university" style="color:blue;"></p>
+                    <p id="cau_university" style="color:blue;"><%if (is_university=='1'){out.println("Must have university");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Faculty </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_faculty" value=<%= faculty %>>
+                        <input class="form-control" type="text" name="faculty" value=<%= new_faculty%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_faculty" style="color:blue;"></p>
+                    <p id="cau_faculty" style="color:blue;"><%if (is_faculty=='1'){out.println("Must have faculty");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Phone </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="new_phone" value=<%= phone %>>
+                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="phone" value=<%= new_phone%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_phone" style="color:blue;"></p>
+                    <p id="cau_phone" style="color:blue;"><%if (is_phone=='1'){out.println("Incorrect Phone Number");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">In game name</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_ign" value=<%= ign %>>
+                        <input class="form-control" type="text" name="ign" value=<%= new_ign%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_ign" style="color:blue;"></p>
+                    <p id="cau_ign" style="color:blue;"><%if (is_ign=='1'){out.println("Must have In-game name");}%></p>
                 </div>
-                <button class="btn btn-default submit-button" id="buttonn" type="submit">Edit</button>
+                <button class="btn btn-default submit-button" id="buttonn" type="submit">Submit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>
         </div>  
