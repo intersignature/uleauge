@@ -3,6 +3,10 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.text.SimpleDateFormat;
+import java.io.*;
+import java.util.*;
+import java.sql.*;
 
 public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -11,10 +15,29 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_out_value_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_query_var_dataSource;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_out_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_sql_query_var_dataSource = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_c_out_value_nobody.release();
+    _jspx_tagPool_sql_query_var_dataSource.release();
+    _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -44,6 +67,10 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write(" \r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
@@ -210,6 +237,63 @@ out.println(id);
       out.write("<div>\r\n");
       out.write("    <div class=\"tab-content\">\r\n");
       out.write("        <div role=\"tabpanel\" class=\"tab-pane active\" id=\"tab-1\">\r\n");
+      out.write("            <!--*******************************************!-->\r\n");
+      out.write("            ");
+      if (_jspx_meth_sql_setDataSource_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write(" \r\n");
+      out.write("        ");
+      if (_jspx_meth_sql_query_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("            ");
+      //  c:forEach
+      org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+      _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+      _jspx_th_c_forEach_0.setParent(null);
+      _jspx_th_c_forEach_0.setVar("row");
+      _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${result.rows}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+      int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+      try {
+        int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+        if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+          do {
+            out.write("\r\n");
+            out.write("                    \r\n");
+            out.write("                    <tr>\r\n");
+            out.write("                        <td>");
+            if (_jspx_meth_c_out_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+              return;
+            out.write("</td>\r\n");
+            out.write("                        <td>");
+            out.print(new java.util.Date() );
+            out.write("</td>\r\n");
+            out.write("                      \r\n");
+            out.write("                        ");
+ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            out.write("\r\n");
+            out.write("               \r\n");
+            out.write("                         \r\n");
+            out.write("                    </tr>\r\n");
+            out.write("                      ");
+            int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+            if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+              break;
+          } while (true);
+        }
+        if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+          return;
+        }
+      } catch (Throwable _jspx_exception) {
+        while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+          out = _jspx_page_context.popBody();
+        _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+      } finally {
+        _jspx_th_c_forEach_0.doFinally();
+        _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+      }
+      out.write("\r\n");
       out.write("            <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
       out.write("    <h4>IEM KATOWICE 2017</h4>\r\n");
       out.write("    <div class=\"tourboard\">\r\n");
@@ -240,6 +324,8 @@ out.println(id);
       out.write("        </div>\r\n");
       out.write("    </div>\r\n");
       out.write("</div>\r\n");
+      out.write("              \r\n");
+      out.write("              <!--*******************************************!-->\r\n");
       out.write("        </div>\r\n");
       out.write("        <div role=\"tabpanel\" class=\"tab-pane\" id=\"tab-2\">\r\n");
       out.write("            <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
@@ -388,5 +474,91 @@ out.println(id);
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_sql_setDataSource_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:setDataSource
+    org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag _jspx_th_sql_setDataSource_0 = (org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag) _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.get(org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag.class);
+    _jspx_th_sql_setDataSource_0.setPageContext(_jspx_page_context);
+    _jspx_th_sql_setDataSource_0.setParent(null);
+    _jspx_th_sql_setDataSource_0.setVar("dbsource");
+    _jspx_th_sql_setDataSource_0.setDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+    _jspx_th_sql_setDataSource_0.setUrl("jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB");
+    _jspx_th_sql_setDataSource_0.setUser("adminesport@esportproject");
+    _jspx_th_sql_setDataSource_0.setPassword("Esport2017");
+    int _jspx_eval_sql_setDataSource_0 = _jspx_th_sql_setDataSource_0.doStartTag();
+    if (_jspx_th_sql_setDataSource_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.reuse(_jspx_th_sql_setDataSource_0);
+      return true;
+    }
+    _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.reuse(_jspx_th_sql_setDataSource_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_sql_query_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:query
+    org.apache.taglibs.standard.tag.rt.sql.QueryTag _jspx_th_sql_query_0 = (org.apache.taglibs.standard.tag.rt.sql.QueryTag) _jspx_tagPool_sql_query_var_dataSource.get(org.apache.taglibs.standard.tag.rt.sql.QueryTag.class);
+    _jspx_th_sql_query_0.setPageContext(_jspx_page_context);
+    _jspx_th_sql_query_0.setParent(null);
+    _jspx_th_sql_query_0.setDataSource((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dbsource}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_sql_query_0.setVar("result");
+    int[] _jspx_push_body_count_sql_query_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_sql_query_0 = _jspx_th_sql_query_0.doStartTag();
+      if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+          out = _jspx_page_context.pushBody();
+          _jspx_push_body_count_sql_query_0[0]++;
+          _jspx_th_sql_query_0.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+          _jspx_th_sql_query_0.doInitBody();
+        }
+        do {
+          out.write("\r\n");
+          out.write("            SELECT * from db_accessadmin.Tournament;\r\n");
+          out.write("        ");
+          int evalDoAfterBody = _jspx_th_sql_query_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+        if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE)
+          out = _jspx_page_context.popBody();
+          _jspx_push_body_count_sql_query_0[0]--;
+      }
+      if (_jspx_th_sql_query_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sql_query_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sql_query_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sql_query_0.doFinally();
+      _jspx_tagPool_sql_query_var_dataSource.reuse(_jspx_th_sql_query_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_StartDate}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_0 = _jspx_th_c_out_0.doStartTag();
+    if (_jspx_th_c_out_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
+    return false;
   }
 }
