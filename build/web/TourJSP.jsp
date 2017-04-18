@@ -4,13 +4,7 @@
     Author     : Barjord
 --%>
 
-<%@page import="java.util.Date"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
@@ -159,37 +153,22 @@
 	</div>
 </div>
 <div>
-    <div role="tabpanel" class="tab-pane" id="tab-1">
     <div class="tab-content">
-        
-            <!--*******************************************!-->
-            <sql:setDataSource var="dbsource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                           url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
-                           user="adminesport@esportproject"  password="Esport2017"/>
- 
-        <sql:query dataSource="${dbsource}" var="result">
-            SELECT * from db_accessadmin.Tournament;
-        </sql:query>
-            <c:forEach var="row" items="${result.rows}">
-
-                      <fmt:formatDate  value="${row.Tour_StartDate}" pattern="yyyy-mm-dd" var="tour_start" /> 
-                      <fmt:formatDate  value="${row.Tour_EndDate}" pattern="yyyy-mm-dd" var="tour_end" /> 
-                      <fmt:formatDate  value="<%=new java.util.Date() %>" pattern="yyyy-mm-dd"  var="cur" />
-                      <c:if test="${tour_start <  cur}">
-                                <div class="col-md-12 col-md-offset-0" id="board">
-    <h4>${row.Tour_Name}</h4>
+        <div role="tabpanel" class="tab-pane active" id="tab-1">
+            <div class="col-md-12 col-md-offset-0" id="board">
+    <h4>IEM KATOWICE 2017</h4>
     <div class="tourboard">
         <div class="pictour"><img src="assets/img/IEM.jpg" id="logotour" /></div>
         <div class="calendar">
-            <div><b>ทำการแข่งขัน :<span style="color:#009fdb;">${tour_start} - ${tour_end}</span></b>
+            <div><b>เปิดรับสมัคร :<span style="color:#009fdb;">31/03/2017 - 17/03/2017</span></b>
                 <br />
                 <br />
             </div>
-            <div><b>สถานที่จัดแข่งขัน :<span style="color:#009fdb;">${row.Tour_Location}</span></b>
+            <div><b>จับสายการแข่งขัน :<span style="color:#009fdb;">20/03/2017</span></b>
                 <br />
                 <br />
             </div>
-            <div><b>เงินรางวัล :<span style="color:#009fdb;">${row.Tour_Reward}</span></b>
+            <div><b>ทำการแข่งขัน :<span style="color:#009fdb;">23/03/2017</span></b>
                 <br />
                 <br />
             </div>
@@ -206,12 +185,7 @@
         </div>
     </div>
 </div>
-                            </c:if>
-                     
-                   
-              </c:forEach>
-              <!--*******************************************!-->
-        
+        </div>
         <div role="tabpanel" class="tab-pane" id="tab-2">
             <div class="col-md-12 col-md-offset-0" id="board">
     <h4>IEM KATOWICE 2017</h4>
