@@ -30,58 +30,7 @@
 </head>
 
 <body>
-    <header>
-         <!-- Second navbar for sign in -->
-    <nav class="navbar navbar-default" id="headnav">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header" >
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <a href="indexJSP.jsp">
-            <img src="assets/img/logo.png"  id = "logo">
-          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.html">Sign up</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
-            </li>
-          </ul>
-          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="indexJSP.jsp" />
-              <div class="form-group">
-                <label class="sr-only" for="username">Username</label>
-                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
-              </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-          </div>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-
-    </header>
-    <ul class="nav nav-pills categories">
-        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-    </ul>
-    <% session = request.getSession();
+     <% session = request.getSession();
        char is_password = (char) session.getAttribute("is_password");
        char is_rep_password = (char) session.getAttribute("is_rep-password");
        char is_fname = (char) session.getAttribute("is_fname");
@@ -104,6 +53,60 @@
        String new_ign = (String) session.getAttribute("new_ign");
        int id = (int) session.getAttribute("id");
                 %>
+    <header>
+         <!-- Second navbar for sign in -->
+    <nav class="navbar navbar-default" id="headnav">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" >
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a href="indexJSP.jsp">
+            <img src="assets/img/logo.png"  id = "logo">
+          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right" id="userbar">
+             <% session = request.getSession();
+              
+                    String imgdir = "assets/img/"+username+".jpg";
+              
+                %>
+                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
+            <li id="namepro">
+               
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <div id = "namepro2">
+                    <h4><b><% out.println(username); %></b></h4>
+                </div>
+               
+            </li>
+            </a>
+     
+            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="indexJSP.jsp" />
+             <li >
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+
+            </li>
+            </form>
+          </ul>
+       
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    </header>
+    <ul class="nav nav-pills categories">
+        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
+        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
+        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+        <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
+        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
+        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+    </ul>
+   
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">
             <form class="form-horizontal custom-form" action="CheckEditProfileServlet" id="signup" name="signup" method="POST">
