@@ -11,23 +11,18 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
-<<<<<<< HEAD
-=======
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_query_var_dataSource;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody;
 
->>>>>>> origin/master
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
   }
 
-<<<<<<< HEAD
-=======
   public void _jspInit() {
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
@@ -44,7 +39,6 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.release();
   }
 
->>>>>>> origin/master
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
         throws java.io.IOException, ServletException {
 
@@ -72,12 +66,9 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-<<<<<<< HEAD
-=======
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
->>>>>>> origin/master
       out.write("<!DOCTYPE html>\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
@@ -245,70 +236,6 @@ out.println(id);
       out.write("\t</div>\r\n");
       out.write("</div>\r\n");
       out.write("<div>\r\n");
-<<<<<<< HEAD
-      out.write("    <div class=\"tab-content\">\r\n");
-      out.write("        <div role=\"tabpanel\" class=\"tab-pane active\" id=\"tab-1\">\r\n");
-      out.write("            <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
-      out.write("    <h4>IEM KATOWICE 2017</h4>\r\n");
-      out.write("    <div class=\"tourboard\">\r\n");
-      out.write("        <div class=\"pictour\"><img src=\"assets/img/IEM.jpg\" id=\"logotour\" /></div>\r\n");
-      out.write("        <div class=\"calendar\">\r\n");
-      out.write("            <div><b>เปิดรับสมัคร :<span style=\"color:#009fdb;\">31/03/2017 - 17/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("            <div><b>จับสายการแข่งขัน :<span style=\"color:#009fdb;\">20/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("            <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">23/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("        </div>\r\n");
-      out.write("        <div class=\"allbtn\">\r\n");
-      out.write("             <a  style=\"display:block\" href=\"iemdesJSP.jsp\">\r\n");
-      out.write("            <div class=\"destour\">\r\n");
-      out.write("                <h3 class=\"des\">รายละเอียดเพิ่มเติม </h3></div>\r\n");
-      out.write("                </a>\r\n");
-      out.write("            <a  data-toggle=\"modal\" href=\"#shortModal\" >\r\n");
-      out.write("            <div  class=\"destour\">\r\n");
-      out.write("                <h3 class=\"des\">สมัครแข่งขัน</h3></div>\r\n");
-      out.write("            </a>\r\n");
-      out.write("        </div>\r\n");
-      out.write("    </div>\r\n");
-      out.write("</div>\r\n");
-      out.write("        </div>\r\n");
-      out.write("        <div role=\"tabpanel\" class=\"tab-pane\" id=\"tab-2\">\r\n");
-      out.write("            <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
-      out.write("    <h4>IEM KATOWICE 2017</h4>\r\n");
-      out.write("    <div class=\"tourboard\">\r\n");
-      out.write("        <div class=\"pictour\"><img src=\"assets/img/dotatour.jpg\" id=\"logotour\" /></div>\r\n");
-      out.write("        <div class=\"calendar\">\r\n");
-      out.write("            <div><b>เปิดรับสมัคร :<span style=\"color:#009fdb;\">31/03/2017 - 17/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("            <div><b>จับสายการแข่งขัน :<span style=\"color:#009fdb;\">20/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("            <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">23/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("        </div>\r\n");
-      out.write("        <div class=\"allbtn\">\r\n");
-      out.write("             <a  style=\"display:block\" href=\"rulesJSP.jsp\">\r\n");
-      out.write("            <div class=\"destour\">\r\n");
-      out.write("                <h3 class=\"des\">กฏกติกา</h3></div>\r\n");
-      out.write("            </a>\r\n");
-      out.write("            <a  style=\"display:block\" href=\"tourwayJSP.jsp\">\r\n");
-      out.write("            <div class=\"destour\">\r\n");
-      out.write("                <h3 class=\"des\">ดูสายการแข่งขัน</h3></div>\r\n");
-      out.write("                </a>\r\n");
-      out.write("        </div>\r\n");
-=======
       out.write("    ");
       if (_jspx_meth_sql_setDataSource_0(_jspx_page_context))
         return;
@@ -385,7 +312,6 @@ out.println(id);
       }
       out.write("\r\n");
       out.write("              <!--*******************************************!-->\r\n");
->>>>>>> origin/master
       out.write("    </div>\r\n");
       out.write("       \r\n");
       out.write("        <div role=\"tabpanel\" class=\"tab-pane\" id=\"tab-2\">\r\n");
@@ -627,8 +553,6 @@ out.println(id);
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
   }
-<<<<<<< HEAD
-=======
 
   private boolean _jspx_meth_sql_setDataSource_0(PageContext _jspx_page_context)
           throws Throwable {
@@ -1016,5 +940,4 @@ out.println(id);
     _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_2);
     return false;
   }
->>>>>>> origin/master
 }

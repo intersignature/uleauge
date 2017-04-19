@@ -98,7 +98,7 @@ public final class indexJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("          </button>\r\n");
       out.write("             <a href=\"indexJSP.jsp\">\r\n");
       out.write("            <img src=\"assets/img/logo.png\"  id = \"logo\">\r\n");
-      out.write("          <a class=\"navbar-brand\" href=\"indexJSP.JSP\">U-LEAGUE</a>\r\n");
+      out.write("          <a class=\"navbar-brand\" href=\"indexJSP.jsp\">U-LEAGUE</a>\r\n");
       out.write("        </div>\r\n");
       out.write("        <!-- Collect the nav links, forms, and other content for toggling -->\r\n");
       out.write("        <div class=\"collapse navbar-collapse\" id=\"navbar-collapse-2\">\r\n");
@@ -152,6 +152,7 @@ public final class indexJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
                     String username = (String) session.getAttribute("username"); 
                     String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
+                    String roles = (String) session.getAttribute("roles");
                 
       out.write("\r\n");
       out.write("                <a href=\"Player_001Servlet?player=");
@@ -202,10 +203,10 @@ out.println(id);
       out.write("                        <div class=\"col-md-12\" id=\"news\">\r\n");
       out.write("                            <h1>NEWS</h1></div>\r\n");
       out.write("                        <div class=\"col-md-12\">\r\n");
-      out.write("                            <h1>Ok.Paidai ตบ Na'vi ยับ</h1>\r\n");
-      out.write("                            <div><img src=\"assets/img/ss.jpg\">\r\n");
+      out.write("                            <a href=\"news1.jsp\"><h1>BaBaRouz คว้าแชมป์ Gview FIFA Cup 2017 #2</h1></a>\r\n");
+      out.write("                            <div> <a href=\"news1.jsp\"><img src=\"assets/img/news1.jpg\" width=\"560\" height=\"300\"></a>\r\n");
       out.write("                                <div>\r\n");
-      out.write("                                    <h4>เมื่อวันที่31กุมภาพันธ์ ทีมยักษ์ใหญ่Na'vi โดนOk.Paidai ตบยับ 16-0 เป็นเรื่องน่าเสียดายที่ Na'vi อดได้แชมป์&nbsp; </h4></div>\r\n");
+      out.write("                                    <h4>&nbsp;&nbsp;&nbsp;เรียกว่าเป็นรายการสามัญประจำเว็บไซต์ของเราเลยก็ว่าได้ครับ กับการแข่งขัน FIFA ONLINE 3 ที่เข้มข้นทุกเดือน ได้รับการสนับสนุนจาก Gview ที่เข้ามาเปิดโอกาสให้กับพี่น้องที่ชื่นชอบการแข่งขัน</h4></div>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");

@@ -5,8 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-=======
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -161,12 +160,7 @@
 	</div>
 </div>
 <div>
-<<<<<<< HEAD
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="tab-1">
-            <div class="col-md-12 col-md-offset-0" id="board">
-    <h4>IEM KATOWICE 2017</h4>
-=======
+
     <sql:setDataSource var="dbsource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
                            url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
                            user="adminesport@esportproject"  password="Esport2017"/>
@@ -187,7 +181,7 @@
                       <c:if test="${tour_start >  cur}">
                                 <div class="col-md-12 col-md-offset-0" id="board">
     <h4>${row.Tour_Name}</h4>
->>>>>>> origin/master
+    
     <div class="tourboard">
         <div class="pictour"><img src="assets/img/IEM.jpg" id="logotour" /></div>
         <div class="calendar">
@@ -216,9 +210,7 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
-        </div>
-=======
+
                             </c:if>
                      
                    
@@ -226,7 +218,6 @@
               <!--*******************************************!-->
     </div>
        
->>>>>>> origin/master
         <div role="tabpanel" class="tab-pane" id="tab-2">
             <c:forEach var="row" items="${result.rows}">
 
