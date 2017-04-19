@@ -10,10 +10,7 @@
 }
 
 body{
-    margin:0px;
-    padding:0px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:12px;
+
     background: white;
 }
 
@@ -153,6 +150,8 @@ body{
 .top_menu_r  a.active{ background-position:0 -55px;}
 
 .content_me{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:12px;
     width:1000px;
     height:auto;
     margin:0 auto;
@@ -799,9 +798,9 @@ body{
     top:-110px;
     float:right;
 }
-p {color:#CCC;}
-b {color:#CCC;}
-span {color:#CCC;}
+.content_me p {color:#CCC;}
+.content_me b {color:#CCC;}
+content_me span {color:#CCC;}
 .content_me .news .btn_me{
     width:160px;
     height:44px;
@@ -1011,7 +1010,7 @@ a.btn_gold3{ background:url(../img/btn_gold_normal3.png) no-repeat; width:10px !
 
 
 
-h2{
+.content_me h2{
     color:#b9b9b9;
     font-family: 'PSL-Display';
     font-size:26px;
@@ -1019,7 +1018,7 @@ h2{
     letter-spacing:1px;
     margin-top: -1px;
 }
-h3{
+.content_me h3{
     color:#e3bd57;
     font-family: 'PSL-Display';
     font-size:26px;
@@ -1027,19 +1026,20 @@ h3{
     letter-spacing:1px;
     margin-top: -1px;
 }
-h4{
-    font-weight:bold;
+.content_me h4{
+font-weight:bold;
     font-size:13px;
     color:#e3bd57;
 }
-h5{
+
+.content_me h5{
     color:#5b4918;
     font-weight:bold;
     font-size:11px;
     position:relative;
     bottom:-12px;
 }
-h6{
+.content_me h6{
     color:#999;
     margin:5px 8px;
     font-size:11px;
@@ -1049,6 +1049,12 @@ h6{
     height:1px;
     background:#1E1E1E;
     margin:12.5px 0;
+}
+#namepro2{
+      float: right;
+    margin-left: 6px;
+    margin-top: 0px;
+    
 }
 
 

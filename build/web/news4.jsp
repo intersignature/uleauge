@@ -35,7 +35,7 @@
         <% if (session.getAttribute("suc") == null) { %>
         <% int suc = 0;
             session.setAttribute("suc", suc);
-            response.sendRedirect("newsJSP.jsp");
+            response.sendRedirect("news4.jsp");
         %>
         <% } else if ((int) session.getAttribute("suc") == 0) {%>
         <header>
@@ -64,7 +64,7 @@
                         </ul>
                         <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
                             <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                                <input type="hidden" name="from" value="newsJSP.jsp" />
+                                <input type="hidden" name="from" value="news4.jsp" />
                                 <div class="form-group">
 
                                     <label class="sr-only" for="username">Username</label>
@@ -118,7 +118,7 @@
                         </a>
 
                         <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                            <input type="hidden" name="from" value="newsJSP.jsp" />
+                            <input type="hidden" name="from" value="news4.jsp" />
                             <li >
                                 <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -191,3 +191,12 @@
                 </div>
             </div>
         </footer>
+            <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+    <script src="assets/js/treejs.js"></script>
+    <script src="assets/js/popupjs.js"></script>
+   <link rel="stylesheet" href="assets/css/main.css">
+</body>
+
+</html>
