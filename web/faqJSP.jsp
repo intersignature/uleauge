@@ -100,7 +100,8 @@
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
-                    String username = (String) session.getAttribute("username"); 
+                    String username = (String) session.getAttribute("username");
+                    String roles = (String) session.getAttribute("roles");
                     String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
                 %>

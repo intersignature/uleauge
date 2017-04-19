@@ -11,12 +11,40 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+<<<<<<< HEAD
+=======
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_query_var_dataSource;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody;
+
+>>>>>>> origin/master
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
   }
 
+<<<<<<< HEAD
+=======
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_sql_query_var_dataSource = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.release();
+    _jspx_tagPool_c_if_test.release();
+    _jspx_tagPool_sql_query_var_dataSource.release();
+    _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.release();
+  }
+
+>>>>>>> origin/master
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
         throws java.io.IOException, ServletException {
 
@@ -44,6 +72,12 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+<<<<<<< HEAD
+=======
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+>>>>>>> origin/master
       out.write("<!DOCTYPE html>\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
@@ -71,6 +105,9 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</head>\r\n");
       out.write("\r\n");
       out.write("<body>\r\n");
+      out.write("    ");
+session = request.getSession();
+      out.write("\r\n");
       out.write("   ");
  if (session.getAttribute("suc") == null) { 
       out.write("\r\n");
@@ -147,7 +184,7 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\r\n");
       out.write("        <ul class=\"nav navbar-nav navbar-right\" id=\"userbar\">\r\n");
       out.write("             ");
- session = request.getSession();
+ 
                     String username = (String) session.getAttribute("username"); 
                     String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
@@ -208,6 +245,7 @@ out.println(id);
       out.write("\t</div>\r\n");
       out.write("</div>\r\n");
       out.write("<div>\r\n");
+<<<<<<< HEAD
       out.write("    <div class=\"tab-content\">\r\n");
       out.write("        <div role=\"tabpanel\" class=\"tab-pane active\" id=\"tab-1\">\r\n");
       out.write("            <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
@@ -270,43 +308,239 @@ out.println(id);
       out.write("                <h3 class=\"des\">ดูสายการแข่งขัน</h3></div>\r\n");
       out.write("                </a>\r\n");
       out.write("        </div>\r\n");
+=======
+      out.write("    ");
+      if (_jspx_meth_sql_setDataSource_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        ");
+      if (_jspx_meth_sql_query_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("    <div class=\"tab-content\">\r\n");
+      out.write("        <div role=\"tabpanel\" class=\"tab-pane active\" id=\"tab-1\">\r\n");
+      out.write("         \r\n");
+      out.write("             <!--*******************************************!-->\r\n");
+      out.write("            \r\n");
+      out.write("            ");
+      //  c:forEach
+      org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+      _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+      _jspx_th_c_forEach_0.setParent(null);
+      _jspx_th_c_forEach_0.setVar("row");
+      _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${result.rows}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+      int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+      try {
+        int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+        if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+          do {
+            out.write("\r\n");
+            out.write("\r\n");
+            out.write("                      ");
+            if (_jspx_meth_fmt_formatDate_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+              return;
+            out.write(" \r\n");
+            out.write("                      ");
+            if (_jspx_meth_fmt_formatDate_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+              return;
+            out.write(" \r\n");
+            out.write("                      ");
+            //  fmt:formatDate
+            org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_2 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+            _jspx_th_fmt_formatDate_2.setPageContext(_jspx_page_context);
+            _jspx_th_fmt_formatDate_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+            _jspx_th_fmt_formatDate_2.setValue(new java.util.Date() );
+            _jspx_th_fmt_formatDate_2.setPattern("yyyy-MM-dd");
+            _jspx_th_fmt_formatDate_2.setVar("cur");
+            int _jspx_eval_fmt_formatDate_2 = _jspx_th_fmt_formatDate_2.doStartTag();
+            if (_jspx_th_fmt_formatDate_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+              _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_2);
+              return;
+            }
+            _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_2);
+            out.write("\r\n");
+            out.write("                      ");
+            if (_jspx_meth_c_if_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+              return;
+            out.write("\r\n");
+            out.write("                     \r\n");
+            out.write("                   \r\n");
+            out.write("              ");
+            int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+            if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+              break;
+          } while (true);
+        }
+        if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+          return;
+        }
+      } catch (Throwable _jspx_exception) {
+        while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+          out = _jspx_page_context.popBody();
+        _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+      } finally {
+        _jspx_th_c_forEach_0.doFinally();
+        _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+      }
+      out.write("\r\n");
+      out.write("              <!--*******************************************!-->\r\n");
+>>>>>>> origin/master
       out.write("    </div>\r\n");
-      out.write("</div>\r\n");
-      out.write("        </div>\r\n");
-      out.write("        <div role=\"tabpanel\" class=\"tab-pane\" id=\"tab-3\">\r\n");
-      out.write("            <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
-      out.write("    <h4>IEM KATOWICE 2017</h4>\r\n");
-      out.write("    <div class=\"tourboard\">\r\n");
-      out.write("        <div class=\"pictour\"><img src=\"assets/img/loltour.jpg\" id=\"logotour\" /></div>\r\n");
-      out.write("        <div class=\"calendar\">\r\n");
-      out.write("            <div><b>เปิดรับสมัคร :<span style=\"color:#009fdb;\">31/03/2017 - 17/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("            <div><b>จับสายการแข่งขัน :<span style=\"color:#009fdb;\">20/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("            <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">23/03/2017</span></b>\r\n");
-      out.write("                <br />\r\n");
-      out.write("                <br />\r\n");
-      out.write("            </div>\r\n");
-      out.write("        </div>\r\n");
-      out.write("        <div class=\"allbtn\">\r\n");
-      out.write("            <div class=\"destour\">\r\n");
-      out.write("                <h3 class=\"des\">ดูผลการแข่งขัน</h3></div>\r\n");
-      out.write("            <a style=\"display:block\" href=\"replayJSP.jsp\">\r\n");
-      out.write("            <div class=\"destour\">\r\n");
-      out.write("                <h3 class=\"des\">ดูการแข่งขันย้อนหลัง</h3></div>\r\n");
-      out.write("                            </a>\r\n");
+      out.write("       \r\n");
+      out.write("        <div role=\"tabpanel\" class=\"tab-pane\" id=\"tab-2\">\r\n");
+      out.write("            ");
+      //  c:forEach
+      org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+      _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+      _jspx_th_c_forEach_1.setParent(null);
+      _jspx_th_c_forEach_1.setVar("row");
+      _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${result.rows}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+      int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+      try {
+        int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+        if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+          do {
+            out.write("\r\n");
+            out.write("\r\n");
+            out.write("                      ");
+            if (_jspx_meth_fmt_formatDate_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+              return;
+            out.write(" \r\n");
+            out.write("                      ");
+            if (_jspx_meth_fmt_formatDate_4((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+              return;
+            out.write(" \r\n");
+            out.write("                      ");
+            //  fmt:formatDate
+            org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_5 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+            _jspx_th_fmt_formatDate_5.setPageContext(_jspx_page_context);
+            _jspx_th_fmt_formatDate_5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+            _jspx_th_fmt_formatDate_5.setValue(new java.util.Date() );
+            _jspx_th_fmt_formatDate_5.setPattern("yyyy-MM-dd");
+            _jspx_th_fmt_formatDate_5.setVar("cur");
+            int _jspx_eval_fmt_formatDate_5 = _jspx_th_fmt_formatDate_5.doStartTag();
+            if (_jspx_th_fmt_formatDate_5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+              _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_5);
+              return;
+            }
+            _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_5);
+            out.write("\r\n");
+            out.write("                      ");
+            if (_jspx_meth_c_if_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+              return;
+            out.write("\r\n");
+            out.write("                     \r\n");
+            out.write("                   \r\n");
+            out.write("              ");
+            int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+            if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+              break;
+          } while (true);
+        }
+        if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+          return;
+        }
+      } catch (Throwable _jspx_exception) {
+        while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+          out = _jspx_page_context.popBody();
+        _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+      } finally {
+        _jspx_th_c_forEach_1.doFinally();
+        _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+      }
       out.write("\r\n");
       out.write("        </div>\r\n");
-      out.write("             \r\n");
-      out.write("    </div>\r\n");
-      out.write("</div>\r\n");
+      out.write("        <div role=\"tabpanel\" class=\"tab-pane\" id=\"tab-3\">\r\n");
+      out.write("            ");
+      //  c:forEach
+      org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+      _jspx_th_c_forEach_2.setPageContext(_jspx_page_context);
+      _jspx_th_c_forEach_2.setParent(null);
+      _jspx_th_c_forEach_2.setVar("row");
+      _jspx_th_c_forEach_2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${result.rows}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+      int[] _jspx_push_body_count_c_forEach_2 = new int[] { 0 };
+      try {
+        int _jspx_eval_c_forEach_2 = _jspx_th_c_forEach_2.doStartTag();
+        if (_jspx_eval_c_forEach_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+          do {
+            out.write("\r\n");
+            out.write("\r\n");
+            out.write("                      ");
+            if (_jspx_meth_fmt_formatDate_6((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_2, _jspx_page_context, _jspx_push_body_count_c_forEach_2))
+              return;
+            out.write(" \r\n");
+            out.write("                      ");
+            if (_jspx_meth_fmt_formatDate_7((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_2, _jspx_page_context, _jspx_push_body_count_c_forEach_2))
+              return;
+            out.write(" \r\n");
+            out.write("                      ");
+            //  fmt:formatDate
+            org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_8 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+            _jspx_th_fmt_formatDate_8.setPageContext(_jspx_page_context);
+            _jspx_th_fmt_formatDate_8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_2);
+            _jspx_th_fmt_formatDate_8.setValue(new java.util.Date() );
+            _jspx_th_fmt_formatDate_8.setPattern("yyyy-MM-dd");
+            _jspx_th_fmt_formatDate_8.setVar("cur");
+            int _jspx_eval_fmt_formatDate_8 = _jspx_th_fmt_formatDate_8.doStartTag();
+            if (_jspx_th_fmt_formatDate_8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+              _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_8);
+              return;
+            }
+            _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_8);
+            out.write("\r\n");
+            out.write("                      ");
+            if (_jspx_meth_c_if_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_2, _jspx_page_context, _jspx_push_body_count_c_forEach_2))
+              return;
+            out.write("\r\n");
+            out.write("                     \r\n");
+            out.write("                   \r\n");
+            out.write("              ");
+            int evalDoAfterBody = _jspx_th_c_forEach_2.doAfterBody();
+            if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+              break;
+          } while (true);
+        }
+        if (_jspx_th_c_forEach_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+          return;
+        }
+      } catch (Throwable _jspx_exception) {
+        while (_jspx_push_body_count_c_forEach_2[0]-- > 0)
+          out = _jspx_page_context.popBody();
+        _jspx_th_c_forEach_2.doCatch(_jspx_exception);
+      } finally {
+        _jspx_th_c_forEach_2.doFinally();
+        _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_2);
+      }
+      out.write("\r\n");
+      out.write("        </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("            ");
+ if ((int)session.getAttribute("suc") == 0) { 
+      out.write("\r\n");
+      out.write("    <div id=\"shortModal\" class=\"modal modal-wide fade\">\r\n");
+      out.write("  <div class=\"modal-dialog\">\r\n");
+      out.write("    <div class=\"modal-content\">\r\n");
+      out.write("      <div class=\"modal-header\">\r\n");
+      out.write("        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\r\n");
+      out.write("        <h4 class=\"modal-title\">ล็อคอิน</h4>\r\n");
+      out.write("      </div>\r\n");
+      out.write("      <div class=\"modal-body\">\r\n");
+      out.write("        <p>กรุณาล็อคอินก่อนการสมัคร</p>\r\n");
+      out.write("        <div class=\"row\">\r\n");
+      out.write("            <div class=\"col-12-xs text-center\">\r\n");
+      out.write("                <button class=\"btn btn-success btn-md\"  data-dismiss=\"modal\" data-toggle=\"modal\" href=\"#shortModal-1\" >ยืนยัน</button>\r\n");
+      out.write("\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
-      out.write("<div id=\"shortModal\" class=\"modal modal-wide fade\">\r\n");
+      out.write("      </div>\r\n");
+      out.write("   \r\n");
+      out.write("    </div><!-- /.modal-content -->\r\n");
+      out.write("  </div><!-- /.modal-dialog -->\r\n");
+      out.write("</div><!-- /.modal -->   \r\n");
+ } else if ((int)session.getAttribute("suc") == 1){
+      out.write("\r\n");
+      out.write("   <div id=\"shortModal\" class=\"modal modal-wide fade\">\r\n");
       out.write("  <div class=\"modal-dialog\">\r\n");
       out.write("    <div class=\"modal-content\">\r\n");
       out.write("      <div class=\"modal-header\">\r\n");
@@ -338,6 +572,10 @@ out.println(id);
       out.write("    </div><!-- /.modal-content -->\r\n");
       out.write("  </div><!-- /.modal-dialog -->\r\n");
       out.write("</div><!-- /.modal -->\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+ } 
+      out.write("\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
       out.write("    </div>\r\n");
@@ -389,4 +627,394 @@ out.println(id);
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
   }
+<<<<<<< HEAD
+=======
+
+  private boolean _jspx_meth_sql_setDataSource_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:setDataSource
+    org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag _jspx_th_sql_setDataSource_0 = (org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag) _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.get(org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag.class);
+    _jspx_th_sql_setDataSource_0.setPageContext(_jspx_page_context);
+    _jspx_th_sql_setDataSource_0.setParent(null);
+    _jspx_th_sql_setDataSource_0.setVar("dbsource");
+    _jspx_th_sql_setDataSource_0.setDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+    _jspx_th_sql_setDataSource_0.setUrl("jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB");
+    _jspx_th_sql_setDataSource_0.setUser("adminesport@esportproject");
+    _jspx_th_sql_setDataSource_0.setPassword("Esport2017");
+    int _jspx_eval_sql_setDataSource_0 = _jspx_th_sql_setDataSource_0.doStartTag();
+    if (_jspx_th_sql_setDataSource_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.reuse(_jspx_th_sql_setDataSource_0);
+      return true;
+    }
+    _jspx_tagPool_sql_setDataSource_var_user_url_password_driver_nobody.reuse(_jspx_th_sql_setDataSource_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_sql_query_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:query
+    org.apache.taglibs.standard.tag.rt.sql.QueryTag _jspx_th_sql_query_0 = (org.apache.taglibs.standard.tag.rt.sql.QueryTag) _jspx_tagPool_sql_query_var_dataSource.get(org.apache.taglibs.standard.tag.rt.sql.QueryTag.class);
+    _jspx_th_sql_query_0.setPageContext(_jspx_page_context);
+    _jspx_th_sql_query_0.setParent(null);
+    _jspx_th_sql_query_0.setDataSource((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dbsource}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_sql_query_0.setVar("result");
+    int[] _jspx_push_body_count_sql_query_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_sql_query_0 = _jspx_th_sql_query_0.doStartTag();
+      if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+          out = _jspx_page_context.pushBody();
+          _jspx_push_body_count_sql_query_0[0]++;
+          _jspx_th_sql_query_0.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+          _jspx_th_sql_query_0.doInitBody();
+        }
+        do {
+          out.write("\r\n");
+          out.write("            SELECT * from db_accessadmin.Tournament;\r\n");
+          out.write("        ");
+          int evalDoAfterBody = _jspx_th_sql_query_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+        if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE)
+          out = _jspx_page_context.popBody();
+          _jspx_push_body_count_sql_query_0[0]--;
+      }
+      if (_jspx_th_sql_query_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sql_query_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sql_query_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sql_query_0.doFinally();
+      _jspx_tagPool_sql_query_var_dataSource.reuse(_jspx_th_sql_query_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_0.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_fmt_formatDate_0.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_StartDate}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatDate_0.setPattern("yyyy-MM-dd");
+    _jspx_th_fmt_formatDate_0.setVar("tour_start");
+    int _jspx_eval_fmt_formatDate_0 = _jspx_th_fmt_formatDate_0.doStartTag();
+    if (_jspx_th_fmt_formatDate_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_0);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_1.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_fmt_formatDate_1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_EndDate}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatDate_1.setPattern("yyyy-MM-dd");
+    _jspx_th_fmt_formatDate_1.setVar("tour_end");
+    int _jspx_eval_fmt_formatDate_1 = _jspx_th_fmt_formatDate_1.doStartTag();
+    if (_jspx_th_fmt_formatDate_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_if_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start >  cur}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
+    if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("                                <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
+        out.write("    <h4>");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</h4>\r\n");
+        out.write("    <div class=\"tourboard\">\r\n");
+        out.write("        <div class=\"pictour\"><img src=\"assets/img/IEM.jpg\" id=\"logotour\" /></div>\r\n");
+        out.write("        <div class=\"calendar\">\r\n");
+        out.write("            <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write(" - ");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_end}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("            <div><b>สถานที่จัดแข่งขัน :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("            <div><b>เงินรางวัล :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Reward}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("        </div>\r\n");
+        out.write("        <div class=\"allbtn\">\r\n");
+        out.write("             <a  style=\"display:block\" href=\"iemdesJSP.jsp\">\r\n");
+        out.write("            <div class=\"destour\">\r\n");
+        out.write("                <h3 class=\"des\">รายละเอียดเพิ่มเติม </h3></div>\r\n");
+        out.write("                </a>\r\n");
+        out.write("            <a  data-toggle=\"modal\" href=\"#shortModal\" >\r\n");
+        out.write("            <div  class=\"destour\">\r\n");
+        out.write("                <h3 class=\"des\">สมัครแข่งขัน</h3></div>\r\n");
+        out.write("            </a>\r\n");
+        out.write("        </div>\r\n");
+        out.write("    </div>\r\n");
+        out.write("</div>\r\n");
+        out.write("                            ");
+        int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_3 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_3.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+    _jspx_th_fmt_formatDate_3.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_StartDate}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatDate_3.setPattern("yyyy-MM-dd");
+    _jspx_th_fmt_formatDate_3.setVar("tour_start");
+    int _jspx_eval_fmt_formatDate_3 = _jspx_th_fmt_formatDate_3.doStartTag();
+    if (_jspx_th_fmt_formatDate_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_3);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_3);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_4(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_4 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_4.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+    _jspx_th_fmt_formatDate_4.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_EndDate}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatDate_4.setPattern("yyyy-MM-dd");
+    _jspx_th_fmt_formatDate_4.setVar("tour_end");
+    int _jspx_eval_fmt_formatDate_4 = _jspx_th_fmt_formatDate_4.doStartTag();
+    if (_jspx_th_fmt_formatDate_4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_4);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_4);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+    _jspx_th_c_if_1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start <  cur && tour_end > cur}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_1 = _jspx_th_c_if_1.doStartTag();
+    if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("            <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
+        out.write("    <h4>");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</h4>\r\n");
+        out.write("    <div class=\"tourboard\">\r\n");
+        out.write("        <div class=\"pictour\"><img src=\"assets/img/dotatour.jpg\" id=\"logotour\" /></div>\r\n");
+        out.write("        <div class=\"calendar\">\r\n");
+        out.write("           <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write(" - ");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_end}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("            <div><b>สถานที่จัดแข่งขัน :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("            <div><b>เงินรางวัล :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Reward}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("        </div>\r\n");
+        out.write("        <div class=\"allbtn\">\r\n");
+        out.write("             <a  style=\"display:block\" href=\"rulesJSP.jsp\">\r\n");
+        out.write("            <div class=\"destour\">\r\n");
+        out.write("                <h3 class=\"des\">กฏกติกา</h3></div>\r\n");
+        out.write("            </a>\r\n");
+        out.write("            <a  style=\"display:block\" href=\"tourwayJSP.jsp\">\r\n");
+        out.write("            <div class=\"destour\">\r\n");
+        out.write("                <h3 class=\"des\">ดูสายการแข่งขัน</h3></div>\r\n");
+        out.write("                </a>\r\n");
+        out.write("        </div>\r\n");
+        out.write("    </div>\r\n");
+        out.write("</div>\r\n");
+        out.write("                ");
+        int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_6(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_6 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_6.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_2);
+    _jspx_th_fmt_formatDate_6.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_StartDate}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatDate_6.setPattern("yyyy-MM-dd");
+    _jspx_th_fmt_formatDate_6.setVar("tour_start");
+    int _jspx_eval_fmt_formatDate_6 = _jspx_th_fmt_formatDate_6.doStartTag();
+    if (_jspx_th_fmt_formatDate_6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_6);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_6);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_7(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_7 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_7.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_2);
+    _jspx_th_fmt_formatDate_7.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_EndDate}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatDate_7.setPattern("yyyy-MM-dd");
+    _jspx_th_fmt_formatDate_7.setVar("tour_end");
+    int _jspx_eval_fmt_formatDate_7 = _jspx_th_fmt_formatDate_7.doStartTag();
+    if (_jspx_th_fmt_formatDate_7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_7);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_7);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_2);
+    _jspx_th_c_if_2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_end < cur}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_2 = _jspx_th_c_if_2.doStartTag();
+    if (_jspx_eval_c_if_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("            <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
+        out.write("    <h4>");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</h4>\r\n");
+        out.write("    <div class=\"tourboard\">\r\n");
+        out.write("        <div class=\"pictour\"><img src=\"assets/img/loltour.jpg\" id=\"logotour\" /></div>\r\n");
+        out.write("        <div class=\"calendar\">\r\n");
+        out.write("           <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write(" - ");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_end}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("            <div><b>สถานที่จัดแข่งขัน :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("            <div><b>เงินรางวัล :<span style=\"color:#009fdb;\">");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Reward}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("</span></b>\r\n");
+        out.write("                <br />\r\n");
+        out.write("                <br />\r\n");
+        out.write("            </div>\r\n");
+        out.write("        </div>\r\n");
+        out.write("        <div class=\"allbtn\">\r\n");
+        out.write("            <div class=\"destour\">\r\n");
+        out.write("                <h3 class=\"des\">ดูผลการแข่งขัน</h3></div>\r\n");
+        out.write("            <a style=\"display:block\" href=\"replayJSP.jsp\">\r\n");
+        out.write("            <div class=\"destour\">\r\n");
+        out.write("                <h3 class=\"des\">ดูการแข่งขันย้อนหลัง</h3></div>\r\n");
+        out.write("                            </a>\r\n");
+        out.write("        </div>\r\n");
+        out.write("    </div>\r\n");
+        out.write("</div>\r\n");
+        out.write("                ");
+        int evalDoAfterBody = _jspx_th_c_if_2.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_2);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_2);
+    return false;
+  }
+>>>>>>> origin/master
 }

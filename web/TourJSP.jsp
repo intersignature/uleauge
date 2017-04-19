@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+=======
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+>>>>>>> origin/master
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
@@ -32,6 +38,7 @@
 </head>
 
 <body>
+    <%session = request.getSession();%>
    <% if (session.getAttribute("suc") == null) { %>
     <% int suc = 0;
         session.setAttribute("suc", suc);
@@ -100,8 +107,9 @@
           <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
-             <% session = request.getSession();
+             <% 
                     String username = (String) session.getAttribute("username"); 
+                    String roles = (String) session.getAttribute("roles");
                     String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
                 %>
@@ -153,10 +161,33 @@
 	</div>
 </div>
 <div>
+<<<<<<< HEAD
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="tab-1">
             <div class="col-md-12 col-md-offset-0" id="board">
     <h4>IEM KATOWICE 2017</h4>
+=======
+    <sql:setDataSource var="dbsource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                           url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
+                           user="adminesport@esportproject"  password="Esport2017"/>
+
+        <sql:query dataSource="${dbsource}" var="result">
+            SELECT * from db_accessadmin.Tournament;
+        </sql:query>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab-1">
+         
+             <!--*******************************************!-->
+            
+            <c:forEach var="row" items="${result.rows}">
+
+                      <fmt:formatDate  value="${row.Tour_StartDate}" pattern="yyyy-MM-dd" var="tour_start" /> 
+                      <fmt:formatDate  value="${row.Tour_EndDate}" pattern="yyyy-MM-dd" var="tour_end" /> 
+                      <fmt:formatDate  value="<%=new java.util.Date() %>" pattern="yyyy-MM-dd"  var="cur" />
+                      <c:if test="${tour_start >  cur}">
+                                <div class="col-md-12 col-md-offset-0" id="board">
+    <h4>${row.Tour_Name}</h4>
+>>>>>>> origin/master
     <div class="tourboard">
         <div class="pictour"><img src="assets/img/IEM.jpg" id="logotour" /></div>
         <div class="calendar">
@@ -185,22 +216,38 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
         </div>
+=======
+                            </c:if>
+                     
+                   
+              </c:forEach>
+              <!--*******************************************!-->
+    </div>
+       
+>>>>>>> origin/master
         <div role="tabpanel" class="tab-pane" id="tab-2">
+            <c:forEach var="row" items="${result.rows}">
+
+                      <fmt:formatDate  value="${row.Tour_StartDate}" pattern="yyyy-MM-dd" var="tour_start" /> 
+                      <fmt:formatDate  value="${row.Tour_EndDate}" pattern="yyyy-MM-dd" var="tour_end" /> 
+                      <fmt:formatDate  value="<%=new java.util.Date() %>" pattern="yyyy-MM-dd"  var="cur" />
+                      <c:if test="${tour_start <  cur && tour_end > cur}">
             <div class="col-md-12 col-md-offset-0" id="board">
-    <h4>IEM KATOWICE 2017</h4>
+    <h4>${row.Tour_Name}</h4>
     <div class="tourboard">
         <div class="pictour"><img src="assets/img/dotatour.jpg" id="logotour" /></div>
         <div class="calendar">
-            <div><b>เปิดรับสมัคร :<span style="color:#009fdb;">31/03/2017 - 17/03/2017</span></b>
+           <div><b>ทำการแข่งขัน :<span style="color:#009fdb;">${tour_start} - ${tour_end}</span></b>
                 <br />
                 <br />
             </div>
-            <div><b>จับสายการแข่งขัน :<span style="color:#009fdb;">20/03/2017</span></b>
+            <div><b>สถานที่จัดแข่งขัน :<span style="color:#009fdb;">${row.Tour_Location}</span></b>
                 <br />
                 <br />
             </div>
-            <div><b>ทำการแข่งขัน :<span style="color:#009fdb;">23/03/2017</span></b>
+            <div><b>เงินรางวัล :<span style="color:#009fdb;">${row.Tour_Reward}</span></b>
                 <br />
                 <br />
             </div>
@@ -217,22 +264,32 @@
         </div>
     </div>
 </div>
+                </c:if>
+                     
+                   
+              </c:forEach>
         </div>
         <div role="tabpanel" class="tab-pane" id="tab-3">
+            <c:forEach var="row" items="${result.rows}">
+
+                      <fmt:formatDate  value="${row.Tour_StartDate}" pattern="yyyy-MM-dd" var="tour_start" /> 
+                      <fmt:formatDate  value="${row.Tour_EndDate}" pattern="yyyy-MM-dd" var="tour_end" /> 
+                      <fmt:formatDate  value="<%=new java.util.Date() %>" pattern="yyyy-MM-dd"  var="cur" />
+                      <c:if test="${tour_end < cur}">
             <div class="col-md-12 col-md-offset-0" id="board">
-    <h4>IEM KATOWICE 2017</h4>
+    <h4>${row.Tour_Name}</h4>
     <div class="tourboard">
         <div class="pictour"><img src="assets/img/loltour.jpg" id="logotour" /></div>
         <div class="calendar">
-            <div><b>เปิดรับสมัคร :<span style="color:#009fdb;">31/03/2017 - 17/03/2017</span></b>
+           <div><b>ทำการแข่งขัน :<span style="color:#009fdb;">${tour_start} - ${tour_end}</span></b>
                 <br />
                 <br />
             </div>
-            <div><b>จับสายการแข่งขัน :<span style="color:#009fdb;">20/03/2017</span></b>
+            <div><b>สถานที่จัดแข่งขัน :<span style="color:#009fdb;">${row.Tour_Location}</span></b>
                 <br />
                 <br />
             </div>
-            <div><b>ทำการแข่งขัน :<span style="color:#009fdb;">23/03/2017</span></b>
+            <div><b>เงินรางวัล :<span style="color:#009fdb;">${row.Tour_Reward}</span></b>
                 <br />
                 <br />
             </div>
@@ -244,14 +301,38 @@
             <div class="destour">
                 <h3 class="des">ดูการแข่งขันย้อนหลัง</h3></div>
                             </a>
-
         </div>
-             
     </div>
 </div>
+                </c:if>
+                     
+                   
+              </c:forEach>
+        </div>
+        </div>
+            <% if ((int)session.getAttribute("suc") == 0) { %>
+    <div id="shortModal" class="modal modal-wide fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">ล็อคอิน</h4>
+      </div>
+      <div class="modal-body">
+        <p>กรุณาล็อคอินก่อนการสมัคร</p>
+        <div class="row">
+            <div class="col-12-xs text-center">
+                <button class="btn btn-success btn-md"  data-dismiss="modal" data-toggle="modal" href="#shortModal-1" >ยืนยัน</button>
+
             </div>
         </div>
-<div id="shortModal" class="modal modal-wide fade">
+      </div>
+   
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->   
+<% } else if ((int)session.getAttribute("suc") == 1){%>
+   <div id="shortModal" class="modal modal-wide fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -283,6 +364,9 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<% } %>
             </div>
         </div>
     </div>

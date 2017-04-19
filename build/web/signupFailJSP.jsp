@@ -105,6 +105,7 @@
        String phone = (String) session.getAttribute("phone");
        String ign = (String) session.getAttribute("ign");
        char con = (char) session.getAttribute("condition");
+       String roles = (String) session.getAttribute("roles");
                 %>
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">

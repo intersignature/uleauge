@@ -30,6 +30,10 @@
 </head>
 
 <body>
+    <%
+        session = request.getSession();
+        String roles = (String) session.getAttribute("roles");
+    %>
     <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
