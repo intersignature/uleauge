@@ -1,10 +1,10 @@
 SMAP
-TourJSP_jsp.java
+rulesJSP_jsp.java
 JSP
 *S JSP
 *F
-+ 0 TourJSP.jsp
-TourJSP.jsp
++ 0 rulesJSP.jsp
+rulesJSP.jsp
 *L
 5,30:44
 35:74,3
@@ -23,5 +23,5 @@ TourJSP.jsp
 113:165,3
 114,18:168
 131:185,2
-132,193:187
+132,372:187
 *E
