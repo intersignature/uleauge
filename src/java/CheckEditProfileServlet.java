@@ -199,7 +199,7 @@ public class CheckEditProfileServlet extends HttpServlet {
             update.setString(4, new_ign);
             update.setInt(10, id);
             update.execute();
-            response.sendRedirect("/Project/EditSuccessJSP.jsp");
+            response.sendRedirect("/Project/signupSuccess.jsp");
             }
             else{
                 //response.sendRedirect("/Project/signup.html");
