@@ -147,10 +147,10 @@
                         <div class="col-md-12" id="news">
                             <h1>NEWS</h1></div>
                         <div class="col-md-12">
-                            <h1>Ok.Paidai ตบ Na'vi ยับ</h1>
-                            <div><img src="assets/img/ss.jpg">
+                            <a href="news1.jsp"><h1>BaBaRouz คว้าแชมป์ Gview FIFA Cup 2017 #2</h1></a>
+                            <div> <a href="news1.jsp"><img src="assets/img/news1.jpg" width="560" height="300"></a>
                                 <div>
-                                    <h4>เมื่อวันที่31กุมภาพันธ์ ทีมยักษ์ใหญ่Na'vi โดนOk.Paidai ตบยับ 16-0 เป็นเรื่องน่าเสียดายที่ Na'vi อดได้แชมป์&nbsp; </h4></div>
+                                    <h4>&nbsp;&nbsp;&nbsp;เรียกว่าเป็นรายการสามัญประจำเว็บไซต์ของเราเลยก็ว่าได้ครับ กับการแข่งขัน FIFA ONLINE 3 ที่เข้มข้นทุกเดือน ได้รับการสนับสนุนจาก Gview ที่เข้ามาเปิดโอกาสให้กับพี่น้องที่ชื่นชอบการแข่งขัน</h4></div>
                             </div>
                         </div>
                     </div>
