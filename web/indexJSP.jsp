@@ -53,7 +53,7 @@
           </button>
              <a href="indexJSP.jsp">
             <img src="assets/img/logo.png"  id = "logo">
-          <a class="navbar-brand" href="indexJSP.JSP">U-LEAGUE</a>
+          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
