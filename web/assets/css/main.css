@@ -14,6 +14,7 @@ body{
     background: white;
 }
 
+
 .page{
     background:url(../img/background.jpg) no-repeat center 0 fixed;
 }
@@ -800,7 +801,7 @@ body{
 }
 .content_me p {color:#CCC;}
 .content_me b {color:#CCC;}
-content_me span {color:#CCC;}
+.content_me span {color:#CCC;}
 .content_me .news .btn_me{
     width:160px;
     height:44px;
