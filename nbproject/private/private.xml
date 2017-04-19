@@ -5,12 +5,17 @@
         <group>
 <<<<<<< HEAD
             <file>file:/D:/uleauge/uleauge/web/newsJSP.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/news5.jsp</file>
             <file>file:/D:/uleauge/uleauge/web/login.html</file>
-            <file>file:/D:/uleauge/uleauge/web/player_info.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/news6.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/news1.jsp</file>
             <file>file:/D:/uleauge/uleauge/web/news4.jsp</file>
             <file>file:/D:/uleauge/uleauge/nbproject/build-impl.xml</file>
+            <file>file:/D:/uleauge/uleauge/web/news3.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/news2.jsp</file>
             <file>file:/D:/uleauge/uleauge/web/rulesJSP.jsp</file>
             <file>file:/D:/uleauge/uleauge/web/indexJSP.jsp</file>
+<<<<<<< HEAD
             <file>file:/D:/uleauge/uleauge/web/playerJSP.jsp</file>
 =======
             <file>file:/D:/uleauge/uleauge/web/loginIncorrect.html</file>
@@ -19,6 +24,8 @@
             <file>file:/D:/uleauge/uleauge/src/java/SigninServlet.java</file>
             <file>file:/D:/uleauge/uleauge/web/indexJSP.jsp</file>
 >>>>>>> origin/master
+=======
+>>>>>>> parent of 3ec60a1... แก้ข่าวหน้าหลักเอา ok paidai ออก
         </group>
     </open-files>
 </project-private>
