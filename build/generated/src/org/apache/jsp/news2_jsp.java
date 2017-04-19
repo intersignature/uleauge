@@ -152,6 +152,7 @@ public final class news2_jsp extends org.apache.jasper.runtime.HttpJspBase
                             String username = (String) session.getAttribute("username");
                             String imgdir = "assets/img/" + username + ".jpg";
                             int id = (int) session.getAttribute("P_ID");
+                            String roles = (String) session.getAttribute("roles");
                         
       out.write("\r\n");
       out.write("                        <a href=\"Player_001Servlet?player=");
