@@ -59,29 +59,32 @@ public class SigninServlet extends HttpServlet {
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
             String from = request.getParameter("from");
+            String roles = "";
             int P_ID = -1;
            
-            out.println(from);
-            out.println(username);
-            out.println(password);
+            //out.println(from);
+            //out.println(username);
+            //out.println(password);
             HttpSession session = request.getSession();
             int suc = 0;
             session.setAttribute("suc", suc);
             try {
                 
                 Statement stmt = connection.createStatement();
-                String sql = "SELECT P_Username, P_Password,P_ID FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
+                String sql = "SELECT P_Username, P_Password,P_ID, P_Roles FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
                     if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(password)) {
                         suc = 1;
+                        roles = rs.getString("P_Roles");
                     } else {
+                        roles = "";
                         suc = 0;
                     }
                     P_ID = rs.getInt("P_ID");
                    
                 }
-                
+                //out.println(roles);
             } catch (Exception e) {
                 out.println(e);
             }
@@ -89,7 +92,7 @@ public class SigninServlet extends HttpServlet {
             
            
             if (suc == 1) {
-                
+                session.setAttribute("roles", roles);
                 session.setAttribute("username", username);
                 session.setAttribute("suc", suc);
                 session.setAttribute("P_ID", P_ID);

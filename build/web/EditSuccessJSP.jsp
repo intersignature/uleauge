@@ -51,6 +51,7 @@
                     String username = (String) session.getAttribute("username"); 
                     String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
+                    String roles = (String) session.getAttribute("roles"); 
                 %>
                 <a href="Player_001Servlet?player=<%out.println(id);%>"> 
             <li id="namepro">

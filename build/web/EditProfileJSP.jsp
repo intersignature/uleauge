@@ -44,6 +44,7 @@
         String phone = (String) session.getAttribute("phone"); 
         String ign = (String) session.getAttribute("ign"); 
         int id = (int) session.getAttribute("P_ID"); 
+        String roles = (String) session.getAttribute("roles"); 
     %>
     <header>
          <!-- Second navbar for sign in -->
