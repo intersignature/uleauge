@@ -42,7 +42,7 @@
         session.setAttribute("suc", suc);
         response.sendRedirect("TourJSP.jsp");
     %>
-<% } else if ((int)session.getAttribute("suc") == 0) {%>
+
     <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
