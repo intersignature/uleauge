@@ -65,6 +65,7 @@ public class PlayerServlet extends HttpServlet {
             List<String> faculty = new ArrayList<String>();
             List<String> university = new ArrayList<String>();
             List<String> id = new ArrayList<String>();
+            List<String> img = new ArrayList<String>();
             try {
                 Statement user = connection.createStatement();
                 //String sql = "SELECT * FROM db_accessadmin.Player where P_ID >= "+ (1+6*page_run) + "and P_ID <= " + (6*(page_run+1)) ;
@@ -96,6 +97,12 @@ public class PlayerServlet extends HttpServlet {
                     faculty.add(rs.getString("P_Faculty"));
                     university.add(rs.getString("P_University"));
                     id.add(rs.getString("P_ID"));
+                    if(rs.getString("P_Image").equals("") || rs.getString("P_Image").equals("NoDisplay")){
+                        img.add("http://i.imgur.com/rZjcXgi.jpg");
+                    }
+                    else{
+                        img.add("http://i.imgur.com/"+rs.getString("P_Image")+".jpg");
+                    }
                 }
             } catch(SQLException e){out.println(e);}
             //out.print(index +""+ page_run+""+ page_count);
@@ -120,6 +127,7 @@ public class PlayerServlet extends HttpServlet {
             session.setAttribute("university_list", university);
             session.setAttribute("page_count", page_count);
             session.setAttribute("id_list", id);
+            session.setAttribute("img_list", img);
             if(request.getParameter("suc") != null){
             int suc = Integer.parseInt(request.getParameter("suc"));
             session.setAttribute("suc", suc);

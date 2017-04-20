@@ -91,7 +91,10 @@ public final class EditErrorJSP_jsp extends org.apache.jasper.runtime.HttpJspBas
        String new_faculty = (String) session.getAttribute("new_faculty");
        String new_phone = (String) session.getAttribute("new_phone");
        String new_ign = (String) session.getAttribute("new_ign");
+       String image = (String) session.getAttribute("image"); 
        int id = (int) session.getAttribute("id");
+       String roles = (String) session.getAttribute("roles");
+       String useimage = (String) session.getAttribute("useimage");
                 
       out.write("\r\n");
       out.write("    <header>\r\n");
@@ -114,7 +117,7 @@ public final class EditErrorJSP_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("             ");
  session = request.getSession();
               
-                    String imgdir = "assets/img/"+username+".jpg";
+                    String imgdir = useimage;
               
                 
       out.write("\r\n");
@@ -175,7 +178,7 @@ out.println(id);
       out.write("                        <label class=\"control-label\" for=\"pawssword-input-field\">Password </label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"password\" name=\"password\"><p>*Require<br>\r\n");
+      out.write("                        <input class=\"form-control\" type=\"password\" name=\"new_password\"><p>*Require<br>\r\n");
       out.write("                        *Your password must have at least one upper case, one lower case, one numeric</p>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <p id=\"cau_password\" style=\"color:blue;\">");
@@ -187,7 +190,7 @@ if (is_password=='1'){out.println("Incorrect Password");}
       out.write("                        <label class=\"control-label\" for=\"repeat-pawssword-input-field\">Repeat Password </label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"password\" name=\"rep_password\">\r\n");
+      out.write("                        <input class=\"form-control\" type=\"password\" name=\"new_rep_password\">\r\n");
       out.write("                        <p>*Require<br>*Must same above password</p>  \r\n");
       out.write("                    </div>\r\n");
       out.write("                    <p id=\"cau_rep_password\" style=\"color:blue;\">");
@@ -199,7 +202,7 @@ if (is_rep_password=='1'){out.println("Incorrect Repeat Password");}
       out.write("                        <label class=\"control-label\" for=\"name-input-field\">Name </label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"fname\" value=");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"new_fname\" value=");
       out.print( new_fname);
       out.write(">\r\n");
       out.write("                        <p>*Require</p>\r\n");
@@ -213,7 +216,7 @@ if (is_fname=='1'){out.println("Incorrect Name");}
       out.write("                        <label class=\"control-label\" for=\"name-input-field\">Lastname </label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"lname\" value=");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"new_lname\" value=");
       out.print( new_lname);
       out.write(">\r\n");
       out.write("                        <p>*Require</p>\r\n");
@@ -227,7 +230,7 @@ if (is_lname=='1'){out.println("Incorrect Lastname");}
       out.write("                        <label class=\"control-label\" for=\"email-input-field\">Email </label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"email\" value=");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"new_email\" value=");
       out.print( new_email);
       out.write(">\r\n");
       out.write("                        <p>*Require</p>\r\n");
@@ -241,7 +244,7 @@ if (is_email=='1'){out.println("Incorrect Email");}
       out.write("                        <label class=\"control-label\" for=\"name-input-field\">Facebook Link</label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" inputmode=\"url\" name=\"fb\" value=");
+      out.write("                        <input class=\"form-control\" type=\"text\" inputmode=\"url\" name=\"new_fb\" value=");
       out.print( new_fb);
       out.write(">\r\n");
       out.write("                        <p>*Require</p>\r\n");
@@ -255,7 +258,7 @@ if (is_fb=='1'){out.println("Must have Facebook Link");}
       out.write("                        <label class=\"control-label\" for=\"name-input-field\">University </label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"university\" value=");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"new_university\" value=");
       out.print( new_university);
       out.write(">\r\n");
       out.write("                        <p>*Require</p>\r\n");
@@ -269,7 +272,7 @@ if (is_university=='1'){out.println("Must have university");}
       out.write("                        <label class=\"control-label\" for=\"name-input-field\">Faculty </label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"faculty\" value=");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"new_faculty\" value=");
       out.print( new_faculty);
       out.write(">\r\n");
       out.write("                        <p>*Require</p>\r\n");
@@ -283,7 +286,7 @@ if (is_faculty=='1'){out.println("Must have faculty");}
       out.write("                        <label class=\"control-label\" for=\"name-input-field\">Phone </label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" maxlength=\"10\" minlength=\"0\" inputmode=\"numeric\" name=\"phone\" value=");
+      out.write("                        <input class=\"form-control\" type=\"text\" maxlength=\"10\" minlength=\"0\" inputmode=\"numeric\" name=\"new_phone\" value=");
       out.print( new_phone);
       out.write(">\r\n");
       out.write("                        <p>*Require</p>\r\n");
@@ -297,7 +300,7 @@ if (is_phone=='1'){out.println("Incorrect Phone Number");}
       out.write("                        <label class=\"control-label\" for=\"name-input-field\">In game name</label>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
-      out.write("                        <input class=\"form-control\" type=\"text\" name=\"ign\" value=");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"new_ign\" value=");
       out.print( new_ign);
       out.write(">\r\n");
       out.write("                        <p>*Require</p>\r\n");
@@ -306,7 +309,20 @@ if (is_phone=='1'){out.println("Incorrect Phone Number");}
 if (is_ign=='1'){out.println("Must have In-game name");}
       out.write("</p>\r\n");
       out.write("                </div>\r\n");
-      out.write("                <button class=\"btn btn-default submit-button\" id=\"buttonn\" type=\"submit\">Submit</button>\r\n");
+      out.write("                <div class=\"form-group\">\r\n");
+      out.write("                    <div class=\"col-sm-4 label-column\">\r\n");
+      out.write("                        <label class=\"control-label\" for=\"name-input-field\">Image</label>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                    <div class=\"col-sm-6 input-column\">\r\n");
+      out.write("                        <input class=\"form-control\" type=\"text\" name=\"realimage\" value=");
+      out.print(image);
+      out.write(">\r\n");
+      out.write("                        <p>*Optional<br></p>\r\n");
+      out.write("                        <p>You must upload file to <a href=\"http://imgur.com/\">imgur.com</a> copylink and paste it<br>\r\n");
+      out.write("                        For Example : full link is \"http://imgur.com/vfz3U5C\" You paste only \"vfz3U5C\"</p>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>    \r\n");
+      out.write("                <button class=\"btn btn-default submit-button\" id=\"buttonn\" type=\"submit\">Edit</button>\r\n");
       out.write("                <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->\r\n");
       out.write("            </form>\r\n");
       out.write("        </div>  \r\n");

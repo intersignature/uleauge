@@ -67,6 +67,7 @@ public class CheckEditProfileServlet extends HttpServlet {
             String new_faculty = request.getParameter("new_faculty");
             String new_phone = request.getParameter("new_phone");
             String new_ign = request.getParameter("new_ign");
+            String image = request.getParameter("realimage");
             HttpSession session = request.getSession();
             String username = (String) session.getAttribute("username");
             int id = (int) session.getAttribute("P_ID");
@@ -186,7 +187,7 @@ public class CheckEditProfileServlet extends HttpServlet {
             /*String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone, P_ID)"+ 
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";*/
             String sql = "UPDATE db_accessadmin.Player SET P_Password=?, P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
-                    + "P_Faculty=?,P_University=?,P_Phone=? where P_ID=?";
+                    + "P_Faculty=?,P_University=?,P_Phone=?, P_Image=? where P_ID=?";
             PreparedStatement update = connection.prepareStatement(sql);   
             update.setString(1, new_password);
             update.setString(2, new_fname);
@@ -197,7 +198,8 @@ public class CheckEditProfileServlet extends HttpServlet {
             update.setString(7, new_faculty);
             update.setString(9, new_phone);
             update.setString(4, new_ign);
-            update.setInt(10, id);
+            update.setInt(11, id);
+            update.setString(10, image);
             update.execute();
             response.sendRedirect("/Project/signupSuccess.jsp");
             }
@@ -215,6 +217,7 @@ public class CheckEditProfileServlet extends HttpServlet {
                 session.setAttribute("new_ign", new_ign);
                 session.setAttribute("id", id);
                 session.setAttribute("username", username);
+                session.setAttribute("image", image);
                 response.sendRedirect("/Project/EditErrorJSP.jsp");
                 
             }

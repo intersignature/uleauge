@@ -7,9 +7,8 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -18,15 +17,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
  *
- * @author LAB203_42
+ * @author intersignature
  */
-@WebServlet(urlPatterns = {"/EditProfileServlet"})
-public class EditProfileServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/AdminCheckUserServlet"})
+public class AdminCheckUserServlet extends HttpServlet {
+
     @Resource(name = "dbesport")
     private DataSource dbesport;
     private Connection connection;
@@ -51,33 +50,43 @@ public class EditProfileServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String admin_ID = request.getParameter("admin_ID");
+            String admin_Username = request.getParameter("admin_Username");
+            String admin_Password = request.getParameter("admin_Password");
+            String admin_Fullname = request.getParameter("admin_Fullname");
+            String admin_Lastname = request.getParameter("admin_Lastname");
+            String admin_ign = request.getParameter("admin_ign");
+            String admin_Email = request.getParameter("admin_Email");
+            String admin_Facebook = request.getParameter("admin_Facebook");
+            String admin_Faculty = request.getParameter("admin_Faculty");
+            String admin_University = request.getParameter("admin_University");
+            String admin_Phone = request.getParameter("admin_Phone");
+            String admin_Role = request.getParameter("admin_Role");
+            String admin_Image = request.getParameter("admin_Image");
+            String admin_hide_ID = request.getParameter("admin_hide_ID");
+            String sql = "UPDATE db_accessadmin.Player SET P_Username=?,P_Password=?,P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
+                    + "P_Faculty=?,P_University=?,P_Phone=?, P_ID=?,P_Roles=?,P_Image=? where P_ID=?";
+            PreparedStatement update = connection.prepareStatement(sql);   
+            update.setString(1, admin_Username);
+            update.setString(2, admin_Password);
+            update.setString(3, admin_Fullname);
+            update.setString(4, admin_Lastname);
+            update.setString(5, admin_ign);
+            update.setString(6, admin_Email);
+            update.setString(7, admin_Facebook);
+            update.setString(8, admin_Faculty);
+            update.setString(9, admin_University);
+            update.setString(10, admin_Phone);
+            update.setInt(11, Integer.parseInt(admin_ID));
+            update.setString(12, admin_Role);
+            update.setString(13, admin_Image);
+            update.setInt(14, Integer.parseInt(admin_hide_ID));
+            update.execute();
+            response.sendRedirect("AdminUserServlet");
             
-            try {
-                HttpSession session = request.getSession();
-                int p_id = (int) session.getAttribute("P_ID");
-                Statement conn = connection.createStatement();
-                String sql = "SELECT * FROM db_accessadmin.Player where P_ID = " + p_id;
-                ResultSet rs = conn.executeQuery(sql);
-                while(rs.next()){
-                    session.setAttribute("username", rs.getString("P_Username"));
-                    session.setAttribute("password", rs.getString("P_Password"));
-                    session.setAttribute("fname", rs.getString("P_FName"));
-                    session.setAttribute("lname", rs.getString("P_lName"));
-                    session.setAttribute("email", rs.getString("P_Email"));
-                    session.setAttribute("fb", rs.getString("P_Facebook"));
-                    session.setAttribute("university", rs.getString("P_University"));
-                    session.setAttribute("faculty", rs.getString("P_Faculty"));
-                    session.setAttribute("phone", rs.getString("P_Phone"));
-                    session.setAttribute("ign", rs.getString("P_Ign"));
-                    session.setAttribute("id", rs.getString("P_ID"));
-                    session.setAttribute("image", rs.getString("P_Image"));
-                }
-            } catch (SQLException e) {
-                out.println(e);
-            }
-            response.sendRedirect("EditProfileJSP.jsp");
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminCheckUserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

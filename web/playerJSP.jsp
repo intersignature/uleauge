@@ -102,14 +102,14 @@
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
-                    String imgdir = "assets/img/"+username+".jpg";
+                    String useimage = (String) session.getAttribute("useimage");
                     int id = (int) session.getAttribute("P_ID");
                     String roles = (String) session.getAttribute("roles");
                 %>
                 <a href="Player_001Servlet?player=<%out.println(id);%>"> 
             <li id="namepro">
                
-                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <img src= "<% out.println(useimage); %>" id="imgpro">
                 <div id = "namepro2">
                     <h4><b><% out.println(username); %></b></h4>
                 </div>
@@ -149,6 +149,7 @@
     List<String> faculty_list = (List) session.getAttribute("faculty_list");
     List<String> university_list = (List) session.getAttribute("university_list");
     List<String> id_list = (List) session.getAttribute("id_list");
+    List<String> img_list = (List) session.getAttribute("img_list");
     int page_count = (int) session.getAttribute("page_count");
     
     for(int j=1; j<=page_count; j++){
@@ -170,7 +171,7 @@
             out.println("<div class=\"row contain\">");
             out.println("<div class=\"col-sm-4 col-md-4 user-details\">");
             out.println("<div class=\"user-image\">");
-            out.println("<img src=\"assets/img/player1.jpg\" alt=\"\" title=\"\" class=\"img_size\">");
+            out.println("<img src="+img_list.get(index)+ " alt=\"\" title=\"\" class=\"img_size\">");
             out.println("</div>");
             out.println("<div class=\"user-info-block\">");
             out.println("<div class=\"user-heading\">");

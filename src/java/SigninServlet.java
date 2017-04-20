@@ -60,6 +60,7 @@ public class SigninServlet extends HttpServlet {
             String password = request.getParameter("Password");
             String from = request.getParameter("from");
             String roles = "";
+            String useimage = "";
             int P_ID = -1;
            
             //out.println(from);
@@ -71,11 +72,17 @@ public class SigninServlet extends HttpServlet {
             try {
                 
                 Statement stmt = connection.createStatement();
-                String sql = "SELECT P_Username, P_Password,P_ID, P_Roles FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
+                String sql = "SELECT P_Username, P_Password,P_ID, P_Roles, P_Image FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
                     if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(password)) {
                         suc = 1;
+                        if(rs.getString("P_Image").equals("")){
+                            useimage = "http://i.imgur.com/rZjcXgi.jpg";
+                        }
+                        else{
+                            useimage = "http://i.imgur.com/"+rs.getString("P_Image")+".jpg";
+                        }
                         roles = rs.getString("P_Roles");
                     } else {
                         roles = "";
@@ -96,7 +103,13 @@ public class SigninServlet extends HttpServlet {
                 session.setAttribute("username", username);
                 session.setAttribute("suc", suc);
                 session.setAttribute("P_ID", P_ID);
-                response.sendRedirect(from);
+                session.setAttribute("useimage", useimage);
+                if(roles.equals("admin")){
+                    response.sendRedirect("AdminUserServlet");
+                }
+                else{
+                    response.sendRedirect(from);
+                }
             } else if (suc == 0) {
                 session.setAttribute("suc", suc);
                 response.sendRedirect("loginIncorrect.html");
