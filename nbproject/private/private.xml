@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/uleauge/uleauge/web/TourJSP.jsp</file>
-            <file>file:/D:/uleauge/uleauge/web/tourwayJSP.jsp</file>
-            <file>file:/D:/uleauge/uleauge/web/EditErrorJSP.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/requestSuccessJSP.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/signupSuccess.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/tourRequest.html</file>
+            <file>file:/D:/uleauge/uleauge/src/java/TourRequestServlet.java</file>
+            <file>file:/D:/uleauge/uleauge/web/signupFailJSP.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/requestFailJSP.jsp</file>
+            <file>file:/D:/uleauge/uleauge/web/indexJSP.jsp</file>
+            <file>file:/D:/uleauge/uleauge/src/java/SignupServlet.java</file>
         </group>
     </open-files>
 </project-private>

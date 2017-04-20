@@ -52,7 +52,7 @@
                         </button>
                         <a href="indexJSP.jsp">
                             <img src="assets/img/logo.png"  id = "logo">
-                            <a class="navbar-brand" href="indexJSP.JSP">U-LEAGUE</a>
+                            <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-collapse-2">
@@ -138,6 +138,7 @@
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+            <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
         </ul>
         <div class="container">
             <div class="news-body">

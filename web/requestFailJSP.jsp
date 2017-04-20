@@ -1,13 +1,12 @@
 <%-- 
-    Document   : EditProfileJSP
-    Created on : Apr 18, 2017, 9:43:35 AM
-    Author     : LAB203_42
+    Document   : signupJSP
+    Created on : Apr 10, 2017, 8:27:49 PM
+    Author     : intersignature
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,21 +30,6 @@
 </head>
 
 <body>
-    <%
-        session = request.getSession();
-        String username = (String) session.getAttribute("username");
-        String password = (String) session.getAttribute("password"); 
-        String fname = (String) session.getAttribute("fname"); 
-        String lname = (String) session.getAttribute("lname"); 
-        String email = (String) session.getAttribute("email"); 
-        String fb = (String) session.getAttribute("fb"); 
-        String university = (String) session.getAttribute("university"); 
-        String faculty = (String) session.getAttribute("faculty"); 
-        String phone = (String) session.getAttribute("phone"); 
-        String ign = (String) session.getAttribute("ign"); 
-        int id = (int) session.getAttribute("P_ID"); 
-        String roles = (String) session.getAttribute("roles"); 
-    %>
     <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
@@ -62,34 +46,32 @@
             <img src="assets/img/logo.png"  id = "logo">
           <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
-        <ul class="nav navbar-nav navbar-right" id="userbar">
-             <% session = request.getSession();
-   
-                    String imgdir = "assets/img/"+username+".jpg";
- 
-                %>
-                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
-            <li id="namepro">
-               
-                <img src= "<% out.println(imgdir); %>" id="imgpro">
-                <div id = "namepro2">
-                    <h4><b><% out.println(username); %></b></h4>
-                </div>
-               
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signup.html">Sign up</a></li>
+            <li>
+              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
             </li>
-            </a>
-     
-            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="indexJSP.jsp" />
-             <li >
-             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
-
-            </li>
-            </form>
           </ul>
-       
+          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="indexJSP.jsp" />
+              <div class="form-group">
+                <label class="sr-only" for="username">Username</label>
+                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="password">Password</label>
+                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
+              </div>
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+          </div>
+        </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
+
     </header>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
@@ -100,119 +82,112 @@
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
         <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
     </ul>
+    <% session = request.getSession();
+       char is_teamname = (char) session.getAttribute("is_teamname");
+       char is_address = (char) session.getAttribute("is_address");
+       char is_location = (char) session.getAttribute("is_location");
+       char is_exp = (char) session.getAttribute("is_exp");
+       char is_promote = (char) session.getAttribute("is_promote");
+       char is_email = (char) session.getAttribute("is_email");
+       char is_fb = (char) session.getAttribute("is_fb");
+       char is_cause = (char) session.getAttribute("is_cause");
+       String teamname = (String) session.getAttribute("teamname");
+       String address = (String) session.getAttribute("address");
+       String location = (String) session.getAttribute("location");
+       String exp = (String) session.getAttribute("exp");
+       String promote = (String) session.getAttribute("promote");
+       String email = (String) session.getAttribute("email");
+       String fb = (String) session.getAttribute("fb");
+       String cause = (String) session.getAttribute("cause");
+
+       String roles = (String) session.getAttribute("roles");
+                %>
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">
-            <form class="form-horizontal custom-form" action="CheckEditProfileServlet" id="signup" name="signup" method="POST">
-                <h1>U-LEAUGE Edit Profile</h1>
+            <form class="form-horizontal custom-form" action="TourRequestServlet" id="signup" name="signup" method="POST">
+                <h1>U-LEAUGE Registration</h1>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Username </label> 
+                        <label class="control-label" for="name-input-field">ชื่อทีมจัดการแข่งขัน </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="username" value=<%= username %> disabled> <p>*Require</p>
-                    </div>
-                    </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="pawssword-input-field">Password </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="new_password" ><p>*Require<br>
-                        *Your password must have at least one upper case, one lower case, one numeric</p>
-                    </div>
-                    <p id="cau_password" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="new_rep_password">
-                        <p>*Require<br>*Must same above password</p>  
-                    </div>
-                    <p id="cau_rep_password" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field" >Name </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_fname" value=<%= fname %>>
+                        <input class="form-control" type="text" name="teamname" value=<%= teamname%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_name" style="color:blue;"></p>
+                    <p id="cau_university" style="color:blue;"><%if (is_teamname=='1'){out.println("คุณต้องกรอกชื่อทีม");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Lastname </label>
+                        <label class="control-label" for="name-input-field">ที่อยู่ทีมที่สามารถติดต่อได้ </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_lname" value=<%= lname %>>
+                        <input class="form-control" type="text" name="address" value=<%= address%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_lname" style="color:blue;"></p>
+                    <p id="cau_university" style="color:blue;"><%if (is_address=='1'){out.println("คุณต้องกรอกที่อยู่ที่ติดต่อได้");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
-                        <label class="control-label" for="email-input-field">Email </label>
+                        <label class="control-label" for="name-input-field">สถานที่จัดการแข่งขัน </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_email" value=<%= email %>>
+                        <input class="form-control" type="text" name="location" value=<%= location%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_email" style="color:blue;"></p>
+                    <p id="cau_university" style="color:blue;"><%if (is_location=='1'){out.println("คุณต้องกรอกสถานที่จัดการแข่ง");}%></p>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field">ประสบการณ์การจัดการแข่งขัน </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="exp" value=<%= exp%>>
+                        <p>*Require</p>
+                    </div>
+                    <p id="cau_university" style="color:blue;"><%if (is_exp=='1'){out.println("คุณต้องกรอกประสบการณ์การจัดการแข่งขัน");}%></p>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field">วิธีการโปรโมต </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="promote" value=<%= promote%>>
+                        <p>*Require</p>
+                    </div>
+                    <p id="cau_university" style="color:blue;"><%if (is_promote=='1'){out.println("คุณต้องกรอกวิธีการโปรโมต");}%></p>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="email-input-field">Email ที่ติดต่อได้</label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="email" value=<%= email%>>
+                        <p>*Require</p>
+                    </div>
+                    <p id="cau_email" style="color:blue;"><%if (is_email=='1'){out.println("Incorrect Email");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Facebook Link</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_fb" value=<%= fb %>>
+                        <input class="form-control" type="text" inputmode="url" name="fb" value=<%= fb%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_fb" style="color:blue;"></p>
+                    <p id="cau_fb" style="color:blue;"><%if (is_fb=='1'){out.println("Must have Facebook Link");}%></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">University </label>
+                        <label class="control-label" for="name-input-field">เหตุผลที่อยากจัดการแข่งขัน</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_university" value=<%= university %>>
+                        <input class="form-control" type="text" name="cause" value=<%= cause%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_university" style="color:blue;"></p>
+                    <p id="cau_university" style="color:blue;"><%if (is_cause=='1'){out.println("คุณต้องกรอกเหตุผลการจัดการแข่งขัน");}%></p>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Faculty </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_faculty" value=<%= faculty %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_faculty" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Phone </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="new_phone" value=<%= phone %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_phone" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">In game name</label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_ign" value=<%= ign %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_ign" style="color:blue;"></p>
-                </div>
-                <button class="btn btn-default submit-button" id="buttonn" type="submit">Edit</button>
+                
+                <button class="btn btn-default submit-button" id="buttonn" type="submit">Submit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>
         </div>  

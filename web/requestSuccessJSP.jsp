@@ -1,14 +1,12 @@
 <%-- 
-    Document   : iemdesJSP
-    Created on : 11 เม.ย. 2560, 21:59:44
-    Author     : Barjord
+    Document   : signupJSP
+    Created on : Apr 10, 2017, 8:27:49 PM
+    Author     : intersignature
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,12 +30,10 @@
 </head>
 
 <body>
-      <% if (session.getAttribute("suc") == null) { %>
-    <% int suc = 0;
-        session.setAttribute("suc", suc);
-        response.sendRedirect("iemdesJSP.jsp");
+    <%
+        session = request.getSession();
+        String roles = (String) session.getAttribute("roles");
     %>
-<% } else if ((int)session.getAttribute("suc") == 0) {%>
     <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
@@ -64,9 +60,8 @@
           </ul>
           <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
             <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                 <input type="hidden" name="from" value="iemdesJSP.jsp" />
+                <input type="hidden" name="from" value="indexJSP.jsp" />
               <div class="form-group">
-                 
                 <label class="sr-only" for="username">Username</label>
                 <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
               </div>
@@ -74,7 +69,7 @@
                 <label class="sr-only" for="password">Password</label>
                 <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
               </div>
-              <button type="submit" class="btn btn-success" >Sign in</button>
+              <button type="submit" class="btn btn-success">Sign in</button>
             </form>
           </div>
         </div><!-- /.navbar-collapse -->
@@ -82,56 +77,8 @@
     </nav><!-- /.navbar -->
 
     </header>
-<% }  else if ((int)session.getAttribute("suc") == 1){%>
-    <header>
-         <!-- Second navbar for sign in -->
-    <nav class="navbar navbar-default" id="headnav">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header" >
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <a href="indexJSP.jsp">
-            <img src="assets/img/logo.png"  id = "logo">
-          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right" id="userbar">
-             <% session = request.getSession();
-                    String username = (String) session.getAttribute("username"); 
-                    String imgdir = "assets/img/"+username+".jpg";
-                    int id = (int) session.getAttribute("P_ID");
-                    String roles = (String) session.getAttribute("roles");
-                %>
-                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
-            <li id="namepro">
-               
-                <img src= "<% out.println(imgdir); %>" id="imgpro">
-                <div id = "namepro2">
-                    <h4><b><% out.println(username); %></b></h4>
-                </div>
-               
-            </li>
-            </a>
-     
-            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="iemdesJSP.jsp" />
-             <li >
-             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
-
-            </li>
-            </form>
-          </ul>
-       
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-    </header>
-<% }%>
     <ul class="nav nav-pills categories">
-         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
+        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
         <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
         <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
@@ -139,21 +86,13 @@
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
         <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
     </ul>
-    <div class="container">
-        <h1>IEM KATOWICE 2017</h1>
-        <div><img src="assets/img/IEMINFO.jpg"></div>
-        <b><p style="margin-top: 40px;">Intel® Extreme Masters will visit Katowice for the fifth year in a row. In March 2017, IEM will bring the best gaming action to the Spodek Arena with Counter-Strike: Global Offensive, StarCraft II and League of Legends. The tournaments that take the stage
-    in Katowice feature the world’s most talented progamers. Come March, these gamers will fight for the World Championship title and everlasting glory.  </p></b>
-        <h3 class="text-left headtour">GAME </h3>
-        <p><strong>CS:GO </strong></p>
-        <h3 class="headtour">DATES </h3>
-        <p><strong>เปิดรับสมัคร : 31/03/2017 - 17/03/2017</strong></p>
-        <p><strong>จับสายการแข่งขัน : 20/03/2017</strong></p>
-        <p><strong>ทำการแข่งขัน : 23/03/2017</strong></p>
-        <h3 class="headtour">PRIZE POOL </h3>
-        <p><strong>Total: $650,000 USD </strong></p>
-        <h3 class="headtour">LOCATION </h3>
-        <p><strong>POLAND </strong></p>
+    <div class="row register-form">
+        <div class="col-md-8 col-md-offset-2">
+            <form class="form-horizontal custom-form" action="SignupServlet" id="signup" name="signup" method="POST">
+                <h1>Tournament Competiton Request</h1>
+                <p> Your request is successfully.</p>
+            </form>
+        </div>  
     </div>
     <footer>
         <div class="row">
