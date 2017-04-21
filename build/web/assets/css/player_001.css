@@ -1,19 +1,75 @@
 div.logo_profile{
-  width:200px;
-  height:200px;
-  margin-left:240px;
-  margin-top:40px;
-  float:left;
+
+    width:200px;
+    height:200px;
+    margin-left:240px;
+    margin-top:40px;
+    float:left;
+}
+div.logo_profiletest{
+    
+    box-shadow: 2px 2px 5px 5px rgba(50,50,50,.4);
+    background-color: whitesmoke;
+    border-style: groove;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    width:200px;
+    height:200px;
+    margin-left:240px;
+    margin-top:40px;
+    float:left;
 }
 
-h1{
+.text{
+    font-family: "Times New Roman";
+
+    font-style: initial;
+    font-weight:bold;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.4em
+    
+}
+.ign{
+    font-weight:bold;
+    color: black;
+    text-shadow: gray 0em 0.1em 0.3em
 }
 
 div.info-tab{
-  margin-left:562px;
+    margin-left:562px;
 }
 
 div.info-tab1{
-  width:300px;
+    width:300px;
 }
+
+.card{
+box-shadow: 2px 2px 5px 5px rgba(50,50,50,.4);
+    background-color: whitesmoke;
+    border-color: gray;
+    border-style: outset;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.info{
+    margin-left: 30%;
+}
+
+
 
