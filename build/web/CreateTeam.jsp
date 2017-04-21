@@ -114,7 +114,7 @@
                         <label class="control-label" for="name-input-field">Team tag </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="Teamtag"  maxlength="20"><p>*Require<br>
+                        <input class="form-control" type="text" name="Teamtag"  maxlength="5"><p>*Require<br>
                     </div>
                 </div>
                 <div class="form-group">
@@ -123,16 +123,18 @@
                     </div>
                     <div class="col-sm-6 input-column">
                         <select name="gameteam">
+                            
                             <sql:setDataSource var="dbsource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
                            url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
                            user="adminesport@esportproject"  password="Esport2017"/>
-
+                            
                             <sql:query dataSource="${dbsource}" var="result">
                                 SELECT Game_ID,Game_Name from db_accessadmin.Game;
                             </sql:query>
                             <c:forEach var="row" items="${result.rows}">
                                 <option  value="${row.Game_ID}">${row.Game_Name}</option>
                             </c:forEach>
+                                
                         </select>
                        <p>*Require</p>
                     </div>
