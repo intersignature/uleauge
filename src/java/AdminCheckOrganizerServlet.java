@@ -6,7 +6,6 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,8 +23,8 @@ import javax.sql.DataSource;
  *
  * @author intersignature
  */
-@WebServlet(urlPatterns = {"/AdminCheckUserServlet"})
-public class AdminCheckUserServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/AdminCheckOrganizerServlet"})
+public class AdminCheckOrganizerServlet extends HttpServlet {
 
     @Resource(name = "dbesport")
     private DataSource dbesport;
@@ -39,6 +38,7 @@ public class AdminCheckUserServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     public void init(){
         try {
             connection = dbesport.getConnection();
@@ -51,42 +51,18 @@ public class AdminCheckUserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String admin_ID = request.getParameter("admin_ID");
-            String admin_Username = request.getParameter("admin_Username");
-            String admin_Password = request.getParameter("admin_Password");
-            String admin_Fullname = request.getParameter("admin_Fullname");
-            String admin_Lastname = request.getParameter("admin_Lastname");
-            String admin_ign = request.getParameter("admin_ign");
-            String admin_Email = request.getParameter("admin_Email");
-            String admin_Facebook = request.getParameter("admin_Facebook");
-            String admin_Faculty = request.getParameter("admin_Faculty");
-            String admin_University = request.getParameter("admin_University");
-            String admin_Phone = request.getParameter("admin_Phone");
-            String admin_Role = request.getParameter("admin_Role");
-            String admin_Image = request.getParameter("admin_Image");
-            String admin_hide_ID = request.getParameter("admin_hide_ID");
-            String sql = "UPDATE db_accessadmin.Player SET P_Username=?,P_Password=?,P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
-                    + "P_Faculty=?,P_University=?,P_Phone=?, P_ID=?,P_Roles=?,P_Image=? where P_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);   
-            update.setString(1, admin_Username);
-            update.setString(2, admin_Password);
-            update.setString(3, admin_Fullname);
-            update.setString(4, admin_Lastname);
-            update.setString(5, admin_ign);
-            update.setString(6, admin_Email);
-            update.setString(7, admin_Facebook);
-            update.setString(8, admin_Faculty);
-            update.setString(9, admin_University);
-            update.setString(10, admin_Phone);
-            update.setInt(11, Integer.parseInt(admin_ID));
-            update.setString(12, admin_Role);
-            update.setString(13, admin_Image);
-            update.setInt(14, Integer.parseInt(admin_hide_ID));
+            String admin_organizer_ID = request.getParameter("admin_organizer_ID");
+            String admin_Organizer_Name = request.getParameter("admin_Organizer_Name");
+            String admin_hide_organizer_ID = request.getParameter("admin_hide_organizer_ID");
+            String sql = "UPDATE db_accessadmin.Organizer SET Organize_ID=?,Organize_Name=? where Organize_ID=?";
+            PreparedStatement update = connection.prepareStatement(sql);
+            update.setInt(1, Integer.parseInt(admin_organizer_ID));
+            update.setString(2, admin_Organizer_Name);
+            update.setInt(3, Integer.parseInt(admin_hide_organizer_ID));
             update.execute();
-            response.sendRedirect("AdminUserServlet");
-            
+            response.sendRedirect("AdminOrganizerServlet");
         } catch (SQLException ex) {
-            out.println(ex);
+            Logger.getLogger(AdminCheckOrganizerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

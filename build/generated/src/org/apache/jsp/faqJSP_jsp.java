@@ -147,8 +147,10 @@ public final class faqJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <ul class=\"nav navbar-nav navbar-right\" id=\"userbar\">\r\n");
       out.write("             ");
  session = request.getSession();
-                    String username = (String) session.getAttribute("username"); 
-                    String imgdir = "assets/img/"+username+".jpg";
+                    String useimage = (String) session.getAttribute("useimage");
+                    String username = (String) session.getAttribute("username");
+                    String roles = (String) session.getAttribute("roles");
+                    String imgdir = useimage;
                     int id = (int) session.getAttribute("P_ID");
                 
       out.write("\r\n");

@@ -6,7 +6,6 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,8 +23,8 @@ import javax.sql.DataSource;
  *
  * @author intersignature
  */
-@WebServlet(urlPatterns = {"/AdminCheckUserServlet"})
-public class AdminCheckUserServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/AdminAddTourServlet"})
+public class AdminAddTourServlet extends HttpServlet {
 
     @Resource(name = "dbesport")
     private DataSource dbesport;
@@ -51,42 +50,34 @@ public class AdminCheckUserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String admin_ID = request.getParameter("admin_ID");
-            String admin_Username = request.getParameter("admin_Username");
-            String admin_Password = request.getParameter("admin_Password");
-            String admin_Fullname = request.getParameter("admin_Fullname");
-            String admin_Lastname = request.getParameter("admin_Lastname");
-            String admin_ign = request.getParameter("admin_ign");
-            String admin_Email = request.getParameter("admin_Email");
-            String admin_Facebook = request.getParameter("admin_Facebook");
-            String admin_Faculty = request.getParameter("admin_Faculty");
-            String admin_University = request.getParameter("admin_University");
-            String admin_Phone = request.getParameter("admin_Phone");
-            String admin_Role = request.getParameter("admin_Role");
-            String admin_Image = request.getParameter("admin_Image");
-            String admin_hide_ID = request.getParameter("admin_hide_ID");
-            String sql = "UPDATE db_accessadmin.Player SET P_Username=?,P_Password=?,P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
-                    + "P_Faculty=?,P_University=?,P_Phone=?, P_ID=?,P_Roles=?,P_Image=? where P_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);   
-            update.setString(1, admin_Username);
-            update.setString(2, admin_Password);
-            update.setString(3, admin_Fullname);
-            update.setString(4, admin_Lastname);
-            update.setString(5, admin_ign);
-            update.setString(6, admin_Email);
-            update.setString(7, admin_Facebook);
-            update.setString(8, admin_Faculty);
-            update.setString(9, admin_University);
-            update.setString(10, admin_Phone);
-            update.setInt(11, Integer.parseInt(admin_ID));
-            update.setString(12, admin_Role);
-            update.setString(13, admin_Image);
-            update.setInt(14, Integer.parseInt(admin_hide_ID));
-            update.execute();
-            response.sendRedirect("AdminUserServlet");
-            
+            String admin_Tour_ID = request.getParameter("admin_Tour_ID");
+            String admin_Tour_Maxteam = request.getParameter("admin_Tour_Maxteam");
+            String admin_Tour_Location = request.getParameter("admin_Tour_Location");
+            String admin_Tour_Reward = request.getParameter("admin_Tour_Reward");
+            String admin_Tour_Name = request.getParameter("admin_Tour_Name");
+            String admin_Tour_StartDate = request.getParameter("admin_Tour_StartDate");
+            String admin_Tour_view_count = request.getParameter("admin_Tour_view_count");
+            String admin_Tour_EndDate = request.getParameter("admin_Tour_EndDate");
+            String admin_Organize_ID = request.getParameter("admin_Organize_ID");
+            String admin_Game_ID = request.getParameter("admin_Game_ID");
+            String sql = "INSERT INTO db_accessadmin.Tournament (Tour_ID, Tour_Maxteam, Tour_Location, Tour_Reward, Tour_Name, Tour_StartDate, Tour_view_count, Tour_EndDate, Organize_ID, Game_ID)"+ 
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement insert = connection.prepareStatement(sql);
+            insert.setInt(1, Integer.parseInt(admin_Tour_ID));
+            insert.setInt(2, Integer.parseInt(admin_Tour_Maxteam));
+            insert.setString(3, admin_Tour_Location);
+            insert.setString(4, admin_Tour_Reward);
+            insert.setString(5, admin_Tour_Name);
+            insert.setString(6, admin_Tour_StartDate);
+            insert.setInt(7, Integer.parseInt(admin_Tour_view_count));
+            insert.setString(8, admin_Tour_EndDate);
+            insert.setInt(9, Integer.parseInt(admin_Organize_ID));
+            insert.setInt(10, Integer.parseInt(admin_Game_ID));
+            insert.execute();
+            insert.close();
+            response.sendRedirect("AdminTournamentServlet");
         } catch (SQLException ex) {
-            out.println(ex);
+            Logger.getLogger(AdminAddTourServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

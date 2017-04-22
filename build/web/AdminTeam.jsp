@@ -143,20 +143,12 @@ box-shadow:none !important;
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
 <body>
     <% session = request.getSession();
-    List<Integer> admin_ID = (List) session.getAttribute("admin_ID");
-    List<String> admin_Username = (List) session.getAttribute("admin_Username");
-    List<String> admin_Password = (List) session.getAttribute("admin_Password");
-    List<String> admin_Fullname = (List) session.getAttribute("admin_Fullname");
-    List<String> admin_Lastname = (List) session.getAttribute("admin_Lastname");
-    List<String> admin_ign = (List) session.getAttribute("admin_ign");
-    List<String> admin_Email = (List) session.getAttribute("admin_Email");
-    List<String> admin_Facebook = (List) session.getAttribute("admin_Facebook");
-    List<String> admin_Faculty = (List) session.getAttribute("admin_Faculty");
-    List<String> admin_University = (List) session.getAttribute("admin_University");
-    List<String> admin_Phone = (List) session.getAttribute("admin_Phone");
-    List<String> admin_Role = (List) session.getAttribute("admin_Role");
-    List<String> admin_Image = (List) session.getAttribute("admin_Image");
-    
+    List<Integer> admin_Team_ID = (List) session.getAttribute("admin_Team_ID");
+    List<String> admin_Team_Name = (List) session.getAttribute("admin_Team_Name");
+    List<String> admin_Team_Tag = (List) session.getAttribute("admin_Team_Tag");
+    List<Integer> admin_Game_ID = (List) session.getAttribute("admin_Game_ID");
+    List<String> admin_Team_Cap = (List) session.getAttribute("admin_Team_Cap");
+    List<String> admin_Team_Phone = (List) session.getAttribute("admin_Team_Phone");
     %>
 <div class="container" style="margin-left: 0cm;">
         <div class="row">
@@ -168,18 +160,11 @@ box-shadow:none !important;
     				<thead>
 						<tr>
 							<th>ID</th>
-							<th>Username</th>
-							<th>Password</th>
-							<th>Fullname</th>
-							<th>Lastname</th>
-							<th>IGN</th>
-							<th>Email</th>
-                                                        <th>Facebook</th>
-                                                        <th>Faculty</th>
-                                                        <th>University</th>
-                                                        <th>Phone</th>
-                                                        <th>Role</th>
-                                                        <th>Image</th>
+							<th>Name</th>
+							<th>Tag</th>
+							<th>GameID</th>
+							<th>Captain</th>
+							<th>Phone</th>
                                 <th>Edit</th>
                                  <th>Delete</th>
 						</tr>
@@ -188,18 +173,11 @@ box-shadow:none !important;
 					<tfoot>
 						<tr>
 							<th>ID</th>
-							<th>Username</th>
-							<th>Password</th>
-							<th>Fullname</th>
-							<th>Lastname</th>
-							<th>IGN</th>
-							<th>Email</th>
-                                                        <th>Facebook</th>
-                                                        <th>Faculty</th>
-                                                        <th>University</th>
-                                                        <th>Phone</th>
-                                                        <th>Role</th>
-                                                        <th>Image</th>
+							<th>Name</th>
+							<th>Tag</th>
+							<th>GameID</th>
+							<th>Captain</th>
+							<th>Phone</th>
                              <th>Edit</th>
                                  <th>Delete</th>
 						</tr>
@@ -207,22 +185,15 @@ box-shadow:none !important;
 
 					<tbody>
                                             <%
-                                        for(int i=1;i<=admin_ID.size();i++){
-                                            int index = admin_ID.indexOf(i);
+                                        for(int i=1;i<=admin_Team_ID.size();i++){
+                                            int index = admin_Team_ID.indexOf(i);
                                             out.println("<tr>");
-                                            out.println("<td class=\"sorting_1\">"+Integer.toString(admin_ID.get(index))+"</td>");
-                                            out.println("<td>"+admin_Username.get(index)+"</td>");
-                                            out.println("<td>"+admin_Password.get(index)+"</td>");
-                                            out.println("<td>"+admin_Fullname.get(index)+"</td>");
-                                            out.println("<td>"+admin_Lastname.get(index)+"</td>");;
-                                            out.println("<td>"+admin_ign.get(index)+"</td>");
-                                            out.println("<td>"+admin_Email.get(index)+"</td>");
-                                            out.println("<td>"+admin_Facebook.get(index)+"</td>");
-                                            out.println("<td>"+admin_Faculty.get(index)+"</td>");
-                                            out.println("<td>"+admin_University.get(index)+"</td>");
-                                            out.println("<td>"+admin_Phone.get(index)+"</td>");
-                                            out.println("<td>"+admin_Role.get(index)+"</td>");
-                                            out.println("<td>"+admin_Image.get(index)+"</td>");
+                                            out.println("<td class=\"sorting_1\">"+Integer.toString(admin_Team_ID.get(index))+"</td>");
+                                            out.println("<td>"+admin_Team_Name.get(index)+"</td>");
+                                            out.println("<td>"+admin_Team_Tag.get(index)+"</td>");
+                                            out.println("<td>"+Integer.toString(admin_Game_ID.get(index))+"</td>");
+                                            out.println("<td>"+admin_Team_Cap.get(index)+"</td>");;
+                                            out.println("<td>"+admin_Team_Phone.get(index)+"</td>");
                                             out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_"+i+"\""+"><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete_"+i+"\""+"><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
                                             out.println("</tr>");
                                         }
@@ -237,15 +208,15 @@ box-shadow:none !important;
 	
 	</div>
 	</div><div>
-        <p data-placement="top" data-toggle="tooltip" title="Add"><button class="btn btn-primary btn-xs" data-title="Add" data-toggle="modal" data-target="#add"><span class="glyphicon">CreateNewUser</span></button></p>
+        <p data-placement="top" data-toggle="tooltip" title="Add"><button class="btn btn-primary btn-xs" data-title="Add" data-toggle="modal" data-target="#add"><span class="glyphicon">CreateNewTeam</span></button></p>
                   </div>
             
 </div>
                                                 
     <%
-        for(int i=1; i<=admin_ID.size();i++){
+        for(int i=1; i<=admin_Team_ID.size();i++){
             String temp = "edit_" + Integer.toString(i);
-            int index = admin_ID.indexOf(i);
+            int index = admin_Team_ID.indexOf(i);
         %>
 <div class="modal fade" id="<%=temp%>" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
@@ -255,60 +226,33 @@ box-shadow:none !important;
         <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
       </div>
           <div class="modal-body">
-              <form action="AdminCheckUserServlet" method="POST">
-              
+              <form action="AdminCheckTeamServlet" method="POST">
+
               <div class="form-group">
-            ID : <input name="admin_ID" class="form-control " type="text" value=<%=admin_ID.get(index)%>>
+            ID : <input name="admin_Team_ID" class="form-control " type="text" value=<%=admin_Team_ID.get(index)%>>
           </div>
               
           <div class="form-group">
-            Username : <input name="admin_Username" class="form-control " type="text" value=<%=admin_Username.get(index)%>>
+           Name : <input name="admin_Team_Name" class="form-control " type="text" value=<%=admin_Team_Name.get(index)%>>
           </div>
               
         <div class="form-group">
-        Password : <input name="admin_Password" class="form-control " type="text" value=<%=admin_Password.get(index)%>>
+        Tag <input name="admin_Team_Tag" class="form-control " type="text" value=<%=admin_Team_Tag.get(index)%>>
         </div>
               
         <div class="form-group">
-       Fullname : <input name="admin_Fullname" class="form-control " type="text" value=<%=admin_Fullname.get(index)%>>
+       GameID : <input name="admin_Game_ID" class="form-control " type="text" value=<%=admin_Game_ID.get(index)%>>
         </div>
               
       <div class="form-group">
-      Lastname : <input name="admin_Lastname" class="form-control " type="text" value=<%=admin_Lastname.get(index)%>>
+      Captain : <input name="admin_Team_Cap" class="form-control " type="text" value=<%=admin_Team_Cap.get(index)%>>
         </div>
               
               <div class="form-group">
-      In-Game Name : <input name="admin_ign" class="form-control " type="text" value=<%=admin_ign.get(index)%>>
+      Phone : <input name="admin_Team_Phone" class="form-control " type="text" value=<%=admin_Team_Phone.get(index)%>>
         </div>
               
-              <div class="form-group">
-      Email : <input name="admin_Email" class="form-control " type="text" value=<%=admin_Email.get(index)%>>
-        </div>
-              
-              <div class="form-group">
-      Facebook : <input name="admin_Facebook" class="form-control " type="text" value=<%=admin_Facebook.get(index)%>>
-        </div>
-              
-              <div class="form-group">
-     Faculty : <input name="admin_Faculty" class="form-control " type="text" value=<%=admin_Faculty.get(index)%>>
-        </div>
-              
-              <div class="form-group">
-      University : <input name="admin_University" class="form-control " type="text" value=<%=admin_University.get(index)%>>
-        </div>
-              
-              <div class="form-group">
-      Phone : <input name="admin_Phone" class="form-control " type="text" value=<%=admin_Phone.get(index)%>>
-        </div>
-              
-              <div class="form-group">
-      Role : <input name="admin_Role" class="form-control " type="text" value=<%=admin_Role.get(index)%> >
-        </div>
-              
-              <div class="form-group">
-      Image : <input name="admin_Image" class="form-control " type="text" value=<%=admin_Image.get(index)%>>
-        </div>
-              <input name="admin_hide_ID" type="hidden" class="form-control " type="text" value=<%=admin_ID.get(index)%>>
+              <input name="admin_hide_Team_ID" type="hidden" class="form-control " type="text" value=<%=admin_Team_ID.get(index)%>>
       </div>
           <div class="modal-footer ">
         <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
@@ -321,9 +265,9 @@ box-shadow:none !important;
     
     
     <%
-        for(int i=1; i<=admin_ID.size();i++){
+        for(int i=1; i<=admin_Team_ID.size();i++){
             String temp = "delete_" + Integer.toString(i);
-            int index = admin_ID.indexOf(i);
+            int index = admin_Team_ID.indexOf(i);
         %>
     <div class="modal fade" id=<%=temp%> tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
@@ -338,8 +282,8 @@ box-shadow:none !important;
        
       </div>
         <div class="modal-footer ">
-            <form action="AdminDeleteUserServlet" method="POST">
-                <input name="admin_hide_ID" type="hidden" class="form-control " type="text" value=<%=admin_ID.get(index)%>>
+            <form action="AdminDeleteTeamServlet" method="POST">
+                <input name="admin_hide_Team_ID" type="hidden" class="form-control " type="text" value=<%=admin_Team_ID.get(index)%>>
                 <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
                  <button type="submit" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
             </form>
@@ -357,62 +301,36 @@ box-shadow:none !important;
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title custom_align" id="Heading">Add New User</h4>
+        <h4 class="modal-title custom_align" id="Heading">Add New Team</h4>
       </div>
           <div class="modal-body">
-              <form action="AdminAddUserServlet" method="POST">
+              <form action="AdminAddTeamServlet" method="POST">
               
               <div class="form-group">
-            ID : <input name="admin_ID_add" class="form-control ">
+            ID : <input name="admin_Team_ID" class="form-control " type="text">
           </div>
               
           <div class="form-group">
-            Username : <input name="admin_Username_add" class="form-control " type="text">
+           Name : <input name="admin_Team_Name" class="form-control " type="text" >
           </div>
               
         <div class="form-group">
-        Password : <input name="admin_Password_add" class="form-control " type="text" >
+        Tag <input name="admin_Team_Tag" class="form-control " type="text">
         </div>
               
         <div class="form-group">
-       Fullname : <input name="admin_Fullname_add" class="form-control " type="text">
+       GameID : <input name="admin_Game_ID" class="form-control " type="text">
         </div>
               
       <div class="form-group">
-      Lastname : <input name="admin_Lastname_add" class="form-control " type="text">
+      Captain : <input name="admin_Team_Cap" class="form-control " type="text" >
         </div>
               
               <div class="form-group">
-      In-Game Name : <input name="admin_ign_add" class="form-control " type="text">
+      Phone : <input name="admin_Team_Phone" class="form-control " type="text" >
         </div>
               
-              <div class="form-group">
-      Email : <input name="admin_Email_add" class="form-control " type="text">
-        </div>
-              
-              <div class="form-group">
-      Facebook : <input name="admin_Facebook_add" class="form-control " type="text">
-        </div>
-              
-              <div class="form-group">
-     Faculty : <input name="admin_Faculty_add" class="form-control " type="text">
-        </div>
-              
-              <div class="form-group">
-      University : <input name="admin_University_add" class="form-control " type="text">
-        </div>
-              
-              <div class="form-group">
-      Phone : <input name="admin_Phone_add" class="form-control " type="text">
-        </div>
-              
-              <div class="form-group">
-      Role : <input name="admin_Role_add" class="form-control " type="text">
-        </div>
-              
-              <div class="form-group">
-      Image : <input name="admin_Image_add" class="form-control " type="text">
-        </div>
+
       </div>
           <div class="modal-footer ">
         <button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-plus"></span> Add</button>

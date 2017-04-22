@@ -6,7 +6,6 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,8 +23,8 @@ import javax.sql.DataSource;
  *
  * @author intersignature
  */
-@WebServlet(urlPatterns = {"/AdminCheckUserServlet"})
-public class AdminCheckUserServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/AdminCheckSponsorServlet"})
+public class AdminCheckSponsorServlet extends HttpServlet {
 
     @Resource(name = "dbesport")
     private DataSource dbesport;
@@ -51,42 +50,18 @@ public class AdminCheckUserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String admin_ID = request.getParameter("admin_ID");
-            String admin_Username = request.getParameter("admin_Username");
-            String admin_Password = request.getParameter("admin_Password");
-            String admin_Fullname = request.getParameter("admin_Fullname");
-            String admin_Lastname = request.getParameter("admin_Lastname");
-            String admin_ign = request.getParameter("admin_ign");
-            String admin_Email = request.getParameter("admin_Email");
-            String admin_Facebook = request.getParameter("admin_Facebook");
-            String admin_Faculty = request.getParameter("admin_Faculty");
-            String admin_University = request.getParameter("admin_University");
-            String admin_Phone = request.getParameter("admin_Phone");
-            String admin_Role = request.getParameter("admin_Role");
-            String admin_Image = request.getParameter("admin_Image");
-            String admin_hide_ID = request.getParameter("admin_hide_ID");
-            String sql = "UPDATE db_accessadmin.Player SET P_Username=?,P_Password=?,P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
-                    + "P_Faculty=?,P_University=?,P_Phone=?, P_ID=?,P_Roles=?,P_Image=? where P_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);   
-            update.setString(1, admin_Username);
-            update.setString(2, admin_Password);
-            update.setString(3, admin_Fullname);
-            update.setString(4, admin_Lastname);
-            update.setString(5, admin_ign);
-            update.setString(6, admin_Email);
-            update.setString(7, admin_Facebook);
-            update.setString(8, admin_Faculty);
-            update.setString(9, admin_University);
-            update.setString(10, admin_Phone);
-            update.setInt(11, Integer.parseInt(admin_ID));
-            update.setString(12, admin_Role);
-            update.setString(13, admin_Image);
-            update.setInt(14, Integer.parseInt(admin_hide_ID));
+            String admin_Sponsor_ID = request.getParameter("admin_Sponsor_ID");
+            String admin_Sponsor_Name = request.getParameter("admin_Sponsor_Name");
+            String admin_hide_Sponsor_ID = request.getParameter("admin_hide_Sponsor_ID");
+            String sql = "UPDATE db_accessadmin.Sponsor SET Sponsor_ID=?,Sponsor_Name=? where Sponsor_ID=?";
+            PreparedStatement update = connection.prepareStatement(sql);
+            update.setInt(1, Integer.parseInt(admin_Sponsor_ID));
+            update.setString(2, admin_Sponsor_Name);
+            update.setInt(3, Integer.parseInt(admin_hide_Sponsor_ID));
             update.execute();
-            response.sendRedirect("AdminUserServlet");
-            
+            response.sendRedirect("AdminSponserServlet");
         } catch (SQLException ex) {
-            out.println(ex);
+            Logger.getLogger(AdminCheckSponsorServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

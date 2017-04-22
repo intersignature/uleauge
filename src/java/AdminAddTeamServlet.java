@@ -24,12 +24,19 @@ import javax.sql.DataSource;
  *
  * @author intersignature
  */
-@WebServlet(urlPatterns = {"/AdminCheckUserServlet"})
-public class AdminCheckUserServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/AdminAddTeamServlet"})
+public class AdminAddTeamServlet extends HttpServlet {
 
     @Resource(name = "dbesport")
     private DataSource dbesport;
     private Connection connection;
+    public void init(){
+        try {
+            connection = dbesport.getConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,52 +46,37 @@ public class AdminCheckUserServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String admin_ID = request.getParameter("admin_ID");
-            String admin_Username = request.getParameter("admin_Username");
-            String admin_Password = request.getParameter("admin_Password");
-            String admin_Fullname = request.getParameter("admin_Fullname");
-            String admin_Lastname = request.getParameter("admin_Lastname");
-            String admin_ign = request.getParameter("admin_ign");
-            String admin_Email = request.getParameter("admin_Email");
-            String admin_Facebook = request.getParameter("admin_Facebook");
-            String admin_Faculty = request.getParameter("admin_Faculty");
-            String admin_University = request.getParameter("admin_University");
-            String admin_Phone = request.getParameter("admin_Phone");
-            String admin_Role = request.getParameter("admin_Role");
-            String admin_Image = request.getParameter("admin_Image");
-            String admin_hide_ID = request.getParameter("admin_hide_ID");
-            String sql = "UPDATE db_accessadmin.Player SET P_Username=?,P_Password=?,P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
-                    + "P_Faculty=?,P_University=?,P_Phone=?, P_ID=?,P_Roles=?,P_Image=? where P_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);   
-            update.setString(1, admin_Username);
-            update.setString(2, admin_Password);
-            update.setString(3, admin_Fullname);
-            update.setString(4, admin_Lastname);
-            update.setString(5, admin_ign);
-            update.setString(6, admin_Email);
-            update.setString(7, admin_Facebook);
-            update.setString(8, admin_Faculty);
-            update.setString(9, admin_University);
-            update.setString(10, admin_Phone);
-            update.setInt(11, Integer.parseInt(admin_ID));
-            update.setString(12, admin_Role);
-            update.setString(13, admin_Image);
-            update.setInt(14, Integer.parseInt(admin_hide_ID));
-            update.execute();
-            response.sendRedirect("AdminUserServlet");
+            String admin_Team_ID = request.getParameter("admin_Team_ID");
+            String admin_Team_Name = request.getParameter("admin_Team_Name");
+            String admin_Team_Tag = request.getParameter("admin_Team_Tag");
+            String admin_Game_ID = request.getParameter("admin_Game_ID");
+            String admin_Team_Cap = request.getParameter("admin_Team_Cap");
+            String admin_Team_Phone = request.getParameter("admin_Team_Phone");
+            //out.println(admin_Team_ID + admin_Team_Name +admin_Team_Tag + admin_Game_ID + admin_Team_Cap + admin_Team_Phone);
+            String sql = "INSERT INTO db_accessadmin.Team (Team_ID, Team_Name, Team_Tag, Game_ID, Team_Cap, Team_Phone)"+ 
+                    " VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement insert = connection.prepareStatement(sql);
+            insert.setInt(1, Integer.parseInt(admin_Team_ID));
+            insert.setString(2, admin_Team_Name);
+            insert.setString(3, admin_Team_Tag);
+            insert.setInt(4, Integer.parseInt(admin_Game_ID));
+            insert.setString(5, admin_Team_Cap);
+            insert.setString(6, admin_Team_Phone);
+            insert.execute();
+            insert.close();
             
+            String sql1 = "INSERT INTO db_accessadmin.Player_Join (P_Username, Team_ID)"+ " VALUES (?, ?)";
+            PreparedStatement insert1 = connection.prepareStatement(sql1);
+            insert1.setString(1, admin_Team_Cap);
+            insert1.setInt(2, Integer.parseInt(admin_Team_ID));
+            insert1.execute();
+            insert1.close();
+            response.sendRedirect("AdminTeamServlet");
         } catch (SQLException ex) {
             out.println(ex);
         }
