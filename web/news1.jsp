@@ -52,7 +52,7 @@
                         </button>
                         <a href="indexJSP.jsp">
                             <img src="assets/img/logo.png"  id = "logo">
-                            <a class="navbar-brand" href="indexJSP.JSP">U-LEAGUE</a>
+                            <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-collapse-2">
@@ -113,7 +113,6 @@
                             String username = (String) session.getAttribute("username");
                             String imgdir = "assets/img/" + username + ".jpg";
                             int id = (int) session.getAttribute("P_ID");
-                            String useimage = (String) session.getAttribute("useimage");
                             String roles = (String) session.getAttribute("roles");
                         %>
                          <li id = "searchnav2"> 
@@ -128,7 +127,7 @@
                         <a href="Player_001Servlet?player=<%out.println(id);%>"> 
                             <li id="namepro">
 
-                                <img src= "<% out.println(useimage); %>" id="imgpro">
+                                <img src= "<% out.println(imgdir); %>" id="imgpro">
                                 <div id = "namepro2">
                                     <h4><b><% out.println(username); %></b></h4>
                                 </div>
@@ -157,6 +156,7 @@
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+            <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
         </ul>
         <div class="container">
         <div class="news-body">

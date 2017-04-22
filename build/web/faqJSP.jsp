@@ -109,10 +109,9 @@
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
-                    String useimage = (String) session.getAttribute("useimage");
                     String username = (String) session.getAttribute("username");
                     String roles = (String) session.getAttribute("roles");
-                    String imgdir = useimage;
+                    String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
                 %> <li id = "searchnav2"> 
                   <a>
@@ -154,6 +153,7 @@
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+        <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
     </ul>
     <div class="container">
     <div class="faq">

@@ -69,6 +69,7 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
@@ -107,9 +108,7 @@ session = request.getSession();
         session.setAttribute("suc", suc);
         response.sendRedirect("TourJSP.jsp");
     
-      out.write('\r');
-      out.write('\n');
- } else if ((int)session.getAttribute("suc") == 0) {
+      out.write("\r\n");
       out.write("\r\n");
       out.write("    <header>\r\n");
       out.write("         <!-- Second navbar for sign in -->\r\n");
@@ -176,8 +175,10 @@ session = request.getSession();
       out.write("        <ul class=\"nav navbar-nav navbar-right\" id=\"userbar\">\r\n");
       out.write("             ");
  
+                    String useimage = (String) session.getAttribute("useimage");
                     String username = (String) session.getAttribute("username"); 
-                    String imgdir = "assets/img/"+username+".jpg";
+                    String roles = (String) session.getAttribute("roles");
+                    String imgdir = useimage;
                     int id = (int) session.getAttribute("P_ID");
                 
       out.write("\r\n");
@@ -236,6 +237,7 @@ out.println(id);
       out.write("\t</div>\r\n");
       out.write("</div>\r\n");
       out.write("<div>\r\n");
+      out.write("\r\n");
       out.write("    ");
       if (_jspx_meth_sql_setDataSource_0(_jspx_page_context))
         return;
@@ -679,26 +681,19 @@ out.println(id);
         out.write("    <h4>");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
         out.write("</h4>\r\n");
+        out.write("    \r\n");
         out.write("    <div class=\"tourboard\">\r\n");
         out.write("        <div class=\"pictour\"><img src=\"assets/img/IEM.jpg\" id=\"logotour\" /></div>\r\n");
         out.write("        <div class=\"calendar\">\r\n");
-        out.write("            <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-        out.write(" - ");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_end}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-        out.write("</span></b>\r\n");
+        out.write("            <div><b>เปิดรับสมัคร :<span style=\"color:#009fdb;\">31/03/2017 - 17/03/2017</span></b>\r\n");
         out.write("                <br />\r\n");
         out.write("                <br />\r\n");
         out.write("            </div>\r\n");
-        out.write("            <div><b>สถานที่จัดแข่งขัน :<span style=\"color:#009fdb;\">");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-        out.write("</span></b>\r\n");
+        out.write("            <div><b>จับสายการแข่งขัน :<span style=\"color:#009fdb;\">20/03/2017</span></b>\r\n");
         out.write("                <br />\r\n");
         out.write("                <br />\r\n");
         out.write("            </div>\r\n");
-        out.write("            <div><b>เงินรางวัล :<span style=\"color:#009fdb;\">");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Reward}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-        out.write("</span></b>\r\n");
+        out.write("            <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">23/03/2017</span></b>\r\n");
         out.write("                <br />\r\n");
         out.write("                <br />\r\n");
         out.write("            </div>\r\n");
@@ -715,6 +710,7 @@ out.println(id);
         out.write("        </div>\r\n");
         out.write("    </div>\r\n");
         out.write("</div>\r\n");
+        out.write("\r\n");
         out.write("                            ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

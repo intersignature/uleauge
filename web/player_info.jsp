@@ -1,12 +1,15 @@
 <%-- 
-    Document   : player_info
-    Created on : Apr 15, 2017, 1:06:58 AM
-    Author     : intersignature
+    Document   : news1
+    Created on : 18 เม.ย. 2560, 20:30:27
+    Author     : Mild
 --%>
+
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 
 <head>
     <meta charset="utf-8">
@@ -155,116 +158,78 @@
             String fb = (String) session.getAttribute("fb");
             String faculty = (String) session.getAttribute("faculty");
             String university = (String) session.getAttribute("university");
-            String phone = (String) session.getAttribute("phone");            
-            %>
-    
-    <ul class="nav nav-pills categories">
-        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-    </ul>
-    <div class="logo_profile"><img src="assets/img/player1.jpg" />
-        <h1><%= ign%></h1></div>
-    <div class="info-tab">
-        <div>
-            <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-            
-            <div>
-                <div>
-                    <div class="col-md-4">
-                        <div class="panel-group" id="accordion">
-                            <div class="panel panel-default"><span class="side-tab" data-target="#tab1" data-toggle="tab"><div class="panel-heading" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><h4 class="panel-title">Full name</h4></div></span>
-                                <div
-                                id="collapseOne" class="panel-collapse collapse in">
-                                    <div class="panel-body"><%= fname%></div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default"><span class="side-tab" data-target="#tab2" data-toggle="tab"><div class="panel-heading" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><h4 class="panel-title collapsed">Last name</h4></div></span>
-                            <div
-                            id="collapseTwo" class="panel-collapse collapse">
-                                <div class="panel-body"><%= lname%></div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default"><span class="side-tab" data-target="#tab3" data-toggle="tab"><div class="panel-heading" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><h4 class="panel-title">Email</h4></div></span>
-                        <div id="collapseThree"
-                        class="panel-collapse collapse">
-                            <div class="panel-body"><%= email%></div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default"><span class="side-tab" data-target="#tab4" data-toggle="tab"><div class="panel-heading" id="headingFour" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><h4 class="panel-title collapsed">In game name</h4></div></span>
-                        <div
-                        id="collapseFour" class="panel-collapse collapse">
-                            <div class="panel-body"><%= ign%></div>
-                    </div>
-                </div>
-                <div class="panel panel-default"><span class="side-tab" data-target="#tab5" data-toggle="tab"><div class="panel-heading" id="headingFive" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><h4 class="panel-title collapsed">Facebook</h4></div></span>
-                    <div
-                    id="collapseFive" class="panel-collapse collapse">
-                        <% String fb_temp = "https://www.facebook.com/" + fb;%>
-                        <div class="panel-body"><a href=<%=fb_temp%>><%= fb%></a></div>
-                </div>
-            </div>
-            <div class="panel panel-default"><span class="side-tab" data-target="#tab6" data-toggle="tab"><div class="panel-heading" id="headingSix" data-toggle="collapse" data-parent="#accordion" href="#collapseSix"><h4 class="panel-title collapsed">Faculty</h4></div></span>
-                <div id="collapseSix"
-                class="panel-collapse collapse">
-                    <div class="panel-body"><%= faculty%></div>
-                </div>
-            </div>
-            <div class="panel panel-default"><span class="side-tab" data-target="#tab7" data-toggle="tab"><div class="panel-heading" id="headingSeven" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"><h4 class="panel-title collapsed">University</h4></div></span>
-                <div
-                id="collapseSeven" class="panel-collapse collapse">
-                    <div class="panel-body"><%= university%></div>
-            </div>
-        </div>
-        <div class="panel panel-default"><span class="side-tab" data-target="#tab8" data-toggle="tab"><div class="panel-heading" id="headingEight" data-toggle="collapse" data-parent="#accordion" href="#collapseEight"><h4 class="panel-title collapsed">Phone number</h4></div></span>
-            <div
-            id="collapseEight" class="panel-collapse collapse">
-                <div class="panel-body"><%= phone%></div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-  
+            String phone = (String) session.getAttribute("phone");
+        %>
 
-    <footer id="footer001">
-        <div class="row">
-            <div class="col-md-4 col-sm-6 footer-navigation">
-                <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                <p class="company-name">E-league © 2017 </p>
-            </div>
-            <div class="col-md-4 col-sm-6 footer-contacts">
-                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                    <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
-                </div>
-                <div><i class="fa fa-phone footer-contacts-icon"></i>
-                    <p class="footer-center-info email text-left"> +1 555 123456</p>
-                </div>
-                <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a href="#" target="_blank">support@company.com</a></p>
-                </div>
-            </div>
-            <div class="clearfix visible-sm-block"></div>
-            <div class="col-md-4 footer-about">
-                <h4>About the company</h4>
-                <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-                </p>
-                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+        <ul class="nav nav-pills categories">
+            <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
+            <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
+            <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+            <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
+            <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
+            <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+            <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
+        </ul>
+        <div class="container">
+            <div class="news-body">
+                <ul class="list-group">
+                    <div style="text-align: center"><h1 class="text">PLAYER PROFILE</h1></div>
+                    <p style="text-align: center">
+                        
+                    <div class="logo_profiletest">
+                        <img src="assets/img/player1.jpg"width="190" height="190" >
+                        <h2 style="text-align: center" class="ign"><%= ign%></h2></div></p><br><br><br><br><br><br>
+                    
+                    <div class="card">
+
+                        <div style="text-align: center"><div class="info"><h4><strong>Full Name:</strong><%= fname%> <%= lname%></h4>
+                                <h4><strong>Email:</strong><%= email%></h4>
+                                <h4><% String fb_temp = "https://www.facebook.com/" + fb;%><a href=<%=fb_temp%>><strong>Facebook:</strong> <%= fb%></a></h4>
+                                <h4><strong>Faculty:</strong><%= faculty%></h4>
+                                <h4><strong>University:</strong><%= university%></h4>
+                                <h4><strong>Phone:</strong><%= phone%></h4></div>
+                        </div>
+
+
+                    </div>
+
+
+                </ul>
             </div>
         </div>
-    </footer>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script src="assets/js/treejs.js"></script>
-    <script src="assets/js/popupjs.js"></script>
-</body>
+        <footer>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footer-navigation">
+                    <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
+                    <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
+                    <p class="company-name">E-league © 2017 </p>
+                </div>
+                <div class="col-md-4 col-sm-6 footer-contacts">
+                    <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                        <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+                    </div>
+                    <div><i class="fa fa-phone footer-contacts-icon"></i>
+                        <p class="footer-center-info email text-left"> +1 555 123456</p>
+                    </div>
+                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                        <p> <a href="#" target="_blank">support@company.com</a></p>
+                    </div>
+                </div>
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-md-4 footer-about">
+                    <h4>About the company</h4>
+                    <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    </p>
+                    <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+                </div>
+            </div>
+        </footer>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+        <script src="assets/js/treejs.js"></script>
+        <script src="assets/js/popupjs.js"></script>
+        <link rel="stylesheet" href="assets/css/main.css">
+    </body>
 
 </html>

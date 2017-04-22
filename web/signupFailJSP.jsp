@@ -89,6 +89,7 @@
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+        <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
     </ul>
     <% session = request.getSession();
        char is_user = (char) session.getAttribute("is_user");
@@ -113,7 +114,6 @@
        String faculty = (String) session.getAttribute("faculty");
        String phone = (String) session.getAttribute("phone");
        String ign = (String) session.getAttribute("ign");
-       String image = (String) session.getAttribute("image");
        char con = (char) session.getAttribute("condition");
        String roles = (String) session.getAttribute("roles");
                 %>
@@ -229,17 +229,6 @@
                         <p>*Require</p>
                     </div>
                     <p id="cau_ign" style="color:blue;"><%if (is_ign=='1'){out.println("Must have In-game name");}%></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Image</label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="realimage" value=<%=image%>>
-                        <p>*Optional<br></p>
-                        <p>You must upload file to <a href="http://imgur.com/">imgur.com</a> copylink and paste it<br>
-                        For Example : full link is "http://imgur.com/vfz3U5C" You paste only "vfz3U5C"</p>
-                    </div>
                 </div>
                 <div class="checkbox">
                     

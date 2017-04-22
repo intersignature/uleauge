@@ -127,12 +127,11 @@
                     String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
                     String roles = (String) session.getAttribute("roles");
-                    String useimage = (String) session.getAttribute("useimage");
                 %>
                 <a href="Player_001Servlet?player=<%out.println(id);%>"> 
             <li id="namepro">
                
-                <img src= <%= useimage%> id="imgpro">
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
                 <div id = "namepro2">
                     <h4><b><% out.println(username); %></b></h4>
                 </div>
@@ -161,6 +160,7 @@
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+        <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
     </ul>
     <div class="container">
         <div class="row">

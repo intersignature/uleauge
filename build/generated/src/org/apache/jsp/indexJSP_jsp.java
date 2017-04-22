@@ -195,6 +195,7 @@ out.println(id);
       out.write("        <li id=\"menu\"><a href=\"PlayerServlet\" id=\"fontmenu\">PLAYERS </a></li>\r\n");
       out.write("        <li id=\"menu\"><a href=\"rulesJSP.jsp\" id=\"fontmenu\">RULES </a></li>\r\n");
       out.write("        <li id=\"menu\"><a href=\"faqJSP.jsp\" id=\"fontmenu\">FAQ </a></li>\r\n");
+      out.write("        <li id=\"menu\"><a href=\"tourRequest.html\" id=\"fontmenu\">TOURNAMENT REQUEST </a></li>\r\n");
       out.write("    </ul>\r\n");
       out.write("    <div class=\"container\">\r\n");
       out.write("        <div class=\"row\">\r\n");
