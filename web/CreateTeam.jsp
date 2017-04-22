@@ -59,6 +59,15 @@
           <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
+             <li id = "searchnav2"> 
+                  <a>
+                      <form action="searchServlet" method="POST" >
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
+                  </a>
+              </li>
              <% session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
                     String imgdir = "assets/img/"+username+".jpg";

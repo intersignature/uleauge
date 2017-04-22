@@ -269,3 +269,25 @@ li#namepro:hover{
 li#namepro{
     color:black;
 }
+#searchnav{
+   margin-top: -5px;
+   
+}
+#searchbox{
+    border: none; /* <-- This thing here */
+      border:solid 1px #ccc;
+      border-radius: 4px;
+      width: 250px;
+      height: 30px;
+}
+#searchbtn{
+    border: none; /* <-- This thing here */
+      border-radius: 4px;
+      width: 70px;
+      height: 30px;
+      background-color: white;
+}
+#searchnav2{
+   margin-top: 2px;
+   
+}

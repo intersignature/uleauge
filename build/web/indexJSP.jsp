@@ -58,6 +58,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
           <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li id = "searchnav"> 
+                  <a>
+                      <form action="searchServlet" method="POST" >
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
+                  </a>
+              </li>
+             
             <li><a href="signup.html">Sign up</a></li>
             <li>
               <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
@@ -101,6 +113,15 @@
           <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
+            <li id = "searchnav2"> 
+                  <a>
+                      <form action="searchServlet" method="POST" >
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
+                  </a>
+              </li>
              <% session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
                     String imgdir = "assets/img/"+username+".jpg";
