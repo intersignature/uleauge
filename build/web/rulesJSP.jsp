@@ -115,7 +115,7 @@
                     int id = (int) session.getAttribute("P_ID");
                     String roles = (String) session.getAttribute("roles");
                 %>
-                 <li id = "searchnav"> 
+                 <li id = "searchnav2"> 
                   <a>
                       <form action="searchServlet" method="POST" >
                       <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
@@ -155,7 +155,7 @@
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-        <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
+            <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
     </ul>
     <div class="container">
         <h1>RULES </h1>

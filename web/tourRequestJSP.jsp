@@ -1,3 +1,11 @@
+<%-- 
+    Document   : tourRequestJSP
+    Created on : 22 เม.ย. 2560, 20:00:46
+    Author     : Barjord
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
 
@@ -24,6 +32,12 @@
 </head>
 
 <body>
+    <% if (session.getAttribute("suc") == null) { %>
+    <% int suc = 0;
+        session.setAttribute("suc", suc);
+        response.sendRedirect("tourRequestJSP.jsp");
+    %>
+<% } else if ((int)session.getAttribute("suc") == 0) {%>
     <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
@@ -43,6 +57,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
           <ul class="nav navbar-nav navbar-right">
+               <li id = "searchnav"> 
+                  <a>
+                      <form action="searchServlet" method="POST" >
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
+                  </a>
+              </li>
             <li><a href="signup.html">Sign up</a></li>
             <li>
               <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
@@ -50,8 +73,9 @@
           </ul>
           <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
             <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="indexJSP.jsp" />
+                 <input type="hidden" name="from" value="tourRequestJSP.jsp" />
               <div class="form-group">
+                 
                 <label class="sr-only" for="username">Username</label>
                 <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
               </div>
@@ -59,7 +83,7 @@
                 <label class="sr-only" for="password">Password</label>
                 <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
               </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
+              <button type="submit" class="btn btn-success" >Sign in</button>
             </form>
           </div>
         </div><!-- /.navbar-collapse -->
@@ -67,6 +91,63 @@
     </nav><!-- /.navbar -->
 
     </header>
+<% }  else if ((int)session.getAttribute("suc") == 1){%>
+    <header>
+         <!-- Second navbar for sign in -->
+    <nav class="navbar navbar-default" id="headnav">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" >
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a href="indexJSP.jsp">
+            <img src="assets/img/logo.png"  id = "logo">
+          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right" id="userbar">
+             <% session = request.getSession();
+                    String username = (String) session.getAttribute("username"); 
+                    String imgdir = "assets/img/"+username+".jpg";
+                    int id = (int) session.getAttribute("P_ID");
+                    String roles = (String) session.getAttribute("roles");
+                %>
+                 <li id = "searchnav"> 
+                  <a>
+                      <form action="searchServlet" method="POST" >
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
+                  </a>
+              </li>
+                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
+            <li id="namepro">
+               
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <div id = "namepro2">
+                    <h4><b><% out.println(username); %></b></h4>
+                </div>
+               
+            </li>
+            </a>
+     
+            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="tourRequestJSP.jsp" />
+             <li >
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+
+            </li>
+            </form>
+          </ul>
+       
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    </header>
+<% }%>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
         <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
@@ -74,7 +155,7 @@
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-        <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
+            <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
     </ul>
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">

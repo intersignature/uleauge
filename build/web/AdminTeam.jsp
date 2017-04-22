@@ -104,6 +104,15 @@ box-shadow:none !important;
                     int id = (int) session.getAttribute("P_ID");
                     String roles = (String) session.getAttribute("roles"); 
                 %>
+                <li id = "searchnav2"> 
+                  <a>
+                      <form action="searchServlet" method="POST" >
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
+                  </a>
+              </li>
                 <a href="Player_001Servlet?player=<%out.println(id);%>"> 
             <li id="namepro">
                

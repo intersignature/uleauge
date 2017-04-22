@@ -105,6 +105,7 @@
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+            <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
         </ul>
         <%  session = request.getSession();
         int ans_teamname = (int)session.getAttribute("ans_teamname");

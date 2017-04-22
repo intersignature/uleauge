@@ -107,8 +107,7 @@
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-        <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
-    </ul>
+<li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>    </ul>
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">
             <form class="form-horizontal custom-form" action="CheckEditProfileServlet" id="signup" name="signup" method="POST">
