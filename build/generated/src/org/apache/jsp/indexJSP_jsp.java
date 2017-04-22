@@ -153,7 +153,6 @@ public final class indexJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
                     String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
                     String roles = (String) session.getAttribute("roles");
-                    String useimage = (String) session.getAttribute("useimage");
                 
       out.write("\r\n");
       out.write("                <a href=\"Player_001Servlet?player=");
@@ -161,9 +160,9 @@ out.println(id);
       out.write("\"> \r\n");
       out.write("            <li id=\"namepro\">\r\n");
       out.write("               \r\n");
-      out.write("                <img src= ");
-      out.print( useimage);
-      out.write(" id=\"imgpro\">\r\n");
+      out.write("                <img src= \"");
+ out.println(imgdir); 
+      out.write("\" id=\"imgpro\">\r\n");
       out.write("                <div id = \"namepro2\">\r\n");
       out.write("                    <h4><b>");
  out.println(username); 

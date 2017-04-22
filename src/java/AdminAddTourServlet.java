@@ -60,8 +60,9 @@ public class AdminAddTourServlet extends HttpServlet {
             String admin_Tour_EndDate = request.getParameter("admin_Tour_EndDate");
             String admin_Organize_ID = request.getParameter("admin_Organize_ID");
             String admin_Game_ID = request.getParameter("admin_Game_ID");
-            String sql = "INSERT INTO db_accessadmin.Tournament (Tour_ID, Tour_Maxteam, Tour_Location, Tour_Reward, Tour_Name, Tour_StartDate, Tour_view_count, Tour_EndDate, Organize_ID, Game_ID)"+ 
-                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String admin_Tour_Table_Link = request.getParameter("admin_Tour_Table_Link");
+            String sql = "INSERT INTO db_accessadmin.Tournament (Tour_ID, Tour_Maxteam, Tour_Location, Tour_Reward, Tour_Name, Tour_StartDate, Tour_view_count, Tour_EndDate, Organize_ID, Game_ID, Tour_Table_Link)"+ 
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement insert = connection.prepareStatement(sql);
             insert.setInt(1, Integer.parseInt(admin_Tour_ID));
             insert.setInt(2, Integer.parseInt(admin_Tour_Maxteam));
@@ -73,6 +74,7 @@ public class AdminAddTourServlet extends HttpServlet {
             insert.setString(8, admin_Tour_EndDate);
             insert.setInt(9, Integer.parseInt(admin_Organize_ID));
             insert.setInt(10, Integer.parseInt(admin_Game_ID));
+            insert.setString(11, admin_Tour_Table_Link);
             insert.execute();
             insert.close();
             response.sendRedirect("AdminTournamentServlet");

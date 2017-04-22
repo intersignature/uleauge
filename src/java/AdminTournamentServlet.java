@@ -64,6 +64,7 @@ public class AdminTournamentServlet extends HttpServlet {
             List<String> admin_Tour_EndDate = new ArrayList<String>();
             List<Integer> admin_Organize_ID = new ArrayList<Integer>();
             List<Integer> admin_Game_ID = new ArrayList<Integer>();
+            List<String> admin_Tour_Table_Link = new ArrayList<String>();
             try {
                 Statement user = connection.createStatement();
                 //String sql = "SELECT * FROM db_accessadmin.Player where P_ID >= "+ (1+6*page_run) + "and P_ID <= " + (6*(page_run+1)) ;
@@ -80,6 +81,7 @@ public class AdminTournamentServlet extends HttpServlet {
                     admin_Tour_EndDate.add(rs.getString("Tour_EndDate"));
                     admin_Organize_ID.add(rs.getInt("Organize_ID"));
                     admin_Game_ID.add(rs.getInt("Game_ID"));
+                    admin_Tour_Table_Link.add(rs.getString("Tour_Table_Link"));
                 }
             } catch (SQLException e) {
                 out.println(e);}
@@ -94,6 +96,7 @@ public class AdminTournamentServlet extends HttpServlet {
             session.setAttribute("admin_Tour_EndDate", admin_Tour_EndDate);
             session.setAttribute("admin_Organize_ID", admin_Organize_ID);
             session.setAttribute("admin_Game_ID", admin_Game_ID);
+            session.setAttribute("admin_Tour_Table_Link", admin_Tour_Table_Link);
             response.sendRedirect("AdminTournament.jsp");
         }
     }

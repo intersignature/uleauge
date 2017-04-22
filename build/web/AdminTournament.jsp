@@ -162,6 +162,7 @@ box-shadow:none !important;
     List<String> admin_Tour_EndDate = (List) session.getAttribute("admin_Tour_EndDate");
     List<Integer> admin_Organize_ID = (List) session.getAttribute("admin_Organize_ID");
     List<Integer> admin_Game_ID = (List) session.getAttribute("admin_Game_ID");
+    List<String> admin_Tour_Table_Link = (List) session.getAttribute("admin_Tour_Table_Link");
     %>
 <div class="container" style="margin-left: 0cm;">
         <div class="row">
@@ -182,6 +183,7 @@ box-shadow:none !important;
                                                         <th>EndDate</th>
                                                         <th>Organize_ID</th>
                                                         <th>Game_ID</th>
+                                                        <th>Link</th>
                                 <th>Edit</th>
                                  <th>Delete</th>
 						</tr>
@@ -199,6 +201,7 @@ box-shadow:none !important;
                                                         <th>EndDate</th>
                                                         <th>Organize_ID</th>
                                                         <th>Game_ID</th>
+                                                        <th>Link</th>
                              <th>Edit</th>
                                  <th>Delete</th>
 						</tr>
@@ -219,6 +222,7 @@ box-shadow:none !important;
                                             out.println("<td>"+admin_Tour_EndDate.get(index)+"</td>");
                                             out.println("<td>"+Integer.toString(admin_Organize_ID.get(index))+"</td>");
                                             out.println("<td>"+Integer.toString(admin_Game_ID.get(index))+"</td>");
+                                            out.println("<td>"+admin_Tour_Table_Link.get(index)+"</td>");
                                             out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_"+i+"\""+"><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete_"+i+"\""+"><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
                                             out.println("</tr>");
                                         }
@@ -293,6 +297,10 @@ box-shadow:none !important;
       Game_ID : <input name="admin_Game_ID" class="form-control " type="text" value=<%=admin_Game_ID.get(index)%>>
         </div>
               
+        <div class="form-group">
+      Link : <input name="admin_Tour_Table_Link" class="form-control " type="text" value=<%=admin_Tour_Table_Link.get(index)%>>
+        </div>
+        
               <input name="admin_hide_Tour_ID" type="hidden" class="form-control " type="text" value=<%=admin_Tour_ID.get(index)%>>
       </div>
           <div class="modal-footer ">
@@ -386,7 +394,12 @@ box-shadow:none !important;
               <div class="form-group">
       Game_ID : <input name="admin_Game_ID" class="form-control " type="text">
         </div>
+                  <div class="form-group">
+      Link : <input name="admin_Tour_Table_Link" class="form-control " type="text">
+        </div>
+                  
       </div>
+
           <div class="modal-footer ">
         <button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-plus"></span> Add</button>
       </div>

@@ -4,6 +4,7 @@
     Author     : Barjord
 --%>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -227,17 +228,16 @@
         </div>
     </div>
 </div>
-
+    
                             </c:if>
                      
                    
               </c:forEach>
               <!--*******************************************!-->
     </div>
-       
         <div role="tabpanel" class="tab-pane" id="tab-2">
             <c:forEach var="row" items="${result.rows}">
-
+                  
                       <fmt:formatDate  value="${row.Tour_StartDate}" pattern="yyyy-MM-dd" var="tour_start" /> 
                       <fmt:formatDate  value="${row.Tour_EndDate}" pattern="yyyy-MM-dd" var="tour_end" /> 
                       <fmt:formatDate  value="<%=new java.util.Date() %>" pattern="yyyy-MM-dd"  var="cur" />
@@ -265,9 +265,9 @@
             <div class="destour">
                 <h3 class="des">กฏกติกา</h3></div>
             </a>
-            <a  style="display:block" href="tourwayJSP.jsp">
+            <a  style="display:block" href="https://challonge.com/${row.Tour_Table_Link}">
             <div class="destour">
-                <h3 class="des">ดูสายการแข่งขัน</h3></div>
+                <h3 class="des" >ดูสายการแข่งขัน</h3></div>
                 </a>
         </div>
     </div>
@@ -303,8 +303,9 @@
             </div>
         </div>
         <div class="allbtn">
+            <a style="display:block" href="https://challonge.com/${row.Tour_Table_Link}">
             <div class="destour">
-                <h3 class="des">ดูผลการแข่งขัน</h3></div>
+                <h3 class="des">ดูผลการแข่งขัน</h3></div></a>
             <a style="display:block" href="replayJSP.jsp">
             <div class="destour">
                 <h3 class="des">ดูการแข่งขันย้อนหลัง</h3></div>
@@ -331,10 +332,10 @@
         <div class="row">
             <div class="col-12-xs text-center">
                 <button class="btn btn-success btn-md"  data-dismiss="modal" data-toggle="modal" href="#shortModal-1" >ยืนยัน</button>
-
+            
             </div>
         </div>
-      </div>
+    </div>
    
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -346,7 +347,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title">การยืนยัน</h4>
-      </div>
+    </div>
       <div class="modal-body">
         <p>คุณยืนยันที่จะสมัครหรือไม่?</p>
         <div class="row">

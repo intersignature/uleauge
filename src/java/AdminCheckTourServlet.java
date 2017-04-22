@@ -61,8 +61,9 @@ public class AdminCheckTourServlet extends HttpServlet {
             String admin_Organize_ID = request.getParameter("admin_Organize_ID");
             String admin_Game_ID = request.getParameter("admin_Game_ID");
             String admin_hide_Tour_ID = request.getParameter("admin_hide_Tour_ID");
+            String admin_Tour_Table_Link = request.getParameter("admin_Tour_Table_Link");
             String sql = "UPDATE db_accessadmin.Tournament SET Tour_ID=?,Tour_Maxteam=?,Tour_Location=?,Tour_Reward=?,Tour_Name=?,Tour_StartDate=?,Tour_view_count=?,"
-                    + "Tour_EndDate=?,Organize_ID=?,Game_ID=? where Tour_ID=?";
+                    + "Tour_EndDate=?,Organize_ID=?,Game_ID=?, Tour_Table_Link=? where Tour_ID=?";
             PreparedStatement update = connection.prepareStatement(sql);   
             update.setInt(1, Integer.parseInt(admin_Tour_ID));
             update.setInt(2, Integer.parseInt(admin_Tour_Maxteam));
@@ -74,7 +75,9 @@ public class AdminCheckTourServlet extends HttpServlet {
             update.setString(8, admin_Tour_EndDate);
             update.setInt(9, Integer.parseInt(admin_Organize_ID));
             update.setInt(10, Integer.parseInt(admin_Game_ID));
-            update.setInt(11, Integer.parseInt(admin_hide_Tour_ID));
+            update.setString(11, admin_Tour_Table_Link);
+            update.setInt(12, Integer.parseInt(admin_hide_Tour_ID));
+            
             update.execute();
             response.sendRedirect("AdminTournamentServlet");
         } catch (SQLException ex) {
