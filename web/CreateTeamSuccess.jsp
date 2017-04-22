@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -124,8 +125,8 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6 footer-navigation">
                     <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                    <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                    <p class="company-name">E-league © 2017 </p>
+                    <p class="links"><a href="#">Home</a><strong> Â· </strong><a href="#">Blog</a><strong> Â· </strong><a href="#">Pricing</a><strong> Â· </strong><a href="#">About</a><strong> Â· </strong><a href="#">Faq</a><strong> Â· </strong><a href="#">Contact</a></p>
+                    <p class="company-name">E-league Â© 2017 </p>
                 </div>
                 <div class="col-md-4 col-sm-6 footer-contacts">
                     <div><span class="fa fa-map-marker footer-contacts-icon"> </span>

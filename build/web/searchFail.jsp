@@ -1,47 +1,42 @@
 <%-- 
-    Document   : news1
-    Created on : 18 เม.ย. 2560, 20:30:27
-    Author     : Mild
+    Document   : searchFail
+    Created on : 22 เม.ย. 2560, 20:48:06
+    Author     : Barjord
 --%>
 
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
 
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>lastest</title>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+        <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
+        <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
+        <link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+        <link rel="stylesheet" href="assets/css/tree.css">
+        <link rel="stylesheet" href="assets/css/nav-1.css">
+        <link rel="stylesheet" href="assets/css/tab1.css">
+        <link rel="stylesheet" href="assets/css/tour.css">
+        <link rel="stylesheet" href="assets/css/tournament.css">
+        <link rel="stylesheet" href="assets/css/info-tab_player001.css">
+        <link rel="stylesheet" href="assets/css/player_001.css">
+        <link rel="stylesheet" href="assets/css/player_tab.css">
+        
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>esport</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
-    <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
-    <link rel="stylesheet" href="assets/css/tree.css">
-    <link rel="stylesheet" href="assets/css/nav-1.css">
-    <link rel="stylesheet" href="assets/css/tab1.css">
-    <link rel="stylesheet" href="assets/css/tour.css">
-    <link rel="stylesheet" href="assets/css/tournament.css">
-    <link rel="stylesheet" href="assets/css/info-tab_player001.css">
-    <link rel="stylesheet" href="assets/css/player_001.css">
-    <link rel="stylesheet" href="assets/css/player_tab.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
-
-<body>
-     <% if (session.getAttribute("suc") == null) { %>
+    <body>
+       <% if (session.getAttribute("suc") == null) { %>
     <% int suc = 0;
         session.setAttribute("suc", suc);
-        response.sendRedirect("player_info.jsp");
+        response.sendRedirect("indexJSP.jsp");
     %>
 <% } else if ((int)session.getAttribute("suc") == 0) {%>
     <header>
@@ -79,7 +74,7 @@
           </ul>
           <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
             <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                 <input type="hidden" name="from" value="player_info.jsp" />
+                 <input type="hidden" name="from" value="indexJSP.jsp" />
               <div class="form-group">
                  
                 <label class="sr-only" for="username">Username</label>
@@ -116,8 +111,8 @@
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
-                    String username = (String) session.getAttribute("username"); 
-                    String useimage = (String) session.getAttribute("useimage");
+                    String username = (String) session.getAttribute("username");
+                    String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
                     String roles = (String) session.getAttribute("roles");
                 %>
@@ -133,7 +128,7 @@
                 <a href="Player_001Servlet?player=<%out.println(id);%>"> 
             <li id="namepro">
                
-                <img src= "<% out.println(useimage); %>" id="imgpro">
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
                 <div id = "namepro2">
                     <h4><b><% out.println(username); %></b></h4>
                 </div>
@@ -154,20 +149,6 @@
     </nav><!-- /.navbar -->
     </header>
 <% }%>
-            <% session = request.getSession();
-            String username = (String) session.getAttribute("username"); 
-            String fname = (String) session.getAttribute("fname");
-            String lname = (String) session.getAttribute("lname");
-            String email = (String) session.getAttribute("email");
-            String ign = (String) session.getAttribute("ign");
-            String fb = (String) session.getAttribute("fb");
-            String faculty = (String) session.getAttribute("faculty");
-            String university = (String) session.getAttribute("university");
-            String phone = (String) session.getAttribute("phone");
-            String prouser = (String) session.getAttribute("Prouser");
-           
-        %>
-
         <ul class="nav nav-pills categories">
             <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
             <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
@@ -175,85 +156,25 @@
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-<li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>        </ul>
+            <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
+        </ul>
         <div class="container">
-            <div class="news-body">
-                <ul class="list-group">
-                    <div style="text-align: center"><h1 class="text">PLAYER PROFILE</h1></div>
-                    <p style="text-align: center">
-                        
-                    <div class="logo_profiletest">
-                        <img src="assets/img/player1.jpg"width="190" height="190" >
-                        <h2 style="text-align: center" class="ign"><%= ign%></h2></div></p><br><br><br><br><br><br>
+            <div class="row register-form">
+                <div class="col-md-8 col-md-offset-2">
+                    <form action="searchServlet" method="POST">
+                   
+                    <h1>This Username doesn't exist</h1>
+                    <h1> ไม่มีชื่อผู้ใช้นี้ในระบบ </h1>
                     
-                    <div class="card">
-
-                        <div style="text-align: center"><div class="info"><h4><strong>Full Name:</strong><%= fname%> <%= lname%></h4>
-                                <h4><strong>Email:</strong><%= email%></h4>
-                                <h4><% String fb_temp = "https://www.facebook.com/" + fb;%><a href=<%=fb_temp%>><strong>Facebook:</strong> <%= fb%></a></h4>
-                                <h4><strong>Faculty:</strong><%= faculty%></h4>
-                                <h4><strong>University:</strong><%= university%></h4>
-                                <h4><strong>Phone:</strong><%= phone%></h4></div>
-                        </div>
+ </form>
 
 
-                    </div>
 
 
-                </ul>
-            </div>
-                        <sql:setDataSource var="dbsource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                           url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
-                           user="adminesport@esportproject"  password="Esport2017"/>
-                        <% if (!prouser.equals(username) && (int)session.getAttribute("suc") == 1 ){ %>
-                <div class="well well-sm text-center">        
-                 <a class="btn btn-lg btn-success" data-toggle="modal" href="#gameModal">Invite</a> 
-                </div>
-    <%}%>
-             <div id="gameModal" class="modal modal-wide fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Choose Game</h4>
-      </div>
-      <div class="modal-body">
-          <div class="col-sm-6 input-column">
-              <form action="inviteServlet" method="POST">
-              
-            <h4> กรุณาเลือกเกมส์ของทีม </h4>
-                        <select name="gameinvite">
-  
-                            <sql:query dataSource="${dbsource}" var="result">
-                                SELECT P.P_Username,G.Game_Name ,G.Game_ID,T.Team_Cap
-                                FROM db_accessadmin.Player_Join P
-                                inner join db_accessadmin.Team T
-                                on T.Team_ID = P.Team_ID
-                                inner join db_accessadmin.Game G
-                                on T.Game_ID != G.Game_ID
-                                where P_Username = '<%= prouser %>';
-                            </sql:query>
-                                
-                                
-                            <c:forEach var="row" items="${result.rows}">
-                                         <option  value="${row.Game_ID}">${row.Game_Name}</option>
-                                          </c:forEach>
-                        </select>
-                       <p>*Require</p>
-                    </div>
-        <div class="row">
-            <div class="col-12-xs text-center">
-                <button type="submit" class="btn btn-success btn-md "  >ยืนยัน</button>
-                <button type="button" data-dismiss="modal" aria-hidden="true" class=" btn btn-danger btn-md">ไม่</button>
+                </div>  
             </div>
         </div>
-      </div>
-   </form>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->           
-        </div>
-        <footer>
+        <footer id="footer001">
             <div class="row">
                 <div class="col-md-4 col-sm-6 footer-navigation">
                     <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
@@ -285,7 +206,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
         <script src="assets/js/treejs.js"></script>
         <script src="assets/js/popupjs.js"></script>
-        <link rel="stylesheet" href="assets/css/main.css">
     </body>
 
 </html>

@@ -71,6 +71,7 @@ public class Player_001Servlet extends HttpServlet {
                     session.setAttribute("faculty", rs.getString("P_Faculty"));
                     session.setAttribute("university", rs.getString("P_University"));
                     session.setAttribute("phone", rs.getString("P_Phone"));
+                    session.setAttribute("Prouser", rs.getString("P_Username"));
                     
                 }
             } catch (Exception e) {

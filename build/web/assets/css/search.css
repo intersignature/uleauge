@@ -45,3 +45,6 @@
 #searchpos{
    padding-left: 40%;
 }
+.navbar-nav.navbar-right .btn{
+    margin: 6px auto;
+}
