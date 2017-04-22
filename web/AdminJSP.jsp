@@ -128,12 +128,12 @@ box-shadow:none !important;
     </nav><!-- /.navbar -->
     </header>
                 <ul class="nav nav-pills categories">
-        <li id="menu"><a href="newsJSP.jsp" id="fontmenu"><font color="red">USER </font></a></li>
-        <li id="menu"><a href="TourJSP.jsp" id="fontmenu"><font color="red">TEAM </font></a></li>
-        <li id="menu"><a href="replayJSP.jsp" id="fontmenu"><font color="red">TOURNAMENT </font></a></li>
-        <li id="menu"><a href="PlayerServlet" id="fontmenu"><font color="red">ORGANIZER </font></a></li>
-        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu"><font color="red">REQUEST </font></a></li>
-        <li id="menu"><a href="faqJSP.jsp" id="fontmenu"><font color="red">SPONSER </font></a></li>
+        <li id="menu"><a href="AdminUserServlet" id="fontmenu"><font color="red">USER </font></a></li>
+        <li id="menu"><a href="AdminTeamServlet" id="fontmenu"><font color="red">TEAM </font></a></li>
+        <li id="menu"><a href="AdminTournamentServlet" id="fontmenu"><font color="red">TOURNAMENT </font></a></li>
+        <li id="menu"><a href="AdminOrganizerServlet" id="fontmenu"><font color="red">ORGANIZER </font></a></li>
+        <li id="menu"><a href="AdminRequestServlet" id="fontmenu"><font color="red">REQUEST </font></a></li>
+        <li id="menu"><a href="AdminSponserServlet" id="fontmenu"><font color="red">SPONSER </font></a></li>
     </ul>
 <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -223,7 +223,7 @@ box-shadow:none !important;
                                             out.println("<td>"+admin_Phone.get(index)+"</td>");
                                             out.println("<td>"+admin_Role.get(index)+"</td>");
                                             out.println("<td>"+admin_Image.get(index)+"</td>");
-                                            out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_"+i+"\""+"><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete\" ><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
+                                            out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_"+i+"\""+"><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete_"+i+"\""+"><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
                                             out.println("</tr>");
                                         }
                                         
@@ -237,7 +237,7 @@ box-shadow:none !important;
 	
 	</div>
 	</div><div>
-        <button style="right:50px" type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+        <p data-placement="top" data-toggle="tooltip" title="Add"><button class="btn btn-primary btn-xs" data-title="Add" data-toggle="modal" data-target="#add"><span class="glyphicon">CreateNewUser</span></button></p>
                   </div>
             
 </div>
@@ -320,7 +320,12 @@ box-shadow:none !important;
     <% } %>
     
     
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <%
+        for(int i=1; i<=admin_ID.size();i++){
+            String temp = "delete_" + Integer.toString(i);
+            int index = admin_ID.indexOf(i);
+        %>
+    <div class="modal fade" id=<%=temp%> tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
           <div class="modal-header">
@@ -333,13 +338,88 @@ box-shadow:none !important;
        
       </div>
         <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+            <form action="AdminDeleteUserServlet" method="POST">
+                <input name="admin_hide_ID" type="hidden" class="form-control " type="text" value=<%=admin_ID.get(index)%>>
+                <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                 <button type="submit" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+            </form>
+       
       </div>
         </div>
     <!-- /.modal-content --> 
   </div>
       <!-- /.modal-dialog --> 
+    </div>
+    <% } %>
+    
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title custom_align" id="Heading">Add New User</h4>
+      </div>
+          <div class="modal-body">
+              <form action="AdminAddUserServlet" method="POST">
+              
+              <div class="form-group">
+            ID : <input name="admin_ID_add" class="form-control ">
+          </div>
+              
+          <div class="form-group">
+            Username : <input name="admin_Username_add" class="form-control " type="text">
+          </div>
+              
+        <div class="form-group">
+        Password : <input name="admin_Password_add" class="form-control " type="text" >
+        </div>
+              
+        <div class="form-group">
+       Fullname : <input name="admin_Fullname_add" class="form-control " type="text">
+        </div>
+              
+      <div class="form-group">
+      Lastname : <input name="admin_Lastname_add" class="form-control " type="text">
+        </div>
+              
+              <div class="form-group">
+      In-Game Name : <input name="admin_ign_add" class="form-control " type="text">
+        </div>
+              
+              <div class="form-group">
+      Email : <input name="admin_Email_add" class="form-control " type="text">
+        </div>
+              
+              <div class="form-group">
+      Facebook : <input name="admin_Facebook_add" class="form-control " type="text">
+        </div>
+              
+              <div class="form-group">
+     Faculty : <input name="admin_Faculty_add" class="form-control " type="text">
+        </div>
+              
+              <div class="form-group">
+      University : <input name="admin_University_add" class="form-control " type="text">
+        </div>
+              
+              <div class="form-group">
+      Phone : <input name="admin_Phone_add" class="form-control " type="text">
+        </div>
+              
+              <div class="form-group">
+      Role : <input name="admin_Role_add" class="form-control " type="text">
+        </div>
+              
+              <div class="form-group">
+      Image : <input name="admin_Image_add" class="form-control " type="text">
+        </div>
+      </div>
+          <div class="modal-footer ">
+        <button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-plus"></span> Add</button>
+      </div>
+            </form>
+        </div>
+  </div>
     </div>
     </body>
 <script type="text/javascript">

@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -85,7 +86,7 @@ public class AdminCheckUserServlet extends HttpServlet {
             response.sendRedirect("AdminUserServlet");
             
         } catch (SQLException ex) {
-            Logger.getLogger(AdminCheckUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            out.println(ex);
         }
     }
 

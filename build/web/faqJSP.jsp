@@ -100,10 +100,9 @@
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
-                    String useimage = (String) session.getAttribute("useimage");
                     String username = (String) session.getAttribute("username");
                     String roles = (String) session.getAttribute("roles");
-                    String imgdir = useimage;
+                    String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
                 %>
                 <a href="Player_001Servlet?player=<%out.println(id);%>"> 

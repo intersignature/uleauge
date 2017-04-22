@@ -104,13 +104,12 @@
                             String username = (String) session.getAttribute("username");
                             String imgdir = "assets/img/" + username + ".jpg";
                             int id = (int) session.getAttribute("P_ID");
-                            String useimage = (String) session.getAttribute("useimage");
                             String roles = (String) session.getAttribute("roles");
                         %>
                         <a href="Player_001Servlet?player=<%out.println(id);%>"> 
                             <li id="namepro">
 
-                                <img src= "<% out.println(useimage); %>" id="imgpro">
+                                <img src= "<% out.println(imgdir); %>" id="imgpro">
                                 <div id = "namepro2">
                                     <h4><b><% out.println(username); %></b></h4>
                                 </div>

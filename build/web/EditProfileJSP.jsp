@@ -43,10 +43,8 @@
         String faculty = (String) session.getAttribute("faculty"); 
         String phone = (String) session.getAttribute("phone"); 
         String ign = (String) session.getAttribute("ign"); 
-        String image = (String) session.getAttribute("image"); 
         int id = (int) session.getAttribute("P_ID"); 
-        String roles = (String) session.getAttribute("roles");
-        String useimage = (String) session.getAttribute("useimage");
+        String roles = (String) session.getAttribute("roles"); 
     %>
     <header>
          <!-- Second navbar for sign in -->
@@ -67,7 +65,7 @@
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
    
-                    String imgdir = useimage;
+                    String imgdir = "assets/img/"+username+".jpg";
  
                 %>
                 <a href="Player_001Servlet?player=<%out.println(id);%>"> 
@@ -214,17 +212,6 @@
                     </div>
                     <p id="cau_ign" style="color:blue;"></p>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Image</label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="realimage" value=<%=image%>>
-                        <p>*Optional<br></p>
-                        <p>You must upload file to <a href="http://imgur.com/">imgur.com</a> copylink and paste it<br>
-                        For Example : full link is "http://imgur.com/vfz3U5C" You paste only "vfz3U5C"</p>
-                    </div>
-                </div>       
                 <button class="btn btn-default submit-button" id="buttonn" type="submit">Edit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>

@@ -152,7 +152,6 @@ public final class news5_jsp extends org.apache.jasper.runtime.HttpJspBase
                             String username = (String) session.getAttribute("username");
                             String imgdir = "assets/img/" + username + ".jpg";
                             int id = (int) session.getAttribute("P_ID");
-                            String useimage = (String) session.getAttribute("useimage");
                             String roles = (String) session.getAttribute("roles");
                         
       out.write("\r\n");
@@ -162,7 +161,7 @@ out.println(id);
       out.write("                            <li id=\"namepro\">\r\n");
       out.write("\r\n");
       out.write("                                <img src= \"");
- out.println(useimage); 
+ out.println(imgdir); 
       out.write("\" id=\"imgpro\">\r\n");
       out.write("                                <div id = \"namepro2\">\r\n");
       out.write("                                    <h4><b>");
