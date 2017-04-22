@@ -1,12 +1,16 @@
 <%-- 
-    Document   : EditSuccess
-    Created on : Apr 18, 2017, 9:23:09 PM
-    Author     : intersignature
+    Document   : RegisTeam
+    Created on : Apr 20, 2017, 9:09:16 PM
+    Author     : CPCust
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +34,14 @@
 </head>
 
 <body>
+    <% if (session.getAttribute("suc") == null || (int)session.getAttribute("suc") == 0 ) { %>
+        <% 
+        int suc = 0;
+        session.setAttribute("suc", suc);
+        response.sendRedirect("indexJSP.jsp"); 
+        %>
+        
+<% } else if ((int)session.getAttribute("suc") == 1) {%>
     <header>
          <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default" id="headnav">
@@ -48,11 +60,9 @@
         </div>
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
-                    String useimage = (String) session.getAttribute("useimage");
                     String username = (String) session.getAttribute("username"); 
-                    String imgdir = useimage;
+                    String imgdir = "assets/img/"+username+".jpg";
                     int id = (int) session.getAttribute("P_ID");
-                    String roles = (String) session.getAttribute("roles"); 
                 %>
                 <a href="Player_001Servlet?player=<%out.println(id);%>"> 
             <li id="namepro">
@@ -66,7 +76,7 @@
             </a>
      
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="TourJSP.jsp" />
+                <input type="hidden" name="from" value="indexJSP.jsp" />
              <li >
              <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -77,6 +87,7 @@
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
     </header>
+     <% }%>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
         <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
@@ -84,17 +95,68 @@
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-        <li id="menu"><a href="tourRequest.html" id="fontmenu">TOURNAMENT REQUEST </a></li>
     </ul>
-    <div class="row register-form">
+    <div class="container">
+<div class="row register-form">
         <div class="col-md-8 col-md-offset-2">
-            <form class="form-horizontal custom-form" action="SignupServlet" id="signup" name="signup" method="POST">
-                <h1>U-LEAUGE Edit Profile</h1>
-                <p> Your profile was updated successfully.</p>
+            <form class="form-horizontal custom-form" action="CreateTeamServlet" id="signup" name="signup" method="POST">
+                <h1>Team Create</h1>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field" >Team name </label> 
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="Teamname"  maxlength="20"> <p>*Require</p>
+                    </div>
+                    </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field">Team tag </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="Teamtag"  maxlength="20"><p>*Require<br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field">Game team </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <select name="gameteam">
+                            <sql:setDataSource var="dbsource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                           url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
+                           user="adminesport@esportproject"  password="Esport2017"/>
+
+                            <sql:query dataSource="${dbsource}" var="result">
+                                SELECT Game_ID,Game_Name from db_accessadmin.Game;
+                            </sql:query>
+                            <c:forEach var="row" items="${result.rows}">
+                                <option  value="${row.Game_ID}">${row.Game_Name}</option>
+                            </c:forEach>
+                        </select>
+                       <p>*Require</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field"> Team Phone </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="teamphone">
+                        <p>*Require</p>
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="condition" value="con">I've read and accept the terms and conditions</label>
+                </div>
+                <button class="btn btn-default submit-button" id="buttonn" type="submit">Submit</button>
+                <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>
         </div>  
     </div>
-    <footer>
+    </div>
+    <footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
                 <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>

@@ -68,6 +68,17 @@ public class TourRequestServlet extends HttpServlet {
 
             //String[] condition = request.getParameterValues("condition");
             int ans_overall = 0;
+            int index = 0;
+            try {
+                Statement user = connection.createStatement();
+                String sql = "SELECT Request_ID FROM db_accessadmin.Request";
+                ResultSet rs = user.executeQuery(sql);
+                while (rs.next()) {
+                    index += 1;
+                }
+            } catch (SQLException e) {
+                out.println(e);
+            }
 
             if ("".equals(teamname)) {
                 HttpSession session = request.getSession();
@@ -149,17 +160,18 @@ public class TourRequestServlet extends HttpServlet {
 
             if (ans_overall == 8) {
                 //แอดข้อมูล
-                String sql = "INSERT INTO db_accessadmin.Request (Teamname, Address, Location, Exp, Promote, Email, Facebook, Cause)"
-                        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO db_accessadmin.Request (Request_ID, Request_Teamname, Request_Address, Request_Location, Request_Exp, Request_Promote, Request_Email, Request_Facebook, Request_Cause)"
+                        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement insert = connection.prepareStatement(sql);
-                insert.setString(1, teamname);
-                insert.setString(2, address);
-                insert.setString(3, location);
-                insert.setString(4, exp);
-                insert.setString(5, promote);
-                insert.setString(6, email);
-                insert.setString(7, fb);
-                insert.setString(8, cause);
+                insert.setInt(1, index);
+                insert.setString(2, teamname);
+                insert.setString(3, address);
+                insert.setString(4, location);
+                insert.setString(5, exp);
+                insert.setString(6, promote);
+                insert.setString(7, email);
+                insert.setString(8, fb);
+                insert.setString(9, cause);
                 insert.execute();
                 response.sendRedirect("/Project/requestSuccessJSP.jsp");
             } else {
