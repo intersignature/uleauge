@@ -101,13 +101,14 @@ public class Team_001Servlet extends HttpServlet {
                         session.setAttribute("Team_Image", "http://i.imgur.com/" + rs.getString("Team_Image") + ".jpg");
                     }
                     session.setAttribute("Prouser", rs.getString("Team_name"));
-
+                    response.sendRedirect("Team_info.jsp");
                 }
             } catch (Exception e) {
-                response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
+                response.sendRedirect("/Project/ErrorJSP.jsp");
+                
             }
-            response.sendRedirect("Team_info.jsp");
+            
 
         }
     }
