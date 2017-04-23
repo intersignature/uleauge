@@ -99,7 +99,7 @@ public class CheckEditTeamServlet extends HttpServlet {
                 }
                 
             } catch (SQLException ex) {
-                Logger.getLogger(CheckEditTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
+                response.sendRedirect("/Project/ErrorJSP.jsp");
             }
             //ถ้าเป็นcapเก่า
                 if(((String)session.getAttribute("username")).equals(Team_Cap)){
@@ -162,7 +162,7 @@ public class CheckEditTeamServlet extends HttpServlet {
                 response.sendRedirect("/Project/EditTeamErrorJSP.jsp");
             }
         } catch (SQLException ex) {
-            out.println(ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

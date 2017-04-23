@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/uleauge/uleauge/src/java/AdminDeleteTourServlet.java</file>
+            <file>file:/D:/uleauge/uleauge/web/WEB-INF/web.xml</file>
+            <file>file:/D:/uleauge/uleauge/src/java/Team_001Servlet.java</file>
+            <file>file:/D:/uleauge/uleauge/src/java/Player_001Servlet.java</file>
+            <file>file:/D:/uleauge/uleauge/web/ErrorJSP.jsp</file>
+            <file>file:/D:/uleauge/uleauge/src/java/CheckEditTeamServlet.java</file>
+        </group>
     </open-files>
 </project-private>
