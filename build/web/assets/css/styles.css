@@ -83,10 +83,15 @@ body{
 
 .destour:link,.destour:visited{
   color:white;
+  background-color: #616161;
 }
 
 .destour:hover{
   color:white;
+  background-color: #616161;
+   text-decoration: underline;
+    -moz-text-decoration-color: #616161; /* Code for Firefox */
+    text-decoration-color: #616161;
 }
 
 .destour{
@@ -296,3 +301,69 @@ li#namepro{
    margin-top: 2px;
    
 }
+#boardinvite{
+    background-color:#262626;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+#bgname{
+    background-color:#414141;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    text-align: center;
+        padding-right: 20px;
+        width: 199px;
+        color:white;
+    border-radius: 10px;
+        
+}
+#nameinvite{
+    margin-bottom: 21px;
+    line-height: 1;
+    margin-left: 60px;
+}
+#bgall{
+    background-color: #414141;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+#imgteam{
+    margin-top:12px;
+    height:40px ;
+    width:40px;
+    border-radius: 5px;
+    float: left;
+    margin-left: 8px;
+}
+#invitebtn{
+        margin-right: 25px;
+    float: right;
+       margin-top: -52px;
+   
+}
+.inbtn{
+   font-size: 25px;
+  color:white;
+  margin-right: 35px;
+}
+
+.inbtn:visited{
+  color:white;
+}
+
+.inbtn:hover{
+  color:white;
+}
+#bgname:hover{
+  background-color: #616161;
+   color:white;
+  text-decoration: underline;
+    -moz-text-decoration-color: #616161; /* Code for Firefox */
+    text-decoration-color: #616161;
+       
+}
+
+
