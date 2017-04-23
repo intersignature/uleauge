@@ -90,6 +90,7 @@ public class AdminUserServlet extends HttpServlet {
                     admin_Image.add(rs.getString("P_Image"));
                 }
             } catch (SQLException e) {
+                response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
             

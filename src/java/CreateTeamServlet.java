@@ -186,6 +186,7 @@ public class CreateTeamServlet extends HttpServlet {
                 
             }
         catch (SQLException ex) {
+            response.sendRedirect("/Project/ErrorJSP.jsp");
             Logger.getLogger(CreateTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         }

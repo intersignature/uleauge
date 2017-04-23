@@ -73,6 +73,7 @@ public class UpdateIdSponsorServlet extends HttpServlet {
             stmt.close();
             response.sendRedirect("AdminSponserServlet");
         } catch (SQLException ex) {
+            response.sendRedirect("/Project/ErrorJSP.jsp");
             Logger.getLogger(UpdateIdSponsorServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -104,7 +104,10 @@ public class PlayerServlet extends HttpServlet {
                         img.add("http://i.imgur.com/"+rs.getString("P_Image")+".jpg");
                     }
                 }
-            } catch(SQLException e){out.println(e);}
+            } catch(SQLException e){
+                response.sendRedirect("/Project/ErrorJSP.jsp");
+                out.println(e);
+            }
             //out.print(index +""+ page_run+""+ page_count);
             //response.sendRedirect("playerJSP.jsp");
             /*for (int i=0;i < fname.size();i++)

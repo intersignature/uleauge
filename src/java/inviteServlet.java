@@ -141,6 +141,7 @@ public class inviteServlet extends HttpServlet {
             
             catch (SQLException e) {
                 out.println(e);
+                response.sendRedirect("/Project/ErrorJSP.jsp");
             }
         }
     }

@@ -81,6 +81,7 @@ public class Player_001Servlet extends HttpServlet {
                     
                 }
             } catch (Exception e) {
+                response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
             response.sendRedirect("player_info.jsp");

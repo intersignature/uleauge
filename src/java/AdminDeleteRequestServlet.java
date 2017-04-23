@@ -61,6 +61,7 @@ public void init(){
             response.sendRedirect("UpdateIdRequestServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminDeleteRequestServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

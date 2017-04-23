@@ -67,6 +67,7 @@ public class AdminOrganizerServlet extends HttpServlet {
                     admin_Organizer_Name.add(rs.getString("Organize_Name"));
                 }
             } catch (SQLException e) {
+                response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
             HttpSession session = request.getSession();

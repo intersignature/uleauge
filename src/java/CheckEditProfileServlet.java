@@ -223,6 +223,7 @@ public class CheckEditProfileServlet extends HttpServlet {
             }
         
         } catch (SQLException ex) {
+            response.sendRedirect("/Project/ErrorJSP.jsp");
             Logger.getLogger(CheckEditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         

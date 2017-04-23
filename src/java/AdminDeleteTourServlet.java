@@ -62,6 +62,7 @@ public class AdminDeleteTourServlet extends HttpServlet {
             response.sendRedirect("UpdateIdTourServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminDeleteTourServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

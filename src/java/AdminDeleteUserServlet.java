@@ -66,6 +66,7 @@ public class AdminDeleteUserServlet extends HttpServlet {
             response.sendRedirect("UpdateIdUserServlet");
         } catch (SQLException ex) {
             out.println(ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

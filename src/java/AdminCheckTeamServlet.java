@@ -72,6 +72,7 @@ public class AdminCheckTeamServlet extends HttpServlet {
             response.sendRedirect("AdminTeamServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminCheckTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

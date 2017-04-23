@@ -194,6 +194,7 @@ public class TourRequestServlet extends HttpServlet {
             out.println("alert('User or password incorrect');");
             out.println("</script>");*/
         } catch (SQLException ex) {
+            response.sendRedirect("/Project/ErrorJSP.jsp");
             Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

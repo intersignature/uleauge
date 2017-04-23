@@ -93,6 +93,7 @@ public class SigninServlet extends HttpServlet {
                 }
                 //out.println(roles);
             } catch (Exception e) {
+                response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
 

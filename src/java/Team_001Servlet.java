@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -23,10 +25,11 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author LAB203_42
+ * @author intersignature
  */
-@WebServlet(urlPatterns = {"/EditProfileServlet"})
-public class EditProfileServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/Team_001Servlet"})
+public class Team_001Servlet extends HttpServlet {
+
     @Resource(name = "dbesport")
     private DataSource dbesport;
     private Connection connection;
@@ -39,6 +42,7 @@ public class EditProfileServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     public void init(){
         try {
             connection = dbesport.getConnection();
@@ -51,34 +55,42 @@ public class EditProfileServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            try {
+            int id = Integer.parseInt(request.getParameter("team_id"));
+            List<String> data = new ArrayList<String>();
+            try {   
+                Statement stmt = connection.createStatement();
+                String sql = "SELECT * FROM db_accessadmin.Team where Team_ID = " + id;
+                ResultSet rs = stmt.executeQuery(sql);
                 HttpSession session = request.getSession();
-                int p_id = (int) session.getAttribute("P_ID");
-                Statement conn = connection.createStatement();
-                String sql = "SELECT * FROM db_accessadmin.Player where P_ID = " + p_id;
-                ResultSet rs = conn.executeQuery(sql);
                 while(rs.next()){
-                    session.setAttribute("username", rs.getString("P_Username"));
-                    session.setAttribute("password", rs.getString("P_Password"));
-                    session.setAttribute("fname", rs.getString("P_FName"));
-                    session.setAttribute("lname", rs.getString("P_lName"));
-                    session.setAttribute("email", rs.getString("P_Email"));
-                    session.setAttribute("fb", rs.getString("P_Facebook"));
-                    session.setAttribute("university", rs.getString("P_University"));
-                    session.setAttribute("faculty", rs.getString("P_Faculty"));
-                    session.setAttribute("phone", rs.getString("P_Phone"));
-                    session.setAttribute("ign", rs.getString("P_Ign"));
-                    session.setAttribute("id", rs.getString("P_ID"));
-                    session.setAttribute("image", rs.getString("P_Image"));
+                    session.setAttribute("teamname", rs.getString("Team_Name"));
+                    session.setAttribute("teamtag", rs.getString("Team_Tag"));
+                    String gameid = rs.getString("Game_ID");
+                    Statement stmt2 = connection.createStatement();
+                    String sql2 = "SELECT Game_Name FROM db_accessadmin.Game where Game_ID = " + gameid;
+                    ResultSet rs2 = stmt2.executeQuery(sql2);
+                    rs2.next();
+                    session.setAttribute("gameid", rs2.getString("Game_Name"));
+                    session.setAttribute("teamcap", rs.getString("Team_Cap"));
+                    session.setAttribute("teamphone", rs.getString("Team_Phone"));
+                    session.setAttribute("teammemnum", rs.getString("Team_mem_num"));
+
+                    if(rs.getString("Team_Image").equals("") || rs.getString("Team_Image").equals("NoDisplay")){
+                        session.setAttribute("Team_Image", "http://i.imgur.com/rZjcXgi.jpg");
+                    }
+                    else{
+                        session.setAttribute("Team_Image", "http://i.imgur.com/"+rs.getString("Team_Image")+".jpg");
+                    }
+                    session.setAttribute("Prouser", rs.getString("Team_name"));
+                    
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
-            response.sendRedirect("EditProfileJSP.jsp");
+            response.sendRedirect("Team_info.jsp");
+            
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -61,6 +61,7 @@ public class AdminAddOrganizerServlet extends HttpServlet {
             response.sendRedirect("AdminOrganizerServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminAddOrganizerServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

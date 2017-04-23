@@ -25,7 +25,23 @@ div.logo_profiletest{
     margin-top:40px;
     float:left;
 }
-
+.logo_teamtest{
+    
+    box-shadow: 2px 2px 5px 5px rgba(50,50,50,.4);
+    background-color: whitesmoke;
+    border-style: groove;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    width:200px;
+    height:200px;
+    margin-left: 41%;
+}
 .text{
     font-family: "Times New Roman";
 

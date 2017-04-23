@@ -74,6 +74,7 @@ public class UpdateIdOrganizerServlet extends HttpServlet {
             stmt.close();
             response.sendRedirect("AdminOrganizerServlet");
         } catch (SQLException ex) {
+            response.sendRedirect("/Project/ErrorJSP.jsp");
             out.println(ex);
         }
     }
