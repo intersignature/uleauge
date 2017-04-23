@@ -69,9 +69,9 @@ public class Team_001Servlet extends HttpServlet {
                 String sql3 = "SELECT P_Username FROM db_accessadmin.Player_Join where Team_ID = " + id;
                 ResultSet rs3 = stmt3.executeQuery(sql3);
                 HttpSession session = request.getSession();
+                Statement stmt4 = connection.createStatement();
                 while (rs3.next()) {
-                    Statement stmt4 = connection.createStatement();
-                    String sql4 = "SELECT P_FName, P_Ign, P_LName FROM db_accessadmin.Player where P_Username = " + rs3.getString("P_Username");
+                    String sql4 = "SELECT P_FName, P_Ign, P_LName FROM db_accessadmin.Player where P_Username = '" + rs3.getString("P_Username")+"'";
                     ResultSet rs4 = stmt4.executeQuery(sql4);
                     while (rs4.next()) {
                         mem_fname.add(rs4.getString("P_FName"));
@@ -101,13 +101,13 @@ public class Team_001Servlet extends HttpServlet {
                         session.setAttribute("Team_Image", "http://i.imgur.com/" + rs.getString("Team_Image") + ".jpg");
                     }
                     session.setAttribute("Prouser", rs.getString("Team_name"));
-
+                    response.sendRedirect("Team_info.jsp");
                 }
             } catch (Exception e) {
-                response.sendRedirect("/Project/ErrorJSP.jsp");
+
                 out.println(e);
             }
-            response.sendRedirect("Team_info.jsp");
+            
 
         }
     }
