@@ -129,7 +129,7 @@ public class CreateTeamServlet extends HttpServlet {
                     ans_con = 0;
              }
             
-                 out.println(ans_con+"<<<conคอนนนนนน");
+                 out.println(ans_con+"<<<con");
              out.println(ans_teamname+ans_teamtag+ans_teamphone+ans_con+ans_teamunjoin);
             if(ans_teamname+ans_teamtag+ans_teamphone+ans_con+ans_teamunjoin == 5){
                 out.println(index);
@@ -153,10 +153,16 @@ public class CreateTeamServlet extends HttpServlet {
             PreparedStatement insert1 = connection.prepareStatement(sql3);  
             insert1.setString(1, team_cap);
             insert1.setInt(2, index+1);
-            
             insert1.execute();
             insert1.close();
-                       
+
+
+            String invitedel = "DELETE FROM db_accessadmin.Invite WHERE  Team_ID in (select Team_ID from db_accessadmin.Team where Game_ID = ? ) and P_Username = ?";
+            PreparedStatement delete = connection.prepareStatement(invitedel);  
+            delete.setInt(1, gameteam);  
+            delete.setString(2, team_cap);  
+            delete.execute();
+
             response.sendRedirect("CreateTeamSuccess.jsp");
             }
             else{
