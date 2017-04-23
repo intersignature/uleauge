@@ -74,7 +74,7 @@
             </a>
      
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="TourJSP.jsp" />
+                <input type="hidden" name="from" value="EditSuccessJSP.jsp" />
              <li >
              <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 

@@ -65,18 +65,20 @@ public class Team_001Servlet extends HttpServlet {
                 List<String> mem_fname = new ArrayList<String>();
                 List<String> mem_ign = new ArrayList<String>();
                 List<String> mem_lname = new ArrayList<String>();
+                List<String> mem_id = new ArrayList<String>();
                 Statement stmt3 = connection.createStatement();
                 String sql3 = "SELECT P_Username FROM db_accessadmin.Player_Join where Team_ID = " + id;
                 ResultSet rs3 = stmt3.executeQuery(sql3);
                 HttpSession session = request.getSession();
                 Statement stmt4 = connection.createStatement();
                 while (rs3.next()) {
-                    String sql4 = "SELECT P_FName, P_Ign, P_LName FROM db_accessadmin.Player where P_Username = '" + rs3.getString("P_Username")+"'";
+                    String sql4 = "SELECT P_FName, P_Ign, P_LName, P_ID FROM db_accessadmin.Player where P_Username = '" + rs3.getString("P_Username")+"'";
                     ResultSet rs4 = stmt4.executeQuery(sql4);
                     while (rs4.next()) {
                         mem_fname.add(rs4.getString("P_FName"));
                         mem_ign.add(rs4.getString("P_Ign"));
                         mem_lname.add(rs4.getString("P_LName"));
+                        mem_id.add(rs4.getString("P_ID"));
                     }
                 }
                 while (rs.next()) {
@@ -87,27 +89,31 @@ public class Team_001Servlet extends HttpServlet {
                     String sql2 = "SELECT Game_Name FROM db_accessadmin.Game where Game_ID = " + gameid;
                     ResultSet rs2 = stmt2.executeQuery(sql2);
                     rs2.next();
+                    Statement stmt5 = connection.createStatement();
+                    String sql5 = "SELECT P_Ign FROM db_accessadmin.Player where P_Username = '" + rs.getString("Team_Cap")+"'";
+                    ResultSet rs5 = stmt5.executeQuery(sql5);
+                    rs5.next();
                     session.setAttribute("gameid", rs2.getString("Game_Name"));
-                    session.setAttribute("teamcap", rs.getString("Team_Cap"));
+                    session.setAttribute("teamcap", rs5.getString("P_Ign"));
                     session.setAttribute("teamphone", rs.getString("Team_Phone"));
                     session.setAttribute("teammemnum", rs.getString("Team_mem_num"));
                     session.setAttribute("mem_fname", mem_fname);
                     session.setAttribute("mem_ign", mem_ign);
                     session.setAttribute("mem_lname", mem_lname);
-
+                    session.setAttribute("mem_id", mem_id);
                     if (rs.getString("Team_Image").equals("") || rs.getString("Team_Image").equals("NoDisplay")) {
                         session.setAttribute("Team_Image", "http://i.imgur.com/rZjcXgi.jpg");
                     } else {
                         session.setAttribute("Team_Image", "http://i.imgur.com/" + rs.getString("Team_Image") + ".jpg");
                     }
                     session.setAttribute("Prouser", rs.getString("Team_name"));
+                    /*out.println(session.getAttribute("mem_fname"));
+                    out.println(session.getAttribute("mem_ign"));
+                    out.println(session.getAttribute("mem_ign"));*/
+
                     response.sendRedirect("Team_info.jsp");
                 }
             } catch (Exception e) {
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
                 out.println(e);
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 
