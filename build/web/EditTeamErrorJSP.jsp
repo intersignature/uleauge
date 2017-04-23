@@ -92,7 +92,7 @@
 </div>
                 </li>
                         <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                            <input type="hidden" name="from" value="indexJSP.jsp" />
+                            <input type="hidden" name="from" value="EditTeamErrorJSP.jsp" />
                             <li >
                                 <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 

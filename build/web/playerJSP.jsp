@@ -180,7 +180,9 @@
     List<String> id_list = (List) session.getAttribute("id_list");
     List<String> img_list = (List) session.getAttribute("img_list");
     int page_count = (int) session.getAttribute("page_count");
-    
+    List<String> team_User = (List) session.getAttribute("team_User");
+    List<String> team_Name = (List) session.getAttribute("team_Name");
+    List<Integer> team_User_ID = (List) session.getAttribute("team_User_ID");
     for(int j=1; j<=page_count; j++){
         out.print("<div id=\"tab"+j+"\""+ " class=\"container list_player\">");
         int temp = (6*(j-1)) + (fname_list.size()-(6*(j-1)));
@@ -195,7 +197,7 @@
                 out.println("<div class=\"divplayer filter "+j+"\" style=\"display: none;\">");
             }
             
-            out.println("<div class=\"player" + index+1 +"\">");
+            out.println("<div class=\"player" + (index+1) +"\">");
             out.println("<div class=\"container contain\">");
             out.println("<div class=\"row contain\">");
             out.println("<div class=\"col-sm-4 col-md-4 user-details\">");
@@ -205,17 +207,19 @@
             out.println("<div class=\"user-info-block\">");
             out.println("<div class=\"user-heading\">");
             //out.println("<a href=Player_001Servlet>"+ign_list.get(i-1)+request.getParameter("hi")+"</a>"+"<input type=\"hidden\" value=\""+ign_list.get(i-1)+"\""+" name=\"hi\">");
-            out.println("<a id=\"profileeiei\" href=Player_001Servlet?player="+(index)+"><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(index) + "</h3></a>");
+            out.println("<a id=\"profileeiei\" href=Player_001Servlet?player="+id_list.get(index)+"><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(index) + "</h3></a>");
             //out.println("<a name=\""+i+"\" "+"id=\"profileeiei\" href=Player_001Servlet><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(i-1) + "</h3></a>");
             //href=\"player_00"+i+".html\"
             out.println("<span class=\"help-block\">" + fname_list.get(index) +" "+ lname_list.get(index) + "</span>");
             out.println("</div>");
             out.println("<ul class=\"navigation\">");
-            out.println("<li class=\"active\">");
-            out.println("<a data-toggle=\"tab\" href=\"#information_"+(index)+"\">");
-            out.println("<span class=\"glyphicon glyphicon-user\"></span>");
-            out.println("</a>");
-            out.println("</li>");
+            //out.println(team_User_ID);
+                out.println("<li class=\"active\">");
+                out.println("<a data-toggle=\"tab\" href=\"#information_"+(index)+"\">");
+                out.println("<span class=\"glyphicon glyphicon-user\"></span>");
+                out.println("</a>");
+                out.println("</li>");
+            
             out.println("<li>");
             out.println("<a data-toggle=\"tab\" href=\"#edu_"+(index)+"\">");
             out.println("<span class=\"glyphicon glyphicon-education\"></span>");
@@ -238,7 +242,17 @@
             out.println("<h4>" + faculty_list.get(index) +", "+ university_list.get(index) + "</h4>");
             out.println("</div>");
             out.println("<div id=\"information_"+index+"\" class=\"tab-pane active\">");
-            out.println("<h4>Currently Team : Ok.Paidai</h4>");
+            int num = 0;
+            for(int k=0; k<team_User_ID.size();k++){
+                if(index==team_User_ID.get(k)){
+                    num+=1;
+                    out.println("<h4>Currently Team : "+ num + " " + team_Name.get(k)+"</h4>");
+                }                
+                    
+            }
+            if (num==0){
+                out.println("<h4> no team</h4>");
+            }
             out.println("</div></div></div></div></div></div></div></div></div>");
         }
 
@@ -274,27 +288,22 @@
     <footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
-                <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                <p class="company-name">E-league © 2017 </p>
+                <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
             </div>
             <div class="col-md-4 col-sm-6 footer-contacts">
-                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                    <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+                <div><i class="fa fa-facebook footer-contacts-icon" ></i>
+                    <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
                 </div>
-                <div><i class="fa fa-phone footer-contacts-icon"></i>
-                    <p class="footer-center-info email text-left"> +1 555 123456</p>
-                </div>
+
                 <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a href="#" target="_blank">support@company.com</a></p>
+                    <p> <a>lawslifeaways@gmail.com</a></p>
                 </div>
             </div>
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-4 footer-about">
-                <h4>About the company</h4>
-                <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                <h4>U LEAUGE</h4>
+                <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
                 </p>
-                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
             </div>
         </div>
     </footer>

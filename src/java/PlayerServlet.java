@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,6 +67,9 @@ public class PlayerServlet extends HttpServlet {
             List<String> university = new ArrayList<String>();
             List<String> id = new ArrayList<String>();
             List<String> img = new ArrayList<String>();
+            List<String> team_Name = new ArrayList<String>();
+            List<String> team_User = new ArrayList<String>();
+            List<Integer> team_User_ID = new ArrayList<Integer>();
             try {
                 Statement user = connection.createStatement();
                 //String sql = "SELECT * FROM db_accessadmin.Player where P_ID >= "+ (1+6*page_run) + "and P_ID <= " + (6*(page_run+1)) ;
@@ -104,10 +108,41 @@ public class PlayerServlet extends HttpServlet {
                         img.add("http://i.imgur.com/"+rs.getString("P_Image")+".jpg");
                     }
                 }
-            } catch(SQLException e){
+            } catch (SQLException ex) { 
+                out.println(ex);
                 response.sendRedirect("/Project/ErrorJSP.jsp");
-                out.println(e);
+                
             }
+            try{
+                Statement data1 = connection.createStatement();
+                String sql = "SELECT * FROM db_accessadmin.Player_Join where P_Username != 'admin'";
+                ResultSet rs1 = data1.executeQuery(sql);
+                while(rs1.next()){
+                    team_User.add(rs1.getString("P_Username"));
+                    Statement data12 = connection.createStatement();
+                    String sql2 = "SELECT Team_Name FROM db_accessadmin.Team where Team_ID =" + rs1.getInt("Team_ID");
+                    ResultSet rs2 = data12.executeQuery(sql2);
+                    rs2.next();
+                    team_Name.add(rs2.getString("Team_Name"));
+                }
+                //out.println(team_User + "<br>");
+                //out.println(team_Name);
+            } catch (SQLException ex) {
+                Logger.getLogger(PlayerServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for(int i=0;i<team_User.size();i++){
+                Statement data13 = connection.createStatement();
+                String sql3 = "SELECT P_ID FROM db_accessadmin.Player where P_Username = '" + team_User.get(i) + "'";
+                
+                ResultSet rs3 = data13.executeQuery(sql3);
+                rs3.next();
+                //out.println(rs3.getString("P_ID")+"<br>");
+                team_User_ID.add(rs3.getInt("P_ID"));
+                out.println(team_User + "<br>");
+                out.println(team_Name + "<br>");
+                out.println(team_User_ID + "<br>");
+            }
+                
             //out.print(index +""+ page_run+""+ page_count);
             //response.sendRedirect("playerJSP.jsp");
             /*for (int i=0;i < fname.size();i++)
@@ -131,6 +166,9 @@ public class PlayerServlet extends HttpServlet {
             session.setAttribute("page_count", page_count);
             session.setAttribute("id_list", id);
             session.setAttribute("img_list", img);
+            session.setAttribute("team_User", team_User);
+            session.setAttribute("team_Name", team_Name);
+            session.setAttribute("team_User_ID", team_User_ID);
             if(request.getParameter("suc") != null){
             int suc = Integer.parseInt(request.getParameter("suc"));
             session.setAttribute("suc", suc);
@@ -145,6 +183,8 @@ public class PlayerServlet extends HttpServlet {
              //   out.println(suc); 
               //response.sendRedirect("playerJSP-unlogin.jsp");   
             // }
+        } catch (SQLException ex) {
+            out.println(ex);
         }
     }
 

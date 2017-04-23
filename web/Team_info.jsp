@@ -154,7 +154,7 @@
 </div>
                 </li>
                         <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                            <input type="hidden" name="from" value="indexJSP.jsp" />
+                            <input type="hidden" name="from" value="Team_info.jsp" />
                             <li >
                                 <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -178,12 +178,13 @@
             List<String> mem_fname = (List) session.getAttribute("mem_fname");
             List<String> mem_ign = (List) session.getAttribute("mem_ign");
             List<String> mem_lname = (List) session.getAttribute("mem_lname");
+            List<String> mem_id = (List) session.getAttribute("mem_id");
         %>
 
         <ul class="nav nav-pills categories">
             <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
             <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-            <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+            <li id="menu"><a href="TeamServlet" id="fontmenu">TEAM </a></li>
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
@@ -197,16 +198,15 @@
                             <img src=<%= Team_Image%> width="190" height="190" >
                         </div>
                         <h2 class="ign"><%= teamtag%></h2>
-                        <h4><strong>Team Name:</strong><%= teamname%></h4>
-                        <h4><strong>Game Played:</strong><%= gameid%></h4>
-                        <h4><strong>Captain Team:</strong><%= teamcap%></h4>
-                        <h4><strong>Number of member:</strong><%= teammemnum%></h4>
-                        <h4><strong>Phone:</strong><%= teamphone%></h4>
+                        <h4><strong>Team Name : </strong><%= teamname%></h4>
+                        <h4><strong>Game Played : </strong><%= gameid%></h4>
+                        <h4><strong>Captain Team : </strong><%= teamcap%></h4>
+                        <h4><strong>Number of member : </strong><%= teammemnum%></h4>
+                        <h4><strong>Phone : </strong><%= teamphone%></h4>
                         <h3><strong>Member of Team</strong></h3>
                         <%
-                        for(int i=1;i<= mem_fname.size();i++){
-                            int index = mem_fname.indexOf(i);
-                            out.println(i+" "+mem_fname.get(index)+" "+mem_ign.get(index)+" "+mem_lname.get(index));
+                        for(int i=0;i< mem_fname.size();i++){
+                            out.println((i+1)+"-->"+"<a href=Player_001Servlet?player="+mem_id.get(i)+">"+mem_fname.get(i)+" "+mem_ign.get(i)+" "+mem_lname.get(i)+"</a>" + "<br>");
                         }
                         %>
                     </div>

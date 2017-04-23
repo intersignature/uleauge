@@ -92,7 +92,12 @@ public class TeamServlet extends HttpServlet {
                     Team_Name.add(rs.getString("Team_Name"));
                     Team_Tag.add(rs.getString("Team_Tag"));
                     Game_ID.add(rs.getString("Game_ID"));
-                    Team_Cap.add(rs.getString("Team_Cap"));
+                    //Team_Cap.add(rs.getString("Team_Cap"));
+                    Statement stmt5 = connection.createStatement();
+                    String sql5 = "SELECT P_Ign FROM db_accessadmin.Player where P_Username = '" + rs.getString("Team_Cap")+"'";
+                    ResultSet rs5 = stmt5.executeQuery(sql5);
+                    rs5.next();
+                    Team_Cap.add(rs5.getString("P_Ign"));
                     Team_Phone.add(rs.getString("Team_Phone"));
                     Team_mem_num.add(rs.getString("Team_mem_num"));
                     if(rs.getString("Team_Image").equals("") || rs.getString("Team_Image").equals("NoDisplay")){
