@@ -224,7 +224,7 @@
       <div class="modal-body">
           <div class="col-sm-6 input-column">
               <form action="inviteServlet" method="POST">
-              
+              <input type="hidden" name="prouser" value=<%=prouser%> />
             <h4> กรุณาเลือกเกมส์ของทีม </h4>
                         <select name="gameinvite">
   
