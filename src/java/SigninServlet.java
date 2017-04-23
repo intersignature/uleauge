@@ -113,7 +113,7 @@ public class SigninServlet extends HttpServlet {
                 }
             } else if (suc == 0) {
                 session.setAttribute("suc", suc);
-                response.sendRedirect("loginIncorrect.html");
+                response.sendRedirect("login.html");
             }
 
         }

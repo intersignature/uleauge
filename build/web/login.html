@@ -79,16 +79,18 @@
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
         <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+        <li id="menu"><a href="TeamServlet" id="fontmenu">TEAM </a></li>
         <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
 <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>    </ul>
     <div class="login-card"><img class="img-responsive profile-img-card" src="assets/img/logo.png">
         <p class="profile-name-card"> </p>
-        <form class="form-signin"><span class="reauth-email"> </span>
-            <input class="form-control" type="email" required="" placeholder="Username" id="inputEmail">
-            <input class="form-control" type="password" required="" placeholder="Password" id="inputPassword">
+        <form action="SigninServlet" class="form-signin"><span class="reauth-email"> </span>
+            <p class="text-danger profile-name-card">Username or Password incorrect</p>
+            <input class="form-control" name="Username" type="text" required="" placeholder="Username" id="inputEmail">
+            <input class="form-control" name="Password" type="password" required="" placeholder="Password" id="inputPassword">
+            <input type="hidden" name="from" value="indexJSP.jsp" />
             <div class="checkbox">
                 <div class="checkbox">
                     <label>
