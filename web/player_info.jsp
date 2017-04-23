@@ -224,20 +224,12 @@
             <h4> กรุณาเลือกเกมส์ของทีม </h4>
                         <select name="gameinvite">
   
-                            <sql:query dataSource="${dbsource}" var="result">
-                                SELECT P.P_Username,G.Game_Name ,G.Game_ID,T.Team_Cap
-                                FROM db_accessadmin.Player_Join P
-                                inner join db_accessadmin.Team T
-                                on T.Team_ID = P.Team_ID
-                                inner join db_accessadmin.Game G
-                                on T.Game_ID != G.Game_ID
-                                where P_Username = '<%= prouser %>';
+                             <sql:query dataSource="${dbsource}" var="result">
+                                SELECT Game_ID,Game_Name from db_accessadmin.Game;
                             </sql:query>
-                                
-                                
                             <c:forEach var="row" items="${result.rows}">
-                                         <option  value="${row.Game_ID}">${row.Game_Name}</option>
-                                          </c:forEach>
+                                <option  value="${row.Game_ID}">${row.Game_Name}</option>
+                            </c:forEach>
                         </select>
                        <p>*Require</p>
                     </div>

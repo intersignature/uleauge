@@ -59,7 +59,12 @@ public class inviteServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 String username = (String) session.getAttribute("username"); 
                 Statement user = connection.createStatement();
-                String sql = "SELECT  T.Team_Cap, T.Game_ID ,T.Team_mem_num, G.Game_Max FROM db_accessadmin.Team T \n" +
+                int Team_ID = -1;
+                int invited = 0;
+                int haveteam = 0;
+                int notcap = 0;
+                int fullteam = 0;
+                String sql = "SELECT  T.Team_ID, T.Team_Cap, T.Game_ID ,T.Team_mem_num, G.Game_Max FROM db_accessadmin.Team T \n" +
                                 "right join db_accessadmin.Game G\n" +
                                 "on G.Game_ID = T.Game_ID\n" +
                                 "WHERE T.Team_Cap = '"+username+"' and T.Game_ID = "+gameinvite+"";
@@ -67,7 +72,14 @@ public class inviteServlet extends HttpServlet {
                while (rs.next()) {
                    if (rs.getString("Team_Cap").toLowerCase().equals(username.toLowerCase())&& rs.getInt("Team_mem_num")< rs.getInt("Game_Max")){// กัปตันรึเปล่า
                          caninvite = 1;
-                   } 
+                         Team_ID = rs.getInt("Team_ID");
+                   }
+                   if (!rs.getString("Team_Cap").toLowerCase().equals(username.toLowerCase())){
+                       notcap = 1;
+                   }
+                   if (rs.getInt("Team_mem_num")>= rs.getInt("Game_Max")){
+                       fullteam = 1;
+                   }
                     
                }
                user.close();
@@ -78,40 +90,50 @@ public class inviteServlet extends HttpServlet {
                                     "WHERE P.P_Username = '"+prouser+"'";
                ResultSet rs1 = user1.executeQuery(sql1);
                while (rs1.next()) {
-                   if (rs1.getInt("Game_ID")== gameinvite){// กัปตันรึเปล่า
+                   if (rs1.getInt("Game_ID")== gameinvite){
                          caninvite = 0;
+                         haveteam = 1;
                    } 
                     
                }
                user1.close();
                
-               
+                
                if(caninvite == 1){
                    //ต้องเช็คเคส เคยชวนไปแล้วด้วย
                    
-                   Statement check = connection.createStatement();
-                String check_invited = "SELECT  P.P_Username, T.Game_ID FROM db_accessadmin.Player_Join P\n" +
-                                    "right join db_accessadmin.Team T\n" +
-                                    "on T.Team_ID = P.Team_ID\n" +
-                                    "WHERE P.P_Username = '"+prouser+"'";
-               ResultSet rs_in = check.executeQuery(sql1);
+                  Statement check = connection.createStatement();
+                String check_invited = "SELECT I.Team_ID, T.Team_Cap, I.P_Username ,T.Game_ID FROM db_accessadmin.Team T\n" +
+                        "join db_accessadmin.Invite I\n" +
+                        "on I.Team_ID = T.Team_ID\n" +
+                        "where T.Game_ID = "+gameinvite+" and T.Team_Cap = '"+username+"' and I.P_Username='"+prouser+"';";
+                
+               ResultSet rs_in = check.executeQuery(check_invited);
                while (rs_in.next()) {
-                   if (rs_in.getInt("Game_ID")== gameinvite){// กัปตันรึเปล่า
-                         caninvite = 0;
-                   } 
-                    
+                   invited = 1;
+                  response.sendRedirect("inviteFail.jsp");
                }
-               user1.close();
+               check.close();
+               if(invited == 0)
+               {
                    out.println("invited");
-                   //String sql = "INSERT INTO db_accessadmin.Invite (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_mem_num)"+ 
-                    //" VALUES (?, ?, ?, ?, ?, ?,?);";
-                    PreparedStatement insert = connection.prepareStatement(sql);   
-                    insert.setInt(7, 1);
+                   String sql3 = "INSERT INTO db_accessadmin.Invite (Team_ID,P_Username)"+ 
+                    " VALUES (?, ?);";
+                    PreparedStatement insert = connection.prepareStatement(sql3);   
+                    insert.setInt(1, Team_ID);
+                    insert.setString(2, prouser);
                     insert.execute();
                     insert.close();
+                    response.sendRedirect("inviteSuc.jsp");
+               }
                }
                else if(caninvite == 0){
+                   session.setAttribute("invited", invited); // เคยชวนแล้ว
+                   session.setAttribute("haveteam", haveteam); // มีทีมอยู่แล้ว กรณีกดชวนพร้อมกันแล้วดรอปดาวไม่อัพเดท
+                   session.setAttribute("notcap", notcap); //ไม่ได้เป็นกัปตัน
+                   session.setAttribute("notfull", fullteam); // ทีมเต็ม 
                    out.println("can't invited");
+                   response.sendRedirect("inviteFail.jsp");
                }
                
             } 
