@@ -130,7 +130,7 @@
                 </a>
                 <div id="invitebtn">
                     <a  href="acInviteServlet?team_id=${row.Team_ID}" class="inbtn">Accept</a>&nbsp;&nbsp;
-                    <a  href="#" class="inbtn">Ignore</a>&nbsp;&nbsp;
+                    <a  href="igInviteServlet?team_id=${row.Team_ID}" class="inbtn">Ignore</a>&nbsp;&nbsp;
 		</div>
                 
             </div>

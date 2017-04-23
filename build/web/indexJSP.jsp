@@ -138,6 +138,19 @@
                
             </li>
             </a>
+                <li >
+                                        <div class="btn-group"id = "editbtn" > 
+<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id = "probtn">
+<span class="icon-cog"></span><span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
+<li class="bgedit"><a href="TeamServlet"><span class="icon-user"></span> My Team</a></li>
+<li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
+</ul>
+</div>
+                </li>
+                
      
             <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
                 <input type="hidden" name="from" value="indexJSP.jsp" />

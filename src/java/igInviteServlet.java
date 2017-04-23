@@ -6,12 +6,9 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -27,12 +24,12 @@ import javax.sql.DataSource;
  *
  * @author Barjord
  */
-@WebServlet(urlPatterns = {"/acInviteServlet"})
-public class acInviteServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/igInviteServlet"})
+public class igInviteServlet extends HttpServlet {
 
     @Resource(name = "dbesport")
     private DataSource dbesport;
- private Connection connection;
+private Connection connection;
 
     public void init() {
         try {
@@ -57,64 +54,18 @@ public class acInviteServlet extends HttpServlet {
             int team_id = Integer.parseInt(request.getParameter("team_id"));
             HttpSession session = request.getSession();
              String username = (String) session.getAttribute("username");
-            String sql = "INSERT INTO db_accessadmin.Player_Join (Team_ID,P_Username)" +
-            "VALUES (?,?);";
-            PreparedStatement insert = connection.prepareStatement(sql);   
-            insert.setInt(1, team_id);
-            insert.setString(2, username);
-            insert.execute();
-            insert.close();
-            String sql1 = "UPDATE db_accessadmin.Team " +
-"                             SET Team_mem_num += 1" +
-"                             WHERE Team_ID = ?";
-
-            PreparedStatement update = connection.prepareStatement(sql1);   
-            update.setInt(1, team_id);
-            update.execute();
-            update.close();
-            try{
-               Statement stmt = connection.createStatement();
-                String sql3 = "select T.Team_mem_num, G.Game_Max FROM db_accessadmin.Team T" +
-                            "join db_accessadmin.Game G" +
-                            "on T.Game_ID = G.Game_ID" +
-                            "where T.Team_ID = '"+ team_id + "'";
-                ResultSet rs3 = stmt.executeQuery(sql3);
-                while (rs3.next()) {
-                    if(rs3.getInt("Team_mem_num") >= rs3.getInt("Game_Max")){
-                        String sql4 = "delete from db_accessadmin.Invite" +
-                            " where Team_ID = ?;";
-                            PreparedStatement delete = connection.prepareStatement(sql4);   
+            String sql = "delete FROM db_accessadmin.Invite\n" +
+                            "where Team_ID = ? and P_Username = ?";
+                            PreparedStatement delete = connection.prepareStatement(sql);   
                             delete.setInt(1, team_id);
+                            delete.setString(2, username);
                             delete.execute();
                             delete.close();
-                        }
-                }
-                 
-                
-            } catch (SQLException e) {
-                out.println(e);
-            }
-            String sql5 = "delete from db_accessadmin.Invite\n" +
-"                                where Team_ID in(select Team_ID\n" +
-"                                from  db_accessadmin.Team\n" +
-"                                where Game_ID in ( select Game_ID\n" +
-"                                from  db_accessadmin.Team\n" +
-"                                where Team_ID = ? ) )  and P_Username = ?";
-                            PreparedStatement delete1 = connection.prepareStatement(sql5);   
-                            delete1.setInt(1, team_id);
-                            delete1.setString(2, username);
-                            delete1.execute();
-                            delete1.close();
-            response.sendRedirect("newsInvite.jsp");
-        }
-           catch (SQLException ex) {
+                            response.sendRedirect("newsInvite.jsp");
+        }catch (SQLException ex) {
             Logger.getLogger(CreateTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-            
-        
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
