@@ -36,7 +36,7 @@
     %>
     <header>
          <!-- Second navbar for sign in -->
-    <nav class="navbar navbar-default" id="headnav">
+    <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header" >

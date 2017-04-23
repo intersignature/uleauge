@@ -230,6 +230,7 @@ header{
 }
 #signinbtn{
     background: white;
+    margin-right: 16px;
 }
 
 #signinbtn:hover{
