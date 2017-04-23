@@ -71,6 +71,12 @@ public class Player_001Servlet extends HttpServlet {
                     session.setAttribute("faculty", rs.getString("P_Faculty"));
                     session.setAttribute("university", rs.getString("P_University"));
                     session.setAttribute("phone", rs.getString("P_Phone"));
+                    if(rs.getString("P_Image").equals("") || rs.getString("P_Image").equals("NoDisplay")){
+                        session.setAttribute("P_Image", "http://i.imgur.com/rZjcXgi.jpg");
+                    }
+                    else{
+                        session.setAttribute("P_Image", "http://i.imgur.com/"+rs.getString("P_Image")+".jpg");
+                    }
                     
                 }
             } catch (Exception e) {

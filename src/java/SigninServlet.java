@@ -77,7 +77,7 @@ public class SigninServlet extends HttpServlet {
                 while (rs.next()) {
                     if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(password)) {
                         suc = 1;
-                        if(rs.getString("P_Image").equals("")){
+                        if(rs.getString("P_Image").equals("") || rs.getString("P_Image").equals("NoDisplay") ){
                             useimage = "http://i.imgur.com/rZjcXgi.jpg";
                         }
                         else{

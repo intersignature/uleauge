@@ -29,123 +29,7 @@
         <link rel="stylesheet" href="assets/css/player_tab.css">
     </head>
 
-<<<<<<< HEAD
-<body>
-     <% session = request.getSession();
-       char is_password = (char) session.getAttribute("is_password");
-       char is_rep_password = (char) session.getAttribute("is_rep-password");
-       char is_fname = (char) session.getAttribute("is_fname");
-       char is_lname = (char) session.getAttribute("is_lname");
-       char is_email = (char) session.getAttribute("is_email");
-       char is_fb = (char) session.getAttribute("is_fb");
-       char is_university = (char) session.getAttribute("is_university");
-       char is_faculty = (char) session.getAttribute("is_faculty");
-       char is_phone = (char) session.getAttribute("is_phone");
-       char is_ign = (char) session.getAttribute("is_ign");
-       String username = (String) session.getAttribute("username");
-       String new_password = (String) session.getAttribute("new_password");
-       String new_fname = (String) session.getAttribute("new_fname");
-       String new_lname = (String) session.getAttribute("new_lname");
-       String new_email = (String) session.getAttribute("new_email");
-       String new_fb = (String) session.getAttribute("new_fb");
-       String new_university = (String) session.getAttribute("new_university");
-       String new_faculty = (String) session.getAttribute("new_faculty");
-       String new_phone = (String) session.getAttribute("new_phone");
-       String new_ign = (String) session.getAttribute("new_ign");
-       String image = (String) session.getAttribute("image"); 
-       int id = (int) session.getAttribute("id");
-       String roles = (String) session.getAttribute("roles");
-       String useimage = (String) session.getAttribute("useimage");
-                %>
-    <header>
-         <!-- Second navbar for sign in -->
-    <nav class="navbar navbar-default" id="headnav">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header" >
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <a href="indexJSP.jsp">
-            <img src="assets/img/logo.png"  id = "logo">
-          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right" id="userbar">
-             <% session = request.getSession();
-              
-                    String imgdir = useimage;
-              
-                %>
-                 <li id = "searchnav2"> 
-                  <a>
-                      <form action="searchServlet" method="POST" >
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
-                    
-                      <input id = "searchbtn" type="submit" value="Search" />
-                       </form>
-                  </a>
-              </li>
-                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
-            <li id="namepro">
-               
-                <img src= "<% out.println(imgdir); %>" id="imgpro">
-                <div id = "namepro2">
-                    <h4><b><% out.println(username); %></b></h4>
-                </div>
-               
-            </li>
-            </a>
-     
-            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="indexJSP.jsp" />
-             <li >
-             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
-            </li>
-            </form>
-          </ul>
-       
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-    </header>
-    <ul class="nav nav-pills categories">
-        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
-        <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-    </ul>
-   
-    <div class="row register-form">
-        <div class="col-md-8 col-md-offset-2">
-            <form class="form-horizontal custom-form" action="CheckEditProfileServlet" id="signup" name="signup" method="POST">
-                <h1>U-LEAUGE Edit Profile</h1>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Username </label> 
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="username" value=<%= username%> disabled> <p>*Require</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="pawssword-input-field">Password </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="new_password"><p>*Require<br>
-                        *Your password must have at least one upper case, one lower case, one numeric</p>
-                    </div>
-                    <p id="cau_password" style="color:blue;"><%if (is_password=='1'){out.println("Incorrect Password");}%></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
-=======
     <body>
         <% session = request.getSession();
             char is_password = (char) session.getAttribute("is_password");
@@ -168,6 +52,7 @@
             String new_faculty = (String) session.getAttribute("new_faculty");
             String new_phone = (String) session.getAttribute("new_phone");
             String new_ign = (String) session.getAttribute("new_ign");
+            String image = (String) session.getAttribute("image");
             int id = (int) session.getAttribute("id");
             String roles = (String) session.getAttribute("roles");
         %>
@@ -186,12 +71,11 @@
                         <a href="indexJSP.jsp">
                             <img src="assets/img/logo.png"  id = "logo">
                             <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
->>>>>>> bcf44cc2c7d3186bf3308c7ba080822ff07a9805
                     </div>
                     <ul class="nav navbar-nav navbar-right" id="userbar">
                         <% session = request.getSession();
 
-                            String imgdir = "assets/img/" + username + ".jpg";
+                            String imgdir = (String) session.getAttribute("useimage");
 
                         %>
                         <a href="Player_001Servlet?player=<%out.println(id);%>"> 
@@ -359,38 +243,42 @@
                             out.println("Must have In-game name");
                         }%></p>
                     </div>
+                    <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field">Image Link</label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="realimage" value=<%=image %>>
+                        <p>upload file at <a href="http://imgur.com/gpHAQIO">imgur.com</a> and you will give link like "http://imgur.com/gpHAQIO" and you input "gpHAQIO" only</p>
+                    </div>
+                </div>
                     <button class="btn btn-default submit-button" id="buttonn" type="submit">Edit</button>
                     <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
                 </form>
             </div>  
         </div>
-        <footer>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 footer-navigation">
-                    <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                    <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                    <p class="company-name">E-league © 2017 </p>
+        <footer id="footer001">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footer-navigation">
+                <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
+            </div>
+            <div class="col-md-4 col-sm-6 footer-contacts">
+                <div><i class="fa fa-facebook footer-contacts-icon" ></i>
+                    <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
                 </div>
-                <div class="col-md-4 col-sm-6 footer-contacts">
-                    <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                        <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
-                    </div>
-                    <div><i class="fa fa-phone footer-contacts-icon"></i>
-                        <p class="footer-center-info email text-left"> +1 555 123456</p>
-                    </div>
-                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                        <p> <a href="#" target="_blank">support@company.com</a></p>
-                    </div>
-                </div>
-                <div class="clearfix visible-sm-block"></div>
-                <div class="col-md-4 footer-about">
-                    <h4>About the company</h4>
-                    <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-                    </p>
-                    <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+
+                <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                    <p> <a>lawslifeaways@gmail.com</a></p>
                 </div>
             </div>
-        </footer>
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-4 footer-about">
+                <h4>U LEAUGE</h4>
+                <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
+                </p>
+            </div>
+        </div>
+    </footer>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>

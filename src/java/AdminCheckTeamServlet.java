@@ -57,7 +57,8 @@ public class AdminCheckTeamServlet extends HttpServlet {
             String admin_Team_Cap = request.getParameter("admin_Team_Cap");
             String admin_Team_Phone = request.getParameter("admin_Team_Phone");
             String admin_hide_Team_ID = request.getParameter("admin_hide_Team_ID");
-            String sql = "UPDATE db_accessadmin.Team SET Team_ID=?,Team_Name=?,Team_Tag=?,Game_ID=?,Team_Cap=?,Team_Phone=? where Team_ID=?";
+            String admin_Team_Image = request.getParameter("admin_Team_Image");
+            String sql = "UPDATE db_accessadmin.Team SET Team_ID=?,Team_Name=?,Team_Tag=?,Game_ID=?,Team_Cap=?,Team_Phone=?,Team_Image=? where Team_ID=?";
             PreparedStatement update = connection.prepareStatement(sql);
             update.setInt(1, Integer.parseInt(admin_Team_ID));
             update.setString(2, admin_Team_Name);
@@ -65,7 +66,8 @@ public class AdminCheckTeamServlet extends HttpServlet {
             update.setInt(4, Integer.parseInt(admin_Game_ID));
             update.setString(5, admin_Team_Cap);
             update.setString(6, admin_Team_Phone);
-            update.setInt(7, Integer.parseInt(admin_hide_Team_ID));
+            update.setString(7, admin_Team_Image);
+            update.setInt(8, Integer.parseInt(admin_hide_Team_ID));
             update.execute();
             response.sendRedirect("AdminTeamServlet");
         } catch (SQLException ex) {

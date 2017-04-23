@@ -1,21 +1,22 @@
 footer{
-  background-color:#292c2f;
+  background-color: #292c2f;
   box-shadow:0 1px 1px 0 #000000;
   box-sizing:border-box;
   width:100%;
+  height: 100%;
   text-align:left;
   font:bold 16px sans-serif;
-  padding:55px 50px;
+  padding:5px 30px;
   margin-top:60px;
   bottom:0;
   color:#fff;
 }
-
 .footer-navigation h3{
   margin:0;
   font:normal 36px Cookie, cursive;
   margin-bottom:20px;
   color:#fff;
+  margin-top: 20px;
 }
 
 .footer-navigation h3 a{
@@ -49,11 +50,14 @@ footer{
   display:inline-block;
   color:#ffffff;
   vertical-align:middle;
+  margin: 15px;
 }
 
 .footer-contacts p a{
   color:#5383d3;
   text-decoration:none;
+  
+  
 }
 
 .fa.footer-contacts-icon{
@@ -65,7 +69,7 @@ footer{
   border-radius:50%;
   text-align:center;
   line-height:38px;
-  margin:10px 15px 10px 0;
+  margin:-50px 15px 0px 0;
 }
 
 span.new-line-span{
@@ -83,6 +87,7 @@ span.new-line-span{
   font-size:14px;
   font-weight:bold;
   margin-bottom:20px;
+
 }
 
 .footer-about p{
@@ -90,7 +95,7 @@ span.new-line-span{
   color:#92999f;
   font-size:13px;
   font-weight:normal;
-  margin:0;
+  margin-top: -10px;
 }
 
 div.social-links{

@@ -1,6 +1,11 @@
 
 body{
-  background:white;
+  background-image: url(../../assets/img/bodybg.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .tourboard{
   width:100%;
@@ -195,7 +200,7 @@ header{
 }
 
 #footer001{
-  margin-top:550px;
+  margin-top:300px;
   float:left;
 }
 

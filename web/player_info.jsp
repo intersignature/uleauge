@@ -113,7 +113,7 @@
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
-                    String useimage = (String) session.getAttribute("useimage");
+                    String useimage = (String) session.getAttribute("useimage"); 
                     int id = (int) session.getAttribute("P_ID");
                     String roles = (String) session.getAttribute("roles");
                 %>
@@ -159,6 +159,7 @@
             String faculty = (String) session.getAttribute("faculty");
             String university = (String) session.getAttribute("university");
             String phone = (String) session.getAttribute("phone");
+            String P_Image = (String) session.getAttribute("P_Image");
         %>
 
         <ul class="nav nav-pills categories">
@@ -176,7 +177,7 @@
                     <p style="text-align: center">
                         
                     <div class="logo_profiletest">
-                        <img src="assets/img/player1.jpg"width="190" height="190" >
+                        <img src=<%=P_Image%> width="190" height="190" >
                         <h2 style="text-align: center" class="ign"><%= ign%></h2></div></p><br><br><br><br><br><br>
                     
                     <div class="card">
@@ -196,33 +197,28 @@
                 </ul>
             </div>
         </div>
-        <footer>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 footer-navigation">
-                    <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                    <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                    <p class="company-name">E-league © 2017 </p>
+        <footer id="footer001">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footer-navigation">
+                <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
+            </div>
+            <div class="col-md-4 col-sm-6 footer-contacts">
+                <div><i class="fa fa-facebook footer-contacts-icon" ></i>
+                    <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
                 </div>
-                <div class="col-md-4 col-sm-6 footer-contacts">
-                    <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                        <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
-                    </div>
-                    <div><i class="fa fa-phone footer-contacts-icon"></i>
-                        <p class="footer-center-info email text-left"> +1 555 123456</p>
-                    </div>
-                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                        <p> <a href="#" target="_blank">support@company.com</a></p>
-                    </div>
-                </div>
-                <div class="clearfix visible-sm-block"></div>
-                <div class="col-md-4 footer-about">
-                    <h4>About the company</h4>
-                    <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-                    </p>
-                    <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+
+                <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                    <p> <a>lawslifeaways@gmail.com</a></p>
                 </div>
             </div>
-        </footer>
+            <div class="clearfix visible-sm-block"></div>
+            <div class="col-md-4 footer-about">
+                <h4>U LEAUGE</h4>
+                <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
+                </p>
+            </div>
+        </div>
+    </footer>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>

@@ -113,7 +113,7 @@ public class SignupServlet extends HttpServlet {
                             password_isLower = 1;
                     }
             }
-            if (password_isnum != 1 || password_isUpper != 1 || password_isLower != 1){
+            if (password_isnum != 1 || password_isUpper != 1 || password_isLower != 1 || password.length()<8){
                     HttpSession session = request.getSession();
                     session.setAttribute("is_password", '1');
             }
@@ -228,16 +228,16 @@ public class SignupServlet extends HttpServlet {
             }
             
             //เช็คcondition
-            if(request.getParameter("condition") == null){
+           // if(request.getParameter("condition") == null){
             //checkbox not checked
-            HttpSession session = request.getSession();
-            session.setAttribute("condition", '1');
-            }else{
+           // HttpSession session = request.getSession();
+            //session.setAttribute("condition", '1');
+           // }else{
             //checkbox checked
             HttpSession session = request.getSession();
             session.setAttribute("condition", '0');
-            }
-            HttpSession session = request.getSession();
+            //}
+            //HttpSession session = request.getSession();
             //out.print((char) session.getAttribute("condition"));
             
             if(ans_overall == 11 && (char)session.getAttribute("condition")=='0'){

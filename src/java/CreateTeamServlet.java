@@ -60,7 +60,7 @@ public class CreateTeamServlet extends HttpServlet {
             int gameteam = Integer.parseInt(request.getParameter("gameteam"));
             String teamphone = request.getParameter("teamphone");
             String con = request.getParameter("condition");
-            
+            String RealImage = request.getParameter("realimage");
             out.println(teamname);
             out.println(teamtag);
             out.println(gameteam);
@@ -134,8 +134,8 @@ public class CreateTeamServlet extends HttpServlet {
             if(ans_teamname+ans_teamtag+ans_teamphone+ans_con+ans_teamunjoin == 5){
                 out.println(index);
                     
-            String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone)"+ 
-                    " VALUES (?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_Image)"+ 
+                    " VALUES (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement insert = connection.prepareStatement(sql);   
             insert.setInt(1, index+1);
             insert.setString(2, teamname);
@@ -143,7 +143,9 @@ public class CreateTeamServlet extends HttpServlet {
             insert.setInt(4, gameteam);
             insert.setString(5, team_cap);
             insert.setString(6, teamphone);
+            insert.setString(7, RealImage);
             insert.execute();
+            insert.close();
             
             String sql3 = "INSERT INTO db_accessadmin.Player_Join (P_Username, Team_ID)"+ 
                     " VALUES (?, ?);";
@@ -152,6 +154,8 @@ public class CreateTeamServlet extends HttpServlet {
             insert1.setInt(2, index+1);
             
             insert1.execute();
+            insert1.close();
+                       
             response.sendRedirect("CreateTeamSuccess.jsp");
             }
             else{
@@ -167,7 +171,7 @@ public class CreateTeamServlet extends HttpServlet {
                 session.setAttribute("gameteam", gameteam);
                 session.setAttribute("team_cap", team_cap);
                 session.setAttribute("teamphone", teamphone);
-           
+                session.setAttribute("image", RealImage);
                 response.sendRedirect("CreateTeamFail.jsp");
                 
             }
