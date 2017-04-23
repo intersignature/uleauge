@@ -7,6 +7,9 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -31,6 +34,7 @@
     <link rel="stylesheet" href="assets/css/info-tab_player001.css">
     <link rel="stylesheet" href="assets/css/player_001.css">
     <link rel="stylesheet" href="assets/css/player_tab.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -151,6 +155,7 @@
     </header>
 <% }%>
             <% session = request.getSession();
+            String username = (String) session.getAttribute("username"); 
             String fname = (String) session.getAttribute("fname");
             String lname = (String) session.getAttribute("lname");
             String email = (String) session.getAttribute("email");
@@ -159,7 +164,12 @@
             String faculty = (String) session.getAttribute("faculty");
             String university = (String) session.getAttribute("university");
             String phone = (String) session.getAttribute("phone");
+<<<<<<< HEAD
             String P_Image = (String) session.getAttribute("P_Image");
+=======
+            String prouser = (String) session.getAttribute("Prouser");
+           
+>>>>>>> origin/master
         %>
 
         <ul class="nav nav-pills categories">
@@ -196,6 +206,56 @@
 
                 </ul>
             </div>
+                        <sql:setDataSource var="dbsource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                           url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
+                           user="adminesport@esportproject"  password="Esport2017"/>
+                        <% if (!prouser.equals(username) && (int)session.getAttribute("suc") == 1 ){ %>
+                <div class="well well-sm text-center">        
+                 <a class="btn btn-lg btn-success" data-toggle="modal" href="#gameModal">Invite</a> 
+                </div>
+    <%}%>
+             <div id="gameModal" class="modal modal-wide fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Choose Game</h4>
+      </div>
+      <div class="modal-body">
+          <div class="col-sm-6 input-column">
+              <form action="inviteServlet" method="POST">
+              
+            <h4> กรุณาเลือกเกมส์ของทีม </h4>
+                        <select name="gameinvite">
+  
+                            <sql:query dataSource="${dbsource}" var="result">
+                                SELECT P.P_Username,G.Game_Name ,G.Game_ID,T.Team_Cap
+                                FROM db_accessadmin.Player_Join P
+                                inner join db_accessadmin.Team T
+                                on T.Team_ID = P.Team_ID
+                                inner join db_accessadmin.Game G
+                                on T.Game_ID != G.Game_ID
+                                where P_Username = '<%= prouser %>';
+                            </sql:query>
+                                
+                                
+                            <c:forEach var="row" items="${result.rows}">
+                                         <option  value="${row.Game_ID}">${row.Game_Name}</option>
+                                          </c:forEach>
+                        </select>
+                       <p>*Require</p>
+                    </div>
+        <div class="row">
+            <div class="col-12-xs text-center">
+                <button type="submit" class="btn btn-success btn-md "  >ยืนยัน</button>
+                <button type="button" data-dismiss="modal" aria-hidden="true" class=" btn btn-danger btn-md">ไม่</button>
+            </div>
+        </div>
+      </div>
+   </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->           
         </div>
         <footer id="footer001">
         <div class="row">

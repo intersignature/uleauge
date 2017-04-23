@@ -18,14 +18,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
  *
  * @author Barjord
  */
-@WebServlet(urlPatterns = {"/searchServlet"})
-public class searchServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/inviteServlet"})
+public class inviteServlet extends HttpServlet {
 
     @Resource(name = "dbesport")
     private DataSource dbesport;
@@ -38,8 +39,7 @@ public class searchServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */
-    private Connection connection;
+     */private Connection connection;
         public void init(){
         try {
             connection = dbesport.getConnection();
@@ -51,28 +51,23 @@ public class searchServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String searchuser = request.getParameter("searchuser");
-           int P_ID = -1;
-           out.println(searchuser);
             try {
-                Statement user = connection.createStatement();
-                String sql = "SELECT P_ID,P_Roles ,P_Username FROM db_accessadmin.Player WHERE P_Username = '" + searchuser + "'";
-                ResultSet rs = user.executeQuery(sql);
-                while (rs.next()) {
-                    if (rs.getString("P_Username").toLowerCase().equals(searchuser.toLowerCase()) && !rs.getString("P_Roles").equals("admin")) { //ถ้าซ้ำ
-                          P_ID = rs.getInt("P_ID");
-                    } 
+                out.println(request.getParameter("gameinvite"));
+                HttpSession session = request.getSession();
                     
-                }
+                    String username = (String) session.getAttribute("username"); 
+                Statement user = connection.createStatement();
+                //String sql = "SELECT P_ID,P_Roles ,P_Username FROM db_accessadmin.Player WHERE P_Username = '" + searchuser + "'";
+               /// ResultSet rs = user.executeQuery(sql);
+                ///while (rs.next()) {
+                   // if (rs.getString("P_Username").toLowerCase().equals(searchuser.toLowerCase()) && !rs.getString("P_Roles").equals("admin")) { //ถ้าซ้ำ
+                     //     P_ID = rs.getInt("P_ID");
+                    //} 
+                    
+                //}
 
             } catch (SQLException e) {
                 out.println(e);
-            }
-            if(P_ID != -1){
-                response.sendRedirect("Player_001Servlet?player="+P_ID);
-            }
-            else{
-                response.sendRedirect("searchFail.jsp");
             }
         }
     }
