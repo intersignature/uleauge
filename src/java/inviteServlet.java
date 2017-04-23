@@ -7,6 +7,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -52,21 +53,71 @@ public class inviteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             try {
-                out.println(request.getParameter("gameinvite"));
+                int gameinvite = Integer.parseInt(request.getParameter("gameinvite"));
+                String prouser = request.getParameter("prouser");
+                int caninvite = 0;
                 HttpSession session = request.getSession();
-                    
-                    String username = (String) session.getAttribute("username"); 
+                String username = (String) session.getAttribute("username"); 
                 Statement user = connection.createStatement();
-                //String sql = "SELECT P_ID,P_Roles ,P_Username FROM db_accessadmin.Player WHERE P_Username = '" + searchuser + "'";
-               /// ResultSet rs = user.executeQuery(sql);
-                ///while (rs.next()) {
-                   // if (rs.getString("P_Username").toLowerCase().equals(searchuser.toLowerCase()) && !rs.getString("P_Roles").equals("admin")) { //ถ้าซ้ำ
-                     //     P_ID = rs.getInt("P_ID");
-                    //} 
+                String sql = "SELECT  T.Team_Cap, T.Game_ID ,T.Team_mem_num, G.Game_Max FROM db_accessadmin.Team T \n" +
+                                "right join db_accessadmin.Game G\n" +
+                                "on G.Game_ID = T.Game_ID\n" +
+                                "WHERE T.Team_Cap = '"+username+"' and T.Game_ID = "+gameinvite+"";
+               ResultSet rs = user.executeQuery(sql);
+               while (rs.next()) {
+                   if (rs.getString("Team_Cap").toLowerCase().equals(username.toLowerCase())&& rs.getInt("Team_mem_num")< rs.getInt("Game_Max")){// กัปตันรึเปล่า
+                         caninvite = 1;
+                   } 
                     
-                //}
-
-            } catch (SQLException e) {
+               }
+               user.close();
+               Statement user1 = connection.createStatement();
+                String sql1 = "SELECT  P.P_Username, T.Game_ID FROM db_accessadmin.Player_Join P\n" +
+                                    "right join db_accessadmin.Team T\n" +
+                                    "on T.Team_ID = P.Team_ID\n" +
+                                    "WHERE P.P_Username = '"+prouser+"'";
+               ResultSet rs1 = user1.executeQuery(sql1);
+               while (rs1.next()) {
+                   if (rs1.getInt("Game_ID")== gameinvite){// กัปตันรึเปล่า
+                         caninvite = 0;
+                   } 
+                    
+               }
+               user1.close();
+               
+               
+               if(caninvite == 1){
+                   //ต้องเช็คเคส เคยชวนไปแล้วด้วย
+                   
+                   Statement check = connection.createStatement();
+                String check_invited = "SELECT  P.P_Username, T.Game_ID FROM db_accessadmin.Player_Join P\n" +
+                                    "right join db_accessadmin.Team T\n" +
+                                    "on T.Team_ID = P.Team_ID\n" +
+                                    "WHERE P.P_Username = '"+prouser+"'";
+               ResultSet rs_in = check.executeQuery(sql1);
+               while (rs_in.next()) {
+                   if (rs_in.getInt("Game_ID")== gameinvite){// กัปตันรึเปล่า
+                         caninvite = 0;
+                   } 
+                    
+               }
+               user1.close();
+                   out.println("invited");
+                   //String sql = "INSERT INTO db_accessadmin.Invite (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_mem_num)"+ 
+                    //" VALUES (?, ?, ?, ?, ?, ?,?);";
+                    PreparedStatement insert = connection.prepareStatement(sql);   
+                    insert.setInt(7, 1);
+                    insert.execute();
+                    insert.close();
+               }
+               else if(caninvite == 0){
+                   out.println("can't invited");
+               }
+               
+            } 
+            
+            
+            catch (SQLException e) {
                 out.println(e);
             }
         }
