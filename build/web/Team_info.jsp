@@ -4,6 +4,7 @@
     Author     : mild supanat
 --%>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
@@ -161,6 +162,9 @@
             String teammemnum = (String) session.getAttribute("teammemnum");
             String Team_Image = (String) session.getAttribute("Team_Image");
             String prouser = (String) session.getAttribute("Prouser");
+            List<String> mem_fname = (List) session.getAttribute("mem_fname");
+            List<String> mem_ign = (List) session.getAttribute("mem_ign");
+            List<String> mem_lname = (List) session.getAttribute("mem_lname");
         %>
 
         <ul class="nav nav-pills categories">
@@ -185,6 +189,13 @@
                         <h4><strong>Captain Team:</strong><%= teamcap%></h4>
                         <h4><strong>Number of member:</strong><%= teammemnum%></h4>
                         <h4><strong>Phone:</strong><%= teamphone%></h4>
+                        <h3><strong>Member of Team</strong></h3>
+                        <%
+                        for(int i=1;i<= mem_fname.size();i++){
+                            int index = mem_fname.indexOf(i);
+                            out.println(i+" "+mem_fname.get(index)+" "+mem_ign.get(index)+" "+mem_lname.get(index));
+                        }
+                        %>
                     </div>
                 </ul>
             </div>

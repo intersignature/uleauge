@@ -33,6 +33,7 @@ public class Team_001Servlet extends HttpServlet {
     @Resource(name = "dbesport")
     private DataSource dbesport;
     private Connection connection;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,14 +43,14 @@ public class Team_001Servlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    public void init(){
+    public void init() {
         try {
             connection = dbesport.getConnection();
         } catch (SQLException ex) {
             Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -57,12 +58,28 @@ public class Team_001Servlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             int id = Integer.parseInt(request.getParameter("team_id"));
             List<String> data = new ArrayList<String>();
-            try {   
+            try {
                 Statement stmt = connection.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Team where Team_ID = " + id;
                 ResultSet rs = stmt.executeQuery(sql);
+                List<String> mem_fname = new ArrayList<String>();
+                List<String> mem_ign = new ArrayList<String>();
+                List<String> mem_lname = new ArrayList<String>();
+                Statement stmt3 = connection.createStatement();
+                String sql3 = "SELECT P_Username FROM db_accessadmin.Player_Join where Team_ID = " + id;
+                ResultSet rs3 = stmt3.executeQuery(sql3);
                 HttpSession session = request.getSession();
-                while(rs.next()){
+                while (rs3.next()) {
+                    Statement stmt4 = connection.createStatement();
+                    String sql4 = "SELECT P_FName, P_Ign, P_LName FROM db_accessadmin.Player where P_Username = " + rs3.getString("P_Username");
+                    ResultSet rs4 = stmt4.executeQuery(sql4);
+                    while (rs4.next()) {
+                        mem_fname.add(rs4.getString("P_FName"));
+                        mem_ign.add(rs4.getString("P_Ign"));
+                        mem_lname.add(rs4.getString("P_LName"));
+                    }
+                }
+                while (rs.next()) {
                     session.setAttribute("teamname", rs.getString("Team_Name"));
                     session.setAttribute("teamtag", rs.getString("Team_Tag"));
                     String gameid = rs.getString("Game_ID");
@@ -74,22 +91,24 @@ public class Team_001Servlet extends HttpServlet {
                     session.setAttribute("teamcap", rs.getString("Team_Cap"));
                     session.setAttribute("teamphone", rs.getString("Team_Phone"));
                     session.setAttribute("teammemnum", rs.getString("Team_mem_num"));
+                    session.setAttribute("mem_fname", mem_fname);
+                    session.setAttribute("mem_ign", mem_ign);
+                    session.setAttribute("mem_lname", mem_lname);
 
-                    if(rs.getString("Team_Image").equals("") || rs.getString("Team_Image").equals("NoDisplay")){
+                    if (rs.getString("Team_Image").equals("") || rs.getString("Team_Image").equals("NoDisplay")) {
                         session.setAttribute("Team_Image", "http://i.imgur.com/rZjcXgi.jpg");
-                    }
-                    else{
-                        session.setAttribute("Team_Image", "http://i.imgur.com/"+rs.getString("Team_Image")+".jpg");
+                    } else {
+                        session.setAttribute("Team_Image", "http://i.imgur.com/" + rs.getString("Team_Image") + ".jpg");
                     }
                     session.setAttribute("Prouser", rs.getString("Team_name"));
-                    
+
                 }
             } catch (Exception e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
             response.sendRedirect("Team_info.jsp");
-            
+
         }
     }
 
