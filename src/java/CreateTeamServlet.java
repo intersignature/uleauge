@@ -134,13 +134,8 @@ public class CreateTeamServlet extends HttpServlet {
             if(ans_teamname+ans_teamtag+ans_teamphone+ans_con+ans_teamunjoin == 5){
                 out.println(index);
                     
-<<<<<<< HEAD
-            String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_Image)"+ 
-                    " VALUES (?, ?, ?, ?, ?, ?, ?);";
-=======
-            String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_mem_num)"+ 
-                    " VALUES (?, ?, ?, ?, ?, ?,?);";
->>>>>>> origin/master
+            String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_Image,Team_mem_num)"+ 
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement insert = connection.prepareStatement(sql);   
             insert.setInt(1, index+1);
             insert.setString(2, teamname);
@@ -148,16 +143,11 @@ public class CreateTeamServlet extends HttpServlet {
             insert.setInt(4, gameteam);
             insert.setString(5, team_cap);
             insert.setString(6, teamphone);
-<<<<<<< HEAD
-            insert.setString(7, RealImage);
+            insert.setString(7, RealImage);  
+            insert.setInt(8, 1);
             insert.execute();
             insert.close();
-            
-=======
-            insert.setInt(7, 1);
-            insert.execute();
-            insert.close();
->>>>>>> origin/master
+
             String sql3 = "INSERT INTO db_accessadmin.Player_Join (P_Username, Team_ID)"+ 
                     " VALUES (?, ?);";
             PreparedStatement insert1 = connection.prepareStatement(sql3);  

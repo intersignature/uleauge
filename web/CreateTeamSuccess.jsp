@@ -121,7 +121,7 @@
                 </div>  
             </div>
         </div>
-<<<<<<< HEAD
+        
 <footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
@@ -130,25 +130,6 @@
             <div class="col-md-4 col-sm-6 footer-contacts">
                 <div><i class="fa fa-facebook footer-contacts-icon" ></i>
                     <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
-=======
-        <footer id="footer001">
-            <div class="row">
-                <div class="col-md-4 col-sm-6 footer-navigation">
-                    <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                    <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                    <p class="company-name">E-league © 2017 </p>
-                </div>
-                <div class="col-md-4 col-sm-6 footer-contacts">
-                    <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                        <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
-                    </div>
-                    <div><i class="fa fa-phone footer-contacts-icon"></i>
-                        <p class="footer-center-info email text-left"> +1 555 123456</p>
-                    </div>
-                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                        <p> <a href="#" target="_blank">support@company.com</a></p>
-                    </div>
->>>>>>> origin/master
                 </div>
 
                 <div><i class="fa fa-envelope footer-contacts-icon"></i>

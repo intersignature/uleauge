@@ -164,12 +164,8 @@
             String faculty = (String) session.getAttribute("faculty");
             String university = (String) session.getAttribute("university");
             String phone = (String) session.getAttribute("phone");
-<<<<<<< HEAD
             String P_Image = (String) session.getAttribute("P_Image");
-=======
             String prouser = (String) session.getAttribute("Prouser");
-           
->>>>>>> origin/master
         %>
 
         <ul class="nav nav-pills categories">

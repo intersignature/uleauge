@@ -171,7 +171,7 @@ public final class indexJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("             ");
  session = request.getSession();
                     String username = (String) session.getAttribute("username"); 
-                    String imgdir = "assets/img/"+username+".jpg";
+                    String imgdir = (String) session.getAttribute("useimage"); 
                     int id = (int) session.getAttribute("P_ID");
                     String roles = (String) session.getAttribute("roles");
                 
