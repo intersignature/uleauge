@@ -62,6 +62,7 @@ public class AdminDeleteOrganizerServlet extends HttpServlet {
             response.sendRedirect("UpdateIdOrganizerServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminDeleteOrganizerServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

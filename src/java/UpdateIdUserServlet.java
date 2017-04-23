@@ -72,6 +72,7 @@ public class UpdateIdUserServlet extends HttpServlet {
             stmt.close();
             response.sendRedirect("AdminUserServlet");
         } catch (SQLException ex) {
+            response.sendRedirect("/Project/ErrorJSP.jsp");
             Logger.getLogger(UpdateIdUserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

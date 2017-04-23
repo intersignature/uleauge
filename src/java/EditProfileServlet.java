@@ -73,6 +73,7 @@ public class EditProfileServlet extends HttpServlet {
                     session.setAttribute("image", rs.getString("P_Image"));
                 }
             } catch (SQLException e) {
+                response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
             response.sendRedirect("EditProfileJSP.jsp");

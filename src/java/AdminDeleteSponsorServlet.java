@@ -61,6 +61,7 @@ public class AdminDeleteSponsorServlet extends HttpServlet {
             response.sendRedirect("UpdateIdSponsorServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminDeleteSponsorServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

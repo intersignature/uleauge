@@ -67,6 +67,7 @@ public class AdminDeleteTeamServlet extends HttpServlet {
             response.sendRedirect("UpdateIdTeamServlet");
         } catch (SQLException ex) {
             out.println(ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

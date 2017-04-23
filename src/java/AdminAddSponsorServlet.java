@@ -61,6 +61,7 @@ public class AdminAddSponsorServlet extends HttpServlet {
             response.sendRedirect("AdminSponserServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminAddSponsorServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

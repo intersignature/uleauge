@@ -66,6 +66,7 @@ public class searchServlet extends HttpServlet {
                 }
 
             } catch (SQLException e) {
+                response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
             if(P_ID != -1){

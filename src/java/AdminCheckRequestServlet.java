@@ -79,6 +79,7 @@ public class AdminCheckRequestServlet extends HttpServlet {
             response.sendRedirect("AdminRequestServlet");
         } catch (SQLException ex) {
             out.println(ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

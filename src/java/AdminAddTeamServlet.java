@@ -81,6 +81,7 @@ public class AdminAddTeamServlet extends HttpServlet {
             response.sendRedirect("AdminTeamServlet");
         } catch (SQLException ex) {
             out.println(ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

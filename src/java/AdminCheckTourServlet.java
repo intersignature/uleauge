@@ -82,6 +82,7 @@ public class AdminCheckTourServlet extends HttpServlet {
             response.sendRedirect("AdminTournamentServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminCheckTourServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

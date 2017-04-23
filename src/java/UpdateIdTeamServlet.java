@@ -72,6 +72,7 @@ public class UpdateIdTeamServlet extends HttpServlet {
             stmt.close();
             response.sendRedirect("AdminTeamServlet");
         } catch (SQLException ex) {
+            response.sendRedirect("/Project/ErrorJSP.jsp");
             Logger.getLogger(UpdateIdTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

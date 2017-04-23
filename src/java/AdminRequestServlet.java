@@ -81,6 +81,7 @@ public class AdminRequestServlet extends HttpServlet {
                 }
             } catch (SQLException e) {
                 out.println(e);
+                response.sendRedirect("/Project/ErrorJSP.jsp");
             }
             HttpSession session = request.getSession();
             session.setAttribute("admin_Request_ID", admin_Request_ID);

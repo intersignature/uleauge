@@ -283,6 +283,7 @@ public class SignupServlet extends HttpServlet {
             out.println("</script>");*/
         } catch (SQLException ex) {
             Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

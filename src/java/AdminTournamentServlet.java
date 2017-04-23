@@ -84,7 +84,9 @@ public class AdminTournamentServlet extends HttpServlet {
                     admin_Tour_Table_Link.add(rs.getString("Tour_Table_Link"));
                 }
             } catch (SQLException e) {
-                out.println(e);}
+                response.sendRedirect("/Project/ErrorJSP.jsp");
+                out.println(e);
+            }
             HttpSession session = request.getSession();
             session.setAttribute("admin_Tour_ID", admin_Tour_ID);
             session.setAttribute("admin_Tour_Maxteam", admin_Tour_Maxteam);

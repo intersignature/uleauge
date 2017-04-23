@@ -84,6 +84,7 @@ public class AdminAddUserServlet extends HttpServlet {
             response.sendRedirect("AdminUserServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminAddUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Project/ErrorJSP.jsp");
         }
     }
 

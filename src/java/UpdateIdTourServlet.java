@@ -72,6 +72,7 @@ public class UpdateIdTourServlet extends HttpServlet {
             stmt.close();
             response.sendRedirect("AdminTournamentServlet");
         } catch (SQLException ex) {
+            response.sendRedirect("/Project/ErrorJSP.jsp");
             Logger.getLogger(UpdateIdTourServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
