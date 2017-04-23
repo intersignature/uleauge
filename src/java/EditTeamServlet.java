@@ -1,5 +1,3 @@
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,10 +6,13 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,16 +24,14 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author CPCust
+ * @author intersignature
  */
-@WebServlet(urlPatterns = {"/SigninServlet"})
-public class SigninServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/EditTeamServlet"})
+public class EditTeamServlet extends HttpServlet {
 
     @Resource(name = "dbesport")
     private DataSource dbesport;
-
-
-
+    private Connection connection;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,79 +41,38 @@ public class SigninServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private Connection connection;
-
-    public void init() {
+    public void init(){
         try {
             connection = dbesport.getConnection();
-        } catch (SQLException sqle) {
-            System.out.println("" + sqle);
+        } catch (SQLException ex) {
+            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String username = request.getParameter("Username");
-            String password = request.getParameter("Password");
-            String from = request.getParameter("from");
-            String roles = "";
-            String useimage = "";
-            int P_ID = -1;
-           
-            //out.println(from);
-            //out.println(username);
-            //out.println(password);
-            HttpSession session = request.getSession();
-            int suc = 0;
-            session.setAttribute("suc", suc);
+            /* TODO output your page here. You may use following sample code. */
             try {
-                
-                Statement stmt = connection.createStatement();
-                String sql = "SELECT P_Username, P_Password,P_ID, P_Roles, P_Image FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
-                ResultSet rs = stmt.executeQuery(sql);
-                while (rs.next()) {
-                    if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(password)) {
-                        suc = 1;
-                        if(rs.getString("P_Image").equals("") || rs.getString("P_Image").equals("NoDisplay") ){
-                            useimage = "http://i.imgur.com/rZjcXgi.jpg";
-                        }
-                        else{
-                            useimage = "http://i.imgur.com/"+rs.getString("P_Image")+".jpg";
-                        }
-                        roles = rs.getString("P_Roles");
-                    } else {
-                        roles = "";
-                        suc = 0;
-                    }
-                    P_ID = rs.getInt("P_ID");
-                   
-                }
-                //out.println(roles);
-            } catch (Exception e) {
-                out.println(e);
-            }
-
-            
-           
-            if (suc == 1) {
-                session.setAttribute("roles", roles);
-                session.setAttribute("username", username);
-                session.setAttribute("suc", suc);
-                session.setAttribute("P_ID", P_ID);
-                session.setAttribute("useimage", useimage);
-                if(roles.equals("admin")){
-                    response.sendRedirect("AdminUserServlet");
-                }
-                else{
-                    response.sendRedirect(from);
-                }
-            } else if (suc == 0) {
-                session.setAttribute("suc", suc);
-                response.sendRedirect("login.html");
-            }
-
+            HttpSession session = request.getSession();
+            int Team_ID = Integer.parseInt(request.getParameter("Team_ID"));
+            Statement conn = connection.createStatement();
+            String sql = "SELECT * FROM db_accessadmin.Team where Team_ID = " + Team_ID;
+            ResultSet rs = conn.executeQuery(sql);
+            while(rs.next()){
+                session.setAttribute("Team_ID", rs.getString("Team_ID"));
+                session.setAttribute("Team_Name", rs.getString("Team_Name"));
+                session.setAttribute("Team_Tag", rs.getString("Team_Tag"));
+                session.setAttribute("Game_ID", rs.getInt("Game_ID"));
+                session.setAttribute("Team_Cap", rs.getString("Team_Cap"));
+                session.setAttribute("Team_Phone", rs.getString("Team_Phone"));
+                session.setAttribute("Team_Image", rs.getString("Team_Image"));
+                session.setAttribute("Team_mem_num", rs.getString("Team_mem_num"));
+            }  
+        } catch (SQLException ex) {
+            out.println(ex);
+        }
+            response.sendRedirect("EditTeamJSP.jsp");
         }
     }
 

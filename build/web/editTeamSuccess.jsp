@@ -1,6 +1,12 @@
+<%-- 
+    Document   : EditSuccess
+    Created on : Apr 18, 2017, 9:23:09 PM
+    Author     : intersignature
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,10 +46,14 @@
             <img src="assets/img/logo.png"  id = "logo">
           <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-               <li id = "searchnav"> 
+        <ul class="nav navbar-nav navbar-right" id="userbar">
+             <% session = request.getSession();
+                    String username = (String) session.getAttribute("username"); 
+                    String imgdir = (String) session.getAttribute("useimage"); 
+                    int id = (int) session.getAttribute("P_ID");
+                    String roles = (String) session.getAttribute("roles"); 
+                %>
+                 <li id = "searchnav2"> 
                   <a>
                       <form action="searchServlet" method="POST" >
                       <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
@@ -52,29 +62,28 @@
                        </form>
                   </a>
               </li>
-            <li><a href="signup.html">Sign up</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
+                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
+            <li id="namepro">
+               
+                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                <div id = "namepro2">
+                    <h4><b><% out.println(username); %></b></h4>
+                </div>
+               
             </li>
-          </ul>
-          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="indexJSP.jsp" />
-              <div class="form-group">
-                <label class="sr-only" for="username">Username</label>
-                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
-              </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
+            </a>
+     
+            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                <input type="hidden" name="from" value="TourJSP.jsp" />
+             <li >
+             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+
+            </li>
             </form>
-          </div>
-        </div><!-- /.navbar-collapse -->
+          </ul>
+       
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
     </header>
     <ul class="nav nav-pills categories">
         <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
@@ -84,21 +93,14 @@
         <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
 <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>    </ul>
-    <div class="login-card"><img class="img-responsive profile-img-card" src="assets/img/logo.png">
-        <p class="profile-name-card"> </p>
-        <form action="SigninServlet" class="form-signin"><span class="reauth-email"> </span>
-            <p class="text-danger profile-name-card">Username or Password incorrect</p>
-            <input class="form-control" name="Username" type="text" required="" placeholder="Username" id="inputEmail">
-            <input class="form-control" name="Password" type="password" required="" placeholder="Password" id="inputPassword">
-            <input type="hidden" name="from" value="indexJSP.jsp" />
-            <div class="checkbox">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">Remember me</label>
-                </div>
-            </div>
-            <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
-        </form><a href="#" class="forgot-password">Forgot your password?</a></div>
+    <div class="row register-form">
+        <div class="col-md-8 col-md-offset-2">
+            <form class="form-horizontal custom-form" action="SignupServlet" id="signup" name="signup" method="POST">
+                <h1>U-LEAUGE Edit Profile</h1>
+                <p> Your team was updated successfully.</p>
+            </form>
+        </div>  
+    </div>
     <footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">

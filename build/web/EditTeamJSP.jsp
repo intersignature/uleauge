@@ -34,15 +34,14 @@
     <%
         session = request.getSession();
         String username = (String) session.getAttribute("username");
-        String password = (String) session.getAttribute("password"); 
-        String fname = (String) session.getAttribute("fname"); 
-        String lname = (String) session.getAttribute("lname"); 
-        String email = (String) session.getAttribute("email"); 
-        String fb = (String) session.getAttribute("fb"); 
-        String university = (String) session.getAttribute("university"); 
-        String faculty = (String) session.getAttribute("faculty"); 
-        String phone = (String) session.getAttribute("phone"); 
-        String ign = (String) session.getAttribute("ign"); 
+        String Team_ID = (String) session.getAttribute("Team_ID"); 
+        String Team_Name = (String) session.getAttribute("Team_Name"); 
+        String Team_Tag = (String) session.getAttribute("Team_Tag"); 
+        int Game_ID = (int) session.getAttribute("Game_ID"); 
+        String Team_Cap = (String) session.getAttribute("Team_Cap"); 
+        String Team_Phone = (String) session.getAttribute("Team_Phone"); 
+        String Team_Image = (String) session.getAttribute("Team_Image"); 
+        String Team_mem_num = (String) session.getAttribute("Team_mem_num"); 
         int id = (int) session.getAttribute("P_ID"); 
         String roles = (String) session.getAttribute("roles"); 
         String image = (String) session.getAttribute("image"); 
@@ -111,125 +110,53 @@
 <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>    </ul>
     <div class="row register-form">
         <div class="col-md-8 col-md-offset-2">
-            <form class="form-horizontal custom-form" action="CheckEditProfileServlet" id="signup" name="signup" method="POST">
-                <h1>U-LEAUGE Edit Profile</h1>
+            <form class="form-horizontal custom-form" action="CheckEditTeamServlet" id="signup" name="signup" method="POST">
+                <h1>U-LEAUGE Edit Team Profile</h1>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Username </label> 
+                        <label class="control-label" for="name-input-field" >Team name </label> 
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="username" value=<%= username %> disabled> <p>*Require</p>
+                        <input class="form-control" type="text" name="Team_Name"  maxlength="20" value=<%= Team_Name%>> <p>*Require</p>
                     </div>
                     </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
-                        <label class="control-label" for="pawssword-input-field">Password </label>
+                        <label class="control-label" for="name-input-field">Team tag </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="new_password" ><p>*Require<br>
-                        *Your password must have at least one upper case, one lower case, one numeric and password lenght must more than 8 characters</p>
+                        <input class="form-control" type="text" name="Team_Tag"  maxlength="5" value=<%= Team_Tag%>><p>*Require<br>
                     </div>
-                    <p id="cau_password" style="color:blue;"></p>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
+                        <label class="control-label" for="name-input-field"> Team Phone </label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="password" name="new_rep_password">
-                        <p>*Require<br>*Must same above password</p>  
-                    </div>
-                    <p id="cau_rep_password" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field" >Name </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_fname" value=<%= fname %>>
+                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="Team_Phone" value=<%= Team_Phone%>>
                         <p>*Require</p>
                     </div>
-                    <p id="cau_name" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Lastname </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_lname" value=<%= lname %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_lname" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="email-input-field">Email </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_email" value=<%= email %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_email" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Facebook Link</label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_fb" value=<%= fb %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_fb" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">University </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_university" value=<%= university %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_university" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Faculty </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_faculty" value=<%= faculty %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_faculty" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">Phone </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" maxlength="10" minlength="0" inputmode="numeric" name="new_phone" value=<%= phone %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_phone" style="color:blue;"></p>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name-input-field">In game name</label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="new_ign" value=<%= ign %>>
-                        <p>*Require</p>
-                    </div>
-                    <p id="cau_ign" style="color:blue;"></p>
                 </div>
                         <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field"> Team Captain </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="Team_Cap" value=<%= Team_Cap%>>
+                        <p>*Require</p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="col-sm-4 label-column">
                         <label class="control-label" for="name-input-field">Image Link</label>
                     </div>
                     <div class="col-sm-6 input-column">
-                        <input class="form-control" type="text" name="realimage" value=<%=image %>>
+                        <input class="form-control" type="text" name="Team_Image" value=<%= Team_Image%>>
                         <p>upload file at <a href="http://imgur.com/gpHAQIO">imgur.com</a> and you will give link like "http://imgur.com/gpHAQIO" and you input "gpHAQIO" only</p>
                     </div>
                 </div>
+                        <input type="hidden" class="form-control" type="text" name="Team_ID" value=<%= Team_ID%>>
+                        <input type="hidden" class="form-control" type="text" name="Game_ID" value=<%= Game_ID%>>
                 <button class="btn btn-default submit-button" id="buttonn" type="submit">Edit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>
