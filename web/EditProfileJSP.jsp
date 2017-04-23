@@ -45,6 +45,7 @@
         String ign = (String) session.getAttribute("ign"); 
         int id = (int) session.getAttribute("P_ID"); 
         String roles = (String) session.getAttribute("roles"); 
+        String image = (String) session.getAttribute("image"); 
     %>
     <header>
          <!-- Second navbar for sign in -->
@@ -65,7 +66,7 @@
         <ul class="nav navbar-nav navbar-right" id="userbar">
              <% session = request.getSession();
    
-                    String imgdir = "assets/img/"+username+".jpg";
+                    String imgdir = (String) session.getAttribute("useimage"); ;
  
                 %>
                  <li id = "searchnav2"> 
@@ -126,7 +127,7 @@
                     </div>
                     <div class="col-sm-6 input-column">
                         <input class="form-control" type="password" name="new_password" ><p>*Require<br>
-                        *Your password must have at least one upper case, one lower case, one numeric</p>
+                        *Your password must have at least one upper case, one lower case, one numeric and password lenght must more than 8 characters</p>
                     </div>
                     <p id="cau_password" style="color:blue;"></p>
                 </div>
@@ -220,35 +221,39 @@
                     </div>
                     <p id="cau_ign" style="color:blue;"></p>
                 </div>
+                        <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field">Image Link</label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="realimage" value=<%=image %>>
+                        <p>upload file at <a href="http://imgur.com/gpHAQIO">imgur.com</a> and you will give link like "http://imgur.com/gpHAQIO" and you input "gpHAQIO" only</p>
+                    </div>
+                </div>
                 <button class="btn btn-default submit-button" id="buttonn" type="submit">Edit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>
         </div>  
     </div>
-    <footer>
+    <footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
-                <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                <p class="company-name">E-league © 2017 </p>
+                <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
             </div>
             <div class="col-md-4 col-sm-6 footer-contacts">
-                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                    <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+                <div><i class="fa fa-facebook footer-contacts-icon" ></i>
+                    <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
                 </div>
-                <div><i class="fa fa-phone footer-contacts-icon"></i>
-                    <p class="footer-center-info email text-left"> +1 555 123456</p>
-                </div>
+
                 <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a href="#" target="_blank">support@company.com</a></p>
+                    <p> <a>lawslifeaways@gmail.com</a></p>
                 </div>
             </div>
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-4 footer-about">
-                <h4>About the company</h4>
-                <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                <h4>U LEAUGE</h4>
+                <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
                 </p>
-                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
             </div>
         </div>
     </footer>

@@ -88,7 +88,7 @@ public class CheckEditProfileServlet extends HttpServlet {
                             password_isLower = 1;
                     }
             }
-            if (password_isnum != 1 || password_isUpper != 1 || password_isLower != 1){
+            if (password_isnum != 1 || password_isUpper != 1 || password_isLower != 1 || new_password.length()<8){
                     session.setAttribute("is_password", '1');
             }
             else{

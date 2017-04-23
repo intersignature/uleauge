@@ -60,6 +60,7 @@ public class AdminTeamServlet extends HttpServlet {
             List<Integer> admin_Game_ID = new ArrayList<Integer>();
             List<String> admin_Team_Cap = new ArrayList<String>();
             List<String> admin_Team_Phone = new ArrayList<String>();
+            List<String> admin_Team_Image = new ArrayList<String>();
             try {
                 Statement user = connection.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Team where Team_ID >= 1";
@@ -71,6 +72,7 @@ public class AdminTeamServlet extends HttpServlet {
                     admin_Game_ID.add(rs.getInt("Game_ID"));
                     admin_Team_Cap.add(rs.getString("Team_Cap"));
                     admin_Team_Phone.add(rs.getString("Team_Phone"));
+                    admin_Team_Image.add(rs.getString("Team_Image"));
                 }
             HttpSession session = request.getSession();
             session.setAttribute("admin_Team_ID", admin_Team_ID);
@@ -79,6 +81,7 @@ public class AdminTeamServlet extends HttpServlet {
             session.setAttribute("admin_Game_ID", admin_Game_ID);
             session.setAttribute("admin_Team_Cap", admin_Team_Cap);
             session.setAttribute("admin_Team_Phone", admin_Team_Phone);
+            session.setAttribute("admin_Team_Image", admin_Team_Image);
             response.sendRedirect("AdminTeam.jsp");
             } catch (SQLException ex) {
                 Logger.getLogger(AdminTeamServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -57,9 +57,10 @@ public class AdminAddTeamServlet extends HttpServlet {
             String admin_Game_ID = request.getParameter("admin_Game_ID");
             String admin_Team_Cap = request.getParameter("admin_Team_Cap");
             String admin_Team_Phone = request.getParameter("admin_Team_Phone");
+            String admin_Team_Image = request.getParameter("admin_Team_Image");
             //out.println(admin_Team_ID + admin_Team_Name +admin_Team_Tag + admin_Game_ID + admin_Team_Cap + admin_Team_Phone);
-            String sql = "INSERT INTO db_accessadmin.Team (Team_ID, Team_Name, Team_Tag, Game_ID, Team_Cap, Team_Phone)"+ 
-                    " VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO db_accessadmin.Team (Team_ID, Team_Name, Team_Tag, Game_ID, Team_Cap, Team_Phone, Team_Image)"+ 
+                    " VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement insert = connection.prepareStatement(sql);
             insert.setInt(1, Integer.parseInt(admin_Team_ID));
             insert.setString(2, admin_Team_Name);
@@ -67,6 +68,7 @@ public class AdminAddTeamServlet extends HttpServlet {
             insert.setInt(4, Integer.parseInt(admin_Game_ID));
             insert.setString(5, admin_Team_Cap);
             insert.setString(6, admin_Team_Phone);
+            insert.setString(7, admin_Team_Image);
             insert.execute();
             insert.close();
             

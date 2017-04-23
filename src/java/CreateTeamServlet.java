@@ -60,7 +60,7 @@ public class CreateTeamServlet extends HttpServlet {
             int gameteam = Integer.parseInt(request.getParameter("gameteam"));
             String teamphone = request.getParameter("teamphone");
             String con = request.getParameter("condition");
-            
+            String RealImage = request.getParameter("realimage");
             out.println(teamname);
             out.println(teamtag);
             out.println(gameteam);
@@ -134,8 +134,8 @@ public class CreateTeamServlet extends HttpServlet {
             if(ans_teamname+ans_teamtag+ans_teamphone+ans_con+ans_teamunjoin == 5){
                 out.println(index);
                     
-            String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_mem_num)"+ 
-                    " VALUES (?, ?, ?, ?, ?, ?,?);";
+            String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_Image,Team_mem_num)"+ 
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement insert = connection.prepareStatement(sql);   
             insert.setInt(1, index+1);
             insert.setString(2, teamname);
@@ -143,10 +143,11 @@ public class CreateTeamServlet extends HttpServlet {
             insert.setInt(4, gameteam);
             insert.setString(5, team_cap);
             insert.setString(6, teamphone);
-            insert.setInt(7, 1);
+            insert.setString(7, RealImage);  
+            insert.setInt(8, 1);
             insert.execute();
             insert.close();
-            
+
             String sql3 = "INSERT INTO db_accessadmin.Player_Join (P_Username, Team_ID)"+ 
                     " VALUES (?, ?);";
             PreparedStatement insert1 = connection.prepareStatement(sql3);  
@@ -155,11 +156,13 @@ public class CreateTeamServlet extends HttpServlet {
             insert1.execute();
             insert1.close();
 
+
             String invitedel = "DELETE FROM db_accessadmin.Invite WHERE  Team_ID in (select Team_ID from db_accessadmin.Team where Game_ID = ? ) and P_Username = ?";
             PreparedStatement delete = connection.prepareStatement(invitedel);  
             delete.setInt(1, gameteam);  
             delete.setString(2, team_cap);  
             delete.execute();
+
             response.sendRedirect("CreateTeamSuccess.jsp");
             }
             else{
@@ -175,7 +178,7 @@ public class CreateTeamServlet extends HttpServlet {
                 session.setAttribute("gameteam", gameteam);
                 session.setAttribute("team_cap", team_cap);
                 session.setAttribute("teamphone", teamphone);
-           
+                session.setAttribute("image", RealImage);
                 response.sendRedirect("CreateTeamFail.jsp");
                 
             }

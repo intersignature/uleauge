@@ -158,9 +158,10 @@ box-shadow:none !important;
     List<Integer> admin_Game_ID = (List) session.getAttribute("admin_Game_ID");
     List<String> admin_Team_Cap = (List) session.getAttribute("admin_Team_Cap");
     List<String> admin_Team_Phone = (List) session.getAttribute("admin_Team_Phone");
+    List<String> admin_Team_Image = (List) session.getAttribute("admin_Team_Image");
     %>
-<div class="container" style="margin-left: 0cm;">
-        <div class="row">
+<div class="container" style="width: 1400px; margin: 0 auto;">
+        <div class="row" style="margin-top: 20px;">
            
             <div class="col-md-12">
                 
@@ -174,6 +175,7 @@ box-shadow:none !important;
 							<th>GameID</th>
 							<th>Captain</th>
 							<th>Phone</th>
+                                                        <th>Image</th>
                                 <th>Edit</th>
                                  <th>Delete</th>
 						</tr>
@@ -187,6 +189,7 @@ box-shadow:none !important;
 							<th>GameID</th>
 							<th>Captain</th>
 							<th>Phone</th>
+                                                        <th>Image</th>
                              <th>Edit</th>
                                  <th>Delete</th>
 						</tr>
@@ -203,6 +206,7 @@ box-shadow:none !important;
                                             out.println("<td>"+Integer.toString(admin_Game_ID.get(index))+"</td>");
                                             out.println("<td>"+admin_Team_Cap.get(index)+"</td>");;
                                             out.println("<td>"+admin_Team_Phone.get(index)+"</td>");
+                                            out.println("<td>"+admin_Team_Image.get(index)+"</td>");
                                             out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_"+i+"\""+"><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete_"+i+"\""+"><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
                                             out.println("</tr>");
                                         }
@@ -259,6 +263,10 @@ box-shadow:none !important;
               
               <div class="form-group">
       Phone : <input name="admin_Team_Phone" class="form-control " type="text" value=<%=admin_Team_Phone.get(index)%>>
+        </div>
+        
+        <div class="form-group">
+      Image : <input name="admin_Team_Image" class="form-control " type="text" value=<%=admin_Team_Image.get(index)%>>
         </div>
               
               <input name="admin_hide_Team_ID" type="hidden" class="form-control " type="text" value=<%=admin_Team_ID.get(index)%>>
@@ -338,6 +346,10 @@ box-shadow:none !important;
               <div class="form-group">
       Phone : <input name="admin_Team_Phone" class="form-control " type="text" >
         </div>
+                  
+                  <div class="form-group">
+      Image : <input name="admin_Team_Image" class="form-control " type="text">
+        </div>
               
 
       </div>
@@ -358,30 +370,25 @@ $(document).ready(function() {
 } );
 
 </script>
-<footer>
+<footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
-                <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                <p class="company-name">E-league © 2017 </p>
+                <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
             </div>
             <div class="col-md-4 col-sm-6 footer-contacts">
-                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                    <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+                <div><i class="fa fa-facebook footer-contacts-icon" ></i>
+                    <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
                 </div>
-                <div><i class="fa fa-phone footer-contacts-icon"></i>
-                    <p class="footer-center-info email text-left"> +1 555 123456</p>
-                </div>
+
                 <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a href="#" target="_blank">support@company.com</a></p>
+                    <p> <a>lawslifeaways@gmail.com</a></p>
                 </div>
             </div>
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-4 footer-about">
-                <h4>About the company</h4>
-                <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                <h4>U LEAUGE</h4>
+                <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
                 </p>
-                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
             </div>
         </div>
     </footer>

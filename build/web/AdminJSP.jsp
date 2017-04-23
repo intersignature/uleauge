@@ -168,8 +168,8 @@ box-shadow:none !important;
     List<String> admin_Image = (List) session.getAttribute("admin_Image");
     
     %>
-<div class="container" style="margin-left: 0cm;">
-        <div class="row">
+<div class="container" style="width: 1400px; margin: 0 auto;">
+    <div class="row" style="margin-top: 20px;">
            
             <div class="col-md-12">
                 
@@ -217,12 +217,17 @@ box-shadow:none !important;
 
 					<tbody>
                                             <%
+                                                
                                         for(int i=1;i<=admin_ID.size();i++){
+                                            String password = "";
                                             int index = admin_ID.indexOf(i);
+                                            for (int j=0; j<admin_Password.get(index).length(); j++){
+                                                    password += "*";
+                                                }               
                                             out.println("<tr>");
                                             out.println("<td class=\"sorting_1\">"+Integer.toString(admin_ID.get(index))+"</td>");
                                             out.println("<td>"+admin_Username.get(index)+"</td>");
-                                            out.println("<td>"+admin_Password.get(index)+"</td>");
+                                            out.println("<td>"+password+"</td>");
                                             out.println("<td>"+admin_Fullname.get(index)+"</td>");
                                             out.println("<td>"+admin_Lastname.get(index)+"</td>");;
                                             out.println("<td>"+admin_ign.get(index)+"</td>");
@@ -276,7 +281,7 @@ box-shadow:none !important;
           </div>
               
         <div class="form-group">
-        Password : <input name="admin_Password" class="form-control " type="text" value=<%=admin_Password.get(index)%>>
+        Password : <input type="password" name="admin_Password" class="form-control " type="text" value=<%=admin_Password.get(index)%>>
         </div>
               
         <div class="form-group">
@@ -381,7 +386,7 @@ box-shadow:none !important;
           </div>
               
         <div class="form-group">
-        Password : <input name="admin_Password_add" class="form-control " type="text" >
+        Password : <input name="admin_Password_add" class="form-control " type="password" >
         </div>
               
         <div class="form-group">
@@ -441,30 +446,25 @@ $(document).ready(function() {
 } );
 
 </script>
-<footer>
+<footer id="footer001">
         <div class="row">
             <div class="col-md-4 col-sm-6 footer-navigation">
-                <h3><a href="#">E-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                <p class="company-name">E-league © 2017 </p>
+                <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
             </div>
             <div class="col-md-4 col-sm-6 footer-contacts">
-                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                    <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+                <div><i class="fa fa-facebook footer-contacts-icon" ></i>
+                    <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
                 </div>
-                <div><i class="fa fa-phone footer-contacts-icon"></i>
-                    <p class="footer-center-info email text-left"> +1 555 123456</p>
-                </div>
+
                 <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a href="#" target="_blank">support@company.com</a></p>
+                    <p> <a>lawslifeaways@gmail.com</a></p>
                 </div>
             </div>
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-4 footer-about">
-                <h4>About the company</h4>
-                <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                <h4>U LEAUGE</h4>
+                <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
                 </p>
-                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
             </div>
         </div>
     </footer>
