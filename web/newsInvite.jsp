@@ -112,7 +112,7 @@
         <ul class="nav nav-pills categories">
             <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
             <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-            <li id="menu"><a href="replayJSP.jsp" id="fontmenu">REPLAY </a></li>
+            <li id="menu"><a href="TeamServlet" id="fontmenu">REPLAY </a></li>
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
@@ -133,7 +133,7 @@
         <div class="container" id="boardinvite">
              <c:forEach var="row" items="${result.rows}">
             <div id = "bgall">
-                <a href=#>
+                <a href="Team_001Servlet?team_id=${row.Team_ID}">
                 <div id="bgname">
                     <img src= "http://i.imgur.com/${row.Team_Image}.jpg" id="imgteam">
                 <h3 id = "nameinvite">${row.Team_Name}</h3>
