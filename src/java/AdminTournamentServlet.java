@@ -83,6 +83,7 @@ public class AdminTournamentServlet extends HttpServlet {
                     admin_Game_ID.add(rs.getInt("Game_ID"));
                     admin_Tour_Table_Link.add(rs.getString("Tour_Table_Link"));
                 }
+                user.close();
             } catch (SQLException e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);

@@ -66,6 +66,7 @@ public class AdminOrganizerServlet extends HttpServlet {
                     admin_organizer_ID.add(rs.getInt("Organize_ID"));
                     admin_Organizer_Name.add(rs.getString("Organize_Name"));
                 }
+                user.close();
             } catch (SQLException e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);

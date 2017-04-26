@@ -83,6 +83,7 @@ public class AdminTeamServlet extends HttpServlet {
             session.setAttribute("admin_Team_Phone", admin_Team_Phone);
             session.setAttribute("admin_Team_Image", admin_Team_Image);
             response.sendRedirect("AdminTeam.jsp");
+            user.close();
             } catch (SQLException ex) {
                 Logger.getLogger(AdminTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
                 response.sendRedirect("/Project/ErrorJSP.jsp");

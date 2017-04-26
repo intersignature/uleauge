@@ -141,7 +141,7 @@
 </a>
 <ul class="dropdown-menu">
     <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-<li class="bgedit"><a href="TeamServlet"><span class="icon-user"></span> My Team</a></li>
+               <li class="bgedit"><a href="CreateTeam.jsp"><span class="icon-plus-sign"></span> Create Team</a></li>
 <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
 </ul>
 </div>
@@ -244,7 +244,7 @@
             out.println("<div id=\"information_"+index+"\" class=\"tab-pane active\">");
             int num = 0;
             for(int k=0; k<team_User_ID.size();k++){
-                if(index==team_User_ID.get(k)){
+                if(i==team_User_ID.get(k)){
                     num+=1;
                     out.println("<h4>Currently Team : "+ num + " " + team_Name.get(k)+"</h4>");
                 }                

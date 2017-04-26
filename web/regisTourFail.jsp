@@ -1,11 +1,10 @@
 <%-- 
-    Document   : inviteFail
-    Created on : 23 เม.ย. 2560, 16:01:42
-    Author     : Barjord
+    Document   : regisTourFail
+    Created on : Apr 27, 2017, 1:00:29 AM
+    Author     : CPCust
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 
@@ -121,19 +120,19 @@
         <div class="container">
             <div class="row register-form">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1><u> <b>ไม่สามารถชวนผู้เล่นนี้ได้</b></u></h1>
+                    <h1><u> <b>ไม่สามารถลงสมัครได้</b></u></h1>
                     
-                     <% if ((int)session.getAttribute("invited")  == 1) { %>
-                     <h1>- เคยชวนผู้เล่นคนนี้ไปแล้ว</h1>
                      
-                      <% } else if ((int) session.getAttribute("haveteam") == 1) {%>
+              
+               
+                     <% if ((int)session.getAttribute("ans_cap")  == 0 || (int)session.getAttribute("ans_game") == 0) { %>
+                     <h1>- คุณไม่ใช่กัปตันทีม</h1>
+                     
+                      <% } else if ((int) session.getAttribute("ans_noregis") == 0) {%>
                       
-                      <h1>- ผู้เล่นคนนี้มีทีมอยู่แล้ว</h1>
+                      <h1>- คุณเคยสมัครไปแล้ว</h1>
                       
-                <% } else if ((int) session.getAttribute("notcap") == 1) {%>
-                    <h1>- คุณไม่ได้เป็นกัปตันทีม</h1>
-                <% } else if ((int) session.getAttribute("notfull") == 1) {%>
-                    <h1>- ทีมของคุณเต็มแล้ว</h1>
+              
                 <%}%>
                     
 

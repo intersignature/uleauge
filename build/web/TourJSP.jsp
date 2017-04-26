@@ -149,7 +149,7 @@
 </a>
 <ul class="dropdown-menu">
     <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-<li class="bgedit"><a href="TeamServlet"><span class="icon-user"></span> My Team</a></li>
+               <li class="bgedit"><a href="CreateTeam.jsp"><span class="icon-plus-sign"></span> Create Team</a></li>
 <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
 </ul>
 </div>
@@ -234,10 +234,18 @@
             <div class="destour">
                 <h3 class="des">รายละเอียดเพิ่มเติม </h3></div>
                 </a>
+            <% if ((int)session.getAttribute("suc") == 0) { %>
             <a  data-toggle="modal" href="#shortModal" >
-            <div  class="destour">
+                <div  class="destour">
                 <h3 class="des">สมัครแข่งขัน</h3></div>
             </a>
+                <% } else if ((int)session.getAttribute("suc") == 1){%>
+                <a  data-toggle="modal" href="regisTourServlet?tour_id=${row.tour_id}" >
+                <div  class="destour">
+                <h3 class="des">สมัครแข่งขัน</h3></div>
+            </a>
+                <% } %>
+            
         </div>
     </div>
 </div>
@@ -327,12 +335,13 @@
     </div>
 </div>
                 </c:if>
-                     
+                     </c:forEach>
                    
-              </c:forEach>
+              
         </div>
         </div>
-            <% if ((int)session.getAttribute("suc") == 0) { %>
+                      
+            
     <div id="shortModal" class="modal modal-wide fade">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -344,7 +353,7 @@
         <p>กรุณาล็อคอินก่อนการสมัคร</p>
         <div class="row">
             <div class="col-12-xs text-center">
-                <button class="btn btn-success btn-md"  data-dismiss="modal" data-toggle="modal" href="#shortModal-1" >ยืนยัน</button>
+                <button class="btn btn-success btn-md"  data-dismiss="modal" data-toggle="modal"  >ยืนยัน</button>
             
             </div>
         </div>
@@ -353,42 +362,8 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->   
-<% } else if ((int)session.getAttribute("suc") == 1){%>
-   <div id="shortModal" class="modal modal-wide fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">การยืนยัน</h4>
-    </div>
-      <div class="modal-body">
-        <p>คุณยืนยันที่จะสมัครหรือไม่?</p>
-        <div class="row">
-            <div class="col-12-xs text-center">
-                <button class="btn btn-success btn-md"  data-dismiss="modal" data-toggle="modal" href="#shortModal-1" >ยืนยัน</button>
-                <button type="button" data-dismiss="modal" aria-hidden="true" class=" btn btn-danger btn-md">ไม่</button>
-            </div>
-        </div>
-      </div>
-   
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<div id="shortModal-1" class="modal modal-wide fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <p>ยืนยันการสมัครเรียบร้อย...</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 
-<% } %>
             </div>
         </div>
     </div>

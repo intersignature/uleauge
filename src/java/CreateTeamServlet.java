@@ -59,18 +59,18 @@ public class CreateTeamServlet extends HttpServlet {
             String teamtag = request.getParameter("Teamtag");
             int gameteam = Integer.parseInt(request.getParameter("gameteam"));
             String teamphone = request.getParameter("teamphone");
-            String con = request.getParameter("condition");
+
             String RealImage = request.getParameter("realimage");
             out.println(teamname);
             out.println(teamtag);
             out.println(gameteam);
             out.println(teamphone);
-             out.println(con);
+   
             int ans_teamname = 1;
             int ans_teamtag = 1;
             int ans_teamphone = 1;
             int ans_teamunjoin = 1;
-            int ans_con = 1;
+
             int index = 0;
             String team_cap = (String) session.getAttribute("username");
             try {
@@ -125,13 +125,11 @@ public class CreateTeamServlet extends HttpServlet {
             }
                 
            
-             if(con == null){
-                    ans_con = 0;
-             }
+
             
-                 out.println(ans_con+"<<<con");
-             out.println(ans_teamname+ans_teamtag+ans_teamphone+ans_con+ans_teamunjoin);
-            if(ans_teamname+ans_teamtag+ans_teamphone+ans_con+ans_teamunjoin == 5){
+
+
+            if(ans_teamname+ans_teamtag+ans_teamphone+ans_teamunjoin == 4){
                 out.println(index);
                     
             String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_Image,Team_mem_num)"+ 
@@ -170,7 +168,6 @@ public class CreateTeamServlet extends HttpServlet {
                 //HttpSession session = request.getSession();
                  session.setAttribute("ans_teamtag", ans_teamtag);
               session.setAttribute("ans_teamname", ans_teamname);
-                 session.setAttribute("ans_con", ans_con);
                  session.setAttribute("ans_teamunjoin", ans_teamunjoin);
                  session.setAttribute("ans_teamphone", ans_teamphone);
                 session.setAttribute("teamname", teamname);

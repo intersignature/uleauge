@@ -90,7 +90,7 @@
 </a>
 <ul class="dropdown-menu">
     <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-<li class="bgedit"><a href="TeamServlet"><span class="icon-user"></span> My Team</a></li>
+               <li class="bgedit"><a href="CreateTeam.jsp"><span class="icon-plus-sign"></span> Create Team</a></li>
 <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
 </ul>
 </div>
@@ -179,10 +179,7 @@
                         <p>upload file at <a href="http://imgur.com/gpHAQIO">imgur.com</a> and you will give link like "http://imgur.com/gpHAQIO" and you input "gpHAQIO" only</p>
                     </div>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="condition" value="con">I've read and accept the terms and conditions</label>
-                </div>
+               
                 <button class="btn btn-default submit-button" id="buttonn" type="submit">Submit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>

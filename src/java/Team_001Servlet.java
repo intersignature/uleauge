@@ -56,7 +56,7 @@ public class Team_001Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int id = Integer.parseInt(request.getParameter("team_id"))+1;
+            int id = Integer.parseInt(request.getParameter("team_id"));
             List<String> data = new ArrayList<String>();
             try {
                 Statement stmt = connection.createStatement();

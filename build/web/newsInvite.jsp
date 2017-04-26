@@ -91,13 +91,13 @@
 </a>
 <ul class="dropdown-menu">
     <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-<li class="bgedit"><a href="TeamServlet"><span class="icon-user"></span> My Team</a></li>
+               <li class="bgedit"><a href="CreateTeam.jsp"><span class="icon-plus-sign"></span> Create Team</a></li>
 <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
 </ul>
 </div>
                 </li>
                         <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                            <input type="hidden" name="from" value="newInvite.jsp" />
+                            <input type="hidden" name="from" value="indexJSP.jsp" />
                             <li >
                                 <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -135,7 +135,15 @@
             <div id = "bgall">
                 <a href="Team_001Servlet?team_id=${row.Team_ID}">
                 <div id="bgname">
-                    <img src= "http://i.imgur.com/${row.Team_Image}.jpg" id="imgteam">
+                   <c:choose>
+                        <c:when test="${row.Team_Image=='' or row.Team_Image=='NoDisplay'}">
+                            <img src= "http://i.imgur.com/rZjcXgi.jpg" id="imgteam">
+                        </c:when>    
+                        <c:otherwise>
+                            <img src= "http://i.imgur.com/${row.Team_Image}.jpg" id="imgteam">
+                        </c:otherwise>
+                    </c:choose>
+                    
                 <h3 id = "nameinvite">${row.Team_Name}</h3>
                 </div>
                 </a>

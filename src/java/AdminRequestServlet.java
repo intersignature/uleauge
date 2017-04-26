@@ -79,6 +79,7 @@ public class AdminRequestServlet extends HttpServlet {
                     admin_Request_Facebook.add(rs.getString("Request_Facebook"));
                     admin_Request_Cause.add(rs.getString("Request_Cause"));
                 }
+                user.close();
             } catch (SQLException e) {
                 out.println(e);
                 response.sendRedirect("/Project/ErrorJSP.jsp");

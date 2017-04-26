@@ -240,11 +240,11 @@
                         <p>upload file at <a href="http://imgur.com/gpHAQIO">imgur.com</a> and you will give link like "http://imgur.com/gpHAQIO" and you input "gpHAQIO" only</p>
                     </div>
                 </div>
-                <div class="checkbox">
+                <!--<div class="checkbox">
                     
-                        <%if (con=='1'){out.println("<label><input type=\"checkbox\" name=\"condition\" value=\"con\">I\'ve read and accept the terms and conditions</label> <p id=\"cau_ign\" style=\"color:blue;\">Must accept the terms and conditions</p>");}
-                else {out.println("<label><input type=\"checkbox\" name=\"condition\" value=\"con\" checked>I\'ve read and accept the terms and conditions</label>");}%>
-                </div>
+                       //if (con=='1'){out.println("<label><input type=\"checkbox\" name=\"condition\" value=\"con\">I\'ve read and accept the terms and conditions</label> <p id=\"cau_ign\" style=\"color:blue;\">Must accept the terms and conditions</p>");}
+                //else {out.println("<label><input type=\"checkbox\" name=\"condition\" value=\"con\" checked>I\'ve read and accept the terms and conditions</label>");}
+                </div> !-->
                 <button class="btn btn-default submit-button" id="buttonn" type="submit">Submit</button>
                 <!--<script type='text/javascript' src='assets/js/signup_js.js'></script>-->
             </form>
