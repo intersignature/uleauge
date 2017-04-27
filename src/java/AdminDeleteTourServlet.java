@@ -59,6 +59,7 @@ public class AdminDeleteTourServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("admin_hide_Tour_ID", id);
             //out.println(sql);
+            delete.close();
             response.sendRedirect("UpdateIdTourServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminDeleteTourServlet.class.getName()).log(Level.SEVERE, null, ex);

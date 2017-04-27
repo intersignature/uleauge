@@ -60,6 +60,7 @@ public class AdminCheckOrganizerServlet extends HttpServlet {
             update.setString(2, admin_Organizer_Name);
             update.setInt(3, Integer.parseInt(admin_hide_organizer_ID));
             update.execute();
+            update.close();
             response.sendRedirect("AdminOrganizerServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminCheckOrganizerServlet.class.getName()).log(Level.SEVERE, null, ex);

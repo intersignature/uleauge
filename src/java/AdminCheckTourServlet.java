@@ -79,6 +79,7 @@ public class AdminCheckTourServlet extends HttpServlet {
             update.setInt(12, Integer.parseInt(admin_hide_Tour_ID));
             
             update.execute();
+            update.close();
             response.sendRedirect("AdminTournamentServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminCheckTourServlet.class.getName()).log(Level.SEVERE, null, ex);

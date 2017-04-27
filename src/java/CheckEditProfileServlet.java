@@ -201,7 +201,7 @@ public class CheckEditProfileServlet extends HttpServlet {
             update.setInt(11, id);
             update.setString(10, image);
             update.execute();
-            response.sendRedirect("/Project/signupSuccess.jsp");
+            response.sendRedirect("/Project/EditSuccessJSP.jsp");
             }
             else{
                 //response.sendRedirect("/Project/signup.html");

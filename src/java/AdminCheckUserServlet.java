@@ -83,6 +83,7 @@ public class AdminCheckUserServlet extends HttpServlet {
             update.setString(13, admin_Image);
             update.setInt(14, Integer.parseInt(admin_hide_ID));
             update.execute();
+            update.close();
             response.sendRedirect("AdminUserServlet");
             
         } catch (SQLException ex) {

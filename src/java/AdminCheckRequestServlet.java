@@ -76,6 +76,7 @@ public class AdminCheckRequestServlet extends HttpServlet {
             //update.setString(10, admin_hide_Request_ID);
             update.setInt(10, Integer.parseInt(admin_hide_Request_ID));
             update.execute();
+            update.close();
             response.sendRedirect("AdminRequestServlet");
         } catch (SQLException ex) {
             out.println(ex);

@@ -68,7 +68,7 @@ public class TourRequestServlet extends HttpServlet {
 
             //String[] condition = request.getParameterValues("condition");
             int ans_overall = 0;
-            int index = 0;
+            int index = 1;
             try {
                 Statement user = connection.createStatement();
                 String sql = "SELECT Request_ID FROM db_accessadmin.Request";

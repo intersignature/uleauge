@@ -63,6 +63,7 @@ public class AdminDeleteUserServlet extends HttpServlet {
             delete.close();
             HttpSession session = request.getSession();
             session.setAttribute("admin_hide_ID", id);
+            delete.close();
             response.sendRedirect("UpdateIdUserServlet");
         } catch (SQLException ex) {
             out.println(ex);

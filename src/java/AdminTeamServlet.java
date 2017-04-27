@@ -73,7 +73,9 @@ public class AdminTeamServlet extends HttpServlet {
                     admin_Team_Cap.add(rs.getString("Team_Cap"));
                     admin_Team_Phone.add(rs.getString("Team_Phone"));
                     admin_Team_Image.add(rs.getString("Team_Image"));
+                    
                 }
+                user.close();
             HttpSession session = request.getSession();
             session.setAttribute("admin_Team_ID", admin_Team_ID);
             session.setAttribute("admin_Team_Name", admin_Team_Name);
@@ -86,7 +88,6 @@ public class AdminTeamServlet extends HttpServlet {
             user.close();
             } catch (SQLException ex) {
                 Logger.getLogger(AdminTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
-                response.sendRedirect("/Project/ErrorJSP.jsp");
             }
             
         }

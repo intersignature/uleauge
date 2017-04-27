@@ -59,6 +59,7 @@ public class AdminCheckSponsorServlet extends HttpServlet {
             update.setString(2, admin_Sponsor_Name);
             update.setInt(3, Integer.parseInt(admin_hide_Sponsor_ID));
             update.execute();
+            update.close();
             response.sendRedirect("AdminSponserServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminCheckSponsorServlet.class.getName()).log(Level.SEVERE, null, ex);

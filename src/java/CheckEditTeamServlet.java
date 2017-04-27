@@ -134,6 +134,7 @@ public class CheckEditTeamServlet extends HttpServlet {
                 update.setString(5, Team_Image);
                 update.setInt(6, Integer.parseInt(Team_ID));
                 update.execute();
+                update.close();
                 /*out.println(ans_teamname);
                 out.println(ans_teamtag);
                 out.println(ans_teamphone);

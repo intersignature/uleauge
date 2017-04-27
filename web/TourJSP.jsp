@@ -215,16 +215,16 @@
     
     <div class="tourboard">
         <div class="pictour"><img src="assets/img/IEM.jpg" id="logotour" /></div>
-        <div class="calendar">
-            <div><b>เปิดรับสมัคร :<span style="color:#009fdb;">31/03/2017 - 17/03/2017</span></b>
+          <div class="calendar">
+           <div><b>ทำการแข่งขัน :<span style="color:#009fdb;">${tour_start} - ${tour_end}</span></b>
                 <br />
                 <br />
             </div>
-            <div><b>จับสายการแข่งขัน :<span style="color:#009fdb;">20/03/2017</span></b>
+            <div><b>สถานที่จัดแข่งขัน :<span style="color:#009fdb;">${row.Tour_Location}</span></b>
                 <br />
                 <br />
             </div>
-            <div><b>ทำการแข่งขัน :<span style="color:#009fdb;">23/03/2017</span></b>
+            <div><b>เงินรางวัล :<span style="color:#009fdb;">${row.Tour_Reward}</span></b>
                 <br />
                 <br />
             </div>

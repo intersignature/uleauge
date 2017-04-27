@@ -52,7 +52,7 @@ public final class indexJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<head>\r\n");
       out.write("    <meta charset=\"utf-8\">\r\n");
       out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n");
-      out.write("    <title>esport</title>\r\n");
+      out.write("    <title>index</title>\r\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/bootstrap/css/bootstrap.min.css\">\r\n");
       out.write("    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Cookie\">\r\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/fonts/font-awesome.min.css\">\r\n");
@@ -199,7 +199,7 @@ out.println(id);
       out.write("</a>\r\n");
       out.write("<ul class=\"dropdown-menu\">\r\n");
       out.write("    <li class=\"bgedit\"><a href=\"EditProfileServlet\"><span class=\"icon-wrench\"></span> Edit Profile</a></li>\r\n");
-      out.write("<li class=\"bgedit\"><a href=\"TeamServlet\"><span class=\"icon-user\"></span> My Team</a></li>\r\n");
+      out.write("               <li class=\"bgedit\"><a href=\"CreateTeam.jsp\"><span class=\"icon-plus-sign\"></span> Create Team</a></li>\r\n");
       out.write("<li class=\"bgedit\"><a href=\"newsInvite.jsp\"><span class=\"icon-envelope\"></span> New invites</a></li>\r\n");
       out.write("</ul>\r\n");
       out.write("</div>\r\n");

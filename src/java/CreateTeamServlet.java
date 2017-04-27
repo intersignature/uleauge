@@ -160,7 +160,7 @@ public class CreateTeamServlet extends HttpServlet {
             delete.setInt(1, gameteam);  
             delete.setString(2, team_cap);  
             delete.execute();
-
+            delete.close();
             response.sendRedirect("CreateTeamSuccess.jsp");
             }
             else{

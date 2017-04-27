@@ -69,6 +69,7 @@ public class AdminCheckTeamServlet extends HttpServlet {
             update.setString(7, admin_Team_Image);
             update.setInt(8, Integer.parseInt(admin_hide_Team_ID));
             update.execute();
+            update.close();
             response.sendRedirect("AdminTeamServlet");
         } catch (SQLException ex) {
             Logger.getLogger(AdminCheckTeamServlet.class.getName()).log(Level.SEVERE, null, ex);

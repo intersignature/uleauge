@@ -122,20 +122,7 @@
             <div class="row register-form">
                 <div class="col-md-8 col-md-offset-2">
                     <h1><u> <b>ไม่สามารถชวนผู้เล่นนี้ได้</b></u></h1>
-                    
-                     <% if ((int)session.getAttribute("invited")  == 1) { %>
-                     <h1>- เคยชวนผู้เล่นคนนี้ไปแล้ว</h1>
-                     
-                      <% } else if ((int) session.getAttribute("haveteam") == 1) {%>
-                      
-                      <h1>- ผู้เล่นคนนี้มีทีมอยู่แล้ว</h1>
-                      
-                <% } else if ((int) session.getAttribute("notcap") == 1) {%>
-                    <h1>- คุณไม่ได้เป็นกัปตันทีม</h1>
-                <% } else if ((int) session.getAttribute("notfull") == 1) {%>
-                    <h1>- ทีมของคุณเต็มแล้ว</h1>
-                <%}%>
-                    
+          
 
                 </div>  
             </div>

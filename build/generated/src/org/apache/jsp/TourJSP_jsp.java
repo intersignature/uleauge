@@ -79,7 +79,7 @@ public final class TourJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<head>\r\n");
       out.write("    <meta charset=\"utf-8\">\r\n");
       out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n");
-      out.write("    <title>esport</title>\r\n");
+      out.write("    <title>Tournament</title>\r\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/bootstrap/css/bootstrap.min.css\">\r\n");
       out.write("    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Cookie\">\r\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/fonts/font-awesome.min.css\">\r\n");
@@ -116,7 +116,8 @@ session = request.getSession();
       out.write("\r\n");
       out.write("    <header>\r\n");
       out.write("         <!-- Second navbar for sign in -->\r\n");
-      out.write("    <nav class=\"navbar navbar-default\" id=\"headnav\">\r\n");
+      out.write("        <nav class=\"navbar navbar-default navbar-fixed-top\" id=\"headnav\">\r\n");
+      out.write("\r\n");
       out.write("      <div class=\"container\">\r\n");
       out.write("        <!-- Brand and toggle get grouped for better mobile display -->\r\n");
       out.write("        <div class=\"navbar-header\" >\r\n");
@@ -171,7 +172,8 @@ session = request.getSession();
       out.write("\r\n");
       out.write("    <header>\r\n");
       out.write("         <!-- Second navbar for sign in -->\r\n");
-      out.write("    <nav class=\"navbar navbar-default\" id=\"headnav\">\r\n");
+      out.write("        <nav class=\"navbar navbar-default navbar-fixed-top\" id=\"headnav\">\r\n");
+      out.write("\r\n");
       out.write("      <div class=\"container\">\r\n");
       out.write("        <!-- Brand and toggle get grouped for better mobile display -->\r\n");
       out.write("        <div class=\"navbar-header\" >\r\n");
@@ -219,7 +221,18 @@ out.println(id);
       out.write("               \r\n");
       out.write("            </li>\r\n");
       out.write("            </a>\r\n");
-      out.write("     \r\n");
+      out.write("     <li >\r\n");
+      out.write("                                        <div class=\"btn-group\"id = \"editbtn\" > \r\n");
+      out.write("<a class=\"btn dropdown-toggle btn-info\" data-toggle=\"dropdown\" href=\"#\" id = \"probtn\">\r\n");
+      out.write("<span class=\"icon-cog\"></span><span class=\"caret\"></span>\r\n");
+      out.write("</a>\r\n");
+      out.write("<ul class=\"dropdown-menu\">\r\n");
+      out.write("    <li class=\"bgedit\"><a href=\"EditProfileServlet\"><span class=\"icon-wrench\"></span> Edit Profile</a></li>\r\n");
+      out.write("               <li class=\"bgedit\"><a href=\"CreateTeam.jsp\"><span class=\"icon-plus-sign\"></span> Create Team</a></li>\r\n");
+      out.write("<li class=\"bgedit\"><a href=\"newsInvite.jsp\"><span class=\"icon-envelope\"></span> New invites</a></li>\r\n");
+      out.write("</ul>\r\n");
+      out.write("</div>\r\n");
+      out.write("                </li>\r\n");
       out.write("            <form action=\"SignoutServlet\" method=\"POST\" class=\"navbar-form navbar-right form-inline\" role=\"form\">\r\n");
       out.write("                <input type=\"hidden\" name=\"from\" value=\"TourJSP.jsp\" />\r\n");
       out.write("             <li >\r\n");
@@ -311,8 +324,84 @@ out.println(id);
             _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_2);
             out.write("\r\n");
             out.write("                      ");
-            if (_jspx_meth_c_if_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            //  c:if
+            org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+            _jspx_th_c_if_0.setPageContext(_jspx_page_context);
+            _jspx_th_c_if_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+            _jspx_th_c_if_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start >  cur}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+            int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
+            if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+              do {
+                out.write("\r\n");
+                out.write("                                <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
+                out.write("    <h4>");
+                out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+                out.write("</h4>\r\n");
+                out.write("    \r\n");
+                out.write("    <div class=\"tourboard\">\r\n");
+                out.write("        <div class=\"pictour\"><img src=\"assets/img/IEM.jpg\" id=\"logotour\" /></div>\r\n");
+                out.write("          <div class=\"calendar\">\r\n");
+                out.write("           <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">");
+                out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+                out.write(" - ");
+                out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_end}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+                out.write("</span></b>\r\n");
+                out.write("                <br />\r\n");
+                out.write("                <br />\r\n");
+                out.write("            </div>\r\n");
+                out.write("            <div><b>สถานที่จัดแข่งขัน :<span style=\"color:#009fdb;\">");
+                out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+                out.write("</span></b>\r\n");
+                out.write("                <br />\r\n");
+                out.write("                <br />\r\n");
+                out.write("            </div>\r\n");
+                out.write("            <div><b>เงินรางวัล :<span style=\"color:#009fdb;\">");
+                out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Reward}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+                out.write("</span></b>\r\n");
+                out.write("                <br />\r\n");
+                out.write("                <br />\r\n");
+                out.write("            </div>\r\n");
+                out.write("        </div>\r\n");
+                out.write("        <div class=\"allbtn\">\r\n");
+                out.write("             <a  style=\"display:block\" href=\"iemdesJSP.jsp\">\r\n");
+                out.write("            <div class=\"destour\">\r\n");
+                out.write("                <h3 class=\"des\">รายละเอียดเพิ่มเติม </h3></div>\r\n");
+                out.write("                </a>\r\n");
+                out.write("            ");
+ if ((int)session.getAttribute("suc") == 0) { 
+                out.write("\r\n");
+                out.write("            <a  data-toggle=\"modal\" href=\"#shortModal\" >\r\n");
+                out.write("                <div  class=\"destour\">\r\n");
+                out.write("                <h3 class=\"des\">สมัครแข่งขัน</h3></div>\r\n");
+                out.write("            </a>\r\n");
+                out.write("                ");
+ } else if ((int)session.getAttribute("suc") == 1){
+                out.write("\r\n");
+                out.write("                <a  data-toggle=\"modal\" href=\"regisTourServlet?tour_id=");
+                out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.tour_id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+                out.write("\" >\r\n");
+                out.write("                <div  class=\"destour\">\r\n");
+                out.write("                <h3 class=\"des\">สมัครแข่งขัน</h3></div>\r\n");
+                out.write("            </a>\r\n");
+                out.write("                ");
+ } 
+                out.write("\r\n");
+                out.write("            \r\n");
+                out.write("        </div>\r\n");
+                out.write("    </div>\r\n");
+                out.write("</div>\r\n");
+                out.write("    \r\n");
+                out.write("                            ");
+                int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
+                if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+                  break;
+              } while (true);
+            }
+            if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+              _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
               return;
+            }
+            _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
             out.write("\r\n");
             out.write("                     \r\n");
             out.write("                   \r\n");
@@ -441,9 +530,7 @@ out.println(id);
             if (_jspx_meth_c_if_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_2, _jspx_page_context, _jspx_push_body_count_c_forEach_2))
               return;
             out.write("\r\n");
-            out.write("                     \r\n");
-            out.write("                   \r\n");
-            out.write("              ");
+            out.write("                     ");
             int evalDoAfterBody = _jspx_th_c_forEach_2.doAfterBody();
             if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
               break;
@@ -461,11 +548,12 @@ out.println(id);
         _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_2);
       }
       out.write("\r\n");
+      out.write("                   \r\n");
+      out.write("              \r\n");
       out.write("        </div>\r\n");
       out.write("        </div>\r\n");
-      out.write("            ");
- if ((int)session.getAttribute("suc") == 0) { 
-      out.write("\r\n");
+      out.write("                      \r\n");
+      out.write("            \r\n");
       out.write("    <div id=\"shortModal\" class=\"modal modal-wide fade\">\r\n");
       out.write("  <div class=\"modal-dialog\">\r\n");
       out.write("    <div class=\"modal-content\">\r\n");
@@ -477,7 +565,7 @@ out.println(id);
       out.write("        <p>กรุณาล็อคอินก่อนการสมัคร</p>\r\n");
       out.write("        <div class=\"row\">\r\n");
       out.write("            <div class=\"col-12-xs text-center\">\r\n");
-      out.write("                <button class=\"btn btn-success btn-md\"  data-dismiss=\"modal\" data-toggle=\"modal\" href=\"#shortModal-1\" >ยืนยัน</button>\r\n");
+      out.write("                <button class=\"btn btn-success btn-md\"  data-dismiss=\"modal\" data-toggle=\"modal\"  >ยืนยัน</button>\r\n");
       out.write("            \r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
@@ -486,43 +574,7 @@ out.println(id);
       out.write("    </div><!-- /.modal-content -->\r\n");
       out.write("  </div><!-- /.modal-dialog -->\r\n");
       out.write("</div><!-- /.modal -->   \r\n");
- } else if ((int)session.getAttribute("suc") == 1){
       out.write("\r\n");
-      out.write("   <div id=\"shortModal\" class=\"modal modal-wide fade\">\r\n");
-      out.write("  <div class=\"modal-dialog\">\r\n");
-      out.write("    <div class=\"modal-content\">\r\n");
-      out.write("      <div class=\"modal-header\">\r\n");
-      out.write("        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\r\n");
-      out.write("        <h4 class=\"modal-title\">การยืนยัน</h4>\r\n");
-      out.write("    </div>\r\n");
-      out.write("      <div class=\"modal-body\">\r\n");
-      out.write("        <p>คุณยืนยันที่จะสมัครหรือไม่?</p>\r\n");
-      out.write("        <div class=\"row\">\r\n");
-      out.write("            <div class=\"col-12-xs text-center\">\r\n");
-      out.write("                <button class=\"btn btn-success btn-md\"  data-dismiss=\"modal\" data-toggle=\"modal\" href=\"#shortModal-1\" >ยืนยัน</button>\r\n");
-      out.write("                <button type=\"button\" data-dismiss=\"modal\" aria-hidden=\"true\" class=\" btn btn-danger btn-md\">ไม่</button>\r\n");
-      out.write("            </div>\r\n");
-      out.write("        </div>\r\n");
-      out.write("      </div>\r\n");
-      out.write("   \r\n");
-      out.write("    </div><!-- /.modal-content -->\r\n");
-      out.write("  </div><!-- /.modal-dialog -->\r\n");
-      out.write("</div><!-- /.modal -->\r\n");
-      out.write("<div id=\"shortModal-1\" class=\"modal modal-wide fade\">\r\n");
-      out.write("  <div class=\"modal-dialog\">\r\n");
-      out.write("    <div class=\"modal-content\">\r\n");
-      out.write("      <div class=\"modal-body\">\r\n");
-      out.write("        <p>ยืนยันการสมัครเรียบร้อย...</p>\r\n");
-      out.write("      </div>\r\n");
-      out.write("      <div class=\"modal-footer\">\r\n");
-      out.write("        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n");
-      out.write("      </div>\r\n");
-      out.write("    </div><!-- /.modal-content -->\r\n");
-      out.write("  </div><!-- /.modal-dialog -->\r\n");
-      out.write("</div><!-- /.modal -->\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
- } 
       out.write("\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
@@ -676,67 +728,6 @@ out.println(id);
       return true;
     }
     _jspx_tagPool_fmt_formatDate_var_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_if_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_if_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_if_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_if_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${tour_start >  cur}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
-    int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
-    if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("                                <div class=\"col-md-12 col-md-offset-0\" id=\"board\">\r\n");
-        out.write("    <h4>");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.Tour_Name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-        out.write("</h4>\r\n");
-        out.write("    \r\n");
-        out.write("    <div class=\"tourboard\">\r\n");
-        out.write("        <div class=\"pictour\"><img src=\"assets/img/IEM.jpg\" id=\"logotour\" /></div>\r\n");
-        out.write("        <div class=\"calendar\">\r\n");
-        out.write("            <div><b>เปิดรับสมัคร :<span style=\"color:#009fdb;\">31/03/2017 - 17/03/2017</span></b>\r\n");
-        out.write("                <br />\r\n");
-        out.write("                <br />\r\n");
-        out.write("            </div>\r\n");
-        out.write("            <div><b>จับสายการแข่งขัน :<span style=\"color:#009fdb;\">20/03/2017</span></b>\r\n");
-        out.write("                <br />\r\n");
-        out.write("                <br />\r\n");
-        out.write("            </div>\r\n");
-        out.write("            <div><b>ทำการแข่งขัน :<span style=\"color:#009fdb;\">23/03/2017</span></b>\r\n");
-        out.write("                <br />\r\n");
-        out.write("                <br />\r\n");
-        out.write("            </div>\r\n");
-        out.write("        </div>\r\n");
-        out.write("        <div class=\"allbtn\">\r\n");
-        out.write("             <a  style=\"display:block\" href=\"iemdesJSP.jsp\">\r\n");
-        out.write("            <div class=\"destour\">\r\n");
-        out.write("                <h3 class=\"des\">รายละเอียดเพิ่มเติม </h3></div>\r\n");
-        out.write("                </a>\r\n");
-        out.write("            <a  data-toggle=\"modal\" href=\"#shortModal\" >\r\n");
-        out.write("            <div  class=\"destour\">\r\n");
-        out.write("                <h3 class=\"des\">สมัครแข่งขัน</h3></div>\r\n");
-        out.write("            </a>\r\n");
-        out.write("        </div>\r\n");
-        out.write("    </div>\r\n");
-        out.write("</div>\r\n");
-        out.write("    \r\n");
-        out.write("                            ");
-        int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
-      return true;
-    }
-    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
     return false;
   }
 
