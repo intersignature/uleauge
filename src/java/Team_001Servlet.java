@@ -86,7 +86,6 @@ public class Team_001Servlet extends HttpServlet {
                     session.setAttribute("teamtag", rs.getString("Team_Tag"));
                     String gameid = rs.getString("Game_ID");
                     Statement stmt2 = connection.createStatement();
-                    String sql2 = "SELECT Game_Name FROM db_accessadmin.Game where Game_ID = " + gameid;
                     ResultSet rs2 = stmt2.executeQuery(sql2);
                     rs2.next();
                     Statement stmt5 = connection.createStatement();
