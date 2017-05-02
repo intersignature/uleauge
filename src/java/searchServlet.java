@@ -52,6 +52,8 @@ public class searchServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            String searchuser = request.getParameter("searchuser");
+           String filter = request.getParameter("filter");
+           if(filter.equals("Username")){
            int P_ID = -1;
            out.println(searchuser);
             try {
@@ -75,6 +77,31 @@ public class searchServlet extends HttpServlet {
             else{
                 response.sendRedirect("searchFail.jsp");
             }
+           }else if(filter.equals("Team")){
+               int Team_ID = -1;
+           out.println(searchuser);
+            try {
+                Statement user = connection.createStatement();
+                String sql = "SELECT Team_ID ,Team_Name FROM db_accessadmin.Team WHERE Team_Name = '" + searchuser + "'";
+                ResultSet rs = user.executeQuery(sql);
+                while (rs.next()) {
+                    if (rs.getString("Team_Name").toLowerCase().equals(searchuser.toLowerCase())) { //ถ้าซ้ำ
+                          Team_ID = rs.getInt("Team_ID");
+                    } 
+                    
+                }
+
+            } catch (SQLException e) {
+                response.sendRedirect("/Project/ErrorJSP.jsp");
+                out.println(e);
+            }
+            if(Team_ID != -1){
+                response.sendRedirect("Team_001Servlet?team_id="+Team_ID);
+            }
+            else{
+                response.sendRedirect("searchFail.jsp");
+            }
+           }
         }
     }
 

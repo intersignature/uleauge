@@ -59,8 +59,12 @@
                         <ul class="nav navbar-nav navbar-right">
                              <li id = "searchnav"> 
                   <a>
-                      <form action="searchServlet" method="POST" >
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                     <form action="searchServlet" method="POST" >
+                          <select name="filter">
+                              <option>Username</option>
+                              <option>Team</option>
+                          </select>
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
                     
                       <input id = "searchbtn" type="submit" value="Search" />
                        </form>
@@ -118,7 +122,11 @@
                          <li id = "searchnav2"> 
                   <a>
                       <form action="searchServlet" method="POST" >
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                          <select name="filter">
+                              <option>Username</option>
+                              <option>Team</option>
+                          </select>
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
                     
                       <input id = "searchbtn" type="submit" value="Search" />
                        </form>

@@ -65,11 +65,15 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li id = "searchnav"> 
                                 <a>
-                                    <form action="searchServlet" method="POST" >
-                                        <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
-
-                                        <input id = "searchbtn" type="submit" value="Search" />
-                                    </form>
+                                 <form action="searchServlet" method="POST" >
+                          <select name="filter">
+                              <option>Username</option>
+                              <option>Team</option>
+                          </select>
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
                                 </a>
                             </li>
                             <li><a href="signup.html">Sign up</a></li>
@@ -125,10 +129,14 @@
                         <li id = "searchnav2"> 
                             <a>
                                 <form action="searchServlet" method="POST" >
-                                    <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
-
-                                    <input id = "searchbtn" type="submit" value="Search" />
-                                </form>
+                          <select name="filter">
+                              <option>Username</option>
+                              <option>Team</option>
+                          </select>
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
                             </a>
                         </li>
                         <a href="Player_001Servlet?player=<%out.println(id);%>"> 

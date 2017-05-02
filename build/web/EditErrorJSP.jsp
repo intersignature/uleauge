@@ -79,6 +79,19 @@
                             String imgdir = (String) session.getAttribute("useimage");
 
                         %>
+                        <li id = "searchnav2"> 
+                  <a>
+                      <form action="searchServlet" method="POST" >
+                          <select name="filter">
+                              <option>Username</option>
+                              <option>Team</option>
+                          </select>
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+                    
+                      <input id = "searchbtn" type="submit" value="Search" />
+                       </form>
+                  </a>
+              </li>
                         <a href="Player_001Servlet?player=<%out.println(id);%>"> 
                             <li id="namepro">
 

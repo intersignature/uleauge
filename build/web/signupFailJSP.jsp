@@ -52,7 +52,11 @@
                <li id = "searchnav"> 
                   <a>
                       <form action="searchServlet" method="POST" >
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Username..">
+                          <select name="filter">
+                              <option>Username</option>
+                              <option>Team</option>
+                          </select>
+                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
                     
                       <input id = "searchbtn" type="submit" value="Search" />
                        </form>
