@@ -89,7 +89,7 @@ public class acInviteServlet extends HttpServlet {
                             delete.close();
                         }
                 }
-                 
+                 stmt.close();
                 
             } catch (SQLException e) {
                 out.println(e);

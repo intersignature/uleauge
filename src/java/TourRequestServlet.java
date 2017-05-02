@@ -76,6 +76,7 @@ public class TourRequestServlet extends HttpServlet {
                 while (rs.next()) {
                     index += 1;
                 }
+                user.close();
             } catch (SQLException e) {
                 out.println(e);
             }
@@ -173,6 +174,7 @@ public class TourRequestServlet extends HttpServlet {
                 insert.setString(8, fb);
                 insert.setString(9, cause);
                 insert.execute();
+                insert.close();
                 response.sendRedirect("/Project/requestSuccessJSP.jsp");
             } else {
                 //response.sendRedirect("/Project/signup.html");

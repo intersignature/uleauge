@@ -80,6 +80,7 @@ public class Player_001Servlet extends HttpServlet {
                     session.setAttribute("Prouser", rs.getString("P_Username"));
                     
                 }
+                stmt.close();
             } catch (Exception e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);

@@ -91,6 +91,7 @@ public class SigninServlet extends HttpServlet {
                     P_ID = rs.getInt("P_ID");
                    
                 }
+                stmt.close();
                 //out.println(roles);
             } catch (Exception e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");

@@ -99,8 +99,8 @@ public class CreateTeamServlet extends HttpServlet {
                         ans_teamunjoin = 0;
                     } 
                 }
-              
-                
+                user.close();
+                check_user.close();
             } catch (SQLException e) {
                 out.println(e);
             }

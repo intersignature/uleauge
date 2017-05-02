@@ -74,6 +74,7 @@ public class TeamServlet extends HttpServlet {
                     index+=1;
                 }
                 //index -= 1;
+                user.close();
             } catch (SQLException e) {
                 out.println(e);
             }
@@ -106,7 +107,9 @@ public class TeamServlet extends HttpServlet {
                     else{
                         Team_Image.add("http://i.imgur.com/"+rs.getString("Team_Image")+".jpg");
                     }
+                    stmt5.close();
                 }
+                data.close();
             } catch(SQLException e){out.println(e);}
             //out.print(index +""+ page_run+""+ page_count);
             //response.sendRedirect("playerJSP.jsp");

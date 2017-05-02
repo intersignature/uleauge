@@ -64,7 +64,7 @@ public class searchServlet extends HttpServlet {
                     } 
                     
                 }
-
+                user.close();
             } catch (SQLException e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
