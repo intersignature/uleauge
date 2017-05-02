@@ -90,6 +90,7 @@ public class regisTourServlet extends HttpServlet {
                               ans_game = 0;
                           }
                         }
+                        stmt2.close();
                 Statement stmt3 = connection.createStatement();
                  String sql3 = "SELECT Tour_ID,Team_ID FROM db_accessadmin.Generate";
                  ResultSet rs3 = stmt3.executeQuery(sql3);
@@ -101,7 +102,8 @@ public class regisTourServlet extends HttpServlet {
                         ans_noregis = 0;
                       }
                   }
-                  
+                  stmt3.close();
+                  stmt.close();
                 }catch (Exception e) {
                      response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
@@ -131,7 +133,9 @@ public class regisTourServlet extends HttpServlet {
                  session.setAttribute("ans_game", ans_game);
                 response.sendRedirect("regisTourFail.jsp");
             }
+            
         }
+        
          catch (SQLException ex) {
               response.sendRedirect("/Project/ErrorJSP.jsp");
             Logger.getLogger(CreateTeamServlet.class.getName()).log(Level.SEVERE, null, ex);

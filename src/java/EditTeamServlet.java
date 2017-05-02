@@ -68,7 +68,8 @@ public class EditTeamServlet extends HttpServlet {
                 session.setAttribute("Team_Phone", rs.getString("Team_Phone"));
                 session.setAttribute("Team_Image", rs.getString("Team_Image"));
                 session.setAttribute("Team_mem_num", rs.getString("Team_mem_num"));
-            }  
+            }
+            conn.close();
         } catch (SQLException ex) {
             out.println(ex);
         }

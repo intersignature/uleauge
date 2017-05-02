@@ -79,6 +79,7 @@ public class PlayerServlet extends HttpServlet {
                     index+=1;
                 }
                 index -= 1;
+                user.close();
             } catch (SQLException e) {
                 out.println(e);
             }
@@ -108,6 +109,7 @@ public class PlayerServlet extends HttpServlet {
                         img.add("http://i.imgur.com/"+rs.getString("P_Image")+".jpg");
                     }
                 }
+                data.close();
             } catch (SQLException ex) { 
                 out.println(ex);
                 response.sendRedirect("/Project/ErrorJSP.jsp");
@@ -124,9 +126,11 @@ public class PlayerServlet extends HttpServlet {
                     ResultSet rs2 = data12.executeQuery(sql2);
                     rs2.next();
                     team_Name.add(rs2.getString("Team_Name"));
+                    data12.close();
                 }
                 //out.println(team_User + "<br>");
                 //out.println(team_Name);
+                data1.close();
             } catch (SQLException ex) {
                 Logger.getLogger(PlayerServlet.class.getName()).log(Level.SEVERE, null, ex);
             }

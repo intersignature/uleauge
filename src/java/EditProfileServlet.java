@@ -72,6 +72,7 @@ public class EditProfileServlet extends HttpServlet {
                     session.setAttribute("id", rs.getString("P_ID"));
                     session.setAttribute("image", rs.getString("P_Image"));
                 }
+                conn.close();
             } catch (SQLException e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);

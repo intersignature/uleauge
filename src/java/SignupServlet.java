@@ -87,6 +87,7 @@ public class SignupServlet extends HttpServlet {
                     } 
                     index += 1;
                 }
+                user.close();
             } catch (SQLException e) {
                 out.println(e);
             }
@@ -258,6 +259,7 @@ public class SignupServlet extends HttpServlet {
             insert.setInt(11, index);
             insert.setString(12, RealImage);
             insert.execute();
+            insert.close();
             response.sendRedirect("/Project/signupSuccess.jsp");
             }
             else{

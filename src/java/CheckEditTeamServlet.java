@@ -97,7 +97,8 @@ public class CheckEditTeamServlet extends HttpServlet {
                         ans_teamunjoin = '0';
                     } 
                 }
-                
+                user.close();
+                check_user.close();
             } catch (SQLException ex) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
             }

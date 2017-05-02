@@ -80,7 +80,9 @@ public class Team_001Servlet extends HttpServlet {
                         mem_lname.add(rs4.getString("P_LName"));
                         mem_id.add(rs4.getString("P_ID"));
                     }
+                    stmt4.close();
                 }
+                stmt3.close();
                 while (rs.next()) {
                     session.setAttribute("teamname", rs.getString("Team_Name"));
                     session.setAttribute("teamtag", rs.getString("Team_Tag"));
@@ -112,6 +114,7 @@ public class Team_001Servlet extends HttpServlet {
                     out.println(session.getAttribute("mem_ign"));*/
 
                     response.sendRedirect("Team_info.jsp");
+                    stmt.close();
                 }
             } catch (Exception e) {
                 out.println(e);
