@@ -26,26 +26,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminCheckOrganizerServlet"})
 public class AdminCheckOrganizerServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -55,7 +42,7 @@ public class AdminCheckOrganizerServlet extends HttpServlet {
             String admin_Organizer_Name = request.getParameter("admin_Organizer_Name");
             String admin_hide_organizer_ID = request.getParameter("admin_hide_organizer_ID");
             String sql = "UPDATE db_accessadmin.Organizer SET Organize_ID=?,Organize_Name=? where Organize_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);
+            PreparedStatement update = conn.prepareStatement(sql);
             update.setInt(1, Integer.parseInt(admin_organizer_ID));
             update.setString(2, admin_Organizer_Name);
             update.setInt(3, Integer.parseInt(admin_hide_organizer_ID));

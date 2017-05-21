@@ -29,26 +29,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/UpdateIdSponsorServlet"})
 public class UpdateIdSponsorServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -57,14 +44,14 @@ public class UpdateIdSponsorServlet extends HttpServlet {
             HttpSession session = request.getSession();
             String id = (String) session.getAttribute("admin_hide_Sponsor_ID");
             int real_id = Integer.parseInt(id)-1;
-            Statement stmt = connection.createStatement();
+            Statement stmt = conn.createStatement();
             String sql = "SELECT Sponsor_ID FROM db_accessadmin.Sponsor where Sponsor_ID > " + real_id;
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 String sql1 = "UPDATE db_accessadmin.Sponsor\n" +
                                   "SET Sponsor_ID = ?" + "\n" +
                                   "WHERE Sponsor_ID = ?" + ";";
-                PreparedStatement update = connection.prepareStatement(sql1);
+                PreparedStatement update = conn.prepareStatement(sql1);
                 update.setInt(1, Integer.parseInt(rs.getString("Sponsor_ID"))-1);
                 update.setInt(2, Integer.parseInt(rs.getString("Sponsor_ID")));
                 update.execute();

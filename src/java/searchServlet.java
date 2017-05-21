@@ -27,26 +27,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/searchServlet"})
 public class searchServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
+    Connection conn;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    private Connection connection;
-        public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(CreateTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -57,7 +44,7 @@ public class searchServlet extends HttpServlet {
            int P_ID = -1;
            out.println(searchuser);
             try {
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 String sql = "SELECT P_ID,P_Roles ,P_Username FROM db_accessadmin.Player WHERE P_Username = '" + searchuser + "'";
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {
@@ -81,7 +68,7 @@ public class searchServlet extends HttpServlet {
                int Team_ID = -1;
            out.println(searchuser);
             try {
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 String sql = "SELECT Team_ID ,Team_Name FROM db_accessadmin.Team WHERE Team_Name = '" + searchuser + "'";
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {

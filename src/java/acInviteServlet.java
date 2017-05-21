@@ -30,26 +30,14 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/acInviteServlet"})
 public class acInviteServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
- private Connection connection;
+    Connection conn;
 
-    public void init() {
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
+
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -59,7 +47,7 @@ public class acInviteServlet extends HttpServlet {
              String username = (String) session.getAttribute("username");
             String sql = "INSERT INTO db_accessadmin.Player_Join (Team_ID,P_Username)" +
             "VALUES (?,?);";
-            PreparedStatement insert = connection.prepareStatement(sql);   
+            PreparedStatement insert = conn.prepareStatement(sql);   
             insert.setInt(1, team_id);
             insert.setString(2, username);
             insert.execute();
@@ -68,12 +56,12 @@ public class acInviteServlet extends HttpServlet {
 "                             SET Team_mem_num += 1" +
 "                             WHERE Team_ID = ?";
 
-            PreparedStatement update = connection.prepareStatement(sql1);   
+            PreparedStatement update = conn.prepareStatement(sql1);   
             update.setInt(1, team_id);
             update.execute();
             update.close();
             try{
-               Statement stmt = connection.createStatement();
+               Statement stmt = conn.createStatement();
                 String sql3 = "select T.Team_mem_num, G.Game_Max FROM db_accessadmin.Team T" +
                             "join db_accessadmin.Game G" +
                             "on T.Game_ID = G.Game_ID" +
@@ -83,7 +71,7 @@ public class acInviteServlet extends HttpServlet {
                     if(rs3.getInt("Team_mem_num") >= rs3.getInt("Game_Max")){
                         String sql4 = "delete from db_accessadmin.Invite" +
                             " where Team_ID = ?;";
-                            PreparedStatement delete = connection.prepareStatement(sql4);   
+                            PreparedStatement delete = conn.prepareStatement(sql4);   
                             delete.setInt(1, team_id);
                             delete.execute();
                             delete.close();
@@ -100,7 +88,7 @@ public class acInviteServlet extends HttpServlet {
 "                                where Game_ID in ( select Game_ID\n" +
 "                                from  db_accessadmin.Team\n" +
 "                                where Team_ID = ? ) )  and P_Username = ?";
-                            PreparedStatement delete1 = connection.prepareStatement(sql5);   
+                            PreparedStatement delete1 = conn.prepareStatement(sql5);   
                             delete1.setInt(1, team_id);
                             delete1.setString(2, username);
                             delete1.execute();

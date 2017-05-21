@@ -27,16 +27,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminDeleteRequestServlet"})
 public class AdminDeleteRequestServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,7 +50,7 @@ public void init(){
             /* TODO output your page here. You may use following sample code. */
             String id = request.getParameter("admin_hide_Request_ID");
             String sql = "DELETE FROM db_accessadmin.Request\n" +"WHERE Request_ID="+id;
-            PreparedStatement delete = connection.prepareStatement(sql);
+            PreparedStatement delete = conn.prepareStatement(sql);
             delete.execute();
             delete.close();
             HttpSession session = request.getSession();

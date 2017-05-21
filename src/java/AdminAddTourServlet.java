@@ -26,9 +26,7 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminAddTourServlet"})
 public class AdminAddTourServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
+    Connection conn;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,15 +36,14 @@ public class AdminAddTourServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+    @Override
+    public void init()
+            throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -63,7 +60,7 @@ public class AdminAddTourServlet extends HttpServlet {
             String admin_Tour_Table_Link = request.getParameter("admin_Tour_Table_Link");
             String sql = "INSERT INTO db_accessadmin.Tournament (Tour_ID, Tour_Maxteam, Tour_Location, Tour_Reward, Tour_Name, Tour_StartDate, Tour_view_count, Tour_EndDate, Organize_ID, Game_ID, Tour_Table_Link)"+ 
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement insert = connection.prepareStatement(sql);
+            PreparedStatement insert = conn.prepareStatement(sql);
             insert.setInt(1, Integer.parseInt(admin_Tour_ID));
             insert.setInt(2, Integer.parseInt(admin_Tour_Maxteam));
             insert.setString(3, admin_Tour_Location);

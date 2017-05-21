@@ -27,25 +27,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminCheckUserServlet"})
 public class AdminCheckUserServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -67,7 +55,7 @@ public class AdminCheckUserServlet extends HttpServlet {
             String admin_hide_ID = request.getParameter("admin_hide_ID");
             String sql = "UPDATE db_accessadmin.Player SET P_Username=?,P_Password=?,P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
                     + "P_Faculty=?,P_University=?,P_Phone=?, P_ID=?,P_Roles=?,P_Image=? where P_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);   
+            PreparedStatement update = conn.prepareStatement(sql);   
             update.setString(1, admin_Username);
             update.setString(2, admin_Password);
             update.setString(3, admin_Fullname);

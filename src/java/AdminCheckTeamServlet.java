@@ -26,25 +26,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminCheckTeamServlet"})
 public class AdminCheckTeamServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -59,7 +47,7 @@ public class AdminCheckTeamServlet extends HttpServlet {
             String admin_hide_Team_ID = request.getParameter("admin_hide_Team_ID");
             String admin_Team_Image = request.getParameter("admin_Team_Image");
             String sql = "UPDATE db_accessadmin.Team SET Team_ID=?,Team_Name=?,Team_Tag=?,Game_ID=?,Team_Cap=?,Team_Phone=?,Team_Image=? where Team_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);
+            PreparedStatement update = conn.prepareStatement(sql);
             update.setInt(1, Integer.parseInt(admin_Team_ID));
             update.setString(2, admin_Team_Name);
             update.setString(3, admin_Team_Tag);

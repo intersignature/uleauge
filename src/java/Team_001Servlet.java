@@ -30,26 +30,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/Team_001Servlet"})
 public class Team_001Servlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
+    Connection conn;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init() {
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,18 +46,18 @@ public class Team_001Servlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("team_id"));
             List<String> data = new ArrayList<String>();
             try {
-                Statement stmt = connection.createStatement();
+                Statement stmt = conn.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Team where Team_ID = " + id;
                 ResultSet rs = stmt.executeQuery(sql);
                 List<String> mem_fname = new ArrayList<String>();
                 List<String> mem_ign = new ArrayList<String>();
                 List<String> mem_lname = new ArrayList<String>();
                 List<String> mem_id = new ArrayList<String>();
-                Statement stmt3 = connection.createStatement();
+                Statement stmt3 = conn.createStatement();
                 String sql3 = "SELECT P_Username FROM db_accessadmin.Player_Join where Team_ID = " + id;
                 ResultSet rs3 = stmt3.executeQuery(sql3);
                 HttpSession session = request.getSession();
-                Statement stmt4 = connection.createStatement();
+                Statement stmt4 = conn.createStatement();
                 while (rs3.next()) {
                     String sql4 = "SELECT P_FName, P_Ign, P_LName, P_ID FROM db_accessadmin.Player where P_Username = '" + rs3.getString("P_Username")+"'";
                     ResultSet rs4 = stmt4.executeQuery(sql4);
@@ -87,11 +74,11 @@ public class Team_001Servlet extends HttpServlet {
                     session.setAttribute("teamname", rs.getString("Team_Name"));
                     session.setAttribute("teamtag", rs.getString("Team_Tag"));
                     String gameid = rs.getString("Game_ID");
-                    Statement stmt2 = connection.createStatement();
+                    Statement stmt2 = conn.createStatement();
                     String sql2 = "SELECT Game_Name FROM db_accessadmin.Game where Game_ID = " + gameid;
                     ResultSet rs2 = stmt2.executeQuery(sql2);
                     rs2.next();
-                    Statement stmt5 = connection.createStatement();
+                    Statement stmt5 = conn.createStatement();
                     String sql5 = "SELECT P_Ign FROM db_accessadmin.Player where P_Username = '" + rs.getString("Team_Cap")+"'";
                     ResultSet rs5 = stmt5.executeQuery(sql5);
                     rs5.next();

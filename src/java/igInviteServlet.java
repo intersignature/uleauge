@@ -27,26 +27,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/igInviteServlet"})
 public class igInviteServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-private Connection connection;
+    Connection conn;
 
-    public void init() {
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -56,7 +43,7 @@ private Connection connection;
              String username = (String) session.getAttribute("username");
             String sql = "delete FROM db_accessadmin.Invite\n" +
                             "where Team_ID = ? and P_Username = ?";
-                            PreparedStatement delete = connection.prepareStatement(sql);   
+                            PreparedStatement delete = conn.prepareStatement(sql);   
                             delete.setInt(1, team_id);
                             delete.setString(2, username);
                             delete.execute();

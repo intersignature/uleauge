@@ -29,25 +29,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/regisTourServlet"})
 public class regisTourServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-        private Connection connection;
- public void init() {
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -62,7 +50,7 @@ public class regisTourServlet extends HttpServlet {
             String username = (String) session.getAttribute("username"); 
             out.println(username+"user");
             try {
-                Statement stmt = connection.createStatement();
+                Statement stmt = conn.createStatement();
                 String sql = "SELECT Team_ID,Game_ID,Team_Cap FROM db_accessadmin.Team where Team_Cap = '"+username+"'";
                 
                 ResultSet rs = stmt.executeQuery(sql);
@@ -78,7 +66,7 @@ public class regisTourServlet extends HttpServlet {
                      }
                      }
                  
-                 Statement stmt2 = connection.createStatement();
+                 Statement stmt2 = conn.createStatement();
                 String sql2 = "SELECT Tour_ID,Game_ID FROM db_accessadmin.Tournament where Tour_ID = " + tour_id;
                           ResultSet rs2 = stmt2.executeQuery(sql2);
                         while(rs2.next()){
@@ -91,7 +79,7 @@ public class regisTourServlet extends HttpServlet {
                           }
                         }
                         stmt2.close();
-                Statement stmt3 = connection.createStatement();
+                Statement stmt3 = conn.createStatement();
                  String sql3 = "SELECT Tour_ID,Team_ID FROM db_accessadmin.Generate";
                  ResultSet rs3 = stmt3.executeQuery(sql3);
                   while (rs3.next()) {
@@ -119,7 +107,7 @@ public class regisTourServlet extends HttpServlet {
             if(ans_cap+ans_game+ans_noregis == 3){
                        String sql4 = "INSERT INTO db_accessadmin.Generate (Tour_ID, Team_ID)"+ 
                     " VALUES (?, ?);";
-                        PreparedStatement insert = connection.prepareStatement(sql4);   
+                        PreparedStatement insert = conn.prepareStatement(sql4);   
                         insert.setInt(1, tour_id);
                         insert.setInt(2, team_id);
                         insert.execute();

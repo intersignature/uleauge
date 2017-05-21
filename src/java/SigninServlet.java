@@ -28,30 +28,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/SigninServlet"})
 public class SigninServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
+    Connection conn;
 
-
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    private Connection connection;
-
-    public void init() {
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException sqle) {
-            System.out.println("" + sqle);
-        }
-
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -71,7 +54,7 @@ public class SigninServlet extends HttpServlet {
             session.setAttribute("suc", suc);
             try {
                 
-                Statement stmt = connection.createStatement();
+                Statement stmt = conn.createStatement();
                 String sql = "SELECT P_Username, P_Password,P_ID, P_Roles, P_Image FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {

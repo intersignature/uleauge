@@ -31,29 +31,16 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/SignupServlet"})
 public class SignupServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
+    Connection conn;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Override
+    public void init()
+            throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -78,7 +65,7 @@ public class SignupServlet extends HttpServlet {
             int ans_overall = 0;
             //เช็คusername
             try {
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 String sql = "SELECT P_Username FROM db_accessadmin.Player";
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {
@@ -103,20 +90,20 @@ public class SignupServlet extends HttpServlet {
             
             //เช็คpassword
             for (int i=0, len=password.length(); i<len; i++){
-                    char password_char = password.charAt(i);
-                    if (password_char >= '0' && password_char <= '9'){
-                            password_isnum = 1;
-                    }
-                    if (Character.isUpperCase(password_char)){
-                            password_isUpper = 1;
-                    }
-                    if (Character.isLowerCase(password_char)){
-                            password_isLower = 1;
-                    }
+                char password_char = password.charAt(i);
+                if (password_char >= '0' && password_char <= '9'){
+                    password_isnum = 1;
+                }
+                if (Character.isUpperCase(password_char)){
+                    password_isUpper = 1;
+                }
+                if (Character.isLowerCase(password_char)){
+                    password_isLower = 1;
+                }
             }
             if (password_isnum != 1 || password_isUpper != 1 || password_isLower != 1 || password.length()<8){
-                    HttpSession session = request.getSession();
-                    session.setAttribute("is_password", '1');
+                HttpSession session = request.getSession();
+                session.setAttribute("is_password", '1');
             }
             else{
                 HttpSession session = request.getSession();
@@ -229,11 +216,11 @@ public class SignupServlet extends HttpServlet {
             }
             
             //เช็คcondition
-           // if(request.getParameter("condition") == null){
+            // if(request.getParameter("condition") == null){
             //checkbox not checked
-           // HttpSession session = request.getSession();
+            // HttpSession session = request.getSession();
             //session.setAttribute("condition", '1');
-           // }else{
+            // }else{
             //checkbox checked
             HttpSession session = request.getSession();
             session.setAttribute("condition", '0');
@@ -242,25 +229,25 @@ public class SignupServlet extends HttpServlet {
             //out.print((char) session.getAttribute("condition"));
             
             if(ans_overall == 11 && (char)session.getAttribute("condition")=='0'){
-            //แอดข้อมูล
-            String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone, P_ID, P_Image)"+ 
-                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement insert = connection.prepareStatement(sql);   
-            insert.setString(1, username);
-            insert.setString(2, password);
-            insert.setString(3, fname);
-            insert.setString(4, lname);
-            insert.setString(6, email);
-            insert.setString(7, fb);
-            insert.setString(8, university);
-            insert.setString(9, faculty);
-            insert.setString(10, phone);
-            insert.setString(5, ign);
-            insert.setInt(11, index);
-            insert.setString(12, RealImage);
-            insert.execute();
-            insert.close();
-            response.sendRedirect("/Project/signupSuccess.jsp");
+                //แอดข้อมูล
+                String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone, P_ID, P_Image)"+
+                        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement insert = conn.prepareStatement(sql);
+                insert.setString(1, username);
+                insert.setString(2, password);
+                insert.setString(3, fname);
+                insert.setString(4, lname);
+                insert.setString(6, email);
+                insert.setString(7, fb);
+                insert.setString(8, university);
+                insert.setString(9, faculty);
+                insert.setString(10, phone);
+                insert.setString(5, ign);
+                insert.setInt(11, index);
+                insert.setString(12, RealImage);
+                insert.execute();
+                insert.close();
+                response.sendRedirect("/Project/signupSuccess.jsp");
             }
             else{
                 //response.sendRedirect("/Project/signup.html");

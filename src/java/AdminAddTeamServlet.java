@@ -27,16 +27,12 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminAddTeamServlet"})
 public class AdminAddTeamServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -61,7 +57,7 @@ public class AdminAddTeamServlet extends HttpServlet {
             //out.println(admin_Team_ID + admin_Team_Name +admin_Team_Tag + admin_Game_ID + admin_Team_Cap + admin_Team_Phone);
             String sql = "INSERT INTO db_accessadmin.Team (Team_ID, Team_Name, Team_Tag, Game_ID, Team_Cap, Team_Phone, Team_Image)"+ 
                     " VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement insert = connection.prepareStatement(sql);
+            PreparedStatement insert = conn.prepareStatement(sql);
             insert.setInt(1, Integer.parseInt(admin_Team_ID));
             insert.setString(2, admin_Team_Name);
             insert.setString(3, admin_Team_Tag);
@@ -73,7 +69,7 @@ public class AdminAddTeamServlet extends HttpServlet {
             insert.close();
             
             String sql1 = "INSERT INTO db_accessadmin.Player_Join (P_Username, Team_ID)"+ " VALUES (?, ?)";
-            PreparedStatement insert1 = connection.prepareStatement(sql1);
+            PreparedStatement insert1 = conn.prepareStatement(sql1);
             insert1.setString(1, admin_Team_Cap);
             insert1.setInt(2, Integer.parseInt(admin_Team_ID));
             insert1.execute();

@@ -27,16 +27,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminCheckRequestServlet"})
 public class AdminCheckRequestServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -63,7 +60,7 @@ public class AdminCheckRequestServlet extends HttpServlet {
             String admin_hide_Request_ID = request.getParameter("admin_hide_Request_ID");
             String sql = "UPDATE db_accessadmin.Request SET Request_ID=?,Request_Teamname=?,Request_Address=?,Request_Location=?,Request_Exp=?,Request_Promote=?,Request_Email=?,"
                     + "Request_Facebook=?,Request_Cause=? where Request_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);
+            PreparedStatement update = conn.prepareStatement(sql);
             update.setInt(1, Integer.parseInt(admin_Request_ID));
             update.setString(2, admin_Request_Teamname);
             update.setString(3, admin_Request_Address);

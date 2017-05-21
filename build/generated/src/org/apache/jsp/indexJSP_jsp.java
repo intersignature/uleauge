@@ -108,7 +108,11 @@ public final class indexJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("              <li id = \"searchnav\"> \r\n");
       out.write("                  <a>\r\n");
       out.write("                      <form action=\"searchServlet\" method=\"POST\" >\r\n");
-      out.write("                      <input id = \"searchbox\" type=\"text\" name=\"searchuser\" placeholder=\"Username..\">\r\n");
+      out.write("                          <select name=\"filter\">\r\n");
+      out.write("                              <option>Username</option>\r\n");
+      out.write("                              <option>Team</option>\r\n");
+      out.write("                          </select>\r\n");
+      out.write("                      <input id = \"searchbox\" type=\"text\" name=\"searchuser\" placeholder=\"Search..\">\r\n");
       out.write("                    \r\n");
       out.write("                      <input id = \"searchbtn\" type=\"submit\" value=\"Search\" />\r\n");
       out.write("                       </form>\r\n");
@@ -162,7 +166,11 @@ public final class indexJSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <li id = \"searchnav2\"> \r\n");
       out.write("                  <a>\r\n");
       out.write("                      <form action=\"searchServlet\" method=\"POST\" >\r\n");
-      out.write("                      <input id = \"searchbox\" type=\"text\" name=\"searchuser\" placeholder=\"Username..\">\r\n");
+      out.write("                          <select name=\"filter\">\r\n");
+      out.write("                              <option>Username</option>\r\n");
+      out.write("                              <option>Team</option>\r\n");
+      out.write("                          </select>\r\n");
+      out.write("                      <input id = \"searchbox\" type=\"text\" name=\"searchuser\" placeholder=\"Search..\">\r\n");
       out.write("                    \r\n");
       out.write("                      <input id = \"searchbtn\" type=\"submit\" value=\"Search\" />\r\n");
       out.write("                       </form>\r\n");

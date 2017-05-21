@@ -25,17 +25,13 @@ import javax.sql.DataSource;
  */
 @WebServlet(urlPatterns = {"/AdminAddOrganizerServlet"})
 public class AdminAddOrganizerServlet extends HttpServlet {
+    Connection conn;
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,7 +49,7 @@ public class AdminAddOrganizerServlet extends HttpServlet {
             String admin_organizer_ID = request.getParameter("admin_organizer_ID");
             String admin_Organizer_Name = request.getParameter("admin_Organizer_Name");
             String sql = "INSERT INTO db_accessadmin.Organizer (Organize_ID, Organize_Name) VALUES (?, ?)";
-            PreparedStatement insert = connection.prepareStatement(sql);
+            PreparedStatement insert = conn.prepareStatement(sql);
             insert.setInt(1, Integer.parseInt(admin_organizer_ID));
             insert.setString(2, admin_Organizer_Name);
             insert.execute();

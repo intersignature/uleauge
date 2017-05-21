@@ -28,25 +28,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminDeleteTeamServlet"})
 public class AdminDeleteTeamServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -54,12 +42,12 @@ public class AdminDeleteTeamServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String id = request.getParameter("admin_hide_Team_ID");
             String sql1 = "delete FROM db_accessadmin.Player_Join where Team_ID="+id;
-            PreparedStatement delete = connection.prepareStatement(sql1);
+            PreparedStatement delete = conn.prepareStatement(sql1);
             delete.execute();
             delete.close();
             
             String sql = "DELETE FROM db_accessadmin.Team\n" +"WHERE Team_ID="+id;
-            PreparedStatement deletee = connection.prepareStatement(sql);
+            PreparedStatement deletee = conn.prepareStatement(sql);
             deletee.execute();
             deletee.close();
             HttpSession session = request.getSession();

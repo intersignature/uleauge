@@ -32,25 +32,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/CheckEditTeamServlet"})
 public class CheckEditTeamServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -71,7 +59,7 @@ public class CheckEditTeamServlet extends HttpServlet {
             char ans_teamphone = '1';
             char ans_teamunjoin = '1';
             try {
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 String sql = "SELECT Team_Name,Game_ID,Team_Tag,Team_Cap FROM db_accessadmin.Team where Team_ID != " + Team_ID;
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {
@@ -84,7 +72,7 @@ public class CheckEditTeamServlet extends HttpServlet {
                     index += 1;
                     
                 }
-                Statement check_user = connection.createStatement();
+                Statement check_user = conn.createStatement();
                 String sql_check = "SELECT T.Game_ID,P.P_Username\n" +
                                 "FROM db_accessadmin.Player_Join P \n" +
                                 "inner join db_accessadmin.Team T\n" +
@@ -127,7 +115,7 @@ public class CheckEditTeamServlet extends HttpServlet {
             }
             if(ans_teamname=='1' &&ans_teamtag=='1' &&ans_teamphone=='1' &&ans_teamunjoin=='1'){
                 String sql = "UPDATE db_accessadmin.Team SET Team_Name=?, Team_Tag=?,Team_Phone=?,Team_Cap=?,Team_Image=? where Team_ID=?";
-                PreparedStatement update = connection.prepareStatement(sql);
+                PreparedStatement update = conn.prepareStatement(sql);
                 update.setString(1, Team_Name);
                 update.setString(2, Team_Tag);
                 update.setString(3, Team_Phone);

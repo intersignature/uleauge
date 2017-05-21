@@ -31,25 +31,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/CreateTeamServlet"})
 public class CreateTeamServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-        public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(CreateTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -74,7 +62,7 @@ public class CreateTeamServlet extends HttpServlet {
             int index = 0;
             String team_cap = (String) session.getAttribute("username");
             try {
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 String sql = "SELECT Team_Name,Game_ID,Team_Tag  FROM db_accessadmin.Team";
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {
@@ -87,7 +75,7 @@ public class CreateTeamServlet extends HttpServlet {
                     index += 1;
                     
                 }
-                Statement check_user = connection.createStatement();
+                Statement check_user = conn.createStatement();
                 String sql_check = "SELECT T.Game_ID,P.P_Username\n" +
                                 " FROM db_accessadmin.Player_Join P\n" +
                                 "inner join db_accessadmin.Team T\n" +
@@ -134,7 +122,7 @@ public class CreateTeamServlet extends HttpServlet {
                     
             String sql = "INSERT INTO db_accessadmin.Team (Team_ID,Team_Name,Team_Tag,Game_ID,Team_Cap,Team_Phone,Team_Image,Team_mem_num)"+ 
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-            PreparedStatement insert = connection.prepareStatement(sql);   
+            PreparedStatement insert = conn.prepareStatement(sql);   
             insert.setInt(1, index+1);
             insert.setString(2, teamname);
             insert.setString(3, teamtag);
@@ -148,7 +136,7 @@ public class CreateTeamServlet extends HttpServlet {
 
             String sql3 = "INSERT INTO db_accessadmin.Player_Join (P_Username, Team_ID)"+ 
                     " VALUES (?, ?);";
-            PreparedStatement insert1 = connection.prepareStatement(sql3);  
+            PreparedStatement insert1 = conn.prepareStatement(sql3);  
             insert1.setString(1, team_cap);
             insert1.setInt(2, index+1);
             insert1.execute();
@@ -156,7 +144,7 @@ public class CreateTeamServlet extends HttpServlet {
 
 
             String invitedel = "DELETE FROM db_accessadmin.Invite WHERE  Team_ID in (select Team_ID from db_accessadmin.Team where Game_ID = ? ) and P_Username = ?";
-            PreparedStatement delete = connection.prepareStatement(invitedel);  
+            PreparedStatement delete = conn.prepareStatement(invitedel);  
             delete.setInt(1, gameteam);  
             delete.setString(2, team_cap);  
             delete.execute();

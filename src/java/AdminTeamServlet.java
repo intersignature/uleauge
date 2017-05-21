@@ -30,25 +30,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminTeamServlet"})
 public class AdminTeamServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -62,7 +50,7 @@ public class AdminTeamServlet extends HttpServlet {
             List<String> admin_Team_Phone = new ArrayList<String>();
             List<String> admin_Team_Image = new ArrayList<String>();
             try {
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Team where Team_ID >= 1";
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {

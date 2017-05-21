@@ -26,16 +26,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminAddSponsorServlet"})
 public class AdminAddSponsorServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,7 +50,7 @@ public class AdminAddSponsorServlet extends HttpServlet {
             String admin_Sponsor_ID = request.getParameter("admin_Sponsor_ID");
             String admin_Sponsor_Name = request.getParameter("admin_Sponsor_Name");
             String sql = "INSERT INTO db_accessadmin.Sponsor (Sponsor_ID, Sponsor_Name) VALUES (?, ?)";
-            PreparedStatement insert = connection.prepareStatement(sql);
+            PreparedStatement insert = conn.prepareStatement(sql);
             insert.setInt(1, Integer.parseInt(admin_Sponsor_ID));
             insert.setString(2, admin_Sponsor_Name);
             insert.execute();

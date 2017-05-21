@@ -31,26 +31,13 @@ import javax.sql.DataSource;
 //send all vaule in edit jsp and sendredir CheckEditProfileServlet and check it if true modify it
 public class CheckEditProfileServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -188,7 +175,7 @@ public class CheckEditProfileServlet extends HttpServlet {
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";*/
             String sql = "UPDATE db_accessadmin.Player SET P_Password=?, P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
                     + "P_Faculty=?,P_University=?,P_Phone=?, P_Image=? where P_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);   
+            PreparedStatement update = conn.prepareStatement(sql);   
             update.setString(1, new_password);
             update.setString(2, new_fname);
             update.setString(3, new_lname);

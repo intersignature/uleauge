@@ -27,25 +27,13 @@ import javax.sql.DataSource;
  */
 @WebServlet(urlPatterns = {"/EditProfileServlet"})
 public class EditProfileServlet extends HttpServlet {
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -55,9 +43,9 @@ public class EditProfileServlet extends HttpServlet {
             try {
                 HttpSession session = request.getSession();
                 int p_id = (int) session.getAttribute("P_ID");
-                Statement conn = connection.createStatement();
+                Statement edit = conn.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Player where P_ID = " + p_id;
-                ResultSet rs = conn.executeQuery(sql);
+                ResultSet rs = edit.executeQuery(sql);
                 while(rs.next()){
                     session.setAttribute("username", rs.getString("P_Username"));
                     session.setAttribute("password", rs.getString("P_Password"));
@@ -72,7 +60,7 @@ public class EditProfileServlet extends HttpServlet {
                     session.setAttribute("id", rs.getString("P_ID"));
                     session.setAttribute("image", rs.getString("P_Image"));
                 }
-                conn.close();
+                edit.close();
             } catch (SQLException e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);

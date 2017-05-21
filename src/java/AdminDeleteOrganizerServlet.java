@@ -27,26 +27,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminDeleteOrganizerServlet"})
 public class AdminDeleteOrganizerServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -54,7 +41,7 @@ public class AdminDeleteOrganizerServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String id = request.getParameter("admin_hide_organizer_ID");
             String sql = "DELETE FROM db_accessadmin.Organizer\n" +"WHERE Organize_id="+id;
-            PreparedStatement delete = connection.prepareStatement(sql);
+            PreparedStatement delete = conn.prepareStatement(sql);
             delete.execute();
             delete.close();
             HttpSession session = request.getSession();

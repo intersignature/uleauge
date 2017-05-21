@@ -26,25 +26,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminCheckSponsorServlet"})
 public class AdminCheckSponsorServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -54,7 +42,7 @@ public class AdminCheckSponsorServlet extends HttpServlet {
             String admin_Sponsor_Name = request.getParameter("admin_Sponsor_Name");
             String admin_hide_Sponsor_ID = request.getParameter("admin_hide_Sponsor_ID");
             String sql = "UPDATE db_accessadmin.Sponsor SET Sponsor_ID=?,Sponsor_Name=? where Sponsor_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);
+            PreparedStatement update = conn.prepareStatement(sql);
             update.setInt(1, Integer.parseInt(admin_Sponsor_ID));
             update.setString(2, admin_Sponsor_Name);
             update.setInt(3, Integer.parseInt(admin_hide_Sponsor_ID));

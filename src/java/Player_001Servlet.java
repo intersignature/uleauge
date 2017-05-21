@@ -30,26 +30,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/Player_001Servlet"})
 public class Player_001Servlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -58,7 +45,7 @@ public class Player_001Servlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("player"));
             List<String> data = new ArrayList<String>();
             try {   
-                Statement stmt = connection.createStatement();
+                Statement stmt = conn.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Player where P_ID = " + id;
                 ResultSet rs = stmt.executeQuery(sql);
                 HttpSession session = request.getSession();

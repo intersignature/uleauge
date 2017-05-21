@@ -26,25 +26,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/AdminCheckTourServlet"})
 public class AdminCheckTourServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -64,7 +52,7 @@ public class AdminCheckTourServlet extends HttpServlet {
             String admin_Tour_Table_Link = request.getParameter("admin_Tour_Table_Link");
             String sql = "UPDATE db_accessadmin.Tournament SET Tour_ID=?,Tour_Maxteam=?,Tour_Location=?,Tour_Reward=?,Tour_Name=?,Tour_StartDate=?,Tour_view_count=?,"
                     + "Tour_EndDate=?,Organize_ID=?,Game_ID=?, Tour_Table_Link=? where Tour_ID=?";
-            PreparedStatement update = connection.prepareStatement(sql);   
+            PreparedStatement update = conn.prepareStatement(sql);   
             update.setInt(1, Integer.parseInt(admin_Tour_ID));
             update.setInt(2, Integer.parseInt(admin_Tour_Maxteam));
             update.setString(3, admin_Tour_Location);

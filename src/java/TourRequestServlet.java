@@ -31,27 +31,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/TourRequestServlet"})
 public class TourRequestServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
+    Connection conn;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init() {
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -70,7 +56,7 @@ public class TourRequestServlet extends HttpServlet {
             int ans_overall = 0;
             int index = 1;
             try {
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 String sql = "SELECT Request_ID FROM db_accessadmin.Request";
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {
@@ -163,7 +149,7 @@ public class TourRequestServlet extends HttpServlet {
                 //แอดข้อมูล
                 String sql = "INSERT INTO db_accessadmin.Request (Request_ID, Request_Teamname, Request_Address, Request_Location, Request_Exp, Request_Promote, Request_Email, Request_Facebook, Request_Cause)"
                         + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                PreparedStatement insert = connection.prepareStatement(sql);
+                PreparedStatement insert = conn.prepareStatement(sql);
                 insert.setInt(1, index);
                 insert.setString(2, teamname);
                 insert.setString(3, address);

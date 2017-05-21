@@ -29,25 +29,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/inviteServlet"})
 public class inviteServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
+    Connection conn;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */private Connection connection;
-        public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(CreateTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -58,7 +46,7 @@ public class inviteServlet extends HttpServlet {
                 int caninvite = 0;
                 HttpSession session = request.getSession();
                 String username = (String) session.getAttribute("username"); 
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 int Team_ID = -1;
                 int invited = 0;
                 int haveteam = 0;
@@ -83,7 +71,7 @@ public class inviteServlet extends HttpServlet {
                     
                }
                user.close();
-               Statement user1 = connection.createStatement();
+               Statement user1 = conn.createStatement();
                 String sql1 = "SELECT  P.P_Username, T.Game_ID FROM db_accessadmin.Player_Join P\n" +
                                     "right join db_accessadmin.Team T\n" +
                                     "on T.Team_ID = P.Team_ID\n" +
@@ -102,7 +90,7 @@ public class inviteServlet extends HttpServlet {
                if(caninvite == 1){
                    //ต้องเช็คเคส เคยชวนไปแล้วด้วย
                    
-                  Statement check = connection.createStatement();
+                  Statement check = conn.createStatement();
                 String check_invited = "SELECT I.Team_ID, T.Team_Cap, I.P_Username ,T.Game_ID FROM db_accessadmin.Team T\n" +
                         "join db_accessadmin.Invite I\n" +
                         "on I.Team_ID = T.Team_ID\n" +
@@ -119,7 +107,7 @@ public class inviteServlet extends HttpServlet {
                    out.println("invited");
                    String sql3 = "INSERT INTO db_accessadmin.Invite (Team_ID,P_Username)"+ 
                     " VALUES (?, ?);";
-                    PreparedStatement insert = connection.prepareStatement(sql3);   
+                    PreparedStatement insert = conn.prepareStatement(sql3);   
                     insert.setInt(1, Team_ID);
                     insert.setString(2, prouser);
                     insert.execute();

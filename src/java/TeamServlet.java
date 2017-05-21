@@ -30,25 +30,13 @@ import javax.sql.DataSource;
 @WebServlet(urlPatterns = {"/TeamServlet"})
 public class TeamServlet extends HttpServlet {
 
-    @Resource(name = "dbesport")
-    private DataSource dbesport;
-    private Connection connection;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void init(){
-        try {
-            connection = dbesport.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    Connection conn;
+
+    @Override
+    public void init() throws ServletException {
+        conn = (Connection) getServletContext().getAttribute("conn");
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -66,7 +54,7 @@ public class TeamServlet extends HttpServlet {
             List<String> Team_Image = new ArrayList<String>();
             List<String> Team_mem_num = new ArrayList<String>();
             try {
-                Statement user = connection.createStatement();
+                Statement user = conn.createStatement();
                 //String sql = "SELECT * FROM db_accessadmin.Player where P_ID >= "+ (1+6*page_run) + "and P_ID <= " + (6*(page_run+1)) ;
                 String sql = "SELECT Team_ID FROM db_accessadmin.Team";
                 ResultSet rs = user.executeQuery(sql);
@@ -84,7 +72,7 @@ public class TeamServlet extends HttpServlet {
             }
             //ดึงข้อมูลที่ต้องใช้
             try{
-                Statement data = connection.createStatement();
+                Statement data = conn.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Team where Team_ID >=1";
                 //String sql = "SELECT * FROM db_accessadmin.Player where P_ID >= "+ (1+6*page_run) + "and P_ID <= " + (6*(page_run+1)) ;
                 ResultSet rs = data.executeQuery(sql);
@@ -94,7 +82,7 @@ public class TeamServlet extends HttpServlet {
                     Team_Tag.add(rs.getString("Team_Tag"));
                     Game_ID.add(rs.getString("Game_ID"));
                     //Team_Cap.add(rs.getString("Team_Cap"));
-                    Statement stmt5 = connection.createStatement();
+                    Statement stmt5 = conn.createStatement();
                     String sql5 = "SELECT P_Ign FROM db_accessadmin.Player where P_Username = '" + rs.getString("Team_Cap")+"'";
                     ResultSet rs5 = stmt5.executeQuery(sql5);
                     rs5.next();
