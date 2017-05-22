@@ -43,7 +43,8 @@ public class Player_001Servlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int id = Integer.parseInt(request.getParameter("player"));
-            List<String> data = new ArrayList<String>();
+            List<String> team_id = new ArrayList<String>();
+            List<String> team_name = new ArrayList<String>();
             try {   
                 Statement stmt = conn.createStatement();
                 String sql = "SELECT * FROM db_accessadmin.Player where P_ID = " + id;
@@ -67,7 +68,31 @@ public class Player_001Servlet extends HttpServlet {
                     session.setAttribute("Prouser", rs.getString("P_Username"));
                     
                 }
+                String user_link = "";
+                Statement stmt0 = conn.createStatement();
+                String sql0 = "select P_Username from db_accessadmin.Player where P_ID = " + id;
+                ResultSet rs0 = stmt0.executeQuery(sql0);
+                rs0.next();
+                user_link = rs0.getString("P_Username");
+                stmt0.close();
+                Statement stmt1 = conn.createStatement();
+                String sql1 = "select Team_ID from db_accessadmin.Player_Join where P_Username = '" + user_link + "'";
+                ResultSet rs1 = stmt1.executeQuery(sql1);
+                while(rs1.next()){
+                    Statement stmt2 = conn.createStatement();
+                    String sql2 = "SELECT Team_Name FROM db_accessadmin.Team where Team_ID = " + rs1.getInt("Team_ID");
+                    ResultSet rs2 = stmt2.executeQuery(sql2);
+                    rs2.next();
+                    team_name.add(rs2.getString("Team_Name"));
+                    team_id.add(rs1.getString("Team_ID"));
+                    stmt2.close();
+                }
                 stmt.close();
+                stmt1.close();
+                session.setAttribute("team_name", team_name);
+                session.setAttribute("team_id", team_id);
+                out.println(team_name);
+                out.println(team_id);
             } catch (Exception e) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);

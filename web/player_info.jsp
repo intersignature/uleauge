@@ -6,6 +6,7 @@
 
 
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
@@ -185,6 +186,8 @@
             String phone = (String) session.getAttribute("phone");
             String P_Image = (String) session.getAttribute("P_Image");
             String prouser = (String) session.getAttribute("Prouser");
+            List team_name = (List) session.getAttribute("team_name");
+            List team_id = (List) session.getAttribute("team_id");
         %>
 
         <ul class="nav nav-pills categories">
@@ -212,7 +215,13 @@
                                 <h4><% String fb_temp = "https://www.facebook.com/" + fb;%><a href=<%=fb_temp%>><strong>Facebook:</strong> <%= fb%></a></h4>
                                 <h4><strong>Faculty:</strong><%= faculty%></h4>
                                 <h4><strong>University:</strong><%= university%></h4>
-                                <h4><strong>Phone:</strong><%= phone%></h4></div>
+                                <h4><strong>Phone:</strong><%= phone%></h4>
+                                <h4><strong>Team:</strong><% 
+                                    for(int i=0; i<=team_name.size()-1; i++){
+                                        int team_idd = Integer.parseInt((String) team_id.get(i))-1;
+                                        out.println("<a href=Team_001Servlet?team_id=" + team_idd + ">"+ team_name.get(i) + "</a>");
+                                    }
+                                    %></h4></div>
                         </div>
 
 
