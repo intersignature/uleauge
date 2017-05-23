@@ -40,7 +40,7 @@
         <% } else if ((int) session.getAttribute("suc") == 0) {%>
         <header>
             <!-- Second navbar for sign in -->
-    <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
+            <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header" >
@@ -57,19 +57,19 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-collapse-2">
                         <ul class="nav navbar-nav navbar-right">
-                             <li id = "searchnav"> 
-                  <a>
-                      <form action="searchServlet" method="POST" >
-                          <select name="filter">
-                              <option>Username</option>
-                              <option>Team</option>
-                          </select>
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
-                    
-                      <input id = "searchbtn" type="submit" value="Search" />
-                       </form>
-                  </a>
-              </li>
+                            <li id = "searchnav"> 
+                                <a>
+                                    <form action="searchServlet" method="POST" >
+                                        <select name="filter">
+                                            <option>Username</option>
+                                            <option>Team</option>
+                                        </select>
+                                        <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+
+                                        <input id = "searchbtn" type="submit" value="Search" />
+                                    </form>
+                                </a>
+                            </li>
                             <li><a href="signup.html">Sign up</a></li>
                             <li>
                                 <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
@@ -98,7 +98,7 @@
         <% } else if ((int) session.getAttribute("suc") == 1) {%>
         <header>
             <!-- Second navbar for sign in -->
-    <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
+            <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header" >
@@ -115,23 +115,23 @@
                     <ul class="nav navbar-nav navbar-right" id="userbar">
                         <% session = request.getSession();
                             String username = (String) session.getAttribute("username");
-                            String imgdir = (String) session.getAttribute("useimage"); 
+                            String imgdir = (String) session.getAttribute("useimage");
                             int id = (int) session.getAttribute("P_ID");
                             String roles = (String) session.getAttribute("roles");
                         %>
-                         <li id = "searchnav2"> 
-                  <a>
-                      <form action="searchServlet" method="POST" >
-                          <select name="filter">
-                              <option>Username</option>
-                              <option>Team</option>
-                          </select>
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
-                    
-                      <input id = "searchbtn" type="submit" value="Search" />
-                       </form>
-                  </a>
-              </li>
+                        <li id = "searchnav2"> 
+                            <a>
+                                <form action="searchServlet" method="POST" >
+                                    <select name="filter">
+                                        <option>Username</option>
+                                        <option>Team</option>
+                                    </select>
+                                    <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+
+                                    <input id = "searchbtn" type="submit" value="Search" />
+                                </form>
+                            </a>
+                        </li>
                         <a href="Player_001Servlet?player=<%out.println(id);%>"> 
                             <li id="namepro">
 
@@ -142,18 +142,19 @@
 
                             </li>
                         </a>
-<li >
-                                        <div class="btn-group"id = "editbtn" > 
-<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id = "probtn">
-<span class="icon-cog"></span><span class="caret"></span>
-</a>
-<ul class="dropdown-menu">
-    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-               <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
-<li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
-</ul>
-</div>
-                </li>
+                        <li >
+                            <div class="btn-group"id = "editbtn" > 
+                                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id = "probtn">
+                                    <span class="icon-cog"></span><span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
+                                    <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
+                                    <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
+                                    <li class="bgedit"><a href="uploadJSP.jsp"><span class="icon-upload"></span> Upload/Change Image</a></li>
+                                </ul>
+                            </div>
+                        </li>
                         <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
                             <input type="hidden" name="from" value="news1.jsp" />
                             <li >
@@ -178,14 +179,14 @@
             <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
         </ul>
         <div class="container">
-        <div class="news-body">
-            <ul class="list-group">
-                <h1>BaBaRouz คว้าแชมป์ Gview FIFA Cup 2017 #2</h1>
-                <img src="assets/img/news1.jpg" width="1120" height="700" >
-                <br>
-                <br>
+            <div class="news-body">
+                <ul class="list-group">
+                    <h1>BaBaRouz คว้าแชมป์ Gview FIFA Cup 2017 #2</h1>
+                    <img src="assets/img/news1.jpg" width="1120" height="700" >
+                    <br>
+                    <br>
 
-                <p>
+                    <p>
                         &nbsp;&nbsp;&nbsp;เรียกว่าเป็นรายการสามัญประจำเว็บไซต์ของเราเลยก็ว่าได้ครับ กับการแข่งขัน FIFA ONLINE 3 ที่เข้มข้นทุกเดือน ได้รับการสนับสนุนจาก 
                         Gview ที่เข้ามาเปิดโอกาสให้กับพี่น้องที่ชื่นชอบการแข่งขัน โดยรายการ Gview FIFA Cup 2017 นี้จะใช้กฏการแข่งขันด้วยนักเตะระดับ +1
                         ในปีที่กำหนดไว้ (เหมือน TNP) และในเดือนแรกนั้นได้จบลงแล้วครับ เป็นการดวลกันในรอบชิงชนะเลิศระหว่าง MiTHNOngBoN เจอกับ BarBaRouz 
@@ -195,42 +196,42 @@
                     <p>
                         อันดับ 1 : BarBaRouz เงินรางวัล 5,000 บาท<br>
                         อันดับ 2 : MiTHNOngBoN เงินรางวัล 3,000 บาท<br>
-                       อันดับ 3-4 ร่วม : mithvuzelapyd และ Liverpoo1KaK<br>
-                        </p> 
-                        <h4>ลิ้งค์การแข่งขันย้อนหลัง</h4><a href="https://www.twitch.tv/videos/132435870">คลิ้กที่นี่</a><br>
-                        <h4>ลิ้งค์สายการแข่งขัน</h4><a href="http://challonge.com/GviewFIFA2017March">คลิ้กที่นี่</a>
-                        
-            </ul>
-        </div>
-            </div>
-        <footer id="footer001">
-        <div class="row">
-            <div class="col-md-4 col-sm-6 footer-navigation">
-                <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-            </div>
-            <div class="col-md-4 col-sm-6 footer-contacts">
-                <div><i class="fa fa-facebook footer-contacts-icon" ></i>
-                    <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
-                </div>
+                        อันดับ 3-4 ร่วม : mithvuzelapyd และ Liverpoo1KaK<br>
+                    </p> 
+                    <h4>ลิ้งค์การแข่งขันย้อนหลัง</h4><a href="https://www.twitch.tv/videos/132435870">คลิ้กที่นี่</a><br>
+                    <h4>ลิ้งค์สายการแข่งขัน</h4><a href="http://challonge.com/GviewFIFA2017March">คลิ้กที่นี่</a>
 
-                <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a>lawslifeaways@gmail.com</a></p>
-                </div>
-            </div>
-            <div class="clearfix visible-sm-block"></div>
-            <div class="col-md-4 footer-about">
-                <h4>U LEAUGE</h4>
-                <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
-                </p>
+                </ul>
             </div>
         </div>
-    </footer>
-            <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script src="assets/js/treejs.js"></script>
-    <script src="assets/js/popupjs.js"></script>
-   <link rel="stylesheet" href="assets/css/main.css">
-</body>
+        <footer id="footer001">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footer-navigation">
+                    <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
+                </div>
+                <div class="col-md-4 col-sm-6 footer-contacts">
+                    <div><i class="fa fa-facebook footer-contacts-icon" ></i>
+                        <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
+                    </div>
+
+                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                        <p> <a>lawslifeaways@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-md-4 footer-about">
+                    <h4>U LEAUGE</h4>
+                    <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+        <script src="assets/js/treejs.js"></script>
+        <script src="assets/js/popupjs.js"></script>
+        <link rel="stylesheet" href="assets/css/main.css">
+    </body>
 
 </html>

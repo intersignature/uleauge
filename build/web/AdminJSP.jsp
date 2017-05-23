@@ -137,6 +137,7 @@ box-shadow:none !important;
                    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
                <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
                <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
+               <li class="bgedit"><a href="uploadJSP.jsp"><span class="icon-upload"></span> Upload/Change Image</a></li>
                </ul>
                </div>
                                </li>
@@ -335,7 +336,7 @@ box-shadow:none !important;
       Role : <input name="admin_Role" class="form-control " type="text" value=<%=admin_Role.get(index)%> >
         </div>
               
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
       Image : <input name="admin_Image" class="form-control " type="text" value=<%=admin_Image.get(index)%>>
         </div>
               <input name="admin_hide_ID" type="hidden" class="form-control " type="text" value=<%=admin_ID.get(index)%>>
@@ -440,7 +441,7 @@ box-shadow:none !important;
       Role : <input name="admin_Role_add" class="form-control " type="text">
         </div>
               
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
       Image : <input name="admin_Image_add" class="form-control " type="text">
         </div>
       </div>

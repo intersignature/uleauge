@@ -55,7 +55,7 @@ public class SignupServlet extends HttpServlet {
             String faculty = request.getParameter("faculty");
             String phone = request.getParameter("phone");
             String ign = request.getParameter("ign");
-            String RealImage = request.getParameter("realimage");
+            String RealImage = "";
             int index = 0;
             //String[] condition = request.getParameterValues("condition");
             int ans_user = 0;

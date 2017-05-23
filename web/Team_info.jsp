@@ -45,7 +45,7 @@
         <% } else if ((int) session.getAttribute("suc") == 0) {%>
         <header>
             <!-- Second navbar for sign in -->
-                <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
+            <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
 
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -65,15 +65,15 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li id = "searchnav"> 
                                 <a>
-                                 <form action="searchServlet" method="POST" >
-                          <select name="filter">
-                              <option>Username</option>
-                              <option>Team</option>
-                          </select>
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
-                    
-                      <input id = "searchbtn" type="submit" value="Search" />
-                       </form>
+                                    <form action="searchServlet" method="POST" >
+                                        <select name="filter">
+                                            <option>Username</option>
+                                            <option>Team</option>
+                                        </select>
+                                        <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+
+                                        <input id = "searchbtn" type="submit" value="Search" />
+                                    </form>
                                 </a>
                             </li>
                             <li><a href="signup.html">Sign up</a></li>
@@ -104,7 +104,7 @@
         <% } else if ((int) session.getAttribute("suc") == 1) {%>
         <header>
             <!-- Second navbar for sign in -->
-                <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
+            <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
 
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -129,14 +129,14 @@
                         <li id = "searchnav2"> 
                             <a>
                                 <form action="searchServlet" method="POST" >
-                          <select name="filter">
-                              <option>Username</option>
-                              <option>Team</option>
-                          </select>
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
-                    
-                      <input id = "searchbtn" type="submit" value="Search" />
-                       </form>
+                                    <select name="filter">
+                                        <option>Username</option>
+                                        <option>Team</option>
+                                    </select>
+                                    <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+
+                                    <input id = "searchbtn" type="submit" value="Search" />
+                                </form>
                             </a>
                         </li>
                         <a href="Player_001Servlet?player=<%out.println(id);%>"> 
@@ -149,18 +149,19 @@
 
                             </li>
                         </a>
-<li >
-                                        <div class="btn-group"id = "editbtn" > 
-<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id = "probtn">
-<span class="icon-cog"></span><span class="caret"></span>
-</a>
-<ul class="dropdown-menu">
-    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-               <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
-<li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
-</ul>
-</div>
-                </li>
+                        <li >
+                            <div class="btn-group"id = "editbtn" > 
+                                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id = "probtn">
+                                    <span class="icon-cog"></span><span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
+                                    <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
+                                    <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
+                                    <li class="bgedit"><a href="uploadJSP.jsp"><span class="icon-upload"></span> Upload/Change Image</a></li>
+                                </ul>
+                            </div>
+                        </li>
                         <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
                             <input type="hidden" name="from" value="Team_info.jsp" />
                             <li >
@@ -213,9 +214,9 @@
                         <h4><strong>Phone : </strong><%= teamphone%></h4>
                         <h3><strong>Member of Team</strong></h3>
                         <%
-                        for(int i=0;i< mem_fname.size();i++){
-                            out.println((i+1)+"-->"+"<a href=Player_001Servlet?player="+mem_id.get(i)+">"+mem_fname.get(i)+" "+mem_ign.get(i)+" "+mem_lname.get(i)+"</a>" + "<br>");
-                        }
+                            for (int i = 0; i < mem_fname.size(); i++) {
+                                out.println((i + 1) + "-->" + "<a href=Player_001Servlet?player=" + mem_id.get(i) + ">" + mem_fname.get(i) + " " + mem_ign.get(i) + " " + mem_lname.get(i) + "</a>" + "<br>");
+                            }
                         %>
                     </div>
                 </ul>

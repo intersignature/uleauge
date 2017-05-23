@@ -158,6 +158,7 @@
     <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
                <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
 <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
+<li class="bgedit"><a href="uploadJSP.jsp"><span class="icon-upload"></span> Upload/Change Image</a></li>
 </ul>
 </div>
                 </li>

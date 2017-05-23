@@ -9,191 +9,192 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rule</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
-    <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
-    <link rel="stylesheet" href="assets/css/tree.css">
-    <link rel="stylesheet" href="assets/css/nav-1.css">
-    <link rel="stylesheet" href="assets/css/tab1.css">
-    <link rel="stylesheet" href="assets/css/tour.css">
-    <link rel="stylesheet" href="assets/css/tournament.css">
-    <link rel="stylesheet" href="assets/css/info-tab_player001.css">
-    <link rel="stylesheet" href="assets/css/player_001.css">
-    <link rel="stylesheet" href="assets/css/player_tab.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rule</title>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+        <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
+        <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
+        <link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+        <link rel="stylesheet" href="assets/css/tree.css">
+        <link rel="stylesheet" href="assets/css/nav-1.css">
+        <link rel="stylesheet" href="assets/css/tab1.css">
+        <link rel="stylesheet" href="assets/css/tour.css">
+        <link rel="stylesheet" href="assets/css/tournament.css">
+        <link rel="stylesheet" href="assets/css/info-tab_player001.css">
+        <link rel="stylesheet" href="assets/css/player_001.css">
+        <link rel="stylesheet" href="assets/css/player_tab.css">
+    </head>
 
-<body>
-    <% if (session.getAttribute("suc") == null) { %>
-    <% int suc = 0;
-        session.setAttribute("suc", suc);
-        response.sendRedirect("rulesJSP.jsp");
-    %>
-<% } else if ((int)session.getAttribute("suc") == 0) {%>
-    <header>
-         <!-- Second navbar for sign in -->
-    <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header" >
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <a href="indexJSP.jsp">
-            <img src="assets/img/logo.png"  id = "logo">
-          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-               <li id = "searchnav"> 
-                  <a>
-                      <form action="searchServlet" method="POST" >
-                          <select name="filter">
-                              <option>Username</option>
-                              <option>Team</option>
-                          </select>
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
-                    
-                      <input id = "searchbtn" type="submit" value="Search" />
-                       </form>
-                  </a>
-              </li>
-            <li><a href="signup.html">Sign up</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
-            </li>
-          </ul>
-          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                 <input type="hidden" name="from" value="rulesJSP.jsp" />
-              <div class="form-group">
-                 
-                <label class="sr-only" for="username">Username</label>
-                <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
-              </div>
-              <button type="submit" class="btn btn-success" >Sign in</button>
-            </form>
-          </div>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
+    <body>
+        <% if (session.getAttribute("suc") == null) { %>
+        <% int suc = 0;
+            session.setAttribute("suc", suc);
+            response.sendRedirect("rulesJSP.jsp");
+        %>
+        <% } else if ((int) session.getAttribute("suc") == 0) {%>
+        <header>
+            <!-- Second navbar for sign in -->
+            <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header" >
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="indexJSP.jsp">
+                            <img src="assets/img/logo.png"  id = "logo">
+                            <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-collapse-2">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li id = "searchnav"> 
+                                <a>
+                                    <form action="searchServlet" method="POST" >
+                                        <select name="filter">
+                                            <option>Username</option>
+                                            <option>Team</option>
+                                        </select>
+                                        <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
 
-    </header>
-<% }  else if ((int)session.getAttribute("suc") == 1){%>
-    <header>
-         <!-- Second navbar for sign in -->
-    <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header" >
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <a href="indexJSP.jsp">
-            <img src="assets/img/logo.png"  id = "logo">
-          <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right" id="userbar">
-             <% session = request.getSession();
-                    String username = (String) session.getAttribute("username"); 
-                    String imgdir = (String) session.getAttribute("useimage"); 
-                    int id = (int) session.getAttribute("P_ID");
-                    String roles = (String) session.getAttribute("roles");
-                %>
-                 <li id = "searchnav2"> 
-                  <a>
-                    <form action="searchServlet" method="POST" >
-                          <select name="filter">
-                              <option>Username</option>
-                              <option>Team</option>
-                          </select>
-                      <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
-                    
-                      <input id = "searchbtn" type="submit" value="Search" />
-                       </form>
-                  </a>
-              </li>
-                <a href="Player_001Servlet?player=<%out.println(id);%>"> 
-            <li id="namepro">
-               
-                <img src= "<% out.println(imgdir); %>" id="imgpro">
-                <div id = "namepro2">
-                    <h4><b><% out.println(username); %></b></h4>
-                </div>
-               
-            </li>
-            </a>
-     <li >
-                                        <div class="btn-group"id = "editbtn" > 
-<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id = "probtn">
-<span class="icon-cog"></span><span class="caret"></span>
-</a>
-<ul class="dropdown-menu">
-    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-               <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
-<li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
-</ul>
-</div>
-                </li>
-            <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                <input type="hidden" name="from" value="rulesJSP.jsp" />
-             <li >
-             <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+                                        <input id = "searchbtn" type="submit" value="Search" />
+                                    </form>
+                                </a>
+                            </li>
+                            <li><a href="signup.html">Sign up</a></li>
+                            <li>
+                                <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
+                            </li>
+                        </ul>
+                        <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+                            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                                <input type="hidden" name="from" value="rulesJSP.jsp" />
+                                <div class="form-group">
 
-            </li>
-            </form>
-          </ul>
-       
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-    </header>
-<% }%>
-    <ul class="nav nav-pills categories">
-        <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
-        <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-        <li id="menu"><a href="TeamServlet" id="fontmenu">TEAM </a></li>
-        <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
-        <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
-        <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
+                                    <label class="sr-only" for="username">Username</label>
+                                    <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="password">Password</label>
+                                    <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
+                                </div>
+                                <button type="submit" class="btn btn-success" >Sign in</button>
+                            </form>
+                        </div>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container -->
+            </nav><!-- /.navbar -->
+
+        </header>
+        <% } else if ((int) session.getAttribute("suc") == 1) {%>
+        <header>
+            <!-- Second navbar for sign in -->
+            <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header" >
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="indexJSP.jsp">
+                            <img src="assets/img/logo.png"  id = "logo">
+                            <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right" id="userbar">
+                        <% session = request.getSession();
+                            String username = (String) session.getAttribute("username");
+                            String imgdir = (String) session.getAttribute("useimage");
+                            int id = (int) session.getAttribute("P_ID");
+                            String roles = (String) session.getAttribute("roles");
+                        %>
+                        <li id = "searchnav2"> 
+                            <a>
+                                <form action="searchServlet" method="POST" >
+                                    <select name="filter">
+                                        <option>Username</option>
+                                        <option>Team</option>
+                                    </select>
+                                    <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+
+                                    <input id = "searchbtn" type="submit" value="Search" />
+                                </form>
+                            </a>
+                        </li>
+                        <a href="Player_001Servlet?player=<%out.println(id);%>"> 
+                            <li id="namepro">
+
+                                <img src= "<% out.println(imgdir); %>" id="imgpro">
+                                <div id = "namepro2">
+                                    <h4><b><% out.println(username); %></b></h4>
+                                </div>
+
+                            </li>
+                        </a>
+                        <li >
+                            <div class="btn-group"id = "editbtn" > 
+                                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id = "probtn">
+                                    <span class="icon-cog"></span><span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
+                                    <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
+                                    <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
+                                    <li class="bgedit"><a href="uploadJSP.jsp"><span class="icon-upload"></span> Upload/Change Image</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                            <input type="hidden" name="from" value="rulesJSP.jsp" />
+                            <li >
+                                <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
+
+                            </li>
+                        </form>
+                    </ul>
+
+                </div><!-- /.container -->
+            </nav><!-- /.navbar -->
+        </header>
+        <% }%>
+        <ul class="nav nav-pills categories">
+            <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
+            <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
+            <li id="menu"><a href="TeamServlet" id="fontmenu">TEAM </a></li>
+            <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
+            <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
+            <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
             <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
-    </ul>
-    <div class="container">
-        <h1>RULES </h1>
+        </ul>
         <div class="container">
-	<div class="row">
-		<div id="cssmenu">
-            <ul>
-             <li class="active"><a href="#tab-1" role="tab" data-toggle="tab">CS:GO</a></li>
-             <li><a href="#tab-2"role="tab" data-toggle="tab">OverWatch</a></li>
-             <li><a href="#tab-3"role="tab" data-toggle="tab">Dota2</a></li>
-             <li><a href="#tab-4"role="tab" data-toggle="tab">LOL</a></li>
-       
-            </ul>
-        </div>
-	</div>
-</div>
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane" id="tab-1">
-            <p>
+            <h1>RULES </h1>
+            <div class="container">
+                <div class="row">
+                    <div id="cssmenu">
+                        <ul>
+                            <li class="active"><a href="#tab-1" role="tab" data-toggle="tab">CS:GO</a></li>
+                            <li><a href="#tab-2"role="tab" data-toggle="tab">OverWatch</a></li>
+                            <li><a href="#tab-3"role="tab" data-toggle="tab">Dota2</a></li>
+                            <li><a href="#tab-4"role="tab" data-toggle="tab">LOL</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="tab-1">
+                    <p>
                         <strong>รูปแบบการแข่งขัน</strong><br>
                         - แข่งขันในโหมด Competitive 5v5<br>
                         - Single Elimination<br>
@@ -266,9 +267,9 @@
                         - การตัดสินของทีมงานถือเป็นที่สิ้นสุด<br>
                         - การแข่งขันทุกเกมจะอยู่ภายใต้การดูแลของ admin<br>
                         - ทีมงานขอสงวนสิทธิ์ในการเปลี่ยนแปลงเงื่อนไข และกฎต่าง ๆ โดยไม่จำเป็นต้องแจ้งให้ทราบล่วงหน้า<br>  </p>
-        </div>
-        <div role="tabpanel" class="tab-pane active" id="tab-3">
-            <p><strong>กฎการเข้าแข่งขันเบื้องต้น</strong><br>
+                </div>
+                <div role="tabpanel" class="tab-pane active" id="tab-3">
+                    <p><strong>กฎการเข้าแข่งขันเบื้องต้น</strong><br>
                     </p>
                     <p>
                         1. สามารถนัดเวลาการแข่งขันได้ที่กลุ่ม dafaEsports DotA2 Tournament<br>
@@ -346,9 +347,9 @@
                         1. กฏกติกาอาจจะมีการเปลี่ยนแปลงไปตามความเหมาะสมของสถานการณ์ในระหว่างการแข่งขัน โดยที่อาจจะไม่ได้แจ้งให้ทราบล่วงหน้า<br>
                         2. ทีมที่เข้าร่วมแข่งขันต้องเข้าใจถึงกฏ กติกาอย่างชัดเจน ถ้าเกิดมีการทำผิดกฏกรรมการสามารถตัดสิทธิ์ทีมนั้นๆ ได้ทันที<br>
                         3. คำตัดสินของกรรมการผู้ทควบคุมการแข่งขันถือเป็นที่สิ้นสุด <br></p>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="tab-4">
-            <p><strong>รูปแบบการแข่งขัน</strong><br>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab-4">
+                    <p><strong>รูปแบบการแข่งขัน</strong><br>
                     </p>
                     <p>
                         รูปแบบการแข่งขัน : Single Elimination : Best of 1 (นัดเดียวรู้ผล)<br>
@@ -359,179 +360,179 @@
                         •เริ่มแข่งขัน: 20.00 น. ของทุกวัน (ยกเว้นคู่ที่ทำการถ่ายทอดสด)<br>
                         •ผู้ชนะ : ทีมที่สามารถทำลาย Nexus ฝ่ายตรงข้ามได้ก่อนหรือบังคับให้ฝ่ายตรงข้ามกดยอมแพ้ (Surrender)ได้<br>
                         •การเลือก Champion : Draft mode ผู้เล่นสามารถเลือกได้เฉพาะแชมป์เปี้ยนที่ปลดล็อกแล้วเท่านั้น(โดยระบบจะทำการสุ่มสีของฝั่งให้)<br>
-                        </p>
-                        <p>
+                    </p>
+                    <p>
                         <strong>*ข้อจำกัด : ห้ามใช้แชมเปี้ยนที่มีรายชื่อดังนี้ตลอดการแข่งขัน- ไม่มี <span style="text-decoration: underline;">การกระทำที่ถือว่าผิดกฏ และ ข้อยกเว้น ในการแข่ง</span></strong><br>
-                        </p>
-                        <p>
+                    </p>
+                    <p>
                         - ไม่อนุญาตให้ใช้โปรแกรมช่วยหรือmap hack ในการช่วยเล่นทุกระเภท<br>
                         - ห้ามจงใจหลุดจากการแข่งขันโดยไม่มีเหตุผลที่เหมาะสมรองรับ<br>
                         - การปรับค่าที่เกินจากมาตรฐานที่ได้รับการอนุญาติ<br>
                         - ทำให้ฝั่งตรงข้ามชนะอย่างชัดเจน (ล้มมวย)<br>
                         - ห้ามใช้กริยา, ท่าทาง หรือ คำพูดที่ไม่เหมาะสมตลอดทั้งการแข่งขัน<br>
                         - มีการใช้บัคในเกม ซึ่งกรรมการการแข่งขันเห็นว่าไม่ยุติธรรม<br>
-                        </p>
-                        <p>
+                    </p>
+                    <p>
                         <strong><span style="text-decoration: underline;">สามารถเปลี่ยนข้อมูลการแข่งขันได้ก่อนวันที่ 10 มิ.ย. 56 เวลา 12.00 น. </span></strong><br>
-                        </p>
-                        <p>
+                    </p>
+                    <p>
                         <a href="http://forum.playlol.in.th/showthread.php?30950-%E0%B9%81%E0%B8%88%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B8%A5%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%99%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%82%E0%B9%88%E0%B8%87%E0%B8%82%E0%B8%B1%E0%B8%99-%E0%B9%80%E0%B8%8A%E0%B9%88%E0%B8%99-%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%99-%E0%B9%80%E0%B8%9E%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B8%AA%E0%B8%B3%E0%B8%A3%E0%B8%AD%E0%B8%87-%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%97%E0%B8%B5%E0%B8%A1-%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%99%E0%B8%B5%E0%B9%88"><strong><span style="text-decoration: underline;">&lt;&lt;&lt;คลิ๊ก&gt;&gt;&gt;</span></strong></a>
-                        
-                            </p>
-                            <p>
-                            <strong>
-                            
+
+                    </p>
+                    <p>
+                        <strong>
+
                             * กฏอาจจะมีการเปลี่ยนแปลงไปตามความเหมาะสมของสถานการณ์ในระหว่างการแข่งขัน โดยที่อาจจะไม่ได้แจ้งให้ทางผู้เล่นทราบล่วงหน้า <br>
                             * การตัดสินใจของกรรมการคือคำสิ้นสุด และจะไม่มีข้อยกเว้นใดๆทั้งสิ้น <br>
                             * ทีมที่เข้าร่วมแข่งขันต้องเข้าใจถึงกฏ กติกาอย่างชัดเจน ถ้าเกิดมีการทำผิดกฏ กรรมการสามารถตัดสิทธิ์ทีมนั้นๆได้ทันที<br>
                             * หากปล่อยแพทช์/รุ่นที่แตกต่างกันออกมา จำเป็นต้องเปลี่ยนกฎระเบียบที่มีความจะเป็นเพื่อให้แน่ใจว่าเป็นการเล่นที่ยุติธรรม<br>
-                            
+
                             * หากมีการพบบัคขณะทำการแข่งขันถ้าที่ประสบปัญหาสามารถหยุดเล่นเกมส์และทักท้วง และถ่ายรูป หรือใช้ LOLreplay มาให้กรรมการตัดสินได้* หากผู้เล่นต้องสงสัยหรือได้รับการพิสูจน์แล้วว่ามีส่วนร่วมในการเล่นที่ไม่เป็นธรรมหรือสมรู้ร่วมคิดในการกำหนดผลการเล่นกรรมการจะทำการลงโทษตามความเหมาะสมและดุลยพินิจของกรรมการ<br>
                             </p></strong>
-                                
-                            <p>
-                                <strong>
+
+                    <p>
+                        <strong>
                             <span style="text-decoration: underline;">การหลุดออกจากเกม (Disconnect)</span></strong><br>
-                            </p>
-                            <p>
+                    </p>
+                    <p>
                         1.มีผู้เล่นหลุดระหว่างเลือกตัวละครให้กลับมาเลือกเและแบน Champion ตัวเดิมทุกทีมเท่านั้น !!!<br>
                         2.มีผู้เล่นหลุดออกจากเกมในช่วง 10 นาทีแรก และไม่สามารถกลับเข้าสู่เกมได้<br>
-                            &nbsp;&nbsp;&nbsp;- ในกรณีที่ยังไม่มี First Blood ให้ทำการ Re-Game แต่ต้องทำการเลือกและแบน Champion ตัวเดิมทุกทีมเท่านั้น !!!<br>
-                            &nbsp;&nbsp;&nbsp;- หากมีการ First Blood แล้ว ให้ดำเนินการแข่งขันต่อจนจบ3.มีผู้เล่นหลุดออกจากเกมหลังจาก 10 นาที และไม่สามารถกลับเข้าสู่เกมได้<br>
-                            &nbsp;&nbsp;&nbsp;- หากมีผู้เล่นหลุด 1 คน ให้ดำเนินการแข่งขันต่อจนจบ-หากมีผู้เล่นหลุดมากกว่า 1 คน เนื่องจากระบบขัดข้อง ให้ทำการ Re-Game-หากมีผู้เล่นหลุดมากกว่า1 คน ด้วยเหตุผลอื่นๆ ให้ขึ้นอยู่กับดุลยพินิจของกรรมการ<br>
-                            </p>
-                            <p>
-                                <strong><span style="text-decoration: underline;">กติกาการแพ้บาย </span></strong><br></p>
-                            <p>
-                            - ทีมที่มาไม่ครบภายในเวลา 10 นาทีหลังจากเวลาที่นัดแล้วจะถูกปรับแพ้บายทันที (หากผู้เล่นทั้ง 2 ฝ่าย ตกลงยินยอมขอเลื่อนการแข่งขัน ก็จะได้รับสิทธิยกเว้น)<br>
-                            - สำหรับคู่ที่ได้รับการเชิญให้ถ่ายทอดสดออก LOLTV จะให้เลทได้แค่ 5 นาทีเท่านั้น*** ไม่มีข้อยกเว้นใดๆทั้งสิ้น ซึ่งพอ 20.05 จะเป็นการเตือนก่อนและให้เวลาอีก 5 นาที ถ้ายังไม่ครบอีกจะถูกตัดสิทธิ์ตามที่ได้แจ้งไว้ (ซึ่งทีมงานจะโทรไปบอกรายละเอียดในการถ่ายโทรสดผ่าน LOLTV กรุณาฟังให้ละเอียด หากสงสัยอะไรสามารถถามทีมงานได้นะครับ)<br>
-                            - ผู้เล่นที่สามารถลงเล่นได้นั้น จะต้องเป็นผู้เล่นที่มีชื่อในแบบฟอร์มสมัครแข่ง เท่านั้น<br>
-                            - ทีมที่ไม่ยอมเชื่อฟังกฏกติกา หรือโวยวาย อาจจะได้รับการแบนในทัวร์นาเม้นครั้งต่อไป<br>
-                            </p>
-                            <p>
-                            <strong><span style="text-decoration: underline;">วิธีการโพสหลักฐานการแพ้บาย</span></strong>  <br>
-                            </p>     
-                            <p>
-                            <a href="http://forum.playlol.in.th/showthread.php?30950-%E0%B9%81%E0%B8%88%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B8%A5%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%99%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%82%E0%B9%88%E0%B8%87%E0%B8%82%E0%B8%B1%E0%B8%99-%E0%B9%80%E0%B8%8A%E0%B9%88%E0%B8%99-%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%99-%E0%B9%80%E0%B8%9E%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B8%AA%E0%B8%B3%E0%B8%A3%E0%B8%AD%E0%B8%87-%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%97%E0%B8%B5%E0%B8%A1-%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%99%E0%B8%B5%E0%B9%88"><strong>&gt;&gt;&gt;คลิ๊กที่นี้&lt;&lt;&lt;</strong></a> <br>
-                            1.หัวหน้าทีมของทั้งฝั่งต้องนัดเวลาการแข่งขันเองด้วยบอร์ดในหมวดของของTournament<a href="http://forum.playlol.in.th/showthread.php?30952-%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%99%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%82%E0%B9%88%E0%B8%87%E0%B8%82%E0%B8%B1%E0%B8%99%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-Webboard"><strong>&gt;&gt;&gt;คลิ๊ก&lt;&lt;&lt;</strong></a> <br>
-                            2.หากทั่งสองทีมไม่ได้ตอบตกลงหรือฝ่ายใดฝ่ายหนึ่งไม่ได้ตกลงในเวลาการแข่งขันที่ได้นัดใหม่ทางทีมงานจะใช้เวลา 20.00 น.เป็นเวลามาตรฐาน และหากฝ่ายใดฝ่ายหนึ่งสายเกิน 10 นาทีจากเวลานัดนั้นๆ จะถูกปรับแพ้บายในทัน <br>
-                            </p>  
-                            <p>
-                                <strong>*การตัดสินของกรรมการถือเป็นที่สิ้นสุด*กรรมการจะยึดนาฬิกาจากการโพสต์ของบอร์ด </strong><br></p>  
-                            <p>
-                                <a href="http://forumlol.th.garena.com/"><strong>http://forumlol.th.garena.com</strong></a><br>
-                            </p>
-                            <p>
-                                <strong>เป็นหลักเท่านั้น<span style="text-decoration: underline;">การก่อกวนฝ่ายตรงข้าม</span></strong><br>
-                            </p>
-                            <p>
-                            - การใช้คำหยาบคายหรือการก่อกวนฝ่ายตรงข้ามไม่ว่าจะด้วยวิธีใดๆ จะมีผลทำให้โดนปรับแพ้ทันที<br>
-                            - การรบกวนต้องขึ้นอยู่กับการตัดสินของกรรมการด้วยว่าสิ่งที่ผู้เล่นทำนั้นเป็นการก่อกวนหรือก่อกวนจริงๆ หรือไม่ และ ร้ายแรงพอที่จะมีผลบังคับใช้หรือไม่<br>
-                            - ผู้ที่จะฟ้องร้องเรื่องการถูกรบกวน ต้องแจ้งถึงกรรมการด้วยวิธีข้างล่างนี้ <br>
-                                &nbsp;&nbsp;&nbsp;1.ถ่ายรูปภาพกด Print screen รูปบทสนทนาดังกล่าว <br>
-                                &nbsp;&nbsp;&nbsp;2.เซฟไฟล์ภาพด้วยโปรแกรมรูปต่างๆเช่นPaint หรือ Photoshop เป็นต้น <br>
-                                &nbsp;&nbsp;&nbsp;3.แล้วนำมาแปะในบอร์ดในหมวดของ Tournament ในกระทู้คู่การการแข่งขันของคุณ<br>
-                                </p>
-                                <p>
-                                <strong>* การตัดสินใจของกรรมการคือที่สิ้นสุด<span style="text-decoration: underline;">การโกง และ การ Hack</span></strong><br>
-                                </p>
-                                <p>
-                            - การโกงหรือการใช้ข้อผิดพลาดของเกมและ โปรแกรมช่วยเล่นจะมีผลทำให้ทีมที่ใช้ นั้นถูกแบนออกจากการแข่งขันในปัจจุบัน และในอนาคตอย่างถาวรสิ่งที่ต้องรู้<br>
-                            - กรรมการหรือผู้คุมการแข่งขันจะไม่มีส่วนเกี่ยวข้องใดๆทั้งสิ้นกับเหตุการณ์ที่อาจจะทำให้เกิดความสูญเสียระหว่างการแข่งขันในครั้งนี้<br>
-                            - ผู้เล่นทุกคนต้องปฏิบัติตามกติกาอย่างเคร่งครัด<br>
-                            </p>
-                            <p>
-                            <strong><span style="text-decoration: underline;">**** การถ่ายทอดสดและการร่วมดูการแข่งขัน ***</span><br>
-                                
+                        &nbsp;&nbsp;&nbsp;- ในกรณีที่ยังไม่มี First Blood ให้ทำการ Re-Game แต่ต้องทำการเลือกและแบน Champion ตัวเดิมทุกทีมเท่านั้น !!!<br>
+                        &nbsp;&nbsp;&nbsp;- หากมีการ First Blood แล้ว ให้ดำเนินการแข่งขันต่อจนจบ3.มีผู้เล่นหลุดออกจากเกมหลังจาก 10 นาที และไม่สามารถกลับเข้าสู่เกมได้<br>
+                        &nbsp;&nbsp;&nbsp;- หากมีผู้เล่นหลุด 1 คน ให้ดำเนินการแข่งขันต่อจนจบ-หากมีผู้เล่นหลุดมากกว่า 1 คน เนื่องจากระบบขัดข้อง ให้ทำการ Re-Game-หากมีผู้เล่นหลุดมากกว่า1 คน ด้วยเหตุผลอื่นๆ ให้ขึ้นอยู่กับดุลยพินิจของกรรมการ<br>
+                    </p>
+                    <p>
+                        <strong><span style="text-decoration: underline;">กติกาการแพ้บาย </span></strong><br></p>
+                    <p>
+                        - ทีมที่มาไม่ครบภายในเวลา 10 นาทีหลังจากเวลาที่นัดแล้วจะถูกปรับแพ้บายทันที (หากผู้เล่นทั้ง 2 ฝ่าย ตกลงยินยอมขอเลื่อนการแข่งขัน ก็จะได้รับสิทธิยกเว้น)<br>
+                        - สำหรับคู่ที่ได้รับการเชิญให้ถ่ายทอดสดออก LOLTV จะให้เลทได้แค่ 5 นาทีเท่านั้น*** ไม่มีข้อยกเว้นใดๆทั้งสิ้น ซึ่งพอ 20.05 จะเป็นการเตือนก่อนและให้เวลาอีก 5 นาที ถ้ายังไม่ครบอีกจะถูกตัดสิทธิ์ตามที่ได้แจ้งไว้ (ซึ่งทีมงานจะโทรไปบอกรายละเอียดในการถ่ายโทรสดผ่าน LOLTV กรุณาฟังให้ละเอียด หากสงสัยอะไรสามารถถามทีมงานได้นะครับ)<br>
+                        - ผู้เล่นที่สามารถลงเล่นได้นั้น จะต้องเป็นผู้เล่นที่มีชื่อในแบบฟอร์มสมัครแข่ง เท่านั้น<br>
+                        - ทีมที่ไม่ยอมเชื่อฟังกฏกติกา หรือโวยวาย อาจจะได้รับการแบนในทัวร์นาเม้นครั้งต่อไป<br>
+                    </p>
+                    <p>
+                        <strong><span style="text-decoration: underline;">วิธีการโพสหลักฐานการแพ้บาย</span></strong>  <br>
+                    </p>     
+                    <p>
+                        <a href="http://forum.playlol.in.th/showthread.php?30950-%E0%B9%81%E0%B8%88%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B8%A5%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%99%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%82%E0%B9%88%E0%B8%87%E0%B8%82%E0%B8%B1%E0%B8%99-%E0%B9%80%E0%B8%8A%E0%B9%88%E0%B8%99-%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%99-%E0%B9%80%E0%B8%9E%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B8%AA%E0%B8%B3%E0%B8%A3%E0%B8%AD%E0%B8%87-%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%97%E0%B8%B5%E0%B8%A1-%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%99%E0%B8%B5%E0%B9%88"><strong>&gt;&gt;&gt;คลิ๊กที่นี้&lt;&lt;&lt;</strong></a> <br>
+                        1.หัวหน้าทีมของทั้งฝั่งต้องนัดเวลาการแข่งขันเองด้วยบอร์ดในหมวดของของTournament<a href="http://forum.playlol.in.th/showthread.php?30952-%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%99%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%82%E0%B9%88%E0%B8%87%E0%B8%82%E0%B8%B1%E0%B8%99%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-Webboard"><strong>&gt;&gt;&gt;คลิ๊ก&lt;&lt;&lt;</strong></a> <br>
+                        2.หากทั่งสองทีมไม่ได้ตอบตกลงหรือฝ่ายใดฝ่ายหนึ่งไม่ได้ตกลงในเวลาการแข่งขันที่ได้นัดใหม่ทางทีมงานจะใช้เวลา 20.00 น.เป็นเวลามาตรฐาน และหากฝ่ายใดฝ่ายหนึ่งสายเกิน 10 นาทีจากเวลานัดนั้นๆ จะถูกปรับแพ้บายในทัน <br>
+                    </p>  
+                    <p>
+                        <strong>*การตัดสินของกรรมการถือเป็นที่สิ้นสุด*กรรมการจะยึดนาฬิกาจากการโพสต์ของบอร์ด </strong><br></p>  
+                    <p>
+                        <a href="http://forumlol.th.garena.com/"><strong>http://forumlol.th.garena.com</strong></a><br>
+                    </p>
+                    <p>
+                        <strong>เป็นหลักเท่านั้น<span style="text-decoration: underline;">การก่อกวนฝ่ายตรงข้าม</span></strong><br>
+                    </p>
+                    <p>
+                        - การใช้คำหยาบคายหรือการก่อกวนฝ่ายตรงข้ามไม่ว่าจะด้วยวิธีใดๆ จะมีผลทำให้โดนปรับแพ้ทันที<br>
+                        - การรบกวนต้องขึ้นอยู่กับการตัดสินของกรรมการด้วยว่าสิ่งที่ผู้เล่นทำนั้นเป็นการก่อกวนหรือก่อกวนจริงๆ หรือไม่ และ ร้ายแรงพอที่จะมีผลบังคับใช้หรือไม่<br>
+                        - ผู้ที่จะฟ้องร้องเรื่องการถูกรบกวน ต้องแจ้งถึงกรรมการด้วยวิธีข้างล่างนี้ <br>
+                        &nbsp;&nbsp;&nbsp;1.ถ่ายรูปภาพกด Print screen รูปบทสนทนาดังกล่าว <br>
+                        &nbsp;&nbsp;&nbsp;2.เซฟไฟล์ภาพด้วยโปรแกรมรูปต่างๆเช่นPaint หรือ Photoshop เป็นต้น <br>
+                        &nbsp;&nbsp;&nbsp;3.แล้วนำมาแปะในบอร์ดในหมวดของ Tournament ในกระทู้คู่การการแข่งขันของคุณ<br>
+                    </p>
+                    <p>
+                        <strong>* การตัดสินใจของกรรมการคือที่สิ้นสุด<span style="text-decoration: underline;">การโกง และ การ Hack</span></strong><br>
+                    </p>
+                    <p>
+                        - การโกงหรือการใช้ข้อผิดพลาดของเกมและ โปรแกรมช่วยเล่นจะมีผลทำให้ทีมที่ใช้ นั้นถูกแบนออกจากการแข่งขันในปัจจุบัน และในอนาคตอย่างถาวรสิ่งที่ต้องรู้<br>
+                        - กรรมการหรือผู้คุมการแข่งขันจะไม่มีส่วนเกี่ยวข้องใดๆทั้งสิ้นกับเหตุการณ์ที่อาจจะทำให้เกิดความสูญเสียระหว่างการแข่งขันในครั้งนี้<br>
+                        - ผู้เล่นทุกคนต้องปฏิบัติตามกติกาอย่างเคร่งครัด<br>
+                    </p>
+                    <p>
+                        <strong><span style="text-decoration: underline;">**** การถ่ายทอดสดและการร่วมดูการแข่งขัน ***</span><br>
+
                             - ไม่อนุญาติให้มีการเป็น OB ,Spectatre หรือถายทอดสดการแข่งขันใดๆ ทั้งสิ้น  ยกเว้น คู่ที่ทีมงานได้เลือกทำการถ่ายทอดสดที่มีสิทธิขาดแต่เพียงผู้เดียว ผู้ใดฝ่าฝืนอาจถูกดำเนินการตามกฏหมายลิขสิทธิ์รายชื่อทีมงานที่ดูแลการแข่งขันให้แอด GarenaPlus เพื่อติดต่อหรือเข้าห้องแชททัวร์นาเม้นเพื่อทำการสอบถาม </strong><br>
                         <a href="http://forum.playlol.in.th/showthread.php?24116"></p><strong> &gt;&gt;&gt;คลิกที่นี่&lt;&lt;&lt;</strong></a><br>
-                        <strong>1. Baggings [Head-Judge] Nickname [GMTH]Baggings2. Nerfgi [Judge]Nickname [GMTH] Nerfgi 3. Mamushi [Judge]Nickname [GMTH] Mamushi** หากไม่พอใจการตัดสินสามารถยื่นอุทธรณ์ได้ที่[Head-Judge]** การตัดสินของ[HeadJudge]ถือเป็นคำสิ้นสุด และจะไม่มีข้อยกเว้นใดๆทั้งสิ้น</strong>                    </p>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="tab-2">
-            <p>
+                    <strong>1. Baggings [Head-Judge] Nickname [GMTH]Baggings2. Nerfgi [Judge]Nickname [GMTH] Nerfgi 3. Mamushi [Judge]Nickname [GMTH] Mamushi** หากไม่พอใจการตัดสินสามารถยื่นอุทธรณ์ได้ที่[Head-Judge]** การตัดสินของ[HeadJudge]ถือเป็นคำสิ้นสุด และจะไม่มีข้อยกเว้นใดๆทั้งสิ้น</strong>                    </p>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab-2">
+                    <p>
                         [TEMPLE OF ANUBIS, HANAMURA, VOLSKAYA INDUSTRIES] <br>
                         รอบแรกฝ่าย Attack จะต้องยึดจุดให้ได้ 2 จุดและทำให้ได้เวลาเร็วที่สุด ฝ่าย Defense จะต้องป้องกันไม่ให้ยึดจุดแรกให้ได้ หากพลาดจุดแรกจุดที่ 2 จะต้องยื้อเวลาไว้ให้นานที่สุดหรือห้ามให้ยึดเด็ดขาด<br>
-                        </p>
-                        <p>
+                    </p>
+                    <p>
                         <em>ผลรอบแรกและเปลี่ยนฝั่ง</em><br>
                         กรณีที่ 1: ฝ่าย ATTACK ยึดจุดแรกไม่ได้เมื่อสลับฝั่งแล้วฝ่าย ATTACK จะต้องยึดจุดแรกให้ได้ <br>
-                           &nbsp;&nbsp;&nbsp; 1. หากยึดจุดแรกได้จะเป็นการสิ้นสุดเกมทันที ไม่ต้องยึดจุดที่สอง<br>
-                           &nbsp;&nbsp;&nbsp; 2. หากยึดจุดแรกไม่ได้จะต้องไปสู้กันในรอบ Sudden Death<br>
+                        &nbsp;&nbsp;&nbsp; 1. หากยึดจุดแรกได้จะเป็นการสิ้นสุดเกมทันที ไม่ต้องยึดจุดที่สอง<br>
+                        &nbsp;&nbsp;&nbsp; 2. หากยึดจุดแรกไม่ได้จะต้องไปสู้กันในรอบ Sudden Death<br>
                         กรณีที่ 2: ฝ่าย ATTACK ยึดจุดแรกได้เมื่อสลับฝั่งแล้วฝ่าย ATTACK จะต้องยึดจุดแรกแล้วต้องไปจุดที่สองให้ได้ <br>
-                           &nbsp;&nbsp;&nbsp; 1. หากยึดจุดที่ 2 ได้สำเร็จจะเป็นการสิ้นสุดเกมทันที<br>
-                           &nbsp;&nbsp;&nbsp; 2. หากยึดจุดแรกแต่ไปจุดที่สองไม่ได้จะวัดกันด้วยเวลาที่เหลือของทั้งคู่ว่าใครเหลือมากที่สุด และฝั่งไหนเวลาเหลือมากที่สุดจะเป็นฝ่ายที่ต้อง Attack ในรอบ Sudden Death <br>
+                        &nbsp;&nbsp;&nbsp; 1. หากยึดจุดที่ 2 ได้สำเร็จจะเป็นการสิ้นสุดเกมทันที<br>
+                        &nbsp;&nbsp;&nbsp; 2. หากยึดจุดแรกแต่ไปจุดที่สองไม่ได้จะวัดกันด้วยเวลาที่เหลือของทั้งคู่ว่าใครเหลือมากที่สุด และฝั่งไหนเวลาเหลือมากที่สุดจะเป็นฝ่ายที่ต้อง Attack ในรอบ Sudden Death <br>
                         กรณีที่ 3: ฝ่าย ATTACK ยึดทั้งสองจุดได้เมื่อสลับฝั่งแล้วฝ่าย ATTACK จะต้องไปจุดที่สองให้ได้เท่านั้นหากยึดจุดที่ 2 ได้สำเร็จจะเป็นการเข้าสู่รอบ Sudden Death ฝั่งไหนเวลาเหลือมากที่สุดจะเป็นเวลาที่นำไปสะสมในรอบ Sudden Death และจะต้องยึดจุดแรกให้ได้ <br>
-                        </p>
-                        <p><strong><em>ESCORT (Payload)</em></strong><br></p>
-                        <p>
+                    </p>
+                    <p><strong><em>ESCORT (Payload)</em></strong><br></p>
+                    <p>
                         [*WATCHPOINT: GIBRALTAR*, DORADO,ROUTE 66]<br>
                         *แผนที่นี้มี 4 Checkpoint รอบแรกฝ่าย Attack ดัน Payload ให้ได้ไกลที่สุด ถึงจุดเส้นชัยจะเป็นการดี ฝ่าย Defense จะต้องป้องกันไม่ให้ดันได้ไกล เพื่อที่จะสลับฝั่งแล้วจะได้ดันถึงจุดที่ค้างไว้โดยที่ไม่ต้องไปถึงจุดเส้นชัย<br>
-                        </p>
-                        <p>
+                    </p>
+                    <p>
                         <em>ผลรอบแรกและเปลี่ยนฝั่ง</em><br>
                         กรณีที่ 1: ฝ่าย ATTACK สามารถดันได้ครบทุกจุดเมื่อสลับฝั่งแล้วฝ่าย ATTACK จะต้องดันให้ได้ครบทุกจุดเพื่อที่จะไปลุยในรอบ Sudden Death(Sudden Death สำหรับแผนที่ Watchpoint: Gibraltar จะต้องดันไปให้ถึงจุดที่ 2 ระบบจะตัดจุดแรกออกไป)<br>
                         กรณีที่ 2: ฝ่าย ATTACK สามารถดันได้ถึงแค่กลางทางเมื่อสลับฝั่งแล้วระบบจะเปลี่ยนจากจุดเส้นชัยเดิมเป็นจุดใหม่ที่ฝ่าย ATTACK รอบแรกทำถึง (เช่น รอบแรกทำได้ 2 Checkpoint - 30m ระบบก็จะเปลี่ยนเป็น Checkpoint ที่ 2 ระยะที่ 30m) ฝ่าย ATTACK จะต้องดันให้ได้เท่าของเดิมที่ฝั่งตรงข้ามทำได้ในรอบแรกหากดันไม่ถึงจะเป็นการพ่ายแพ้<br>
-                        </p>
-                        <p><strong><em>CONTROL (King of the Hill)</em></strong><br></p>
-                        <p>
+                    </p>
+                    <p><strong><em>CONTROL (King of the Hill)</em></strong><br></p>
+                    <p>
                         [LIJIANG TOWER , ILIOS , NEPAL] <br>
                         ปกติในการเล่นโหมดนี้จะเป็นการเล่นแบบ 2 ใน 3 (BO3) แต่สำหรับ Competitive Mode แล้วจะเป็นการเล่นแบบ 3 ใน 5 (BO5) ใครทำได้ 3 คะแนนก่อนชนะไปเลย<br>
-                        </p>
-                        <p>
-                            <strong><em>ASSAULT&amp;ESCORT (Hybrid)</em></strong><br></p>
-                        <p>
+                    </p>
+                    <p>
+                        <strong><em>ASSAULT&amp;ESCORT (Hybrid)</em></strong><br></p>
+                    <p>
                         [KING&#39;S ROW, NUMBANI, HOLLYWOOD] <br>
                         รอบแรกฝ่าย Attack จะต้องยึดและดัน Payload ให้ได้ไกลที่สุด ถึงจุดเส้นชัยจะเป็นการดี ฝ่าย Defense จะต้องป้องกันไม่ให้พลาดจุดแรกจะดีที่สุด ถ้าพลาดต้องไม่ให้ดันได้ไกล<br>
-                        </p>
-                        <p>
+                    </p>
+                    <p>
                         <em>ผลรอบแรกและเปลี่ยนฝั่ง</em><br>
                         กรณีที่ 1: ฝ่าย ATTACK ยึดจุดแรกไม่ได้ เมื่อสลับฝั่งแล้วฝ่าย ATTACK จะต้องยึดจุดแรกให้ได้<br>
-                            &nbsp;&nbsp;&nbsp;1. หากยึดจุดแรกได้จะเป็นการสิ้นสุดเกมทันที ไม่ต้องดันเพย์โหลด<br>
-                            &nbsp;&nbsp;&nbsp;2. หากยึดจุดแรกไม่ได้จะต้องไปสู้กันในรอบ Sudden Death <br>
+                        &nbsp;&nbsp;&nbsp;1. หากยึดจุดแรกได้จะเป็นการสิ้นสุดเกมทันที ไม่ต้องดันเพย์โหลด<br>
+                        &nbsp;&nbsp;&nbsp;2. หากยึดจุดแรกไม่ได้จะต้องไปสู้กันในรอบ Sudden Death <br>
                         กรณีที่ 2: ฝ่าย ATTACK ยึดได้แต่ล่มกลางทาง เมื่อสลับฝั่งแล้วฝ่าย ATTACK จะต้องยึดจุดแรกและต้องดันเพย์โหลดให้ถึงจุดหมายที่อีกฝั่งล่มกลางทาง หากทำถึงก็จะชนะ หากทำไม่ถึงก็พ่ายแพ้<br>
                         กรณีที่ 3: ฝ่าย ATTACK ทำได้ครบทุกจุด เมื่อสลับฝั่งแล้วฝ่าย ATTACK จะต้องทำให้ได้ครบทุกจุด จึงจะได้โอกาส Sudden Death<br>
-                        </p>
-                         <p><strong><em>บทลงโทษของการออกจากเกม</em></strong><br></p>    
-                          <p>
+                    </p>
+                    <p><strong><em>บทลงโทษของการออกจากเกม</em></strong><br></p>    
+                    <p>
                         ในการออกจากเกมนั้นมีบทลงโทษที่ทุกคนรู้จักคือการถูกหัก EXP ในการเล่นเกมทุกโหมด -75% (เหลือ 25%) วิธีแก้คือต้องเล่นอย่างต่อเนื่องจนกว่าจะหายไป ซึ่งปกติแล้วการเล่นโหมดทั่วไปจะต้องออกหลายรอบถึงจะมีผล แต่สำหรับ Competitive Mode นั้นจะเป็นการลงโทษทันทีส่วนเพื่อนในทีมที่เหลือจะมีโอกาสให้ออกจากห้องภายในเวลา 1 นาที สามารถออกได้โดยไม่ถูกลงโทษ -75% เมื่อหมดเวลาแล้วจะถือว่ายืนยันที่จะเล่นต่อไป แต่ไม่ต้องเป็นห่วงไปสำหรับการหลุดออกไปโดยงง ๆ เพราะเขามีระบบ Rejoin Match เพื่อกลับเข้าไปเล่นใหม่ได้(ต้องเข้าไปให้ทันภายใน 1 นาที) แต่ถ้าหากออกบ่อยเกินเหตุจะถูกตัดสิทธิ์(แบน)ไม่ให้เล่นแข่งขันทั้งซีซั่นที่กำลังเปิดอยู่<br>
-                        </p>   
-                         <p><strong><em>รูปแบบการ Leaver</em></strong><br></p>   
-                         <p>
+                    </p>   
+                    <p><strong><em>รูปแบบการ Leaver</em></strong><br></p>   
+                    <p>
                         1. ถ้ามีคนออก 2 นาทีแรกแมทช์จะนับถอยหลังยกเลิก (คนที่ออกไปก่อนจะถูกนับเป็น leaver และหากใครพยายามออกตามจะนับเป็น leaver เช่นกัน ให้รอนับถอยหลัง 1 นาทีจะยกเลิกเอง)<br>
                         2. มีคนออกระหว่างเกมส์- คนที่ออกไปคนแรก ไม่ว่ากรณีใดๆ มีเวลาให้ต่อกลับมา 1 นาที ถ้าไม่เข้าภายใน 1 นาที จะถูกนับเป็น leaver และปรับแพ้ทันที- เมื่อคนออกไปแล้ว 1 คน คนที่เหลือในทีมจะขึ้นข้อความด้านบน สามารถออกได้โดยไม่ติดโทษนับเป็น leaver นับถอยหลังภายใน 1 นาที หากออกตอนนับถอยหลังจบไปแล้ว จะนับเป็น leaver และปรับแพ้<br>
-                            - หากเกินเวลานับถอยหลังไปแล้ว ทุกคนสามารถออกได้ ไม่นับเป็น leaver แต่ปรับแพ้อยู่ดี<br>
-                            - สรุปคือถ้าเกมเริ่มไปสักพัก การออกไม่ว่ากรณีใดๆ คือ &quot;แพ้อยู่ดี&quot; แต่จะนับเป็น leaver หรือไม่อันนั้นอีกเรื่อง<br>
-                            - บทลงโทษ leaver หากทำหลาย ๆ ครั้ง มีการเตือนในเกม และยังฝืนทำก็จะถูกแบนทั้งซีซัน </p>
-        </div>
-    </div>
-    </div>
-    <footer id="footer001">
-        <div class="row">
-            <div class="col-md-4 col-sm-6 footer-navigation">
-                <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
-            </div>
-            <div class="col-md-4 col-sm-6 footer-contacts">
-                <div><i class="fa fa-facebook footer-contacts-icon" ></i>
-                    <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
+                        - หากเกินเวลานับถอยหลังไปแล้ว ทุกคนสามารถออกได้ ไม่นับเป็น leaver แต่ปรับแพ้อยู่ดี<br>
+                        - สรุปคือถ้าเกมเริ่มไปสักพัก การออกไม่ว่ากรณีใดๆ คือ &quot;แพ้อยู่ดี&quot; แต่จะนับเป็น leaver หรือไม่อันนั้นอีกเรื่อง<br>
+                        - บทลงโทษ leaver หากทำหลาย ๆ ครั้ง มีการเตือนในเกม และยังฝืนทำก็จะถูกแบนทั้งซีซัน </p>
                 </div>
+            </div>
+        </div>
+        <footer id="footer001">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footer-navigation">
+                    <h3><a href="#">U-LEAGUE<span><img src="assets/img/logo.png" id="footlogo"> </span></a></h3>
+                </div>
+                <div class="col-md-4 col-sm-6 footer-contacts">
+                    <div><i class="fa fa-facebook footer-contacts-icon" ></i>
+                        <p class="footer-center-info email text-left"> <a href="https://www.facebook.com/ULeagueTH/">U LEAUGE</a></p>
+                    </div>
 
-                <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a>lawslifeaways@gmail.com</a></p>
+                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                        <p> <a>lawslifeaways@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-md-4 footer-about">
+                    <h4>U LEAUGE</h4>
+                    <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
+                    </p>
                 </div>
             </div>
-            <div class="clearfix visible-sm-block"></div>
-            <div class="col-md-4 footer-about">
-                <h4>U LEAUGE</h4>
-                <p> A e-sport tournament of university.For relationship, good ethics, unity and increase performance of e-sport tournament.
-                </p>
-            </div>
-        </div>
-    </footer>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script src="assets/js/treejs.js"></script>
-    <script src="assets/js/popupjs.js"></script>
-</body>
+        </footer>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+        <script src="assets/js/treejs.js"></script>
+        <script src="assets/js/popupjs.js"></script>
+    </body>
 
 </html>
