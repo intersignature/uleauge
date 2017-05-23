@@ -119,7 +119,7 @@ public class inviteServlet extends HttpServlet {
                    session.setAttribute("invited", invited); // เคยชวนแล้ว
                    session.setAttribute("haveteam", haveteam); // มีทีมอยู่แล้ว กรณีกดชวนพร้อมกันแล้วดรอปดาวไม่อัพเดท
                    session.setAttribute("notcap", notcap); //ไม่ได้เป็นกัปตัน
-                   session.setAttribute("notfull", fullteam); // ทีมเต็ม 
+                   session.setAttribute("fullteam", fullteam); // ทีมเต็ม 
                    out.println("can't invited");
                    response.sendRedirect("inviteFail.jsp");
                }

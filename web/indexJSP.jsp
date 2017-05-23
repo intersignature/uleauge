@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="assets/css/player_tab.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -156,7 +156,7 @@
 </a>
 <ul class="dropdown-menu">
     <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-               <li class="bgedit"><a href="CreateTeam.jsp"><span class="icon-plus-sign"></span> Create Team</a></li>
+               <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
 <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
 </ul>
 </div>

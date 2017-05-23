@@ -156,7 +156,7 @@
 </a>
 <ul class="dropdown-menu">
     <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-               <li class="bgedit"><a href="CreateTeam.jsp"><span class="icon-plus-sign"></span> Create Team</a></li>
+               <li class="bgedit"><a href="MyTeam.jsp"><span class="icon-user"></span> My Team</a></li>
 <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
 </ul>
 </div>
@@ -222,6 +222,11 @@
                                         out.println("<a href=Team_001Servlet?team_id=" + team_idd + ">"+ team_name.get(i) + "</a>");
                                     }
                                     %></h4></div>
+                                     <% if (!prouser.equals(username) && (int)session.getAttribute("suc") == 1 ){ %>
+                <div class="text-center">        
+                 <a class="btn btn-lg btn-success" data-toggle="modal" href="#gameModal">Invite</a> 
+                </div>
+    <%}%>
                         </div>
 
 
@@ -233,11 +238,7 @@
                         <sql:setDataSource var="dbsource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
                            url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
                            user="adminesport@esportproject"  password="Esport2017"/>
-                        <% if (!prouser.equals(username) && (int)session.getAttribute("suc") == 1 ){ %>
-                <div class="well well-sm text-center">        
-                 <a class="btn btn-lg btn-success" data-toggle="modal" href="#gameModal">Invite</a> 
-                </div>
-    <%}%>
+                       
              <div id="gameModal" class="modal modal-wide fade">
   <div class="modal-dialog">
     <div class="modal-content">
