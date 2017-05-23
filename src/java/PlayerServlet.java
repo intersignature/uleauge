@@ -94,7 +94,7 @@ public class PlayerServlet extends HttpServlet {
                         img.add("http://i.imgur.com/rZjcXgi.jpg");
                     }
                     else{
-                        img.add("http://i.imgur.com/"+rs.getString("P_Image")+".jpg");
+                        img.add("assets\\img\\profile user\\"+rs.getString("P_Image"));
                     }
                 }
                 data.close();

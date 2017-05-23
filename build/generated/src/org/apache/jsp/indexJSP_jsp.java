@@ -240,7 +240,7 @@ out.println(id);
       out.write("        <li id=\"menu\"><a href=\"rulesJSP.jsp\" id=\"fontmenu\">RULES </a></li>\r\n");
       out.write("        <li id=\"menu\"><a href=\"faqJSP.jsp\" id=\"fontmenu\">FAQ </a></li>\r\n");
       out.write("        <li id=\"menu\"><a href=\"tourRequestJSP.jsp\" id=\"fontmenu\">TOURNAMENT REQUEST </a></li>   </ul>\r\n");
-      out.write("        <div class=\"container\">\r\n");
+      out.write("        <div class=\"container\" style=\"padding-left: 0px;padding-right: 0px;\">\r\n");
       out.write("  <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\r\n");
       out.write("    <!-- Indicators -->\r\n");
       out.write("    <ol class=\"carousel-indicators\">\r\n");

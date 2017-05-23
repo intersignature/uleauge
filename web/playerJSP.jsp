@@ -210,7 +210,7 @@
             out.println("<div class=\"row contain\">");
             out.println("<div class=\"col-sm-4 col-md-4 user-details\">");
             out.println("<div class=\"user-image\">");
-            out.println("<img src=" +img_list.get(index)+ " alt=\"\" title=\"\" class=\"img_size\">");
+            out.println("<img src=\"" +img_list.get(index)+ "\" alt=\"\" title=\"\" class=\"img_size\">");
             out.println("</div>");
             out.println("<div class=\"user-info-block\">");
             out.println("<div class=\"user-heading\">");
