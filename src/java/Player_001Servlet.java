@@ -63,7 +63,7 @@ public class Player_001Servlet extends HttpServlet {
                         session.setAttribute("P_Image", "http://i.imgur.com/rZjcXgi.jpg");
                     }
                     else{
-                        session.setAttribute("P_Image", "http://i.imgur.com/"+rs.getString("P_Image")+".jpg");
+                        session.setAttribute("P_Image", "assets\\img\\profile user\\"+rs.getString("P_Image"));
                     }
                     session.setAttribute("Prouser", rs.getString("P_Username"));
                     

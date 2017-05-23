@@ -64,7 +64,7 @@ public class SigninServlet extends HttpServlet {
                             useimage = "http://i.imgur.com/rZjcXgi.jpg";
                         }
                         else{
-                            useimage = "http://i.imgur.com/"+rs.getString("P_Image")+".jpg";
+                            useimage = "assets\\img\\profile user\\"+rs.getString("P_Image");
                         }
                         roles = rs.getString("P_Roles");
                     } else {
@@ -89,8 +89,12 @@ public class SigninServlet extends HttpServlet {
                 session.setAttribute("suc", suc);
                 session.setAttribute("P_ID", P_ID);
                 session.setAttribute("useimage", useimage);
+                session.setAttribute("from", from);
                 if(roles.equals("admin")){
                     response.sendRedirect("AdminUserServlet");
+                }
+                else if(useimage.equals("http://i.imgur.com/rZjcXgi.jpg")){
+                    response.sendRedirect("uploadJSP.jsp");
                 }
                 else{
                     response.sendRedirect(from);

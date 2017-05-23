@@ -205,7 +205,8 @@
                     <p style="text-align: center">
                         
                     <div class="logo_profiletest">
-                        <img src=<%=P_Image%> width="190" height="190" >
+
+                        <img src="<%=P_Image%>" width="190" height="190" >
                         <h2 style="text-align: center" class="ign"><%= ign%></h2></div></p><br><br><br><br><br><br>
                     
                     <div class="card">
