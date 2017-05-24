@@ -30,10 +30,17 @@
     </head>
 
     <body>
+         <% if (session.getAttribute("suc") == null || (int) session.getAttribute("suc") == 0) { %>
+        <%
+            int suc = 0;
+            session.setAttribute("suc", suc);
+            response.sendRedirect("indexJSP.jsp");
+        %>
+
+        <% } else if ((int) session.getAttribute("suc") == 1) {%>
         <header>
             <!-- Second navbar for sign in -->
             <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
-
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header" >
@@ -50,9 +57,8 @@
                     <ul class="nav navbar-nav navbar-right" id="userbar">
                         <% session = request.getSession();
                             String username = (String) session.getAttribute("username");
-                            String imgdir = (String) session.getAttribute("useimage");
+                            String imgdir = (String) session.getAttribute("useimage");;
                             int id = (int) session.getAttribute("P_ID");
-                            String roles = (String) session.getAttribute("roles");
                         %>
                         <li id = "searchnav2"> 
                             <a>
@@ -72,7 +78,7 @@
 
                                 <img src= "<% out.println(imgdir); %>" id="imgpro">
                                 <div id = "namepro2">
-                                    <h4><b><% out.println(username);%></b></h4>
+                                    <h4><b><% out.println(username); %></b></h4>
                                 </div>
 
                             </li>
@@ -91,7 +97,7 @@
                             </div>
                         </li>
                         <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                            <input type="hidden" name="from" value="EditSuccessJSP.jsp" />
+                            <input type="hidden" name="from" value="indexJSP.jsp" />
                             <li >
                                 <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -102,14 +108,17 @@
                 </div><!-- /.container -->
             </nav><!-- /.navbar -->
         </header>
+        <% }%>
         <ul class="nav nav-pills categories">
             <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
             <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-            <li id="menu"><a href="TeamServlet" id="fontmenu">TEAM </a></li>
+            <li id="menu"><a href="TeamServlet" id="fontmenu">REPLAY </a></li>
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-            <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>    </ul>
+            <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
+        </ul>
+
         <div class="row register-form">
             <div class="col-md-8 col-md-offset-2">
                 <form class="form-horizontal custom-form" id="signup" name="signup" action="UploadServlet" method="post"

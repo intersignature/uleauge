@@ -36,7 +36,7 @@
         <% if (session.getAttribute("suc") == null) { %>
         <% int suc = 0;
             session.setAttribute("suc", suc);
-            response.sendRedirect("indexJSP.jsp");
+            response.sendRedirect("searchFail.jsp");
         %>
         <% } else if ((int) session.getAttribute("suc") == 0) {%>
         <header>

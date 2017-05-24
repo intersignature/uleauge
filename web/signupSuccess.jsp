@@ -34,14 +34,14 @@
         <%
             int suc = 0;
             session.setAttribute("suc", suc);
-            response.sendRedirect("indexJSP.jsp");
         %>
 
         <% } else if ((int) session.getAttribute("suc") == 1) {%>
+            <%response.sendRedirect("indexJSP.jsp");%>
+        <% }%>
         <header>
             <!-- Second navbar for sign in -->
             <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
-
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header" >
@@ -55,60 +55,47 @@
                             <img src="assets/img/logo.png"  id = "logo">
                             <a class="navbar-brand" href="indexJSP.jsp">U-LEAGUE</a>
                     </div>
-                    <ul class="nav navbar-nav navbar-right" id="userbar">
-                        <% session = request.getSession();
-                            String username = (String) session.getAttribute("username");
-                            String imgdir = (String) session.getAttribute("useimage");;
-                            int id = (int) session.getAttribute("P_ID");
-                        %>
-                        <li id = "searchnav2"> 
-                            <a>
-                                <form action="searchServlet" method="POST" >
-                                    <select name="filter">
-                                        <option>Username</option>
-                                        <option>Team</option>
-                                    </select>
-                                    <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-collapse-2">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li id = "searchnav"> 
+                                <a>
+                                    <form action="searchServlet" method="POST" >
+                                        <select name="filter">
+                                            <option>Username</option>
+                                            <option>Team</option>
+                                        </select>
+                                        <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
 
-                                    <input id = "searchbtn" type="submit" value="Search" />
-                                </form>
-                            </a>
-                        </li>
-                        <a href="Player_001Servlet?player=<%out.println(id);%>"> 
-                            <li id="namepro">
-
-                                <img src= "<% out.println(imgdir); %>" id="imgpro">
-                                <div id = "namepro2">
-                                    <h4><b><% out.println(username); %></b></h4>
-                                </div>
-
-                            </li>
-                        </a>
-                        <li >
-                            <div class="btn-group"id = "editbtn" > 
-                                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id = "probtn">
-                                    <span class="icon-cog"></span><span class="caret"></span>
+                                        <input id = "searchbtn" type="submit" value="Search" />
+                                    </form>
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li class="bgedit"><a href="EditProfileServlet"><span class="icon-wrench"></span> Edit Profile</a></li>
-                                    <li class="bgedit"><a href="CreateTeam.jsp"><span class="icon-plus-sign"></span> Create Team</a></li>
-                                    <li class="bgedit"><a href="newsInvite.jsp"><span class="icon-envelope"></span> New invites</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                            <input type="hidden" name="from" value="indexJSP.jsp" />
-                            <li >
-                                <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
-
                             </li>
-                        </form>
-                    </ul>
+                            <li><a href="signup.html">Sign up</a></li>
+                            <li>
+                                <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="signinbtn">Sign in</a>
+                            </li>
+                        </ul>
+                        <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+                            <form action="SigninServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
+                                <input type="hidden" name="from" value="rulesJSP.jsp" />
+                                <div class="form-group">
 
+                                    <label class="sr-only" for="username">Username</label>
+                                    <input name="Username" type="Username" class="form-control" id="Username" placeholder="Username" autofocus required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="password">Password</label>
+                                    <input name="Password" type="Password" class="form-control" id="Password" placeholder="Password" required />
+                                </div>
+                                <button type="submit" class="btn btn-success" >Sign in</button>
+                            </form>
+                        </div>
+                    </div><!-- /.navbar-collapse -->
                 </div><!-- /.container -->
             </nav><!-- /.navbar -->
+
         </header>
-        <% }%>
         <ul class="nav nav-pills categories">
             <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
             <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>

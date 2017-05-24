@@ -45,6 +45,7 @@ public class TeamServlet extends HttpServlet {
             int index = 0; //จำนวนcolของdb
             int page_run = 1; //รันในdbบอกว่าอยู่หน้าไหน
             int page_count = 0; // จำนวนหน้าที่ต้องใช้
+            int fromServlet = 1; // เช็คว่าผ่านหน้าเซิฟเลท
             List<String> Team_ID = new ArrayList<String>();
             List<String> Team_Name = new ArrayList<String>();
             List<String> Team_Tag = new ArrayList<String>();
@@ -122,6 +123,8 @@ public class TeamServlet extends HttpServlet {
             session.setAttribute("Team_Image", Team_Image);
             session.setAttribute("page_count", page_count);
             session.setAttribute("Team_mem_num", Team_mem_num);
+            session.setAttribute("fromServlet", fromServlet);
+            
             if(request.getParameter("suc") != null){
             int suc = Integer.parseInt(request.getParameter("suc"));
             session.setAttribute("suc", suc);

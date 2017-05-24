@@ -30,6 +30,14 @@
     </head>
 
     <body>
+        <% if (session.getAttribute("suc") == null || (int) session.getAttribute("suc") == 0) { %>
+        <%
+            int suc = 0;
+            session.setAttribute("suc", suc);
+            response.sendRedirect("indexJSP.jsp");
+        %>
+
+        <% } else if ((int) session.getAttribute("suc") == 1) {%>
         <header>
             <!-- Second navbar for sign in -->
             <nav class="navbar navbar-default navbar-fixed-top" id="headnav">
@@ -50,9 +58,8 @@
                     <ul class="nav navbar-nav navbar-right" id="userbar">
                         <% session = request.getSession();
                             String username = (String) session.getAttribute("username");
-                            String imgdir = (String) session.getAttribute("useimage");
+                            String imgdir = (String) session.getAttribute("useimage");;
                             int id = (int) session.getAttribute("P_ID");
-                            String roles = (String) session.getAttribute("roles");
                         %>
                         <li id = "searchnav2"> 
                             <a>
@@ -61,7 +68,8 @@
                                         <option>Username</option>
                                         <option>Team</option>
                                     </select>
-                                    <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">              
+                                    <input id = "searchbox" type="text" name="searchuser" placeholder="Search..">
+
                                     <input id = "searchbtn" type="submit" value="Search" />
                                 </form>
                             </a>
@@ -71,7 +79,7 @@
 
                                 <img src= "<% out.println(imgdir); %>" id="imgpro">
                                 <div id = "namepro2">
-                                    <h4><b><% out.println(username);%></b></h4>
+                                    <h4><b><% out.println(username); %></b></h4>
                                 </div>
 
                             </li>
@@ -90,7 +98,7 @@
                             </div>
                         </li>
                         <form action="SignoutServlet" method="POST" class="navbar-form navbar-right form-inline" role="form">
-                            <input type="hidden" name="from" value="editTeamSuccess.jsp" />
+                            <input type="hidden" name="from" value="indexJSP.jsp" />
                             <li >
                                 <button type="submit" class="btn btn-default btn-outline btn-circle collapsed"  id="signinbtn" >Sign Out</button>
 
@@ -101,6 +109,7 @@
                 </div><!-- /.container -->
             </nav><!-- /.navbar -->
         </header>
+        <% }%>
         <ul class="nav nav-pills categories">
             <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
             <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
@@ -108,7 +117,8 @@
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
-            <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>    </ul>
+            <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
+        </ul>
         <div class="row register-form">
             <div class="col-md-8 col-md-offset-2">
                 <form class="form-horizontal custom-form" action="SignupServlet" id="signup" name="signup" method="POST">

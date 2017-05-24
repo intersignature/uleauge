@@ -35,7 +35,6 @@
      <% if (session.getAttribute("suc") == null) { %>
     <% int suc = 0;
         session.setAttribute("suc", suc);
-        response.sendRedirect("playerJSP.jsp");
     %>
 <% } else if ((int)session.getAttribute("suc") == 0) {%>
     <header>
@@ -178,7 +177,10 @@
         <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
 <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>    </ul>
 
-    <% session = request.getSession();
+    <%if( session.getAttribute("fromServlet") == null){%>
+        <%response.sendRedirect("TeamServlet");%>
+    <%}else if((int) session.getAttribute("fromServlet") == 1){%>
+        <% session = request.getSession();
     List<String> Team_ID = (List) session.getAttribute("Team_ID");
     List<String> Team_Name = (List) session.getAttribute("Team_Name");
     List<String> Team_Tag = (List) session.getAttribute("Team_Tag");
@@ -282,6 +284,8 @@
         out.println("</div>");
     %> <!-- use list -->
     <!--<p style="text-align:center; font-size:130%;">Paragraph</p> -->
+    <%}%>
+    
 
 
    <footer id="footer001">

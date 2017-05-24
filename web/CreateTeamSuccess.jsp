@@ -115,29 +115,15 @@
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
             <li id="menu"><a href="tourRequestJSP.jsp" id="fontmenu">TOURNAMENT REQUEST </a></li>
         </ul>
-        <div class="container">
-            <div class="row register-form">
-                <div class="col-md-8 col-md-offset-2">
-                    <form action="searchServlet" method="POST">
-
-                        <h1>Your Team Created</h1>
-                        <div id = "searchpos">
-                            <div class="row" >
-
-                                <div class="search">
-                                    <input type="text" class="form-control input-sm" maxlength="64" placeholder="Username" name="searchuser"/>
-                                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-
-
-
-                </div>  
-            </div>
+        <div class="row register-form">
+            <div class="col-md-8 col-md-offset-2">
+                <form class="form-horizontal custom-form" action="SignupServlet" id="signup" name="signup" method="POST">
+                     <h1>Team Create</h1>
+                    <p> Your Team Created is successfully.</p>
+                </form>
+            </div>  
         </div>
+        
 
         <footer id="footer001">
             <div class="row">
