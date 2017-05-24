@@ -238,7 +238,7 @@ public class SignupServlet extends HttpServlet {
             //}
             //HttpSession session = request.getSession();
             //out.print((char) session.getAttribute("condition"));
-            out.println(result_pass);
+            //out.println(result_pass);
             if(ans_overall == 11 && (char)session.getAttribute("condition")=='0'){
                 //แอดข้อมูล
                 String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone, P_ID, P_Image)"+

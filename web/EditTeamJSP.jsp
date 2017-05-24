@@ -73,9 +73,7 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right" id="userbar">
                         <% session = request.getSession();
-
-                            String imgdir = (String) session.getAttribute("useimage");;
-
+                            String imgdir = (String) session.getAttribute("useimage");
                         %>
                         <li id = "searchnav2"> 
                             <a>
