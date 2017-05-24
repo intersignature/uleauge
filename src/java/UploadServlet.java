@@ -100,7 +100,7 @@ public class UploadServlet extends HttpServlet {
                     String sql = "UPDATE db_accessadmin.Player SET P_Image = '" + fileName + "' " + "WHERE P_Username='" + (String) session.getAttribute("username") + "'";
                     stmt.execute(sql);
                     session.setAttribute("useimage", "assets\\img\\profile user\\"+fileName);
-                    //Thread.sleep(3000);
+                    Thread.sleep(3000);
                     response.sendRedirect("UploadFileSuccess.jsp");
                 }
             }
