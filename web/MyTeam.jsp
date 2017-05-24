@@ -160,7 +160,6 @@
                         <c:set var = "team_id" scope = "session" value = "${row.Team_ID}"/>
                         <c:choose>
                             <c:when test="${row.Team_Cap.equals(username) and row.Team_mem_num == 1}">
-                                <a  data-toggle="modal" href="#capmodal" class="inbtn">Captain</a>&nbsp;&nbsp;
                                 <a  data-toggle="modal" href="#dismodal" class="inbtn">Disband</a>&nbsp;&nbsp;
                                 <a  data-toggle="modal" href="#delmodal" class="inbtn">Leave</a>&nbsp;&nbsp;
 
