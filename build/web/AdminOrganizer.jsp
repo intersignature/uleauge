@@ -207,7 +207,7 @@
                                     out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_" + i + "\"" + "><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete_" + i + "\"" + "><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
                                     out.println("</tr>");
                                 }
-
+                                int last_id = admin_organizer_ID.size()+1;
                             %>
 
 
@@ -238,7 +238,7 @@
                         <form action="AdminCheckOrganizerServlet" method="POST">
 
                             <div class="form-group">
-                                ID : <input name="admin_organizer_ID" class="form-control " type="text" value=<%=admin_organizer_ID.get(index)%>>
+                                ID : <input name="admin_organizer_ID" class="form-control " type="text" value=<%=admin_organizer_ID.get(index)%> >
                             </div>
 
                             <div class="form-group">
@@ -300,7 +300,7 @@
                             <form action="AdminAddOrganizerServlet" method="POST">
 
                                 <div class="form-group">
-                                    ID : <input name="admin_organizer_ID" class="form-control ">
+                                    ID : <input name="admin_organizer_ID" class="form-control " value=<%=last_id%> >
                                 </div>
 
                                 <div class="form-group">

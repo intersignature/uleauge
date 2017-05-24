@@ -1,12 +1,17 @@
-// Import required java libraries
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 import java.io.*;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.*;
 
-import javax.servlet.ServletConfig;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +22,12 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.*;
-
-public class UploadServlet extends HttpServlet {
+/**
+ *
+ * @author atomiz
+ */
+@WebServlet(urlPatterns = {"/UploadTeamLogoServlet"})
+public class UploadTeamLogoServlet extends HttpServlet {
 
     private boolean isMultipart;
     private String filePath;
@@ -97,9 +106,9 @@ public class UploadServlet extends HttpServlet {
                     out.println("Uploaded Filename: " + fileName + "<br>");
                     HttpSession session = request.getSession();
                     Statement stmt = conn.createStatement();
-                    String sql = "UPDATE db_accessadmin.Player SET P_Image = '" + fileName + "' " + "WHERE P_Username='" + (String) session.getAttribute("username") + "'";
+                    String sql = "UPDATE db_accessadmin.Team SET Team_Image = '" + fileName + "' " + "WHERE Team_ID='" + request.getParameter("Team_ID") + "'";
                     stmt.execute(sql);
-                    session.setAttribute("useimage", "assets\\img\\profile user\\"+fileName);
+                    //session.setAttribute("useimage", "assets\\img\\profile user\\"+fileName);
                     //Thread.sleep(3000);
                     response.sendRedirect("UploadFileSuccess.jsp");
                 }
@@ -119,3 +128,4 @@ public class UploadServlet extends HttpServlet {
                 + getClass().getName() + ": POST method required.");
     }
 }
+

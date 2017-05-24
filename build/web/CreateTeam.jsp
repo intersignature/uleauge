@@ -175,7 +175,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div style="display: none" class="form-group">
                             <div class="col-sm-4 label-column">
                                 <label class="control-label" for="name-input-field">Image Link</label>
                             </div>

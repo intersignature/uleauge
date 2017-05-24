@@ -43,7 +43,7 @@ public class Team_001Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int id = Integer.parseInt(request.getParameter("team_id"))+1;
+            int id = Integer.parseInt(request.getParameter("team_id"));
             List<String> data = new ArrayList<String>();
             try {
                 Statement stmt = conn.createStatement();
@@ -67,9 +67,7 @@ public class Team_001Servlet extends HttpServlet {
                         mem_lname.add(rs4.getString("P_LName"));
                         mem_id.add(rs4.getString("P_ID"));
                     }
-                    stmt4.close();
                 }
-                stmt3.close();
                 while (rs.next()) {
                     session.setAttribute("teamname", rs.getString("Team_Name"));
                     session.setAttribute("teamtag", rs.getString("Team_Tag"));
@@ -93,15 +91,13 @@ public class Team_001Servlet extends HttpServlet {
                     if (rs.getString("Team_Image").equals("") || rs.getString("Team_Image").equals("NoDisplay")) {
                         session.setAttribute("Team_Image", "http://i.imgur.com/rZjcXgi.jpg");
                     } else {
-                        session.setAttribute("Team_Image", "http://i.imgur.com/" + rs.getString("Team_Image") + ".jpg");
+                        session.setAttribute("Team_Image", "assets\\img\\profile user\\" + rs.getString("Team_Image"));
                     }
                     session.setAttribute("Prouser", rs.getString("Team_name"));
                     /*out.println(session.getAttribute("mem_fname"));
                     out.println(session.getAttribute("mem_ign"));
                     out.println(session.getAttribute("mem_ign"));*/
-
                     response.sendRedirect("Team_info.jsp");
-                    stmt.close();
                 }
             } catch (Exception e) {
                 out.println(e);

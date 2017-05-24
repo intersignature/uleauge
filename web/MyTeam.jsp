@@ -150,7 +150,7 @@
                                     <img src= "http://i.imgur.com/rZjcXgi.jpg" id="imgteam">
                                 </c:when>    
                                 <c:otherwise>
-                                    <img src= "http://i.imgur.com/${row.Team_Image}.jpg" id="imgteam">
+                                    <img src= "assets/img/profile user/${row.Team_Image}" id="imgteam">
                                 </c:otherwise>
                             </c:choose>
 

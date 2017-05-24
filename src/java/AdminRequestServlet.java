@@ -41,7 +41,11 @@ public class AdminRequestServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            if(!session.getAttribute("roles").equals("admin")){
+                response.sendRedirect("indexJSP.jsp");
+            }
+            else{
             List<Integer> admin_Request_ID = new ArrayList<Integer>();
             List<String> admin_Request_Teamname = new ArrayList<String>();
             List<String> admin_Request_Address = new ArrayList<String>();
@@ -72,7 +76,6 @@ public class AdminRequestServlet extends HttpServlet {
                 out.println(e);
                 response.sendRedirect("/Project/ErrorJSP.jsp");
             }
-            HttpSession session = request.getSession();
             session.setAttribute("admin_Request_ID", admin_Request_ID);
             session.setAttribute("admin_Request_Teamname", admin_Request_Teamname);
             session.setAttribute("admin_Request_Address", admin_Request_Address);
@@ -83,7 +86,7 @@ public class AdminRequestServlet extends HttpServlet {
             session.setAttribute("admin_Request_Facebook", admin_Request_Facebook);
             session.setAttribute("admin_Request_Cause", admin_Request_Cause);
             //out.println(admin_Request_ID);
-            response.sendRedirect("AdminRequest.jsp");
+            response.sendRedirect("AdminRequest.jsp");}
         } 
     }
 

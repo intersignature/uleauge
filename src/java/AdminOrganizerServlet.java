@@ -41,12 +41,15 @@ public class AdminOrganizerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
+            if(!session.getAttribute("roles").equals("admin")){
+                response.sendRedirect("indexJSP.jsp");
+            }
+            else{
             List<Integer> admin_organizer_ID = new ArrayList<Integer>();
-            List<String> admin_Organizer_Name = new ArrayList<String>();
-            
+            List<String> admin_Organizer_Name = new ArrayList<String>();      
             try {
                 Statement user = conn.createStatement();
-                //String sql = "SELECT * FROM db_accessadmin.Player where P_ID >= "+ (1+6*page_run) + "and P_ID <= " + (6*(page_run+1)) ;
                 String sql = "SELECT * FROM db_accessadmin.Organizer";
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {
@@ -58,10 +61,9 @@ public class AdminOrganizerServlet extends HttpServlet {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
-            HttpSession session = request.getSession();
             session.setAttribute("admin_organizer_ID", admin_organizer_ID);
             session.setAttribute("admin_Organizer_Name", admin_Organizer_Name);
-            response.sendRedirect("AdminOrganizer.jsp");
+            response.sendRedirect("AdminOrganizer.jsp");}
         }
     }
 

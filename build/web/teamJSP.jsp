@@ -209,12 +209,12 @@
             out.println("<div class=\"row contain\">");
             out.println("<div class=\"col-sm-4 col-md-4 user-details\">");
             out.println("<div class=\"user-image\">");
-            out.println("<img src=" +Team_Image.get(index)+ " alt=\"\" title=\"\" class=\"img_size\">");
+            out.println("<img src=\"" +Team_Image.get(index)+ "\""+" alt=\"\" title=\"\" class=\"img_size\">");
             out.println("</div>");
             out.println("<div class=\"user-info-block\">");
             out.println("<div class=\"user-heading\">");
             //out.println("<a href=Player_001Servlet>"+ign_list.get(i-1)+request.getParameter("hi")+"</a>"+"<input type=\"hidden\" value=\""+ign_list.get(i-1)+"\""+" name=\"hi\">");
-            out.println("<a id=\"profileeiei\" href=Team_001Servlet?team_id="+(index)+"><input type=\"hidden\" value=1 name=1/><h3>" + Team_Name.get(index) + "</h3></a>");
+            out.println("<a id=\"profileeiei\" href=Team_001Servlet?team_id="+(index+1)+"><input type=\"hidden\" value=1 name=1/><h3>" + Team_Name.get(index) + "</h3></a>");
             //out.println("<a name=\""+i+"\" "+"id=\"profileeiei\" href=Player_001Servlet><input type=\"hidden\" value=1 name=1/><h3>" + ign_list.get(i-1) + "</h3></a>");
             //href=\"player_00"+i+".html\"
             out.println("<span class=\"help-block\"> Tag : " + Team_Tag.get(index) + "</span>");

@@ -7,6 +7,9 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -39,9 +42,17 @@ public class AdminCheckUserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String result_pass = "";
             String admin_ID = request.getParameter("admin_ID");
             String admin_Username = request.getParameter("admin_Username");
             String admin_Password = request.getParameter("admin_Password");
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(admin_Password.getBytes());
+            BigInteger hash = new BigInteger(1, md.digest());
+            result_pass = hash.toString(16);
+            while(result_pass.length() < 32) {
+                result_pass = "0" + result_pass;
+                }
             String admin_Fullname = request.getParameter("admin_Fullname");
             String admin_Lastname = request.getParameter("admin_Lastname");
             String admin_ign = request.getParameter("admin_ign");
@@ -57,7 +68,7 @@ public class AdminCheckUserServlet extends HttpServlet {
                     + "P_Faculty=?,P_University=?,P_Phone=?, P_ID=?,P_Roles=?,P_Image=? where P_ID=?";
             PreparedStatement update = conn.prepareStatement(sql);   
             update.setString(1, admin_Username);
-            update.setString(2, admin_Password);
+            update.setString(2, result_pass);
             update.setString(3, admin_Fullname);
             update.setString(4, admin_Lastname);
             update.setString(5, admin_ign);
@@ -77,6 +88,8 @@ public class AdminCheckUserServlet extends HttpServlet {
         } catch (SQLException ex) {
             out.println(ex);
             response.sendRedirect("/Project/ErrorJSP.jsp");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(AdminCheckUserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

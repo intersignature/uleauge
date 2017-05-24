@@ -94,7 +94,7 @@ public class TeamServlet extends HttpServlet {
                         Team_Image.add("http://i.imgur.com/rZjcXgi.jpg");
                     }
                     else{
-                        Team_Image.add("http://i.imgur.com/"+rs.getString("Team_Image")+".jpg");
+                        Team_Image.add("assets\\img\\profile user\\"+rs.getString("Team_Image"));
                     }
                     stmt5.close();
                 }

@@ -226,7 +226,7 @@
                                     out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_" + i + "\"" + "><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete_" + i + "\"" + "><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
                                     out.println("</tr>");
                                 }
-
+                                int last_id = admin_Team_ID.size()+1;
                             %>
 
 
@@ -257,7 +257,7 @@
                         <form action="AdminCheckTeamServlet" method="POST">
 
                             <div class="form-group">
-                                ID : <input name="admin_Team_ID" class="form-control " type="text" value=<%=admin_Team_ID.get(index)%>>
+                                ID : <input name="admin_Team_ID" class="form-control " type="text" value=<%=admin_Team_ID.get(index)%> >
                             </div>
 
                             <div class="form-group">
@@ -280,7 +280,7 @@
                                 Phone : <input name="admin_Team_Phone" class="form-control " type="text" value=<%=admin_Team_Phone.get(index)%>>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" style="display: none;">
                                 Image : <input name="admin_Team_Image" class="form-control " type="text" value=<%=admin_Team_Image.get(index)%>>
                             </div>
 
@@ -339,7 +339,7 @@
                             <form action="AdminAddTeamServlet" method="POST">
 
                                 <div class="form-group">
-                                    ID : <input name="admin_Team_ID" class="form-control " type="text">
+                                    ID : <input name="admin_Team_ID" class="form-control " type="text"  value=<%=last_id%>>
                                 </div>
 
                                 <div class="form-group">
@@ -362,7 +362,7 @@
                                     Phone : <input name="admin_Team_Phone" class="form-control " type="text" >
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group" style="display: none;">
                                     Image : <input name="admin_Team_Image" class="form-control " type="text">
                                 </div>
 

@@ -42,6 +42,11 @@ public class AdminUserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            if(!session.getAttribute("roles").equals("admin")){
+                response.sendRedirect("indexJSP.jsp");
+            }
+            else{
             List<Integer> admin_ID = new ArrayList<Integer>();
             List<String> admin_Username = new ArrayList<String>();
             List<String> admin_Password = new ArrayList<String>();
@@ -81,8 +86,6 @@ public class AdminUserServlet extends HttpServlet {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
-            
-            HttpSession session = request.getSession();
             session.setAttribute("admin_ID", admin_ID);
             session.setAttribute("admin_Username", admin_Username);
             session.setAttribute("admin_Password", admin_Password);
@@ -96,7 +99,7 @@ public class AdminUserServlet extends HttpServlet {
             session.setAttribute("admin_Phone", admin_Phone);
             session.setAttribute("admin_Role", admin_Role);
             session.setAttribute("admin_Image", admin_Image);
-            response.sendRedirect("AdminJSP.jsp");
+            response.sendRedirect("AdminJSP.jsp");}
         }
     }
 

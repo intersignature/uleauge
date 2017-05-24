@@ -41,7 +41,11 @@ public class AdminTournamentServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            if(!session.getAttribute("roles").equals("admin")){
+                response.sendRedirect("indexJSP.jsp");
+            }
+            else{
             List<Integer> admin_Tour_ID = new ArrayList<Integer>();
             List<Integer> admin_Tour_Maxteam = new ArrayList<Integer>();
             List<String> admin_Tour_Location = new ArrayList<String>();
@@ -76,7 +80,6 @@ public class AdminTournamentServlet extends HttpServlet {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
                 out.println(e);
             }
-            HttpSession session = request.getSession();
             session.setAttribute("admin_Tour_ID", admin_Tour_ID);
             session.setAttribute("admin_Tour_Maxteam", admin_Tour_Maxteam);
             session.setAttribute("admin_Tour_Location", admin_Tour_Location);
@@ -88,7 +91,7 @@ public class AdminTournamentServlet extends HttpServlet {
             session.setAttribute("admin_Organize_ID", admin_Organize_ID);
             session.setAttribute("admin_Game_ID", admin_Game_ID);
             session.setAttribute("admin_Tour_Table_Link", admin_Tour_Table_Link);
-            response.sendRedirect("AdminTournament.jsp");
+            response.sendRedirect("AdminTournament.jsp");}
         }
     }
 

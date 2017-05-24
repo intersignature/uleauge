@@ -204,7 +204,7 @@
                     <div style="text-align: center"><h1 class="text">TEAM PROFILE</h1>
 
                         <div class="logo_teamtest">
-                            <img src=<%= Team_Image%> width="190" height="190" >
+                            <img src="<%= Team_Image%>" width="190" height="190" >
                         </div>
                         <h2 class="ign"><%= teamtag%></h2>
                         <h4><strong>Team Name : </strong><%= teamname%></h4>

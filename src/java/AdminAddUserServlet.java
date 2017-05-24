@@ -6,6 +6,9 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -41,6 +44,14 @@ public class AdminAddUserServlet extends HttpServlet {
             String admin_ID_add = request.getParameter("admin_ID_add");
             String admin_Username_add = request.getParameter("admin_Username_add");
             String admin_Password_add = request.getParameter("admin_Password_add");
+            String result_pass = "";
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(admin_Password_add.getBytes());
+            BigInteger hash = new BigInteger(1, md.digest());
+            result_pass = hash.toString(16);
+            while(result_pass.length() < 32) {
+                result_pass = "0" + result_pass;
+                }
             String admin_Fullname_add = request.getParameter("admin_Fullname_add");
             String admin_Lastname_add = request.getParameter("admin_Lastname_add");
             String admin_ign_add = request.getParameter("admin_ign_add");
@@ -55,7 +66,7 @@ public class AdminAddUserServlet extends HttpServlet {
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement insert = conn.prepareStatement(sql);
             insert.setString(1, admin_Username_add);
-            insert.setString(2, admin_Password_add);
+            insert.setString(2, result_pass);
             insert.setString(3, admin_Fullname_add);
             insert.setString(4, admin_Lastname_add);
             insert.setString(5, admin_ign_add);
@@ -64,6 +75,7 @@ public class AdminAddUserServlet extends HttpServlet {
             insert.setString(8, admin_Faculty_add);
             insert.setString(9, admin_University_add);
             insert.setString(10, admin_Phone_add);
+            out.println(admin_ID_add);
             insert.setInt(11, Integer.parseInt(admin_ID_add));
             insert.setString(12, admin_Role_add);
             insert.setString(13, admin_Image_add);
@@ -73,6 +85,8 @@ public class AdminAddUserServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(AdminAddUserServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendRedirect("/Project/ErrorJSP.jsp");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(AdminAddUserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

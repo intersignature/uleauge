@@ -6,6 +6,9 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,6 +47,7 @@ public class SignupServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String result_pass = "";
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String rep_password = request.getParameter("rep_password");
@@ -106,6 +110,13 @@ public class SignupServlet extends HttpServlet {
                 session.setAttribute("is_password", '1');
             }
             else{
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                md.update(password.getBytes());
+                BigInteger hash = new BigInteger(1, md.digest());
+                result_pass = hash.toString(16);
+                while(result_pass.length() < 32) {
+                result_pass = "0" + result_pass;
+                }
                 HttpSession session = request.getSession();
                 session.setAttribute("is_password", '0');
                 ans_overall += 1;
@@ -227,14 +238,14 @@ public class SignupServlet extends HttpServlet {
             //}
             //HttpSession session = request.getSession();
             //out.print((char) session.getAttribute("condition"));
-            
+            out.println(result_pass);
             if(ans_overall == 11 && (char)session.getAttribute("condition")=='0'){
                 //แอดข้อมูล
                 String sql = "INSERT INTO db_accessadmin.Player (P_Username, P_Password, P_FName, P_LName, P_Ign, P_Email, P_Facebook, P_Faculty, P_University, P_Phone, P_ID, P_Image)"+
                         " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement insert = conn.prepareStatement(sql);
                 insert.setString(1, username);
-                insert.setString(2, password);
+                insert.setString(2, result_pass);
                 insert.setString(3, fname);
                 insert.setString(4, lname);
                 insert.setString(6, email);
@@ -273,6 +284,8 @@ public class SignupServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendRedirect("/Project/ErrorJSP.jsp");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(SignupServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

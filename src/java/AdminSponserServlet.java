@@ -41,7 +41,11 @@ public class AdminSponserServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            if(!session.getAttribute("roles").equals("admin")){
+                response.sendRedirect("indexJSP.jsp");
+            }
+            else{
             List<Integer> admin_Sponsor_ID = new ArrayList<Integer>();
             List<String> admin_Sponsor_Name = new ArrayList<String>();
             try {
@@ -54,13 +58,12 @@ public class AdminSponserServlet extends HttpServlet {
             }
             user.close();
         } catch (SQLException ex) {
-            Logger.getLogger(AdminSponserServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendRedirect("/Project/ErrorJSP.jsp");
+                out.println(ex);
         }
-            HttpSession session = request.getSession();
             session.setAttribute("admin_Sponsor_ID", admin_Sponsor_ID);
             session.setAttribute("admin_Sponsor_Name", admin_Sponsor_Name);
-            response.sendRedirect("AdminSponser.jsp");
+            response.sendRedirect("AdminSponser.jsp");}
     }
     }
 

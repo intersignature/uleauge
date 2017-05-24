@@ -41,7 +41,11 @@ public class AdminTeamServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            if(!session.getAttribute("roles").equals("admin")){
+                response.sendRedirect("indexJSP.jsp");
+            }
+            else{
             List<Integer> admin_Team_ID = new ArrayList<Integer>();
             List<String> admin_Team_Name = new ArrayList<String>();
             List<String> admin_Team_Tag = new ArrayList<String>();
@@ -63,7 +67,6 @@ public class AdminTeamServlet extends HttpServlet {
                     admin_Team_Image.add(rs.getString("Team_Image"));
                     
                 }
-            HttpSession session = request.getSession();
             session.setAttribute("admin_Team_ID", admin_Team_ID);
             session.setAttribute("admin_Team_Name", admin_Team_Name);
             session.setAttribute("admin_Team_Tag", admin_Team_Tag);
@@ -76,7 +79,7 @@ public class AdminTeamServlet extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(AdminTeamServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+            }
         }
     }
 

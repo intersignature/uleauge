@@ -6,6 +6,9 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -43,7 +46,7 @@ public class CheckEditProfileServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+            String result_pass = "";
             String new_password = request.getParameter("new_password");
             String new_rep_password = request.getParameter("new_rep_password");
             String new_fname = request.getParameter("new_fname");
@@ -86,6 +89,13 @@ public class CheckEditProfileServlet extends HttpServlet {
             //เช็ค rep-password
             if(new_rep_password.equals(new_password) && !"".equals(new_rep_password) && password_isnum == 1 && password_isUpper == 1 && password_isLower == 1){
                 session.setAttribute("is_rep-password", '0');
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                md.update(new_rep_password.getBytes());
+                BigInteger hash = new BigInteger(1, md.digest());
+                result_pass = hash.toString(16);
+                while(result_pass.length() < 32) {
+                result_pass = "0" + result_pass;
+                }
                 ans_overall += 1;
             }
             else{
@@ -176,7 +186,7 @@ public class CheckEditProfileServlet extends HttpServlet {
             String sql = "UPDATE db_accessadmin.Player SET P_Password=?, P_FName=?,P_LName=?,P_Ign=?,P_Email=?,P_Facebook=?,"
                     + "P_Faculty=?,P_University=?,P_Phone=?, P_Image=? where P_ID=?";
             PreparedStatement update = conn.prepareStatement(sql);   
-            update.setString(1, new_password);
+            update.setString(1, result_pass);
             update.setString(2, new_fname);
             update.setString(3, new_lname);
             update.setString(5, new_email);
@@ -212,6 +222,8 @@ public class CheckEditProfileServlet extends HttpServlet {
         
         } catch (SQLException ex) {
             response.sendRedirect("/Project/ErrorJSP.jsp");
+            Logger.getLogger(CheckEditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CheckEditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         

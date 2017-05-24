@@ -220,7 +220,7 @@
                                 <h4><strong>Phone:</strong><%= phone%></h4>
                                 <h4><strong>Team:</strong><%
                                     for (int i = 0; i <= team_name.size() - 1; i++) {
-                                        int team_idd = Integer.parseInt((String) team_id.get(i)) - 1;
+                                        int team_idd = Integer.parseInt((String) team_id.get(i));
                                         out.println("<a href=Team_001Servlet?team_id=" + team_idd + ">" + team_name.get(i) + "</a>");
                                     }
                                     %></h4></div>

@@ -8,10 +8,15 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,11 +46,18 @@ public class SigninServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
+            String result_pass="";
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            BigInteger hash = new BigInteger(1, md.digest());
+            result_pass = hash.toString(16);
+            while(result_pass.length() < 32) {
+                result_pass = "0" + result_pass;
+                }
             String from = request.getParameter("from");
             String roles = "";
             String useimage = "";
             int P_ID = -1;
-           
             //out.println(from);
             //out.println(username);
             //out.println(password);
@@ -58,7 +70,7 @@ public class SigninServlet extends HttpServlet {
                 String sql = "SELECT P_Username, P_Password,P_ID, P_Roles, P_Image FROM db_accessadmin.Player WHERE P_Username = '" + username + "'";
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
-                    if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(password)) {
+                    if (rs.getString("P_Username").equals(username) && rs.getString("P_Password").equals(result_pass)) {
                         suc = 1;
                         if(rs.getString("P_Image").equals("") || rs.getString("P_Image").equals("NoDisplay") ){
                             useimage = "http://i.imgur.com/rZjcXgi.jpg";
@@ -104,6 +116,8 @@ public class SigninServlet extends HttpServlet {
                 response.sendRedirect("login.html");
             }
 
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(SigninServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

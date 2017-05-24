@@ -174,11 +174,10 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 label-column">
-                            <label class="control-label" for="name-input-field">Image Link</label>
+                            <label class="control-label" for="name-input-field">Image</label>
                         </div>
                         <div class="col-sm-6 input-column">
-                            <input class="form-control" type="text" name="Team_Image" value=<%= Team_Image%>>
-                            <p>upload file at <a href="http://imgur.com/gpHAQIO">imgur.com</a> and you will give link like "http://imgur.com/gpHAQIO" and you input "gpHAQIO" only</p>
+                            <a href="UploadTeamImgJSP.jsp">Upload logo team page</a>
                         </div>
                     </div>
                     <input type="hidden" class="form-control" type="text" name="Team_ID" value=<%= Team_ID%>>

@@ -234,7 +234,7 @@
                                     out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_" + i + "\"" + "><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete_" + i + "\"" + "><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
                                     out.println("</tr>");
                                 }
-
+                                int last_id = admin_Request_ID.size()+1;
                             %>
 
 
@@ -265,7 +265,7 @@
                         <form action="AdminCheckRequestServlet" method="POST">
 
                             <div class="form-group">
-                                ID : <input name="admin_Request_ID" class="form-control " type="text" value=<%=admin_Request_ID.get(index)%>>
+                                ID : <input name="admin_Request_ID" class="form-control " type="text" value=<%=admin_Request_ID.get(index)%> >
                             </div>
 
                             <div class="form-group">
@@ -355,7 +355,7 @@
                             <form action="AdminAddRequestServlet" method="POST">
 
                                 <div class="form-group">
-                                    ID : <input name="admin_Request_ID" class="form-control " type="text">
+                                    ID : <input name="admin_Request_ID" class="form-control " type="text" value=<%=last_id%> >
                                 </div>
 
                                 <div class="form-group">

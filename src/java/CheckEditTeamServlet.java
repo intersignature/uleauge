@@ -114,14 +114,14 @@ public class CheckEditTeamServlet extends HttpServlet {
 
             }
             if(ans_teamname=='1' &&ans_teamtag=='1' &&ans_teamphone=='1' &&ans_teamunjoin=='1'){
-                String sql = "UPDATE db_accessadmin.Team SET Team_Name=?, Team_Tag=?,Team_Phone=?,Team_Cap=?,Team_Image=? where Team_ID=?";
+                String sql = "UPDATE db_accessadmin.Team SET Team_Name=?, Team_Tag=?,Team_Phone=?,Team_Cap=? where Team_ID=?";
                 PreparedStatement update = conn.prepareStatement(sql);
                 update.setString(1, Team_Name);
                 update.setString(2, Team_Tag);
                 update.setString(3, Team_Phone);
                 update.setString(4, Team_Cap);
-                update.setString(5, Team_Image);
-                update.setInt(6, Integer.parseInt(Team_ID));
+                //update.setString(5, Team_Image);
+                update.setInt(5, Integer.parseInt(Team_ID));
                 update.execute();
                 update.close();
                 /*out.println(ans_teamname);

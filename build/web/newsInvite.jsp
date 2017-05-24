@@ -117,7 +117,7 @@
         <ul class="nav nav-pills categories">
             <li id="menu"><a href="newsJSP.jsp" id="fontmenu">NEWS </a></li>
             <li id="menu"><a href="TourJSP.jsp" id="fontmenu">TOURNAMENT </a></li>
-            <li id="menu"><a href="TeamServlet" id="fontmenu">REPLAY </a></li>
+            <li id="menu"><a href="TeamServlet" id="fontmenu">TEAM </a></li>
             <li id="menu"><a href="PlayerServlet" id="fontmenu">PLAYERS </a></li>
             <li id="menu"><a href="rulesJSP.jsp" id="fontmenu">RULES </a></li>
             <li id="menu"><a href="faqJSP.jsp" id="fontmenu">FAQ </a></li>
@@ -146,7 +146,7 @@
                                     <img src= "http://i.imgur.com/rZjcXgi.jpg" id="imgteam">
                                 </c:when>    
                                 <c:otherwise>
-                                    <img src= "http://i.imgur.com/${row.Team_Image}.jpg" id="imgteam">
+                                    <img src= "assets/img/profile user/${row.Team_Image}" id="imgteam">
                                 </c:otherwise>
                             </c:choose>
 

@@ -235,11 +235,8 @@ box-shadow:none !important;
                                             <%
                                                 
                                         for(int i=1;i<=admin_ID.size();i++){
-                                            String password = "";
-                                            int index = admin_ID.indexOf(i);
-                                            for (int j=0; j<admin_Password.get(index).length(); j++){
-                                                    password += "*";
-                                                }               
+                                            String password = "*";
+                                            int index = admin_ID.indexOf(i);      
                                             out.println("<tr>");
                                             out.println("<td class=\"sorting_1\">"+Integer.toString(admin_ID.get(index))+"</td>");
                                             out.println("<td>"+admin_Username.get(index)+"</td>");
@@ -256,8 +253,9 @@ box-shadow:none !important;
                                             out.println("<td>"+admin_Image.get(index)+"</td>");
                                             out.println("<td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\"><button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit_"+i+"\""+"><span class=\"glyphicon glyphicon-pencil\"></span></button></p></td><td><p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\"><button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete_"+i+"\""+"><span class=\"glyphicon glyphicon-trash\"></span></button></p></td>");
                                             out.println("</tr>");
+                                            
                                         }
-                                        
+                                        int last_id = admin_ID.size()+1;
                                         %>
 						
                                                 
@@ -289,7 +287,7 @@ box-shadow:none !important;
               <form action="AdminCheckUserServlet" method="POST">
               
               <div class="form-group">
-            ID : <input name="admin_ID" class="form-control " type="text" value=<%=admin_ID.get(index)%>>
+            ID : <input name="admin_ID" class="form-control " type="text"  value=<%=admin_ID.get(index)%>>
           </div>
               
           <div class="form-group">
@@ -297,7 +295,7 @@ box-shadow:none !important;
           </div>
               
         <div class="form-group">
-        Password : <input type="password" name="admin_Password" class="form-control " type="text" value=<%=admin_Password.get(index)%>>
+        Password : <input type="password" name="admin_Password" class="form-control "  value="*">
         </div>
               
         <div class="form-group">
@@ -394,7 +392,7 @@ box-shadow:none !important;
               <form action="AdminAddUserServlet" method="POST">
               
               <div class="form-group">
-            ID : <input name="admin_ID_add" class="form-control ">
+                  ID : <input name="admin_ID_add" class="form-control " value=<%=Integer.toString(last_id)%> >
           </div>
               
           <div class="form-group">
