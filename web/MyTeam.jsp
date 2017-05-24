@@ -154,7 +154,8 @@
                                 </c:otherwise>
                             </c:choose>
 
-                            <h3 id = "nameinvite1">${row.Team_Name}</h3>
+                                    <h3 id = "nameinvite1">${row.Team_Name}</h3>
+                           
                         </div>
                     </a>
                     <div id="invitebtn">
@@ -162,11 +163,13 @@
                         
                         <c:choose>
                             <c:when test="${row.Team_Cap.equals(username) and row.Team_mem_num == 1}">
+                                 <a href="EditTeamServlet?Team_ID=${row.Team_ID}" class="inbtn">Edit</a>&nbsp;&nbsp;
                                 <a  data-toggle="modal" href="#dismodal" class="inbtn">Disband</a>&nbsp;&nbsp;
                                 <a  data-toggle="modal" href="#delmodal" class="inbtn">Leave</a>&nbsp;&nbsp;
 
                             </c:when>   
                             <c:when test="${row.Team_Cap.equals(username) and row.Team_mem_num > 1}">
+                                 <a href="EditTeamServlet?Team_ID=${row.Team_ID}" class="inbtn">Edit</a>&nbsp;&nbsp;
                                 <a  data-toggle="modal" href="#capmodal" class="inbtn">Captain</a>&nbsp;&nbsp;
                                 <a  data-toggle="modal" href="#dismodal" class="inbtn">Disband</a>&nbsp;&nbsp;
                                 <a  data-toggle="modal" href="#playermodal" class="inbtn">Leave</a>&nbsp;&nbsp;

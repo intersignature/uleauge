@@ -61,7 +61,8 @@ public class EditTeamServlet extends HttpServlet {
         } catch (SQLException ex) {
             out.println(ex);
         }
-            response.sendRedirect("EditTeamJSP.jsp");
+            
+           response.sendRedirect("EditTeamJSP.jsp");
         }
     }
 

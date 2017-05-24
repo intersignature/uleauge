@@ -47,7 +47,6 @@ public class CheckEditTeamServlet extends HttpServlet {
             String Team_Name = request.getParameter("Team_Name");
             String Team_Tag = request.getParameter("Team_Tag");
             String Team_Phone = request.getParameter("Team_Phone");
-            String Team_Cap = request.getParameter("Team_Cap");
             String Team_Image = request.getParameter("Team_Image");
             String Team_ID = request.getParameter("Team_ID");
             HttpSession session = request.getSession();
@@ -60,7 +59,7 @@ public class CheckEditTeamServlet extends HttpServlet {
             char ans_teamunjoin = '1';
             try {
                 Statement user = conn.createStatement();
-                String sql = "SELECT Team_Name,Game_ID,Team_Tag,Team_Cap FROM db_accessadmin.Team where Team_ID != " + Team_ID;
+                String sql = "SELECT Team_Name,Game_ID,Team_Tag FROM db_accessadmin.Team where Team_ID != " + Team_ID;
                 ResultSet rs = user.executeQuery(sql);
                 while (rs.next()) {
                     if (rs.getString("Team_Name").toLowerCase().equals(Team_Name.toLowerCase())) { //ถ้าซ้ำ
@@ -72,28 +71,12 @@ public class CheckEditTeamServlet extends HttpServlet {
                     index += 1;
                     
                 }
-                Statement check_user = conn.createStatement();
-                String sql_check = "SELECT T.Game_ID,P.P_Username\n" +
-                                "FROM db_accessadmin.Player_Join P \n" +
-                                "inner join db_accessadmin.Team T\n" +
-                                "on T.Team_ID = P.Team_ID\n" +
-                                "where P_Username = '"+Team_Cap+"';";
-
-                ResultSet rs_check = check_user.executeQuery(sql_check);
-                while (rs_check.next()) {
-                    if (rs_check.getInt("Game_ID")== Game_ID ) { //ถ้าซ้ำ
-                        ans_teamunjoin = '0';
-                    } 
-                }
-                user.close();
-                check_user.close();
+                
             } catch (SQLException ex) {
                 response.sendRedirect("/Project/ErrorJSP.jsp");
             }
             //ถ้าเป็นcapเก่า
-                if(((String)session.getAttribute("username")).equals(Team_Cap)){
-                    ans_teamunjoin = '1';
-                }
+               
             
             
             Pattern pf = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
@@ -114,14 +97,13 @@ public class CheckEditTeamServlet extends HttpServlet {
 
             }
             if(ans_teamname=='1' &&ans_teamtag=='1' &&ans_teamphone=='1' &&ans_teamunjoin=='1'){
-                String sql = "UPDATE db_accessadmin.Team SET Team_Name=?, Team_Tag=?,Team_Phone=?,Team_Cap=? where Team_ID=?";
+                String sql = "UPDATE db_accessadmin.Team SET Team_Name=?, Team_Tag=?,Team_Phone=? where Team_ID=?";
                 PreparedStatement update = conn.prepareStatement(sql);
                 update.setString(1, Team_Name);
                 update.setString(2, Team_Tag);
                 update.setString(3, Team_Phone);
-                update.setString(4, Team_Cap);
                 //update.setString(5, Team_Image);
-                update.setInt(5, Integer.parseInt(Team_ID));
+                update.setInt(4, Integer.parseInt(Team_ID));
                 update.execute();
                 update.close();
                 /*out.println(ans_teamname);
@@ -136,13 +118,12 @@ public class CheckEditTeamServlet extends HttpServlet {
                 session.setAttribute("Team_Tag", Team_Tag);
                 session.setAttribute("Team_Phone", Team_Phone);
                 session.setAttribute("Team_Image", Team_Image);
-                session.setAttribute("Team_Cap", Team_Cap);
+
                 session.setAttribute("Team_ID", Team_ID);
                 session.setAttribute("Game_ID", Game_ID);
                 session.setAttribute("is_Team_Name", ans_teamname);
                 session.setAttribute("is_Team_Tag", ans_teamtag);
                 session.setAttribute("is_Team_Phone", ans_teamphone);
-                session.setAttribute("is_Team_Cap", ans_teamunjoin);
 
                 /*out.println(ans_teamname);
                 out.println(ans_teamtag);

@@ -66,7 +66,7 @@ public class UploadTeamLogoServlet extends HttpServlet {
         // maximum size that will be stored in memory
         factory.setSizeThreshold(maxMemSize);
         // Location to save data that is larger than maxMemSize.
-        factory.setRepository(new File("D:\\uleauge\\uleauge\\web\\assets\\img\\profile user"));
+        factory.setRepository(new File("D:\\project\\uleauge\\web\\assets\\img\\profile user"));
 
         // Create a new file upload handler
         ServletFileUpload upload = new ServletFileUpload(factory);

@@ -258,7 +258,7 @@ public class SignupServlet extends HttpServlet {
                 insert.setString(12, RealImage);
                 insert.execute();
                 insert.close();
-                response.sendRedirect("/Project/signupSuccess.jsp");
+                response.sendRedirect("signupSuccess.jsp");
             }
             else{
                 //response.sendRedirect("/Project/signup.html");

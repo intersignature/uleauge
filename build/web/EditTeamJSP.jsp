@@ -73,9 +73,9 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right" id="userbar">
                         <% session = request.getSession();
-                            String username = (String) session.getAttribute("username");
+
                             String imgdir = (String) session.getAttribute("useimage");;
-                            int id = (int) session.getAttribute("P_ID");
+
                         %>
                         <li id = "searchnav2"> 
                             <a>
@@ -163,15 +163,7 @@
                             <p>*Require</p>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-4 label-column">
-                            <label class="control-label" for="name-input-field"> Team Captain </label>
-                        </div>
-                        <div class="col-sm-6 input-column">
-                            <input class="form-control" type="text" name="Team_Cap" value=<%= Team_Cap%>>
-                            <p>*Require</p>
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <div class="col-sm-4 label-column">
                             <label class="control-label" for="name-input-field">Image</label>

@@ -35,12 +35,12 @@
             char is_Team_Name = (char) session.getAttribute("is_Team_Name");
             char is_Team_Tag = (char) session.getAttribute("is_Team_Tag");
             char is_Team_Phone = (char) session.getAttribute("is_Team_Phone");
-            char is_Team_Cap = (char) session.getAttribute("is_Team_Cap");
+
             String Team_Name = (String) session.getAttribute("Team_Name");
             String Team_Tag = (String) session.getAttribute("Team_Tag");
             String Team_Phone = (String) session.getAttribute("Team_Phone");
             String Team_Image = (String) session.getAttribute("Team_Image");
-            String Team_Cap = (String) session.getAttribute("Team_Cap");
+
             String Team_ID = (String) session.getAttribute("Team_ID");
             char is_ans_hasid = (char) session.getAttribute("is_ans_hasid");
             int Game_ID = (int) session.getAttribute("Game_ID");
@@ -174,18 +174,7 @@
                                 out.println("Incorrect phone Number");
                             }%></p>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-4 label-column">
-                            <label class="control-label" for="name-input-field">Captain Team</label>
-                        </div>
-                        <div class="col-sm-6 input-column">
-                            <input class="form-control" type="text" name="Team_Cap" value=<%= Team_Cap%>>
-                            <p>*Require</p>
-                        </div>
-                        <p id="cau_ign" style="color:blue;"><%if (is_Team_Cap == '0') {
-                                out.println("Incorrect captain team");
-                            }%></p>
-                    </div>
+                    
                     <div class="form-group">
                         <div class="col-sm-4 label-column">
                             <label class="control-label" for="name-input-field">Image Link</label>
