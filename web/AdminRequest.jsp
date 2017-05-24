@@ -158,7 +158,6 @@
             <li id="menu"><a href="AdminTournamentServlet" id="fontmenu"><font color="red">TOURNAMENT </font></a></li>
             <li id="menu"><a href="AdminOrganizerServlet" id="fontmenu"><font color="red">ORGANIZER </font></a></li>
             <li id="menu"><a href="AdminRequestServlet" id="fontmenu"><font color="red">REQUEST </font></a></li>
-            <li id="menu"><a href="AdminSponserServlet" id="fontmenu"><font color="red">SPONSER </font></a></li>
         </ul>
         <script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
         <script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
