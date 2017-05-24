@@ -126,6 +126,7 @@
                            url="jdbc:sqlserver://esportproject.database.windows.net:1433;databaseName=Esport-DB"
                            user="adminesport@esportproject"  password="Esport2017"/>
         <%String username = (String) session.getAttribute("username");%>
+        <c:set var = "team_id" scope = "session" value = "null"/>
         <sql:query dataSource="${dbsource}" var="result">
             select T.Team_Cap,T.Team_ID, T.Team_Name,T.Team_Image,G.Game_Name, P.P_Username,T.Team_mem_num from db_accessadmin.Player_Join P
             join db_accessadmin.Team T
@@ -138,6 +139,7 @@
         <div class="container" id="boardinvite">
             <c:forEach var="row" items="${result.rows}">
                 <c:set var = "username" scope = "session" value = "<%= username%>"/>
+                <c:set var = "team_id" scope = "session" value = "${row.Team_ID}"/>
                 <h3>${row.Game_Name}</h3>
                 <div id = "bgall">
                     <a href="Team_001Servlet?team_id=${row.Team_ID}">
@@ -157,7 +159,7 @@
                     </a>
                     <div id="invitebtn">
 
-                        <c:set var = "team_id" scope = "session" value = "${row.Team_ID}"/>
+                        
                         <c:choose>
                             <c:when test="${row.Team_Cap.equals(username) and row.Team_mem_num == 1}">
                                 <a  data-toggle="modal" href="#dismodal" class="inbtn">Disband</a>&nbsp;&nbsp;
